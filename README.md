@@ -2,6 +2,10 @@
 
 Coding 1: Data Management and Analysis with R
 
+## Syllabus
+
+Coming soon...
+
 ## Lecture 0: Technical Prerequisites *before* Class 1
 
 Please bring your own laptop and make sure to install the below items **before** attending the first class. If you get stuck, read the "What to do if I can't complete a step?" section below first, before emailing me.
