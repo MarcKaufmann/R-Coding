@@ -26,7 +26,7 @@ The remaining steps will allow you to install `git` and use it with RStudio:
 9. Create a new project choosing "version control", then "git" and paste the SSH version of the repo URL copied from GitHub in the pop-up -- now RStudio should be able to download the repo. If it asks you to accept GitHub's fingerprint, say "Yes".
 10. If RStudio/git is complaining that you have to set your identity, click on the "Git" tab in the top-right panel, then click on the Gear icon and then "Shell" -- here you can set your username and e-mail address in the command line, so that RStudio/git integration can work. Use the following commands:
 
-    ```
+    ```bash
     $ git config --global user.name "Your Name"
     $ git config --global user.email "Your e-mail address"
     ```
