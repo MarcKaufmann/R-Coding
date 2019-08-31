@@ -1,0 +1,26 @@
+---
+title: "exam-out"
+author: "Marc Kaufmann"
+date: "8/31/2019"
+output: html_document
+---
+
+# Exam Out for "Coding 1"
+
+You should have received the RMardkown for this file, as well as the following .csv files:
+
+- session1_survey_day1_names.csv  
+- session1_day1_names.csv  
+- session1_day2_names.csv  
+- session2_survey_day1_names.csv  
+- session2_day1_names.csv         
+- session2_day2_names.csv         
+- session3_survey_day1_names.csv
+- session3_day1_names.csv  
+- session3_day2_names.csv
+
+Notice that there are three sessions (sessions 1, 2, and 3) and for each session there are three types of datasets (survey_day1_names, day1_names, day2_names). 
+
+## Passing the Exam Out
+
+In order to pass the exam out, you should complete this RMarkdown file by answering the questions in it. Thus you should have code interspersed with the relevant output of your code as well as your explanations of it, and you should knit it (which you can do for instance in RStudio) both to HTML and to PDF. I will look at all three files (.pdf, .html, .Rmd) and decide if it is a passing grade. You will be required to meet me in person or via video conferencing for 10-15 minutes to discuss your work.
