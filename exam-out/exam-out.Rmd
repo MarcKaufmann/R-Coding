@@ -7,6 +7,14 @@ output: html_document
 
 # Exam Out for "Coding 1"
 
+## Passing the Exam Out
+
+In order to pass the exam out, you should complete this RMarkdown file by answering the questions in it. Thus you should have code interspersed with the relevant output of your code as well as your explanations of it, and you should knit it (which you can do for instance in RStudio) both to HTML and to PDF. I will look at all three files (.pdf, .html, .Rmd) and decide if it is a passing grade. You will be required to meet me in person or via video conferencing for 10-15 minutes to discuss your work.
+
+I recommend that you use the tidyverse libraries, but you can solve it differently. 
+
+## The Exam
+
 You should have received the RMardkown for this file, as well as the following .csv files:
 
 - session1_survey_day1_names.csv  
@@ -19,8 +27,18 @@ You should have received the RMardkown for this file, as well as the following .
 - session3_day1_names.csv  
 - session3_day2_names.csv
 
-Notice that there are three sessions (sessions 1, 2, and 3) and for each session there are three types of datasets (survey_day1_names, day1_names, day2_names). 
+Notice that there are three sessions (sessions 1, 2, and 3) and for each session there are three types of datasets (survey_day1_names, day1_names, day2_names). This data is from an economic experiment, therefore it contains variables for day1 called batchN_control and batchN_treatment (for $N = 1, 2, 3$) where the experimenters predicted that there would be a difference in responses for control and treatments, and there were three batches in each session.
 
-## Passing the Exam Out
+Make sure you read the whole exam before starting to code.
 
-In order to pass the exam out, you should complete this RMarkdown file by answering the questions in it. Thus you should have code interspersed with the relevant output of your code as well as your explanations of it, and you should knit it (which you can do for instance in RStudio) both to HTML and to PDF. I will look at all three files (.pdf, .html, .Rmd) and decide if it is a passing grade. You will be required to meet me in person or via video conferencing for 10-15 minutes to discuss your work.
+### Read in data for analysis
+
+Primary goal of this section: Read in the data from the csv files into R. 
+
+**Question 1**: What are some differences between read_csv (from tidyverse) and read.csv? Illustrate with some code.
+
+```{r question1}
+# Code for question 1
+```
+
+**Question 2**: The current data contains the names of the people about whom we have information.
