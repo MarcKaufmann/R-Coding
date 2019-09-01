@@ -11,7 +11,7 @@ output: html_document
 
 In order to pass the exam out, you should complete this RMarkdown file by answering the questions in it. Thus you should have code interspersed with the relevant output of your code as well as your explanations of it, and you should knit it (which you can do for instance in RStudio) both to HTML and to PDF. I will look at all three files (.pdf, .html, .Rmd) and decide if it is a passing grade. You will be required to meet me in person or via video conferencing for 10-15 minutes to discuss your work.
 
-I recommend that you use the tidyverse libraries, but you can solve it differently. 
+I recommend that you use the tidyverse libraries, but this is not required. 
 
 ## The Exam
 
@@ -29,16 +29,100 @@ You should have received the RMardkown for this file, as well as the following .
 
 Notice that there are three sessions (sessions 1, 2, and 3) and for each session there are three types of datasets (survey_day1_names, day1_names, day2_names). This data is from an economic experiment, therefore it contains variables for day1 called batchN_control and batchN_treatment (for $N = 1, 2, 3$) where the experimenters predicted that there would be a difference in responses for control and treatments, and there were three batches in each session.
 
-Make sure you read the whole exam before starting to code.
+You have until September 10th, 2019, 2pm to submit the exam (.pdf, .html, and .Rmd). Make sure you read the whole exam before starting to code. If a question is unclear, email me (kaufmannm@ceu.edu) for clarifications. I will not respond to new questions after September 8th, 2019, 8pm -- only to follow-ups from earlier questions. Thus you should make sure that you get as much as possible done by September 8th.
 
-### Read in data for analysis
+### Get data ready for analysis
 
-Primary goal of this section: Read in the data from the csv files into R. 
+Primary goal of this section: get the data ready for analysis.
 
-**Question 1**: What are some differences between read_csv (from tidyverse) and read.csv? Illustrate with some code.
+**Question 1 (Read in Data)**: What are some differences between read_csv (from tidyverse) and read.csv? Illustrate with some code.
 
-```{r question1}
+```{r read_data}
 # Code for question 1
 ```
 
-**Question 2**: The current data contains the names of the people about whom we have information.
+**Question 2 (Anonymize Data)**: The current data contains the names of the people about whom we have information. 
+
+1. In order to be able to share the data with others, you want to anonymize the data, that is, in each session, you want to replace the name of a person, say *Kata*, by a random integer, say $1258$. 
+2. After you have replaced the names by unique IDs, you should drop the name from the datasets **Important Note:** It is possible that different people have the same name in different sessions. So if there is a person called *Kata* in session 1, you should give this person a different ID than to a person called *Kata* in session 2.^[The names in the dataset are made up, so they don't represent the real names of the persons in the experiment.] 
+3. Write the new session data to .csv files so that you could share the data with fewer privacy concerns. You can choose to adopt the original naming of files, or another naming. You also don't have to store the data in 3 files per session.
+
+```{r anonymize_data}
+# Code for question 2
+```
+
+**Question 3 (Provide function to read in anonymized data)**: Now that you have anonymized the data, write an R function that allows others to easily read in the code for a given session. The specification for this function is given below in comments, thus the function should return a list, containing different tables/dataframes for a given session as different named items of the list.
+
+```{r read_anonymized_data}
+
+read_session <- function(session_string) {
+  # Write the code for this function. Define as many other functions as you need
+}
+
+# session1, session2, and session3 should contain all the data for their respective sessions.
+# session1 should be a list with 
+# - session1$survey containing the survey_day1 data
+# - session1$day1 containing the day1 data
+# - session1$day2 containing the day2 data
+
+session1 <- read_session("session1")
+session2 <- read_session("session1")
+session3 <- read_session("session1")
+```
+
+**Question 4 (Check your read_session function)**: How sure are you that your function in question 3 works? How did you test it? At what output did you look? Does it look like the original data?
+
+```{r checking_read_session}
+```
+
+**Question 5 (What is different about session 1?)**: Session 1 is different from sessions 2 and 3. This is reflected in one of the day1 variables (although it may also be the case for other variables) that is different in an important way from sessions 2 and 3. What is it? If you can't find it, don't worry and move on. Just report what you looked at, including any tables or graphs or partial table outputs that you printed.
+
+**Question 6 (Merge data from sessions 2 and 3)**: Since the data from session 1 is different (but you don't know how), it is safer to leave it alone. Merge the data from sessions 2 and 3 into a single sessions object and make clear what you call it (you can call it whatever you like).
+
+```{r one_session_object}
+```
+
+### Data Analysis
+
+The data analysis will use your session object from question 6 which should contain all the data from session 2 and session 3, in an anonymized fashion. Your session object should be of the following form:
+
+```{r session_object, eval=FALSE}
+session <- list("survey"=survey_day1_data,
+                "day1"=day1_data,
+                "day2"=day2_data)
+```
+
+If for some reason you have decided to store it differently, make sure to explain why and keep in mind that the following questions when describing "survey", "day1", and "day2" refer to session\$survey, session\$day1, and session\$day2.
+
+**Note:** From now on, write your own code chunks in this .Rmd file where you need them to answer questions.
+
+**Question 7 (Who completed the study)**: Add a new variable to session\$day1 called has_completed that is TRUE if the person completed the study and FALSE otherwise. A person completed the study if the value of correct_guesses on day2 is equal to $25$.
+
+**Question 8 (How hard were the tasks?)**: Add the two variables "how_pleasant_is_task" and "how_pleasant_is_hard_task" from survey_day1 to the day1 data, so that we can focus on day1 data only. You will need this data in a later question.
+
+**Question 9 (Focus on day 1):** Now that we know who completed the study and have this variable on day1, we can forget about survey_day1 and day2 data; we don't need it anylonger. To make sure that you understand which part of the data we are talking about, print out the first 10 lines of the dataset for day1 that you are using and make clear what you call it. The remaining questions are only about this subset of the data.
+
+**Question 10 (Visualize completion vs non-completion of study)**: Explore in visual ways whether people who completed the study are different from people who did not complete the study. You can use a single graph or several, and any type of plot you think is useful. Make sure to describe what you see, and to label the visualizations properly (especially the axes).
+
+**Question 11 (Get data into tidy shape)**: The data contains information on batch1_control, batch1_treatment, batch2_control, batch2_treatment, batch3_control, batch3_treatment for the same individual. Each of these 6 variables is one observation. Turn this data into a tidy, so that every row contains only one of these 6 variables. Make sure that you still know what batch a row belongs to and whether it is a control or a treatment variable.
+
+**Question 12 (t-tests for treatment vs control)**: The researchers who ran this experiment are interested in whether the treatment and control values are statistically significantly different. Run the following t-tests for treatment vs control:
+
+- For batch 1 only
+- For batch 2 only
+- For batch 3 only
+- For all batches together
+
+Do you notice anything interesting? Are any of the tests showing a significant difference between treatment and control? Run all t-tests once for all participants for whom you have data, and once only for those who completed the study. 
+
+**Note:** If you wonder what *significance* and *t-test* mean, email me. I won't tell you how to run any of these, but this class is not about teaching these concepts, only about how to implement them. 
+
+**Question 13 (create batch A and batch B)**: The researchers on this experiment were wondering whether batches 1 and 2 were quite similar in one way, and batch 3 different. So they want to relabel batches 1 and 2 as batch A, and batch 3 as batch B. Do this while keeping the information on the original batch numbering. Run t-tests for batch A alone, and for batch B alone. Highlight anything interesting (or note that there is nothing interesting to be noted). 
+
+**Question 14 (Run basic regression on batch A and batch B)**: Run a simple model on this dataset with indicators for batch A vs batch B, interacted with treatment and control for the persons who completed the study. Compare the estimates you find and the level of significance to the t-tests from question 12. What do you notice? (You *should* notice something this time.) Provide a table of the output and describe what you see briefly.
+
+**Question 15 (Rerun basic regression with controls)**: Run the same model as in question 13, this time controlling for "how_pleasant_is_task" and "how_pleasant_is_hard_task" from survey_day1 (simple controls, no interactions with other variables). Provide a table of the output and describe what you see briefly.
+
+### Data Issues
+
+**Question 16 (Problems with the dataset)**: You don't know the context of the data or what it means exactly. Some of this is unavoidable without speaking to the researchers and getting some context for the data. However, the data itself has issues that may make it harder. What could the researchers have done to make it easier to understand what is going on? What other issues to you see with the data that make you worry that there might be some problems with the datasets -- whether the collection of the data or the processing of the data? Make sure to include the code and output of the code that makes these problems visible.

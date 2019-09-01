@@ -1,21 +1,21 @@
 gave_consent,complete_hit_without_study,payment_if_complete_session_1,when_is_session_2,were_instructions_clear,what_was_unclear,how_pleasant_is_task,how_pleasant_is_hard_task,how_to_make_come_back_easier,willingness_to_wait,mturk_hours_per_week,how_much_you_make,correct_guesses_in_hit,wrong_guesses_in_hit,tasks_to_do_in_hit,session_code_HIT,name
-NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,0,6,8y6fq6xa,Csaba
-TRUE,FALSE,1,2,TRUE,NA,3,2,NA,8,20,150,6,0,6,8y6fq6xa,Orsolya
-NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,0,6,8y6fq6xa,Andrea
-TRUE,FALSE,10,3,TRUE,NA,5,1,emails,5,20,100,6,0,6,8y6fq6xa,Zoltán
-NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,3,7,6,8y6fq6xa,András
-NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,1,6,8y6fq6xa,Csilla
-TRUE,TRUE,1,3,TRUE,NA,5,1,"Sending an email should be sufficient, I'd think.",9,2,20,6,0,6,8y6fq6xa,Adam
-FALSE,TRUE,1,2,TRUE,None,7,4,Get rid of the matrices,7,30,150,6,1,6,8y6fq6xa,Melinda
-FALSE,TRUE,1.5,2,TRUE,NA,1,0,fewer matrices,10,25,450,6,0,6,8y6fq6xa,Imre
-TRUE,TRUE,0,2,TRUE,NA,5,3,Send reminders,7,35,500,6,0,6,8y6fq6xa,Tamás
-TRUE,TRUE,1.5,4,TRUE,NA,2,2,give a lot of time to do it,10,20,100,6,0,6,8y6fq6xa,Réka
-TRUE,TRUE,1,2,TRUE,NA,5,4,I'm not sure.,10,20,120,6,3,6,8y6fq6xa,Ildikó
-TRUE,TRUE,1,1,TRUE,NA,4,2,email reminders and decent amount of time to complete,6,40,150,5,6,6,8y6fq6xa,Enikő
-TRUE,FALSE,1.5,2,TRUE,NA,3,3,by mailing them,7,20,200,6,1,6,8y6fq6xa,Géza
-TRUE,TRUE,1,2,TRUE,NA,2,1,Email reminders,6,60,850,6,3,6,8y6fq6xa,Bea
-TRUE,TRUE,1,3,TRUE,NA,5,4,not sure,7,8,50,6,0,6,8y6fq6xa,Dorit
-NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,7,6,8y6fq6xa,Piroska
-TRUE,TRUE,1,3,TRUE,NA,8,7,an email reminder for the 2nd part on the day it needs to be done,6,30,350,6,0,6,8y6fq6xa,József
-TRUE,TRUE,1,3,TRUE,NA,7,6,n/a,7,30,180,6,0,6,8y6fq6xa,Károly
-FALSE,TRUE,10,2,TRUE,NA,0,0,"Unsure, but I hate counting.",10,8,250,6,0,6,8y6fq6xa,Zsigmond
+NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,0,6,8y6fq6xa,Zsuzsanna
+TRUE,FALSE,1,2,TRUE,NA,3,2,NA,8,20,150,6,0,6,8y6fq6xa,Tamás
+NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,0,6,8y6fq6xa,Boglárka
+TRUE,FALSE,10,3,TRUE,NA,5,1,emails,5,20,100,6,0,6,8y6fq6xa,Réka
+NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,3,7,6,8y6fq6xa,Zoltán
+NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,1,6,8y6fq6xa,Robert
+TRUE,TRUE,1,3,TRUE,NA,5,1,"Sending an email should be sufficient, I'd think.",9,2,20,6,0,6,8y6fq6xa,Géza
+FALSE,TRUE,1,2,TRUE,None,7,4,Get rid of the matrices,7,30,150,6,1,6,8y6fq6xa,Adam
+FALSE,TRUE,1.5,2,TRUE,NA,1,0,fewer matrices,10,25,450,6,0,6,8y6fq6xa,Botond
+TRUE,TRUE,0,2,TRUE,NA,5,3,Send reminders,7,35,500,6,0,6,8y6fq6xa,Márk
+TRUE,TRUE,1.5,4,TRUE,NA,2,2,give a lot of time to do it,10,20,100,6,0,6,8y6fq6xa,Imre
+TRUE,TRUE,1,2,TRUE,NA,5,4,I'm not sure.,10,20,120,6,3,6,8y6fq6xa,Mária
+TRUE,TRUE,1,1,TRUE,NA,4,2,email reminders and decent amount of time to complete,6,40,150,5,6,6,8y6fq6xa,Márton
+TRUE,FALSE,1.5,2,TRUE,NA,3,3,by mailing them,7,20,200,6,1,6,8y6fq6xa,Zsófia
+TRUE,TRUE,1,2,TRUE,NA,2,1,Email reminders,6,60,850,6,3,6,8y6fq6xa,Zsigmond
+TRUE,TRUE,1,3,TRUE,NA,5,4,not sure,7,8,50,6,0,6,8y6fq6xa,Lajos
+NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,7,6,8y6fq6xa,Erzsébet
+TRUE,TRUE,1,3,TRUE,NA,8,7,an email reminder for the 2nd part on the day it needs to be done,6,30,350,6,0,6,8y6fq6xa,Ildikó
+TRUE,TRUE,1,3,TRUE,NA,7,6,n/a,7,30,180,6,0,6,8y6fq6xa,Béla
+FALSE,TRUE,10,2,TRUE,NA,0,0,"Unsure, but I hate counting.",10,8,250,6,0,6,8y6fq6xa,Katalin

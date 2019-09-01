@@ -98,8 +98,9 @@ replace_choices_by_treatment_and_control <- function(session, session_string) {
   newday1 <- newday1 %>%
     select(-starts_with("choice_")) %>%
     select(-starts_with("answer_")) %>%
-    select(-starts_with("rational_switch")) 
-    # select(-starts_with("has_single_switch"))
+    select(-starts_with("rational_switch")) %>%
+    select(-starts_with("has_single_switch")) %>%
+    select(-starts_with("projbias"))
     
   return(session_replace_day1(session, newday1))
 }
