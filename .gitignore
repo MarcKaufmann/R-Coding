@@ -43,3 +43,5 @@ rsconnect/
 # Don't track output files (html, pdf, ...)
 **/*.pdf
 **/*.html
+**/*.docx
+**/*.log
