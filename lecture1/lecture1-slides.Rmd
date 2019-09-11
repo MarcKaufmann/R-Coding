@@ -1,5 +1,5 @@
 ---
-title: "Lecture 1 Slides"
+title: "Lecture 1"
 author: |
   | Marc Kaufmann
   | Central European University
@@ -17,44 +17,133 @@ knitr::opts_chunk$set(echo = FALSE)
 
 # Coding 1: Data Management and Analysis with R
 
-## Goals of the Course
+## Basic Admin
 
-- Learning to learn
-- Understanding your confusion
-- Learning R
-- Learning some basic programming
-
-Data -> clean data -> do something -> write report
-
-## Assignments and Grading
-
-Learn to learn: teach others, grade others and yourself, read their code and yours
-
-## What is coding?
-
-- Copy Racket manifesto: Correct, maintainable, fast
-- You won't learn how to run *fast* code
-  - Overkill for many situations
-  - and when it's not overkill, I am the wrong person to ask
-  
-- How much to teach about variables, if/else, function, for-loops etc?
-
-## Data collection
-
-I should collect some data in my class. How/what?
-
-- Try "Youhere" app
-
-## What is R Studio?
-
-Learning by seeing and doing
+- Weeks 1 to 6: Mondays 13:30-16:10
+- Weeks 7 to 12: Mondays 17:30-19:10
+- Instructor: Marc Kaufmann (call me Marc)
+- Teaching Assistant: Júlia Hermann gives 3 sessions
+  - 17:30-19:10 on Tuesdays October 8th, November 5th, November 19th
 
 ## Who am I and why would you care about what I have to say?
 
-- Software Engineering, decent programmer, especially across a bunch of languages (for an economist)
-- Gather my own data
-- Pretty good at stats and correlation/causality -- appreciation of some big data stuff 
-- I use basic R regularly
+\pause{}
 
-Less so on big data/ML
+- Assistant Professor in Economics and Business
+- Research in Psychology and Economics (aka Behavioral Economics)
 
+\pause{}
+
+Relevant for this class:
+
+- Collect my own data in (mostly online) experiments
+- Analyze said data: Fairly basic, since design is up to me 
+- Program in Racket, bash/unix, Python, and R (in that order of competence)
+
+## Goal for the class in one sentence
+
+\pause{}
+
+> Generate basic insights\pause{} from existing data\pause{} that is small\pause{} and relational\pause{} in a reproducible and replicable manner.
+
+\pause{}
+
+Or expressed in R (pseudo-)code:
+
+```{r, eval=FALSE, echo=TRUE}
+library(wishful_thinking)
+
+eureka_or_bust <- your_great_ideas %>% 
+  # We need data to figure this out. Let's...
+  collect_data() %>%
+  # Apply knowledge from this class...
+  code_1()
+```
+
+## Goals of the Course
+
+```{r, eval=FALSE, echo=TRUE}
+code_1 <- function(collected_data) { 
+  collected_data %>% 
+    read_in() %>%
+    explore_visualize_summarize() %>%
+    clean() %>%
+    tidy() %>%
+    analyze() %>%
+    knit()
+}
+```
+
+```{r, eval=FALSE}
+  # The data is now in a data base. Or in a .csv file. So let's...
+  read_the_data_into_R() %>%
+  # Total insight soon. Let's...
+  look_at_the_data() %>%
+  # Ergh, some of the data got miscoded. So let's...
+  clean_the_data() %>%
+  # Is it better? Let's...
+  look_at_the_data_again() %>%
+  # Much better. But data is not tidy. Let's...
+  tidy_the_data() %>%
+  # Ready to analyze! Surely everyone loves my idea, I'll be rich!!
+  analyze_data_for_insight() %>%
+  # The fools don't love my idea! I'd better...
+  create_report_for_disappointed_supervisors() 
+```
+
+## Focus of the Class
+
+Since we cover much of the data analysis cycle and have little time:
+
+- Focus on few libraries and commands (80/20 rule)
+  - Tidyverse only: coherent set of tools with sane interface
+- Focus on correct code; then maintainable; then fast
+- Focus on *fluency* 
+- Focus on teaching you how to learn
+  - Clean code; documenting; debugging; communicating
+  - How to get help
+
+## Focus of the Class
+
+> Strive to write code that is correct; maintainable; and fast. The ordering of these adjectives is critical: correct is more important than maintainable; maintainable is more important than fast; and fast is important to include, because nobody wants to live with slow programs. 
+>
+>
+> From "How to Program Racket: a Style Guide", Felleisen et al
+
+## Assignments and Grading
+
+
+- Participation (30%): helping yourself and helping others 
+- Assignments (78%): weekly assignments in the form of R Markdown notebooks, and assessing those of your peers
+  - Grading is N% in week N ($N = 1, ..., 12$)
+- No exam
+  
+\pause{}
+
+Total: 108%
+
+## Useful Resources
+
+When you get stuck, the following fantastic books may help:
+
+- Kieran Healy's book on *Data Visualization* (http://socviz.co/)
+- Grolemund and Wickham's book *R for Data Science* (https://r4ds.had.co.nz/)
+
+Additionally:
+
+- Tuesdays 17:30-19:10, N13 309: Coding practice with R
+- Júlia's sessions
+- Ask questions on https://discourse.trichotomy.xyz
+
+## Where you should be
+
+You should:
+
+- Have RStudio set up up and working
+- Have git set up and working
+- Have cloned the repository for the course
+- Have an account on https://discourse.trichotomy.xyz
+
+\pause{}
+
+Any questions?
