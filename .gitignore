@@ -39,3 +39,7 @@ rsconnect/
 
 # vim swap files
 *.swp
+
+# Don't track output files (html, pdf, ...)
+**/*.pdf
+**/*.html
