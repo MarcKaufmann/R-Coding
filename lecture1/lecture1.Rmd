@@ -1,0 +1,14 @@
+---
+title: "Lecture 1"
+author: "Marc Kaufmann"
+date: "9/10/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Coding 1: Data Management and Analysis with R
+
+## Introduction to the Course

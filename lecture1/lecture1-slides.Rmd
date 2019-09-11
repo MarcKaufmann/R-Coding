@@ -1,0 +1,60 @@
+---
+title: "Lecture 1 Slides"
+author: |
+  | Marc Kaufmann
+  | Central European University
+date: "9/10/2019"
+output: 
+  beamer_presentation:
+    theme: metropolis
+    slide_level: 2
+    latex_engine: xelatex
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Coding 1: Data Management and Analysis with R
+
+## Goals of the Course
+
+- Learning to learn
+- Understanding your confusion
+- Learning R
+- Learning some basic programming
+
+Data -> clean data -> do something -> write report
+
+## Assignments and Grading
+
+Learn to learn: teach others, grade others and yourself, read their code and yours
+
+## What is coding?
+
+- Copy Racket manifesto: Correct, maintainable, fast
+- You won't learn how to run *fast* code
+  - Overkill for many situations
+  - and when it's not overkill, I am the wrong person to ask
+  
+- How much to teach about variables, if/else, function, for-loops etc?
+
+## Data collection
+
+I should collect some data in my class. How/what?
+
+- Try "Youhere" app
+
+## What is R Studio?
+
+Learning by seeing and doing
+
+## Who am I and why would you care about what I have to say?
+
+- Software Engineering, decent programmer, especially across a bunch of languages (for an economist)
+- Gather my own data
+- Pretty good at stats and correlation/causality -- appreciation of some big data stuff 
+- I use basic R regularly
+
+Less so on big data/ML
+
