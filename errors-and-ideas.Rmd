@@ -1,0 +1,47 @@
+---
+title: "Materials for Class"
+author: "Marc Kaufmann"
+date: "August 29, 2019"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Error in library(reticulate) : there is no package called 'reticulate'
+Calls: <Anonymous> ... withCallingHandlers -> withVisible -> eval -> eval -> library
+Execution halted
+
+You can even run python scripts in RMarkdown if you have everything necessary installed on your computer.
+
+```{r}
+knitr::opts_chunk$set(engine.path = list(python = '/usr/bin/python'))
+install.packages("reticulate")
+library(reticulate)
+```
+
+And then do
+
+```{python}
+def square(x):
+  return x*x
+  
+square(11)
+```
+
+day1 <- day1 %>% 
+  select(day1, c(X = answer_1, Xprime = answer_2, Y = answer_3, Yprime = answer_4)) %>%
+  mutate(deltaX = Xprime - X, deltaY = Yprime - Y) %>%
+  mutate(deltadelta = deltaY - deltaX)
+
+Beautiful error:
+Error: `day1` must evaluate to column positions or names, not a list Call `rlang::last_error()` to see a backtrace
+
+When passing a dataframe with one column into t.test, I get: "Error: Must use a vector in `[`, not an object of class matrix. Call `rlang::last_error()` to see a backtrace"
+
+
+Did you define a new function in another chunk? Did you forget to run the other chunk? Welcome to 
+
+"Error in function_list[[i]](value) : could not find function "get_batch2_later_sessions""
+
