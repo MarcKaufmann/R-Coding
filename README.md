@@ -44,13 +44,11 @@ You should try the following strategies in this order.
 
 #### 1. Use RStudio's built in help
 
-If you don't know how to use a certain function, use R and RStudio's inbuilt help features. **[[[Expand]]]**
+If you don't know how to use a certain function, use R and RStudio's inbuilt help features.
 
 #### 2. Search the Internet
 
 First search the internet to see if you can find the answer to your solution. Long after this class is over and when we -- Marc and Julia -- won't respond to help you, the Internet will be alive and well. Learning to solve your own issues will serve you for the long term, while asking us for help will not. Sites that are particularly likely to be helpful:
-
-**[[[Add links and other resources.]]]**
 
 - Stackoverflow
 - RStudio website
@@ -61,8 +59,7 @@ Second, use the class specific discourse forum (coming soon...) to post your que
 
 ##### How To Ask for Help
 
-**[[[Link to stackoverflow or similar for minimal example and how to write them.]]]**
-**[[[Provide an example.]]]**
+Coming soon.
 
 #### 4. Message us on Discourse
 
