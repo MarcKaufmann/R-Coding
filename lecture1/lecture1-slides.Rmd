@@ -1,5 +1,5 @@
 ---
-title: "Lecture 1"
+title: "Coding 1: Lecture 1"
 author: |
   | Marc Kaufmann
   | Central European University
@@ -23,9 +23,11 @@ knitr::opts_chunk$set(echo = FALSE)
 - Weeks 7 to 12: Mondays 17:30-19:10
 - Instructor: Marc Kaufmann (call me Marc)
 - Teaching Assistant: Júlia Hermann gives 3 sessions
-  - 17:30-19:10 on Tuesdays October 8th, November 5th, November 19th
+  - 17:30-19:10 on Tuesday October 8th
+  - 17:30-19:10 on Tuesday November 5th
+  - 17:30-19:10 on Tuesday November 19th
 
-## Who am I and why would you care about what I have to say?
+## Who am I?
 
 \pause{}
 
@@ -40,6 +42,10 @@ Relevant for this class:
 - Analyze said data: Fairly basic, since design is up to me 
 - Program in Racket, bash/unix, Python, and R (in that order of competence)
 
+\pause{}
+
+Most importantly: I am good at getting help.
+
 ## Goal for the class in one sentence
 
 \pause{}
@@ -50,8 +56,10 @@ Relevant for this class:
 
 Or expressed in R (pseudo-)code:
 
+\pause{}
+
 ```{r, eval=FALSE, echo=TRUE}
-library(wishful_thinking)
+library(msc_ba)
 
 eureka_or_bust <- your_great_ideas %>% 
   # We need data to figure this out. Let's...
@@ -66,7 +74,9 @@ eureka_or_bust <- your_great_ideas %>%
 code_1 <- function(collected_data) { 
   collected_data %>% 
     read_in() %>%
-    explore_visualize_summarize() %>%
+    explore() %>%
+    visualize() %>%
+    summarize() %>%
     clean() %>%
     tidy() %>%
     analyze() %>%
@@ -114,13 +124,15 @@ Since we cover much of the data analysis cycle and have little time:
 
 
 - Participation (30%): helping yourself and helping others 
-- Assignments (78%): weekly assignments in the form of R Markdown notebooks, and assessing those of your peers
+  - Includes attendance. Starting week 2, will take attendance via https://www.youhere.org/
+    - Let me know if you cannot or do not want to use that.
+- Assignments (77-78%): weekly assignments in the form of R Markdown notebooks, and assessing those of your peers
   - Grading is N% in week N ($N = 1, ..., 12$)
 - No exam
   
 \pause{}
 
-Total: 108%
+Total: 107-108%
 
 ## Useful Resources
 
@@ -143,6 +155,14 @@ You should:
 - Have git set up and working
 - Have cloned the repository for the course
 - Have an account on https://discourse.trichotomy.xyz
+
+## First time I teach R
+
+I tend to experiment quite a bit:
+
+- Early on, still worth figuring out what works
+- Especially assignments and how to incentivize teamwork
+- After week 3, should be ironed out
 
 \pause{}
 

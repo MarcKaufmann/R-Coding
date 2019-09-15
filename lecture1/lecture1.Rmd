@@ -9,7 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-This introduction is essentially Chapter 2 from Kieran Healy's book [Data Visualization](http://socviz.co/), which you should read as part of Assignment 2 and to find your way around RStudio. 
+This introduction is essentially Chapter 2 from Kieran Healy's book [Data Visualization](http://socviz.co/), which you should read as part of Assignment 2 and to find your way around RStudio. The reason I start with this (and continue for one or two more weeks) is that visualization is one of the more fun parts of data analysis, as well as one you should go through -- so it makes for a great starting point.
 
 We will use exclusively R Markdown files. In this case, you should simply open the file 'lecture1.Rmd' from the repository and you are set. Whenever you create a new file, you should choose to make an R Markdown file.
 
@@ -54,7 +54,7 @@ c
 - c, "c", and "C" are not the same things
 - Naming conventions: When you name variables and functions, you should use snake case.
 
-**Exercise:** For each of the lines in the following code chunk, write in a comment next to it what it does. I completed the first example for you.
+**Exercise:** For each of the lines in the following code chunk, write in a comment next to it what it returns. I completed the first example for you.
 
 ```{r, exercise1, eval=FALSE}
 3         # -> 3
@@ -84,37 +84,41 @@ marcs_new_combined_object <- c(marcs_new_object, "Some apples, because they are 
 marcs_new_combined_object
 ```
 
-In principle, you can use '=' to assign values, but this is very non-idiomatic R. In this course, I will subtract points for using '='. Use '<-'.
+In principle, you can use '=' to assign values, but this is very non-idiomatic R. I will subtract points for using '='. Use '<-'.
 
-**Class Exercise:** How many of the following programming languages have you *heard* of? 
-
-- R
-- SQL
-- Racket
-- Lisp
-- JavaScript
-- ECMAScript
-- bash
-- C
-- Perl
-- Logo
-- Scratch
+**Class Exercise:** Let's start doing something with data. How many of the following programming languages have you *heard* of? 
 
 ```{r}
+list_of_programming_languages <- c(
+"R",
+"SQL",
+"Racket",
+"Lisp",
+"JavaScript",
+"ECMAScript",
+"bash",
+"C",
+"Perl",
+"Logo",
+"Scratch"
+)
+
 languages_heard_of <- c(11)
 ```
 
 #### You do things using functions
 
 > A function is a thing that does things to things. 
+>
+> Me, paraphrasing Cosma Shalizi
 
-A function is a special object that you can call, say the function $mean$. It is an object:
+A function is a special object that you can call, such as the function $mean$. It is an object:
 
 ```{r}
 mean
 ```
 
-but as a simple object, it is a bit boring. When we *call* it, we put parentheses at the end, and we tell it what to perform its action on:
+When we *call* it, we put parentheses at the end, and we tell it what to perform its action on:
 
 ```{r}
 mean(c(0,10))
@@ -125,7 +129,7 @@ mean(languages_heard_of)
 
 #### Functions come in packages
 
-As you start seeing, lots of functions are already defined for you, such as $mean()$ and $sd()$ and $c()$. There are many more functions that were written by other people and bundled into packages so that you can use them. Many packages come bundled with R from the start (base R), others you can install on your system via 'install.packages()' and use via 'libarry()'. We will soon use the 'ggplot()' function. Try using it now:
+As you may start to realize, lots of functions already exist, such as $mean()$ and $sd()$ and $c()$. There are many more functions that were written by other people and bundled into packages so that you can use them. Many packages come bundled with R from the start (base R), while you can install others on your system via 'install.packages()' and use via 'library()'. We will soon use the 'ggplot()' function. Try using it now:
 
 ```{r, eval=FALSE}
 ggplot
@@ -137,8 +141,9 @@ library(ggplot2)
 ggplot()
 ```
 
-This gives us a beautifully empty plot. 
+This tells R to go and get all the objects defined in the library called ggplot2, which includes *ggplot*. This gives us our first data (non-)visualization: a beautifully empty plot. 
 
+Think of it as the equivalent of recipe books: you can either experiment and concoct your own recipes, which is fine if you are a cook. Alternatively, you get recipe books from great chefs and follow their instructions. Depending on the type of recipe, you still need a lot of background knowledge -- what does it mean to boil, fry, blanch, roast -- but you don't have to figure out everything.
 
 ### How to figure out what is what
 
@@ -167,6 +172,7 @@ help(summary)
 ```{r, gapminder}
 library(gapminder)
 gapminder
+plot(gapminder$gdpPercap, gapminder$lifeExp)
 p <- ggplot(data = gapminder,
             mapping = aes(x = gdpPercap, y = lifeExp))
 p + geom_point()
@@ -191,7 +197,9 @@ Complete all the exercises in the lectures notes of lecture 1. Put your answer t
 
 ### Part 3
 
-Fill in the holes in the lecture notes of lecture 1. When done, knit the document, commit the changes with the commit message "Part 3 of assignment 2" and push them to your GitHub repository.
+Fill in the holes in the lecture notes of lecture 1, if you didn't complete it during class. When done, knit the document, commit the changes with the commit message "Part 3 of assignment 2" and push them to your GitHub repository.
+
+Knit the slides for class 1 to html and/or pdf, commit the .Rmd to your repository -- but not the html or pdf -- and push. If the pdf is hard to get working (due to weird error messages), see whether you can find out *what* the problem is (Stackoverflow, Discourse...) without trying to solve it yet. Pdf and Latex issues can be... interesting shall we say.
 
 **Note:** If you can't figure out how to use git, post a question on the discourse forum and send me the html file by email.
 
@@ -210,5 +218,15 @@ Track as many error messages as possible that you made during this week (stop on
 ```
 
 Post one of these 4 errors on discourse.
+
+### Part 5
+
+
+Try fo figure out two of the following and post your answers on Discourse for others to read:
+
+- Identify elements from my *eureka_or_bust* example in the slides and see whether you can figure out what the different elements mean to R.
+- What does *eval=FALSE* mean in part 4? Figure this out by replacing it by *eval=TRUE* and seeing what you get.
+- What is the Tidyverse?
+- Who is Hadley Wickham?
 
 ## Resources for this lecture 
