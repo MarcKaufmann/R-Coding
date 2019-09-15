@@ -178,6 +178,8 @@ p <- ggplot(data = gapminder,
 p + geom_point()
 ```
 
+As you can see, some datasets are conveniently bundled for you as libraries.
+
 ## Assignment 2
 
 This assignment is due before the start of class 2. Commit your knitted assignment2.html to your git and push it to your repository regularly as you make progress.
