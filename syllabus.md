@@ -65,12 +65,14 @@ If you are fine installing the app:
 
 You will need your laptop with RStudio and R installed in order to participate in class.
 
-### Course schedule (subject to change)
+### Course schedule 
 
-1. R ecosystem, basic syntax, R Markdown; how to get help
-2. Tidyverse: loading, showing, filtering, and selecting data
-3. Tidyverse: transforming and summarising data
-4. ggplot2: data visualization
+**Note:** This is subject to substantial reording in the first 3 weeks, to allow both being in synch with other class (Data 1), as well as having a reasonably coherent flow. The set of topics will remain fairly stable.
+
+1. R ecosystem, basic syntax, R Markdown; how to get help; first plot
+2. ggplot2: data visualization
+3. Tidyverse: loading, showing, filtering, and selecting data
+4. Tidyverse: transforming and summarising data
 5. Sampling, simulating, bootstrapping
 6. Hypothesis testing
 7. Basic Regressions
@@ -82,4 +84,4 @@ You will need your laptop with RStudio and R installed in order to participate i
 
 ### Short bio of the instructor (1 para)
 
-Marc Kaufmann teaches how to think with economic models, and how to use them to ask the right questions. He studied at Cambridge, ULB, Berkeley, and Harvard. He studies the perceptions and beliefs people hold, how this affects their decisions and specifically their productivity.
+Marc Kaufmann teaches how to think with economic models, and how to use them to ask the right questions. He studied at Cambridge, Université Libre de Bruxelles, Berkeley, and Harvard. He studies the perceptions and beliefs people hold, how this affects their decisions and specifically their productivity.
