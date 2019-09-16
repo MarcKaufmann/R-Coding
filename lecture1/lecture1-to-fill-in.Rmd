@@ -171,7 +171,7 @@ Complete all the exercises in the lectures notes of lecture 1. Put your answer t
 
 Fill in the holes in the lecture notes of lecture 1, if you didn't complete it during class. When done, knit the document, commit the changes with the commit message "Part 3 of assignment 2" and push them to your GitHub repository.
 
-Knit the slides for class 1 to html and/or pdf, commit the .Rmd to your repository -- but not the html or pdf -- and push. If the pdf is hard to get working (due to weird error messages), see whether you can find out *what* the problem is (Stackoverflow, Discourse...) without trying to solve it yet. Pdf and Latex issues can be... interesting shall we say.
+Knit the slides for class 1 to html and/or pdf, commit the .Rmd and .html files -- but not the pdf -- and push. If the pdf is hard to get working (due to weird error messages), see whether you can find out *what* the problem is (Stackoverflow, Discourse...) without trying to solve it yet. Pdf and Latex issues can be... interesting shall we say.
 
 **Note:** If you can't figure out how to use git, post a question on the discourse forum and send me the html file by email.
 
