@@ -230,6 +230,8 @@ Post one of these 4 errors on discourse.
 Try fo figure out two of the following and post your answers on Discourse for others to read:
 
 - Identify elements from my *eureka_or_bust* example in the slides and see whether you can figure out what the different elements mean to R.
+The first line is a librarby, then the second line is a variable called eureka_or_bust which is piped to the function called collect_data() and then that is piped to the function code_1.
+
 - What does *eval=FALSE* mean in part 4? Figure this out by replacing it by *eval=TRUE* and seeing what you get.
 - What is the Tidyverse?
 - Who is Hadley Wickham?
