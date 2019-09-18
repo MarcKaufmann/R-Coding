@@ -2,7 +2,10 @@
 title: "Lecture 1"
 author: "Marc Kaufmann"
 date: "9/10/2019"
-output: html_document
+output:
+  pdf_document: default
+  word_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -44,15 +47,18 @@ Everything that you use in R has a name: variables (including datasets), functio
 
 ```{r, exercise1, eval=FALSE}
 3         # -> 3
-7 %% 3    # -> ?
-False     # -> ?
-'pi'      # -> ?
-FALSE     # -> ?
+7 %% 3    # -> 1
+False     # -> Error: object 'False' not found
+'pi'      # -> "pi"
+FALSE     # -> [1] FALSE
 ```
 
 **Exercise:** Look up what 'snake case' is and add your answer here.
+Practice_of_writting_elements_with_underscore
 
-**Exercise:** What types of names are allowed in R? Look it up and write your answer here as you understand it. Then provide 3 examples of things that are not valid names in R for different reasons. 
+**Exercise:** What types of names are allowed in R? Look it up and write your answer here as you understand it. Then provide 3 examples of things that are not valid names in R for different reasons.
+R has reserved words which are not to be used in R. 
+Examples of reserved words: if, else, repeat FALSE.
 
 #### Everything is an object
 
@@ -187,6 +193,33 @@ Track as many error messages as possible that you made during this week (stop on
 # -> Error in "4" - "3" : non-numeric argument to binary operator
 
 # Your examples below
+#Error 1:
+# while trying to knit I encountered this message:
+#Access violation in generated code when executing data at 0x4b62429
+
+# Attempting to reconstruct a stack trace...
+
+ #  Frame	Code address
+ #* 0x57adac0	0x4b62429 C:\PROGRA~1\RStudio\bin\pandoc\pandoc.exe+0x4762429
+
+#Error: pandoc document conversion failed with error 11
+#Execution halted
+
+#However the solution was found on github and I read that the Pandoc was making the problems and when I ran the following command: dir <- "C:/Users/my_name/R/rstudio-pandoc" I was able to knit the HTML document.
+
+#Error 2:
+#! Sorry, but C:\PROGRA~1\MIKTEX~1.9\miktex\bin\x64\pdflatex.exe did not succeed.
+
+#! The log file hopefully contains the information to get MiKTeX going again:
+
+#!   C:/Users/selmani_sebair/AppData/Local/MiKTeX/2.9/miktex/log/pdflatex.log
+
+#! You may want to visit the MiKTeX project page, if you need help.
+
+#Error: Failed to compile lecture1-to-fill-in.tex. See https://yihui.name/tinytex/r/#debugging for debugging tips. #See lecture1-to-fill-in.log for more info.
+#Execution halted
+
+
 ```
 
 Post one of these 4 errors on discourse.
