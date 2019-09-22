@@ -194,11 +194,15 @@ Read chapter 2 of [Data Visualization](http://socviz.co/gettingstarted.html). Ma
 
 Complete all the exercises in the lectures notes of lecture 1. Put your answer to an exercise right after the question of the exrcise in the R Markdown file. When done, knit the document, commit the changes with the commit message "Part 1 of assignment 2" and push them to your GitHub repository.
 
+##checking whether I commited correctly
+
 
 
 ### Part 3
 
 Fill in the holes in the lecture notes of lecture 1, if you didn't complete it during class. When done, knit the document, commit the changes with the commit message "Part 3 of assignment 2" and push them to your GitHub repository.
+
+## already filled the holes, pusging to git 
 
 Knit the slides for class 1 to html and/or pdf, commit the .Rmd and .html files -- but not the pdf -- and push. If the pdf is hard to get working (due to weird error messages), see whether you can find out *what* the problem is (Stackoverflow, Discourse...) without trying to solve it yet. Pdf and Latex issues can be... interesting shall we say.
 
