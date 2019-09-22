@@ -36,7 +36,7 @@ Everything that you use in R has a name: variables (including datasets), functio
 
 **Some Notes**:
 
-- '#' is the _________ (EXERCISE) sign. It tells R that everything that follows is a comment and R should ignore it. Comments are there to help explain parts of the code that need additional documentation. We will overuse them initially, but reduce this as the course proceeds.
+- '#' is the special (hash) (EXERCISE) sign. It tells R that everything that follows is a comment and R should ignore it. Comments are there to help explain parts of the code that need additional documentation. We will overuse them initially, but reduce this as the course proceeds.
 - c, "c", and "C" are not the same things
 - Naming conventions: When you name variables and functions, you should use snake case.
 
@@ -44,15 +44,23 @@ Everything that you use in R has a name: variables (including datasets), functio
 
 ```{r, exercise1, eval=FALSE}
 3         # -> 3
-7 %% 3    # -> ?
-False     # -> ?
-'pi'      # -> ?
-FALSE     # -> ?
+7 %% 3    # -> 1
+False     # -> Error: object 'False' not found
+'pi'      # -> "pi"
+FALSE     # -> FALSE
 ```
+
 
 **Exercise:** Look up what 'snake case' is and add your answer here.
 
-**Exercise:** What types of names are allowed in R? Look it up and write your answer here as you understand it. Then provide 3 examples of things that are not valid names in R for different reasons. 
+## Package snakecase: A consistent, flexible and easy to use tool to parse and convert strings into cases like snake ## or camel among others.
+
+
+ **Exercise:** What types of names are allowed in R? Look it up and write your answer here as you understand it. Then provide 3 examples of things that are not valid names in R for different reasons. 
+
+## Cannot be used: Inf, for, else, break, function, TRUE, FALSE
+## Should not use: mean(), range() or var()
+
 
 #### Everything is an object
 
@@ -112,6 +120,8 @@ When we *call* it, we put parentheses at the end, and we tell it what to perform
 
 **Exercise:** What happens if you call the function $mean$ without any arguments, i.e. $mean()$?
 
+##Error in mean.default() : argument "x" is missing, with no default
+
 #### Functions come in packages
 
 As you may start to realize, lots of functions already exist, such as $mean()$ and $sd()$ and $c()$. There are many more functions that were written by other people and bundled into packages so that you can use them. Many packages come bundled with R from the start (base R), while you can install others on your system via 'install.packages()' and use via 'library()'. We will soon use the 'ggplot()' function. Try using it now:
@@ -143,18 +153,33 @@ For built-in functions, you can also ask for help or bring up the documentation 
 
 **Exercise:** What do 'class()' and 'str()' do? Use 'help' (or '?'). Don't spend too much time reading the docs. Which description do you find more helpful?
 
+## "class()" gives the sort of object, whether a vector, a character string, a function, a list, and so on. 
+## "str()" lets you see what is inside an object
+
+
 ### Make Your First Figure
 
 ```{r, gapminder}
 ```
 
-As you can see, some datasets are conveniently bundled for you as libraries.
+##install.packages("gapminder")
+##library(gapminder)
+##gapminder
+##gapminder(Russia)
+##gapminder$gdp
+##plot(gapminder $gdpPercap,gapminder$lifExp)
+##p <- ggplot(data=gapminder,
+##            mapping=aes(x=gdpPercap,y=lifeExp))
+
+##p+geom_point()
+
+#As you can see, some datasets are conveniently bundled for you as libraries.
 
 ## Assignment 2
 
 This assignment is due before the start of class 2. Commit your knitted assignment2.html to your git and push it to your repository regularly as you make progress.
 
-- Only your work until _________ (EXERCISE) will be considered. 
+- Only your work until deadline (EXERCISE) will be considered. 
 - If you know that you might miss the deadline, you have to email me in advance and I will tell you whether you can get an extension. No extension will be granted less than 24 hours prior to the deadline -- you should have started working on it.
 - If you miss the deadline (even by 1 minute) you lose 25% irrespective of technical issues such as 'the internet went down'. It wasn't down the whole week, and you knew a deadline was coming. In a business setting, you would probably lose more than 25%. Repeat offenders will face an increasingly large penalty.
 - If you struggle *answering* the assignment, you should submit what you tried, and send me a message that you struggled. Much of the grade initially is on trying out things, even if it doesn't work out, so you should submit.
@@ -163,9 +188,13 @@ This assignment is due before the start of class 2. Commit your knitted assignme
 
 Read chapter 2 of [Data Visualization](http://socviz.co/gettingstarted.html). Make sure you know where the console is, the editor, and what code chunks are in RStudio. 
 
+##done
+
 ### Part 2
 
 Complete all the exercises in the lectures notes of lecture 1. Put your answer to an exercise right after the question of the exrcise in the R Markdown file. When done, knit the document, commit the changes with the commit message "Part 1 of assignment 2" and push them to your GitHub repository.
+
+
 
 ### Part 3
 
