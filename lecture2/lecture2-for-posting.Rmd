@@ -1,0 +1,237 @@
+---
+title: "Lecture 2: Chapter 3 by Kieran Healy"
+author: "Marc Kaufmann"
+date: "September 23, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Team Assignments: Choosing First Group
+
+For the first group, I will pick 4 students who will complete a group assignment to share in 2 weeks time (lecture 4). Since it is the first group, I am happy to provide a bit more feedback if needed. So let's do this.
+
+If you want to switch with someone else and someone else is happy to, then please go ahead and swap - just let me know before the weekend.
+
+## Note to the interested student
+
+Try to follow along by typing it yourself, adding comments as you make mistakes or realize things. Write the code out in chunks:
+
+```{r}
+```
+
+## How Ggplot Works
+
+```{r, load, warning=FALSE}
+library(tidyverse)
+```
+
+The code specifies the connections between the variables in the data on one hand and the colors, points, and shapes you see on the screen. These logical connections are called *aesthetic mappings* or simply *aesthetics*.
+
+How to use ggplot:
+
+- `data = gapminder`: Tell it what your data is
+- `mapping = aes(...)`: How to map the variables in the data to aesthetics
+  - axes, size of points, intensities of colors, which colors, shape of points, lines/points
+- Then say what type of plot you want:
+  - boxplot, scatterplot, histogram, ...
+  - these are called 'geoms' in ggplot's grammar, such as `geom_point()` giving scatter plots
+  
+  
+```{r, geoms, eval=FALSE}
+library(ggplot2)
+... + geom_point() # Produces scatterplots
+... + geom_bar() # Bar plots
+.... + geom_boxplot() # boxplots
+... # 
+```
+
+You link these steps by *literally* adding them together with `+` as we'll see.
+
+**Exercise:** What other types of plots are there? Try to find several more `geom_` functions.
+
+## Mappings Link Data to Things You See
+
+```{r}
+library(gapminder)
+library(ggplot2)
+gapminder
+
+p <- ggplot(data = gapminder,
+            mapping = aes(x = gdpPercap, y = lifeExp))
+p + geom_point()
+```
+
+In detail:
+
+- `data = gapminder` tells ggplot to use gapminder dataset, so if variable names are mentioned, they should be looked up in gapminder
+- `mapping = aes(...)` shows that the mapping is a function call. Simply accept that this is how you write it
+  - Kieran Healy: "The `mapping = aes(...)` argument *links variables* to *things you will see* on the plot"
+- `aes(x = gdpPercap, y = lifeExp)` maps the GDP data onto `x`, which is a known aesthetic (the x-coordinate) and life expectancy data onto `x`
+  - `x` and `y` are  predefined names that are used by `ggplot` and friends
+  
+Importantly, mappings don't say *what* color or shape some variable will have -- rather, it says that a given dataset will be mapped *to* the color or *to* the shape.
+
+```{r, what_is_in_p}
+str(p)
+str(p + geom_point())
+```
+
+**Exercise:** Make sure that your knitted version doesn't include all the output from the `str(...)` commands, it's too tedious.
+
+Finally, we add a *layer*. This says how some data gets turned into concrete visual aspects.
+
+```{r, scatter_plot}
+p + geom_point()
+p + geom_smooth()
+```
+
+**Note:** Both geom's use the same mapping, where the x-axis represents ... and the y-axis ... . But the first one maps the data to individual points, the other one maps it to a smooth line with error ranges.
+
+We get a message that tells us that `geom_smooth()` is using the method = 'gam', so presumably we can use other methods. Let's see if we can figure out which other methods there are.
+
+```{r, smoothing_methods, eval=FALSE}
+?geom_smooth
+p + geom_point() + geom_smooth() + geom_smooth(method = ...) + geom_smooth(method = ...)
+p + geom_point() + geom_smooth() + geom_smooth(method = ...) + geom_smooth(method = ..., color = "red")
+```
+
+You may start to see why ggplots way of breaking up tasks is quite powerful: the geometric objects (long for geoms) can all reuse the *same* mapping of data to aesthetics, yet the results are quite different. And if we want later geoms to use different mappings, then we can override them -- but it isn't necessary.
+
+One thing about the data is that most of it is bunched to the left. If we instead used a logarithmic scale, we should be able to spread the data out better.
+
+```{r, scale_coordinates}
+p + geom_point() + geom_smooth(method = "lm") + scale_x_log10()
+```
+
+**Exercise:** Describe what the `scale_x_log10()` does. Why is it a more evenly distributed cloud of points now? (2-3 sentences.)
+
+Nice! The x-axis now has scientific notation, let's change that.
+
+```{r, scales, eval=FALSE}
+library(scales)
+p + geom_point() + 
+  geom_smooth(method = "lm") + 
+  scale_x_log10(labels = scales::dollar)
+p + geom_point() + 
+  geom_smooth(method = "lm") + 
+  scale_x_log10(labels = scales::...)
+```
+
+**Exercise:** What does the `dollar()` call do?
+
+```{r, dollar_answer}
+?dollar()
+```
+
+**Exercise:** How can you find other ways of relabeling the scales when using `scale_x_log10()`?
+
+### The Ggplot Recipe
+
+1. Tell the `ggplot()` function what our data is.
+2. Tell `ggplot()` *what* relationships we want to see. For convenience we will put the results of the first two steps in an object called `p`.
+3. Tell `ggplot` *how* we want to see the relationships in our data.
+4. Layer on geoms as needed, by adding them on the `p` object one at a time.
+5. Use some additional functions to adjust scales, labels, tickmarks, titles. 
+  - The `scale_`, `labs()`, and `guides()` functions
+
+### Mapping Aesthetics vs Setting them
+
+```{r, mapping_vs_setting}
+p <- ggplot(data = gapminder,
+            mapping = aes(x = gdpPercap, y = lifeExp, color = 'yellow'))
+p + geom_point() + scale_x_log10()
+```
+
+This is interesting (or annoying): the points are not yellow. How can we tell ggplot to draw yellow points?
+
+```{r, yellow_points, eval=FALSE}
+p <- ggplot(data = gapminder,
+            mapping = aes(x = gdpPercap, y = lifeExp, ...))
+p + geom_point(...) + scale_x_log10()
+```
+
+**Exercise:** Based on the discussion in Chapter 3 of *Data Visualization* (read it), describe in your words what is going on. 
+One way to avoid such mistakes is to read arguments inside `aes(<property> = <variable>)`as *the property <property> in the graph is determined by the data in <variable>*. 
+
+**Exercise:** Write the above sentence for the original call `aes(x = gdpPercap, y = lifeExp, color = 'yellow')`.
+
+Aesthetics convey information about a variable in the dataset, whereas setting the color of all points to yellow conveys no information about the dataset - it changes the appearance of the plot in a way that is independent of the underlying data. 
+
+Remember: `color = 'yellow'` and `aes(color = 'yellow')` are very different, and the second makes usually no sense, as `'yellow'` is treated as *data*.
+
+```{r, exercise_args_for_smooth}
+p <- ggplot(data = gapminder,
+            mapping = aes(x = gdpPercap, y = lifeExp))
+p + geom_point() + geom_smooth(color = "orange", se = FALSE, size = 8, method = "lm") + scale_x_log10()
+```
+
+**Exercise:** Write down what all those arguments in `geom_smooth(...)` do.
+
+```{r, gapminder_with_labels}
+p + geom_point(alpha = 0.3) + 
+  geom_smooth(method = "gam") + 
+  scale_x_log10(labels = scales::dollar) +
+  labs(x = "GDP Per Capita", y = "Life Expectancy in Years",
+       title = "Economic Growth and Life Expectancy",
+       subtitle = "Data Points are country-years",
+       caption = "Source: Gapminder")
+```
+
+Coloring by continent:
+
+```{r, gapminder_color_by_continent}
+library(scales)
+p <- ggplot(data = gapminder,
+            mapping = aes(x = gdpPercap, y = lifeExp, color = continent, fill = continent))
+p + geom_point()
+p + geom_point() + scale_x_log10(labels = dollar)
+p + geom_point() + scale_x_log10(labels = dollar) + geom_smooth()
+```
+
+**Exercise:** What does `fill = continent` do? What do you think about the match of colors between lines and error bands?
+
+```{r, gapminder_color_by_continent_single_line}
+p <- ggplot(data = gapminder,
+            mapping = aes(x = gdpPercap, y = lifeExp))
+p + geom_point(mapping = aes(color = continent)) + geom_smooth() + scale_x_log10()
+```
+
+**Exercise:** Notice how the above code leads to a single smooth line, not one per continent. Why?
+
+**Exercise:** What is bad about the following example, assuming the graph is the one we want? This is why you should set aesthetics at the top level rather than at the individual geometry level if that's your intent.
+
+```{r, many_continents}
+p <- ggplot(data = gapminder,
+            mapping = aes(x = gdpPercap, y = lifeExp))
+p + geom_point(mapping = aes(color = continent)) + 
+  geom_smooth(mapping = aes(color = continent, fill = continent)) + 
+  scale_x_log10() + 
+  geom_smooth(mapping = aes(color = continent), method = "gam")
+```
+
+## Additional (not Optional) Exercises 
+
+**Exercise (Discourse):** Find ways to save the figures that you made so that you can use them elsewhere too. Create a new folder to save only images. Use the command for saving to save the picture for the last image in your new folder, after you have updated the axes, title, subtitle, and caption of the image. Post your solution on Discourse and use it to include the final image above with a caption saying "Saved by <your-name>" inside your Discourse post.
+
+**Exercise:** Read section 3.8 "Where to go next" from DV. Based on those ideas, experiment and create two different graphs with the gapminder data. Describe each briefly in one sentence.
+
+**Exercise:** Read section 1.6 of [R for Data Science](https://r4ds.had.co.nz/introduction.html) on *Getting help and learning more*. Go back to an error from your previous assignment -- or pick a new one -- and post a reproducible error as described in that section on the discourse forum.
+
+**Exercise:** Do exercise 3.2.4 from [R for Data Science](https://r4ds.had.co.nz/data-visualisation.html#first-steps). Include your code in chunks, describe the output and code (where necessary) in the surrounding text.
+
+**Exercise:** Go through Exercises in 3.3.1. If an exercise does not make sense immediately (such as you don't know what a categorical variable is), replace the question by a question that addresses that point (in the case of the caregorical variable "What are categorical and continuous variables and how are they different in R?"). Write it down, try to answer that question, and ignore the original question. That way you don't end up spending too much time on this one exercise.
+
+**Exercise:** Read the (very short) [Chapter 4 of R for Data Science](https://r4ds.had.co.nz/workflow-basics.html) and try exercise 1 in section 4.4.
+
+**Bonus Exercise:** Why did I load the `scales` library twice via `library(scales)` to knit? 
+
+## Assignment 3
+
+1. Do the exercises in these lecture notes.
+1. Knit lectures 2, making sure to get rid of those `eval=FALSE` that are just there because I didn't complete the code
+1. Upload your pdf on Moodle
+1. Grade assignment 2 on Moodle -- let me know if you can't access Moodle!
+1. If you are part of the team that does the first group assignment, start thinking about how you are going to do the assignment. You have until lecture 4.

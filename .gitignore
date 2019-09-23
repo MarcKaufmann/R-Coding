@@ -45,3 +45,6 @@ rsconnect/
 **/*.html
 **/*.docx
 **/*.log
+
+# Don't track private files
+private/
