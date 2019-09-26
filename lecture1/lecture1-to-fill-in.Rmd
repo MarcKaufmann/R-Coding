@@ -2,7 +2,9 @@
 title: "Lecture 1"
 author: "Marc Kaufmann"
 date: "9/10/2019"
-output: html_document
+output:
+  html_document: default
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -27,16 +29,16 @@ There are 4 things to bear in mind about R:
 Everything that you use in R has a name: variables (including datasets), functions, or special reserved words. That is the way you talk about them. Here are some examples:
 
 ```{r, eval=FALSE}
-# Numbers are called by their number, arithmetic operations by their usual symbol
+3 # Numbers are called by their number, arithmetic operations by their usual symbol
 
-# There are some pre-defined variables
+c # There are some pre-defined variables
 
-# There are also pre-defined functions
+str() # There are also pre-defined functions
 ```
 
 **Some Notes**:
 
-- '#' is the _________ (EXERCISE) sign. It tells R that everything that follows is a comment and R should ignore it. Comments are there to help explain parts of the code that need additional documentation. We will overuse them initially, but reduce this as the course proceeds.
+- '#' is the Comment (EXERCISE) sign. It tells R that everything that follows is a comment and R should ignore it. Comments are there to help explain parts of the code that need additional documentation. We will overuse them initially, but reduce this as the course proceeds.
 - c, "c", and "C" are not the same things
 - Naming conventions: When you name variables and functions, you should use snake case.
 
@@ -44,29 +46,32 @@ Everything that you use in R has a name: variables (including datasets), functio
 
 ```{r, exercise1, eval=FALSE}
 3         # -> 3
-7 %% 3    # -> ?
-False     # -> ?
-'pi'      # -> ?
-FALSE     # -> ?
+7 %% 3    # -> 1
+False     # -> Error: Object False not found
+'pi'      # -> 3.141593
+FALSE     # -> FALSE
 ```
 
-**Exercise:** Look up what 'snake case' is and add your answer here.
+**Exercise:** Snake case (or snake_case) is the practice of writing compound words or phrases in which the elements are separated with one underscore character (_) and no spaces, with each element's initial letter usually lowercased within the compound and the first letter either upper- or lowercase—as in "foo_bar" and "Hello_world"
 
-**Exercise:** What types of names are allowed in R? Look it up and write your answer here as you understand it. Then provide 3 examples of things that are not valid names in R for different reasons. 
+**Exercise:** Identifiers can be a combination of letters, digits, period (.) and underscore (_).
+It must start with a letter or a period. If it starts with a period, it cannot be followed by a digit.
+Reserved words in R cannot be used as identifiers. 
+Examples of not valid names: .66value, _value, c
 
 #### Everything is an object
 
 There are built-in objects and objects you import or create. Most importantly, you assign values to objects you create with the '<-' operator: a '<' ('less than') followed by a '-' ('minus' or 'dash').
 
 ```{r, assignment, eval=FALSE}
-marcs_new_object <- ...
+marcs_new_object <- 6
 marcs_new_object
 ```
 
 One important function to create objects is the $c()$ function, which combines several items into one objects:
 
 ```{r, eval=FALSE}
-marcs_new_combined_object <- c(...)
+marcs_new_combined_object <- c(1, 2, 3, 4, 5)
 marcs_new_combined_object
 ```
 
@@ -90,7 +95,7 @@ list_of_programming_languages <- c(
 "Scratch"
 )
 
-languages_heard_of <- c(11)
+languages_heard_of <- c(6)
 ```
 
 #### You do things using functions
@@ -108,21 +113,34 @@ mean
 When we *call* it, we put parentheses at the end, and we tell it what to perform its action on:
 
 ```{r mean_means}
+mean(languages_heard_of)
 ```
 
 **Exercise:** What happens if you call the function $mean$ without any arguments, i.e. $mean()$?
+
+We get the following error: Error in mean.default() : argument "x" is missing, with no default
 
 #### Functions come in packages
 
 As you may start to realize, lots of functions already exist, such as $mean()$ and $sd()$ and $c()$. There are many more functions that were written by other people and bundled into packages so that you can use them. Many packages come bundled with R from the start (base R), while you can install others on your system via 'install.packages()' and use via 'library()'. We will soon use the 'ggplot()' function. Try using it now:
 
 ```{r, eval=FALSE}
-ggplot
+ggplot()
 ```
 You will get an error. We first need to import the library:
 
+Yes I got an error
+
+Error: object 'ggplot' not found
+
 ```{r}
+# 
+library(ggplot2)
+ggplot()
+
 ```
+
+
 
 This tells R to go and get all the objects defined in the library called ggplot2, which includes *ggplot*. This gives us our first data (non-)visualization: a beautifully empty plot. 
 
@@ -134,18 +152,27 @@ Suppose you have an object $x$ that you don't know what it is. You can do a few 
 
 ```{r, what_is_x}
 x <- c(1, 3.0, 2.9)
+str(x)
+attributes(x)
 ```
 
 For built-in functions, you can also ask for help or bring up the documentation with 'help()' or '?' or '??':
 
 ```{r, what_is_summary}
+# ?c
 ```
 
 **Exercise:** What do 'class()' and 'str()' do? Use 'help' (or '?'). Don't spend too much time reading the docs. Which description do you find more helpful?
 
+Class() converts any object to a class() (for an object oriented style of programming) so that constructors and others stuff can be done that is usually associated with OOP
+
 ### Make Your First Figure
 
 ```{r, gapminder}
+
+library(gapminder)
+p = ggplot(data = gapminder, mapping = aes(x = gdpPercap,y = lifeExp))
+p + geom_point()
 ```
 
 As you can see, some datasets are conveniently bundled for you as libraries.
@@ -179,7 +206,7 @@ Knit the slides for class 1 to html and/or pdf, commit the .Rmd to your reposito
 
 Track as many error messages as possible that you made during this week (stop once you get to 4). Put the code that caused the error in the chunk below, and copy the error message as a comment below it. I provide an example.
 
-```{r, eval=FALSE}
+```{r, eval=TRUE}
 
 # Example: "4" - "3" leads to the error 'Error in "4" - "3" : non-numeric argument to binary operator'
 # Thus you write:
@@ -187,6 +214,61 @@ Track as many error messages as possible that you made during this week (stop on
 # -> Error in "4" - "3" : non-numeric argument to binary operator
 
 # Your examples below
+
+#1. When trying to knit as PDF I was getting the following error despite having installed MiKTeX. 
+#This is a common issue accoridng to their website and can be solved by checking the always 
+#install missing packages on the fly as yes in MikTeX settings.
+#output file: lecture1-slides.knit.md
+
+#! Sorry, but C:\Users\faaez\AppData\Local\Programs\MIKTEX~1.9\miktex\bin\x64\xelatex.exe 
+#did not succeed.
+
+#! The log file hopefully contains the information to get MiKTeX going again:
+
+#!   C:\Users\faaez\AppData\Local\MiKTeX\2.9\miktex\log\xelatex.log
+
+#Error: Failed to compile lecture1-slides.tex. See https://yihui.name/tinytex/r/#debugging 
+#for debugging tips. See lecture1-slides.log for more info.
+#Execution halted
+
+?x
+#2. Not an error but still was doing something different to what I wanted - 
+#I was trying to do ?x for my array/list named x and it keapt showing me details 
+#about positional aesthetics that use x and y for mapping. 
+#Using str() or attribute() showed me what I wanted.
+
+install.package("gapminder")
+#3. Kept getting an error because I was doing install.package(gapminder) 
+#from within the RMD file - learned that it is not advisable to do that and did it using my 
+#console. Error in contrib.url(repos, "source") : 
+#  trying to use CRAN without setting a mirror
+#Calls: &lt;Anonymous&gt; ... withVisible -&gt; eval -&gt; eval -&gt; install.packages -&gt; 
+#contrib.url
+
+p = ggplot(gdpPercap, lifeExp)
+#4. Was trying to use ggplot without defining data and mapping and 
+#directly inputting the x and y values. Got fixed when I correctly 
+#defined the data source and mapping using aes - 
+#corrected code: p = ggplot(data = gapminder, mapping = aes(x = gdpPercap,y = lifeExp))
+#Error:
+#Error in ggplot(gdpPercap, lifeExp) : object 'gdpPercap' not found
+#Calls: &lt;Anonymous&gt; ... withCallingHandlers -&gt; withVisible -&gt; eval -&gt; 
+#eval -&gt; ggplot
+#Execution halted
+
+#Unable to Knit slides
+#5. No LaTeX installation detected (LaTeX is required to create PDF output). 
+#You should install a LaTeX distribution for your platform: 
+#https://www.latex-project.org/get/
+
+ # If you are not sure, you may install TinyTeX in R: tinytex::install_tinytex()
+
+  #Otherwise consider MiKTeX on Windows - http://miktex.org
+
+  #MacTeX on macOS - https://tug.org/mactex/
+  #(NOTE: Download with Safari rather than Chrome _strongly_ recommended)
+
+  #Linux: Use system package manager
 ```
 
 Post one of these 4 errors on discourse.

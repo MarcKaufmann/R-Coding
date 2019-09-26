@@ -1,14 +1,15 @@
 ---
-title: "Coding 1: Lecture 1"
+title: 'Coding 1: Lecture 1'
 author: |
   | Marc Kaufmann
   | Central European University
 date: "9/10/2019"
-output: 
+output:
   beamer_presentation:
-    theme: metropolis
-    slide_level: 2
     latex_engine: xelatex
+    slide_level: 2
+    theme: metropolis
+  ioslides_presentation: default
 ---
 
 ```{r setup, include=FALSE}
