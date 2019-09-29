@@ -1,0 +1,152 @@
+---
+title: "recap chapter 3"
+date: "September 28, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+
+library(gapminder)
+library(tidyverse)
+
+library(socviz)
+gapminder
+
+p <- ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp))
+
+p + geom_point()
+
+
+gapminder
+
+install.packages("digest", type="source")
+
+
+
+
+p <- ggplot(data=gapminder,
+               mapping=aes(x=gdpPercap,
+                          y=lifeExp))
+
+p+geom_point()+geom_smooth()
+
+p+geom_point()+geom_smooth(method="lm")
+
+
+p+geom_point()+geom_smooth(method="gam")+
+  scale_x_log10()
+
+
+```{r p, echo=FALSE}
+plot(p)
+```
+-------------------------------------------------
+#To grab a function directly from a library we have not loaded, we use the syntax thelibrary::thefunction.
+
+p+geom_point()+geom_smooth(method="gam")+
+  scale_x_log10(labels=scales::dollar)
+-------------------
+# trying to change the color in mapping. But, The aes() function is for mappings only. 
+#Do not use it to change properties to a particular value.
+
+clr1 <- ggplot(data=gapminder,
+            mapping=aes(x=gdpPercap,
+                        y=lifeExp,
+                        color='purple'))
+
+clr1 + geom_point() +
+  geom_smooth(method="loess")+
+  scale_x_log10()
+
+#therefore, If we want to set a property, we do it in the geom_ we are using, and outside 
+#the mapping = aes(...) step. Try this:
+
+
+clr2 <- ggplot(data=gapminder,
+               mapping=aes(x=gdpPercap,
+                           y=lifeExp))
+
+clr2+ geom_point(color="purple", alpha=0.1)+
+  geom_smooth(method="loess")+
+  scale_x_log10()
+
+#Adding titles and making dots transpafrent by adding alpha to gem_point
+
+clr2+ geom_point(alpha=0.3,color="red")+
+  geom_smooth(method="gam", color="purple")+
+  scale_x_log10(labels=scales::dollar)+
+  labs(x = "GDP Per Capita",
+       y = "Life Expectancy in Years",
+       title = "Economic Growth and Life Expectancy",
+       subtitle = "Data points are country-years",
+       caption = "Source:Gapminder")
+
+#coloring continents
+
+cnt <- ggplot(data=gapminder,
+               mapping=aes(x=gdpPercap,
+                           y=lifeExp,
+                           color=continent))
+cnt + geom_point()+
+  geom_smooth(method="loess")+
+  scale_x_log10()
+
+# shading the standard error ribbon of each line to match its dominant color. 
+cnt1 <- ggplot(data=gapminder,
+              mapping=aes(x=gdpPercap,
+                          y=lifeExp,
+                          color=continent,
+                          fill=continent))
+cnt1+geom_point()+
+  geom_smooth(method="loess")+
+  scale_x_log10()
+
+
+
+#Perhaps five separate smoothers is too many, and we just want one line. 
+one <- ggplot(data=gapminder,
+              mapping=aes(x=gdpPercap,
+                          y=lifeExp))
+one+geom_point(mapping=aes(color=continent))+
+  geom_smooth(method="loess")+
+  scale_x_log10()
+
+#It’s possible to map continuous variables to the color aesthetic, too. For example, we can map the log of each 
+#country-year’s population (pop) to color. In general it is always worth looking at the data in its continuous form 
+#first rather than cutting or binning it into categories.
+
+pop <- ggplot(data=gapminder,
+              mapping=aes(x=gdpPercap,
+                          y=lifeExp))
+
+pop+geom_point(mapping=aes(color=log(pop)))+
+  scale_x_log10()
+
+gapminder
+---------------------------------
+
+
+

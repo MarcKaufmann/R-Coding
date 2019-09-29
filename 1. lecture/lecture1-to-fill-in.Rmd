@@ -1,0 +1,267 @@
+---
+title: "Lecture 1"
+author: "Marc Kaufmann"
+date: "9/10/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This introduction is essentially Chapter 2 from Kieran Healy's book [Data Visualization](http://socviz.co/), which you should read as part of Assignment 2 and to find your way around RStudio. The reason I start with this (and continue for one or two more weeks) is that visualization is one of the more fun parts of data analysis, as well as one you should go through -- so it makes for a great starting point.
+
+We will use exclusively R Markdown files. In this case, you should simply open the file 'lecture1-to-fill.Rmd' from the repository and you are set. Whenever you create a new file, you should choose to make an R Markdown file.
+
+### Things to Know about R
+
+There are 4 things to bear in mind about R:
+
+1. Everything has a name
+2. Everything is an object
+3. You do things using functions
+4. Functions come in packages
+
+#### Everything has a name
+
+Everything that you use in R has a name: variables (including datasets), functions, or special reserved words. That is the way you talk about them. Here are some examples:
+
+```{r, eval=FALSE}
+# Numbers are called by their number, arithmetic operations by their usual symbol
+
+# There are some pre-defined variables
+
+# There are also pre-defined functions
+```
+
+**Some Notes**:
+
+- '#' is the special (hash) (EXERCISE) sign. It tells R that everything that follows is a comment and R should ignore it. Comments are there to help explain parts of the code that need additional documentation. We will overuse them initially, but reduce this as the course proceeds.
+- c, "c", and "C" are not the same things
+- Naming conventions: When you name variables and functions, you should use snake case.
+
+**Exercise:** For each of the lines in the following code chunk, write in a comment next to it what it returns. I completed the first example for you.
+
+```{r, exercise1, eval=FALSE}
+3         # -> 3
+7 %% 3    # -> 1
+False     # -> Error: object 'False' not found
+'pi'      # -> "pi"
+FALSE     # -> FALSE
+```
+
+
+**Exercise:** Look up what 'snake case' is and add your answer here.
+
+## Package snakecase: A consistent, flexible and easy to use tool to parse and convert strings into cases like snake ## or camel among others.
+
+
+ **Exercise:** What types of names are allowed in R? Look it up and write your answer here as you understand it. Then provide 3 examples of things that are not valid names in R for different reasons. 
+
+## Cannot be used: Inf, for, else, break, function, TRUE, FALSE
+## Should not use: mean(), range() or var()
+
+
+#### Everything is an object
+
+There are built-in objects and objects you import or create. Most importantly, you assign values to objects you create with the '<-' operator: a '<' ('less than') followed by a '-' ('minus' or 'dash').
+
+```{r, assignment, eval=FALSE}
+marcs_new_object <- ...
+marcs_new_object
+```
+
+One important function to create objects is the $c()$ function, which combines several items into one objects:
+
+```{r, eval=FALSE}
+marcs_new_combined_object <- c(...)
+marcs_new_combined_object
+```
+
+In principle, you can use '=' to assign values, but this is very non-idiomatic R. I will subtract points for using '='. Use '<-'.
+
+**Class Exercise:** Let's start doing something with data. How many of the following programming languages have you *heard* of? 
+
+```{r}
+# Indent the list
+list_of_programming_languages <- c(
+"R",
+"SQL",
+"Racket",
+"Lisp",
+"JavaScript",
+"ECMAScript",
+"bash",
+"C",
+"Perl",
+"Logo",
+"Scratch"
+)
+
+languages_heard_of <- c(11)
+```
+
+#### You do things using functions
+
+> A function is a thing that does things to things. 
+>
+> Me, paraphrasing Cosma Shalizi
+
+A function is a special object that you can call, such as the function $mean$. It is an object:
+
+```{r}
+mean
+```
+
+When we *call* it, we put parentheses at the end, and we tell it what to perform its action on:
+
+```{r mean_means}
+```
+
+**Exercise:** What happens if you call the function $mean$ without any arguments, i.e. $mean()$?
+
+##Error in mean.default() : argument "x" is missing, with no default
+
+#### Functions come in packages
+
+As you may start to realize, lots of functions already exist, such as $mean()$ and $sd()$ and $c()$. There are many more functions that were written by other people and bundled into packages so that you can use them. Many packages come bundled with R from the start (base R), while you can install others on your system via 'install.packages()' and use via 'library()'. We will soon use the 'ggplot()' function. Try using it now:
+
+```{r, eval=FALSE}
+ggplot
+```
+You will get an error. We first need to import the library:
+
+```{r}
+```
+
+This tells R to go and get all the objects defined in the library called ggplot2, which includes *ggplot*. This gives us our first data (non-)visualization: a beautifully empty plot. 
+
+Think of it as the equivalent of recipe books: you can either experiment and concoct your own recipes, which is fine if you are a cook. Alternatively, you get recipe books from great chefs and follow their instructions. Depending on the type of recipe, you still need a lot of background knowledge -- what does it mean to boil, fry, blanch, roast -- but you don't have to figure out everything.
+
+### How to figure out what is what
+
+Suppose you have an object $x$ that you don't know what it is. You can do a few things to find out:
+
+```{r, what_is_x}
+x <- c(1, 3.0, 2.9)
+```
+
+For built-in functions, you can also ask for help or bring up the documentation with 'help()' or '?' or '??':
+
+```{r, what_is_summary}
+```
+
+**Exercise:** What do 'class()' and 'str()' do? Use 'help' (or '?'). Don't spend too much time reading the docs. Which description do you find more helpful?
+
+## "class()" gives the sort of object, whether a vector, a character string, a function, a list, and so on. 
+## "str()" lets you see what is inside an object
+
+
+### Make Your First Figure
+
+```{r, gapminder}
+```
+
+##install.packages("gapminder")
+##library(gapminder)
+##gapminder
+##gapminder(Russia)
+##gapminder$gdp
+##plot(gapminder $gdpPercap,gapminder$lifExp)
+##p <- ggplot(data=gapminder,
+##            mapping=aes(x=gdpPercap,y=lifeExp))
+
+##p+geom_point()
+
+#As you can see, some datasets are conveniently bundled for you as libraries.
+
+## Assignment 2
+
+This assignment is due before the start of class 2. Commit your knitted assignment2.html to your git and push it to your repository regularly as you make progress.
+
+- Only your work until deadline (EXERCISE) will be considered. 
+- If you know that you might miss the deadline, you have to email me in advance and I will tell you whether you can get an extension. No extension will be granted less than 24 hours prior to the deadline -- you should have started working on it.
+- If you miss the deadline (even by 1 minute) you lose 25% irrespective of technical issues such as 'the internet went down'. It wasn't down the whole week, and you knew a deadline was coming. In a business setting, you would probably lose more than 25%. Repeat offenders will face an increasingly large penalty.
+- If you struggle *answering* the assignment, you should submit what you tried, and send me a message that you struggled. Much of the grade initially is on trying out things, even if it doesn't work out, so you should submit.
+
+### Part 1
+
+Read chapter 2 of [Data Visualization](http://socviz.co/gettingstarted.html). Make sure you know where the console is, the editor, and what code chunks are in RStudio. 
+
+##done
+
+### Part 2
+
+Complete all the exercises in the lectures notes of lecture 1. Put your answer to an exercise right after the question of the exrcise in the R Markdown file. When done, knit the document, commit the changes with the commit message "Part 1 of assignment 2" and push them to your GitHub repository.
+
+##checking whether I commited correctly
+
+
+
+### Part 3
+
+Fill in the holes in the lecture notes of lecture 1, if you didn't complete it during class. When done, knit the document, commit the changes with the commit message "Part 3 of assignment 2" and push them to your GitHub repository.
+
+## already filled the holes, pushing to git 
+
+Knit the slides for class 1 to html and/or pdf, commit the .Rmd and .html files -- but not the pdf -- and push. If the pdf is hard to get working (due to weird error messages), see whether you can find out *what* the problem is (Stackoverflow, Discourse...) without trying to solve it yet. Pdf and Latex issues can be... interesting shall we say.
+
+##1. saved html on a local disk
+##2. gotta knit, and push
+
+**Note:** If you can't figure out how to use git, post a question on the discourse forum and send me the html file by email.
+
+### Part 4
+
+Track as many error messages as possible that you made during this week (stop once you get to 4). Put the code that caused the error in the chunk below, and copy the error message as a comment below it. I provide an example.
+
+```{r, eval=FALSE}
+
+# Example: "4" - "3" leads to the error 'Error in "4" - "3" : non-numeric argument to binary operator'
+# Thus you write:
+"4" - "3"
+# -> Error in "4" - "3" : non-numeric argument to binary operator
+
+# Your examples below
+```
+
+Post one of these 4 errors on discourse.
+
+##1. trying to clone existing rep gives an error: 
+##>>> C:/Program Files/Git/bin/git.exe clone --progress https://github.com/Akylsu/R-Coding.git R-Coding
+##fatal: destination path 'R-Coding' already exists and is not an empty directory.
+##2. running a command without # gives:
+##Error: unexpected symbol in "As you"
+##3. trying to run a library without installation gives: 
+##Error in library(socviz) : there is no package called ‘socviz
+##   Error in library(socviz) : there is no package called ‘socviz
+## 4. providing wrong link givesL
+##Error: Failed to install 'socviz' from GitHub:
+##  (converted from warning) cannot remove prior installation of package ‘ellipsis’
+
+
+### Part 5
+
+
+Try fo figure out two of the following and post your answers on Discourse for others to read:
+
+- Identify elements from my *eureka_or_bust* example in the slides and see whether you can figure out what the different elements mean to R.
+## "eureka_or_bust" is an object
+## "<-" is an assignment operator
+## "your_great_ideas %>%" another object
+## "collect_data() %>%" function
+
+- What does *eval=FALSE* mean in part 4? Figure this out by replacing it by *eval=TRUE* and seeing what you get.
+
+## *eval=FALSE* 
+## "eval=TRUE" Whether to evaluate the code and include its results
+
+- What is the Tidyverse?
+- Who is Hadley Wickham?
+
+
+
+##The tidyverse is a coherent system of packages for data manipulation, exploration and visualization that share a common design philosophy. These were mostly developed by Hadley Wickham himself, but they are now being expanded by several contributors. Tidyverse packages are intended to make statisticians and data scientists more productive by guiding them through workflows that facilitate communication, and result in reproducible work products. Fundamentally, the tidyverse is about the connections between the tools that make the workflow possible.
+## Hadley Wickham (born 14 October 1979) is a statistician from New Zealand who is currently Chief Scientist at RStudio and an adjunct Professor of statistics at the University of Auckland,Stanford University,and Rice University He is best known for his development of open-source statistical analysis software packages for R (programming language) that implement logics of data visualisation and data transformation. Wickham's packages and writing are known for advocating a tidy data approach to data import, analysis and modelling methods.[Wikipedia]
+
+## Resources for this lecture 
