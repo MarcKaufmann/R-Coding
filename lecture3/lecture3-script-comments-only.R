@@ -107,10 +107,16 @@
 # 
 # ## Assignment 4
 # 
-# 1. Read Chapter 5 parts 1 through 3 (until select) of Grolemund and Wickham for anything we did not cover. We will cover the remaining parts next week.
+# 1. Read Chapter 5 of Grolemund and Wickham parts 1 through 3 (until select) of Grolemund and Wickham for anything we did not cover. We will cover the remaining parts next week.
 # 2. Turn the script (.R file) from class into a markdown file which displays the graphs and tables. Add any comments that might benefit you later on, such as reminders of things you found confusing, etc.
-# 3. Repeat the exercises from the script with the hotels data instead of the nycflights data. Since the two datasets don't have the same columns, either pick some variable you'd like to filter on and see results on, or use the following suggested mapping:
+#   Make sure that you comment the graphs where appropriate, either through captions or in the accompanying text.
+# 3. Repeat the steps from chapter 5 in parts 1 through 3, but using hotels data instead of the nycflights data. Since the two datasets don't have the same columns, either pick some variable you'd like to filter on and see results on, or use the following suggested mapping:
 #   - When filtering (etc) on month for flights, use stars in the hotels data
 #   - Instead of flight duration, use hotel price
-#   - ...
-#   Make sure that you comment the graphs where appropriate, either through captions or in the accompanying text.
+#   - For travel times, use distance (you can reuse distance for different types of time)
+# 
+# Example: Instead of doing
+# filter(flights, month == 1)
+# you should do
+# filter(hotels, stars == <some-number-you-like>)
+# Create similar output to Grolemund and Wickham, i.e. show what the output is of various commands.
