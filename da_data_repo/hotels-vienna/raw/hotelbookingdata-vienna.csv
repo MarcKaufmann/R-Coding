@@ -1,0 +1,431 @@
+"addresscountryname","city_actual","rating_reviewcount","center1distance","center1label","center2distance","center2label","neighbourhood","price","price_night","s_city","starrating","rating2_ta","rating2_ta_reviewcount","accommodationtype","guestreviewsrating","scarce_room","hotel_id","offer","offer_cat","year","month","weekend","holiday"
+"Austria","Vienna",36,"2.7 miles","City centre","4.4 miles","Donauturm","17. Hernals",81,"price for 1 night","Vienna",4,4.5,216,"_ACCOM_TYPE@Apartment","4.4 /5",1,21894,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",189,"1.7 miles","City centre","3.8 miles","Donauturm","17. Hernals",81,"price for 1 night","Vienna",4,3.5,708,"_ACCOM_TYPE@Hotel","3.9 /5",0,21897,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",53,"1.4 miles","City centre","2.5 miles","Donauturm","Alsergrund",85,"price for 1 night","Vienna",4,3.5,629,"_ACCOM_TYPE@Hotel","3.7 /5",0,21901,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",55,"1.7 miles","City centre","2.5 miles","Donauturm","Alsergrund",83,"price for 1 night","Vienna",3,4,52,"_ACCOM_TYPE@Hotel","4 /5",0,21902,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",33,"1.2 miles","City centre","2.8 miles","Donauturm","Alsergrund",82,"price for 1 night","Vienna",4,3.5,219,"_ACCOM_TYPE@Hotel","3.9 /5",1,21903,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",25,"0.9 miles","City centre","3.0 miles","Donauturm","Alsergrund",229,"price for 1 night","Vienna",5,4.5,27,"_ACCOM_TYPE@Apartment","4.8 /5",1,21904,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",57,"0.9 miles","City centre","2.4 miles","Donauturm","Alsergrund",103,"price for 1 night","Vienna",4,3.5,251,"_ACCOM_TYPE@Hotel","3.9 /5",1,21906,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",161,"1.0 mile","City centre","2.7 miles","Donauturm","Alsergrund",150,"price for 1 night","Vienna",4,4.5,617,"_ACCOM_TYPE@Hotel","4.6 /5",0,21907,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",50,"0.7 miles","City centre","2.7 miles","Donauturm","Alsergrund",80,"price for 1 night","Vienna",2,3.5,146,"_ACCOM_TYPE@Hotel","3.5 /5",1,21908,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",NA,"1.5 miles","City centre","2.7 miles","Donauturm","Alsergrund",153,"price for 1 night","Vienna",3,NA,NA,"_ACCOM_TYPE@Apartment",NA,1,21910,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",203,"1.1 miles","City centre","2.7 miles","Donauturm","Alsergrund",60,"price for 1 night","Vienna",4,4,359,"_ACCOM_TYPE@Hotel","4.1 /5",1,21912,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",251,"0.8 miles","City centre","2.9 miles","Donauturm","Alsergrund",128,"price for 1 night","Vienna",4,4,829,"_ACCOM_TYPE@Hotel","4 /5",0,21913,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",142,"1.0 mile","City centre","2.3 miles","Donauturm","Alsergrund",100,"price for 1 night","Vienna",4,4,55,"_ACCOM_TYPE@Apartment","4.5 /5",1,21914,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",8,"1.2 miles","City centre","2.3 miles","Donauturm","Alsergrund",143,"price for 1 night","Vienna",2,NA,NA,"_ACCOM_TYPE@Apartment","3.7 /5",1,21915,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",NA,"0.7 miles","City centre","2.6 miles","Donauturm","Alsergrund",106,"price for 1 night","Vienna",2.5,2,74,"_ACCOM_TYPE@Hotel",NA,1,21916,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",18,"1.7 miles","City centre","2.6 miles","Donauturm","Alsergrund",85,"price for 1 night","Vienna",4,4,62,"_ACCOM_TYPE@Hotel","4.1 /5",0,21917,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",20,"0.9 miles","City centre","2.8 miles","Donauturm","Alsergrund",77,"price for 1 night","Vienna",3,3.5,97,"_ACCOM_TYPE@Hotel","3.7 /5",0,21918,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",77,"0.8 miles","City centre","2.8 miles","Donauturm","Alsergrund",78,"price for 1 night","Vienna",3,3.5,120,"_ACCOM_TYPE@Hotel","3.9 /5",1,21919,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",76,"0.9 miles","City centre","2.8 miles","Donauturm","Alsergrund",78,"price for 1 night","Vienna",3,3.5,161,"_ACCOM_TYPE@Hotel","4 /5",1,21920,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",NA,"3.4 miles","City centre","0.6 miles","Donauturm","Donaustadt",260,"price for 1 night","Vienna",3.5,5,2,"_ACCOM_TYPE@Apartment",NA,1,21921,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",5,"3.4 miles","City centre","0.6 miles","Donauturm","Donaustadt",158,"price for 1 night","Vienna",3,4.5,72,"_ACCOM_TYPE@Apartment","4.8 /5",1,21922,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",77,"4.2 miles","City centre","1.5 miles","Donauturm","Donaustadt",77,"price for 1 night","Vienna",3,4,158,"_ACCOM_TYPE@Hotel","3.9 /5",1,21924,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",193,"3.9 miles","City centre","1.9 miles","Donauturm","Donaustadt",77,"price for 1 night","Vienna",3,3,91,"_ACCOM_TYPE@Hotel","2.7 /5",0,21925,1,"50%-75% offer",2017,11,0,0
+"Austria","Vienna",94,"3.6 miles","City centre","1.2 miles","Donauturm","Donaustadt",95,"price for 1 night","Vienna",4,4,228,"_ACCOM_TYPE@Hotel","4.3 /5",0,21926,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",1,"3.8 miles","City centre","1.2 miles","Donauturm","Donaustadt",156,"price for 1 night","Vienna",3,NA,NA,"_ACCOM_TYPE@Apartment","3 /5",1,21927,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",5,"3.5 miles","City centre","0.8 miles","Donauturm","Donaustadt",145,"price for 1 night","Vienna",3,4.5,205,"_ACCOM_TYPE@Bed and breakfast","3.5 /5",1,21928,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",178,"2.9 miles","City centre","0.6 miles","Donauturm","Donaustadt",208,"price for 1 night","Vienna",4,4,1085,"_ACCOM_TYPE@Hotel","4.1 /5",1,21930,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",330,"3.4 miles","City centre","0.9 miles","Donauturm","Donaustadt",87,"price for 1 night","Vienna",3,3.5,423,"_ACCOM_TYPE@Hotel","3.7 /5",1,21933,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",6,"2.3 miles","City centre","4.9 miles","Donauturm","Favoriten",131,"price for 1 night","Vienna",2,NA,NA,"_ACCOM_TYPE@Apartment","3.5 /5",1,21934,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",194,"2.0 miles","City centre","4.5 miles","Donauturm","Favoriten",54,"price for 1 night","Vienna",3,4,522,"_ACCOM_TYPE@Hotel","3.5 /5",0,21935,1,"50%-75% offer",2017,11,0,0
+"Austria","Vienna",9,"2.4 miles","City centre","5.0 miles","Donauturm","Favoriten",139,"price for 1 night","Vienna",2,3,17,"_ACCOM_TYPE@Apartment","3 /5",1,21936,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",3,"2.8 miles","City centre","5.3 miles","Donauturm","Favoriten",184,"price for 1 night","Vienna",2,NA,NA,"_ACCOM_TYPE@Apartment","3.2 /5",1,21937,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",1,"2.9 miles","City centre","5.2 miles","Donauturm","Favoriten",127,"price for 1 night","Vienna",3,NA,NA,"_ACCOM_TYPE@Apartment","1 /5",1,21938,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",NA,"2.5 miles","City centre","5.1 miles","Donauturm","Favoriten",95,"price for 1 night","Vienna",3,NA,NA,"_ACCOM_TYPE@Apartment",NA,1,21939,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",441,"1.7 miles","City centre","4.2 miles","Donauturm","Favoriten",99,"price for 1 night","Vienna",3.5,4.5,630,"_ACCOM_TYPE@Hotel","4.4 /5",0,21940,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",1122,"1.7 miles","City centre","4.1 miles","Donauturm","Favoriten",75,"price for 1 night","Vienna",3.5,4.5,573,"_ACCOM_TYPE@Hotel","4.4 /5",0,21941,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",362,"2.1 miles","City centre","4.6 miles","Donauturm","Favoriten",76,"price for 1 night","Vienna",3,4,269,"_ACCOM_TYPE@Hotel","4.4 /5",0,21943,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",2,"2.5 miles","City centre","5.1 miles","Donauturm","Favoriten",130,"price for 1 night","Vienna",2,NA,NA,"_ACCOM_TYPE@Apartment","3 /5",1,21945,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",525,"1.9 miles","City centre","4.2 miles","Donauturm","Favoriten",91,"price for 1 night","Vienna",4,4.5,741,"_ACCOM_TYPE@Hotel","4.5 /5",0,21946,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",1,"2.4 miles","City centre","5.0 miles","Donauturm","Favoriten",135,"price for 1 night","Vienna",2,NA,NA,"_ACCOM_TYPE@Apartment","3 /5",1,21947,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",113,"2.0 miles","City centre","4.5 miles","Donauturm","Favoriten",56,"price for 1 night","Vienna",2,3,183,"_ACCOM_TYPE@Hotel","2 /5",1,21948,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",71,"2.7 miles","City centre","5.1 miles","Donauturm","Favoriten",27,"price for 1 night","Vienna",2,3.5,216,"_ACCOM_TYPE@Hostel","3.7 /5",1,21949,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",1,"2.3 miles","City centre","4.6 miles","Donauturm","Favoriten",88,"price for 1 night","Vienna",3,NA,NA,"_ACCOM_TYPE@Apartment","3 /5",1,21950,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",22,"2.5 miles","City centre","4.8 miles","Donauturm","Favoriten",133,"price for 1 night","Vienna",2,NA,NA,"_ACCOM_TYPE@Apartment","3.5 /5",1,21951,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",366,"1.8 miles","City centre","4.3 miles","Donauturm","Favoriten",33,"price for 1 night","Vienna",2,3.5,491,"_ACCOM_TYPE@Hotel","3.4 /5",0,21956,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",NA,"2.0 miles","City centre","4.4 miles","Donauturm","Favoriten",116,"price for 1 night","Vienna",3.5,NA,NA,"_ACCOM_TYPE@Apartment",NA,0,21958,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",821,"1.7 miles","City centre","4.2 miles","Donauturm","Favoriten",71,"price for 1 night","Vienna",4,4,31,"_ACCOM_TYPE@Hotel","4 /5",0,21959,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",16,"2.7 miles","City centre","5.3 miles","Donauturm","Favoriten",90,"price for 1 night","Vienna",3.5,NA,NA,"_ACCOM_TYPE@Apartment","3.5 /5",1,21960,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",23,"1.9 miles","City centre","4.3 miles","Donauturm","Favoriten",84,"price for 1 night","Vienna",4,NA,NA,"_ACCOM_TYPE@Apartment","4.1 /5",1,21962,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",38,"2.3 miles","City centre","4.7 miles","Donauturm","Favoriten",63,"price for 1 night","Vienna",3,NA,NA,"_ACCOM_TYPE@Guest House","4.3 /5",0,21963,1,"15-50% offer",2017,11,0,0
+"Austria","Fischamend",366,"13 miles","City centre","13 miles","Donauturm","Fischamend",59,"price for 1 night","Vienna",3,2.5,243,"_ACCOM_TYPE@Hotel","3 /5",0,21964,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",77,"0.2 miles","City centre","2.9 miles","Donauturm","Graben",113,"price for 1 night","Vienna",3,4,259,"_ACCOM_TYPE@Hotel","4.4 /5",0,21965,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",27,"0.1 miles","City centre","2.9 miles","Donauturm","Graben",218,"price for 1 night","Vienna",4.5,NA,NA,"_ACCOM_TYPE@Apartment","4.1 /5",1,21966,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",144,"0.1 miles","City centre","2.8 miles","Donauturm","Graben",299,"price for 1 night","Vienna",5,4.5,702,"_ACCOM_TYPE@Hotel","4.5 /5",1,21967,1,"50%-75% offer",2017,11,0,0
+"Austria","Vienna",184,"0.3 miles","City centre","2.6 miles","Donauturm","Innere Stadt",156,"price for 1 night","Vienna",3,4.5,1347,"_ACCOM_TYPE@Hotel","4.5 /5",1,21968,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",78,"0.3 miles","City centre","2.8 miles","Donauturm","Innere Stadt",513,"price for 1 night","Vienna",5,5,1126,"_ACCOM_TYPE@Hotel","4.8 /5",1,21969,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",319,"0.3 miles","City centre","2.6 miles","Donauturm","Innere Stadt",133,"price for 1 night","Vienna",4,4,466,"_ACCOM_TYPE@Hotel","4.3 /5",1,21970,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",73,"0.5 miles","City centre","3.1 miles","Donauturm","Innere Stadt",123,"price for 1 night","Vienna",4,3.5,47,"_ACCOM_TYPE@Hotel","4.1 /5",1,21971,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",81,"0.3 miles","City centre","3.0 miles","Donauturm","Innere Stadt",219,"price for 1 night","Vienna",4,4.5,392,"_ACCOM_TYPE@Hotel","4.5 /5",1,21972,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",271,"0.3 miles","City centre","3.0 miles","Donauturm","Innere Stadt",152,"price for 1 night","Vienna",4,4,261,"_ACCOM_TYPE@Hotel","4.3 /5",0,21973,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",211,"0.1 miles","City centre","2.7 miles","Donauturm","Innere Stadt",115,"price for 1 night","Vienna",4,4.5,211,"_ACCOM_TYPE@Hotel","4.3 /5",1,21975,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",5,"0.3 miles","City centre","2.8 miles","Donauturm","Innere Stadt",806,"price for 1 night","Vienna",5,4.5,114,"_ACCOM_TYPE@Hotel","4.5 /5",0,21976,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",316,"0.2 miles","City centre","2.6 miles","Donauturm","Innere Stadt",138,"price for 1 night","Vienna",4,4.5,463,"_ACCOM_TYPE@Hotel","4.5 /5",0,21977,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",28,"0.4 miles","City centre","2.5 miles","Donauturm","Innere Stadt",95,"price for 1 night","Vienna",3,NA,NA,"_ACCOM_TYPE@Apartment","3.7 /5",1,21979,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",336,"0.1 miles","City centre","2.9 miles","Donauturm","Innere Stadt",146,"price for 1 night","Vienna",4,4,714,"_ACCOM_TYPE@Hotel","4.4 /5",0,21980,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",83,"0.7 miles","City centre","3.1 miles","Donauturm","Innere Stadt",103,"price for 1 night","Vienna",3,4,159,"_ACCOM_TYPE@Pension","4 /5",0,21981,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",NA,"0.5 miles","City centre","3.3 miles","Donauturm","Innere Stadt",125,"price for 1 night","Vienna",3.5,NA,NA,"_ACCOM_TYPE@Apartment",NA,1,21983,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",88,"0.5 miles","City centre","2.6 miles","Donauturm","Innere Stadt",98,"price for 1 night","Vienna",3,3.5,66,"_ACCOM_TYPE@Hotel","3.7 /5",1,21984,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",140,"0.3 miles","City centre","2.5 miles","Donauturm","Innere Stadt",121,"price for 1 night","Vienna",3.5,4.5,557,"_ACCOM_TYPE@Hotel","4.5 /5",1,21985,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",391,"0.2 miles","City centre","2.6 miles","Donauturm","Innere Stadt",149,"price for 1 night","Vienna",4,4,1516,"_ACCOM_TYPE@Hotel","4 /5",0,21986,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",320,"0.3 miles","City centre","2.5 miles","Donauturm","Innere Stadt",120,"price for 1 night","Vienna",3,3.5,515,"_ACCOM_TYPE@Hotel","3.9 /5",0,21987,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",21,"0.4 miles","City centre","2.9 miles","Donauturm","Innere Stadt",157,"price for 1 night","Vienna",3,4.5,146,"_ACCOM_TYPE@Hotel","4.4 /5",1,21988,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",193,"0.3 miles","City centre","3.1 miles","Donauturm","Innere Stadt",261,"price for 1 night","Vienna",5,5,945,"_ACCOM_TYPE@Hotel","4.8 /5",1,21989,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",75,"0.7 miles","City centre","3.4 miles","Donauturm","Innere Stadt",145,"price for 1 night","Vienna",3.5,4,48,"_ACCOM_TYPE@Apartment","4.1 /5",1,21990,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",35,"0.2 miles","City centre","2.6 miles","Donauturm","Innere Stadt",275,"price for 1 night","Vienna",4,4,16,"_ACCOM_TYPE@Apartment","4.3 /5",1,21991,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",NA,"0.2 miles","City centre","2.9 miles","Donauturm","Innere Stadt",253,"price for 1 night","Vienna",3.5,NA,NA,"_ACCOM_TYPE@Apartment",NA,1,21992,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",NA,"0.2 miles","City centre","2.9 miles","Donauturm","Innere Stadt",209,"price for 1 night","Vienna",4,NA,NA,"_ACCOM_TYPE@Apartment",NA,1,21993,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",505,"0.2 miles","City centre","2.9 miles","Donauturm","Innere Stadt",112,"price for 1 night","Vienna",4,4,607,"_ACCOM_TYPE@Hotel","4 /5",0,21995,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",386,"0.3 miles","City centre","2.5 miles","Donauturm","Innere Stadt",138,"price for 1 night","Vienna",4,4,273,"_ACCOM_TYPE@Hotel","4.3 /5",0,21996,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",109,"0.4 miles","City centre","2.6 miles","Donauturm","Innere Stadt",84,"price for 1 night","Vienna",3,4,171,"_ACCOM_TYPE@Pension","4 /5",1,21997,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",626,"0.3 miles","City centre","2.9 miles","Donauturm","Innere Stadt",199,"price for 1 night","Vienna",4.5,4.5,3171,"_ACCOM_TYPE@Hotel","4.5 /5",0,21998,1,"50%-75% offer",2017,11,0,0
+"Austria","Vienna",334,"0.3 miles","City centre","2.9 miles","Donauturm","Innere Stadt",203,"price for 1 night","Vienna",5,4.5,917,"_ACCOM_TYPE@Hotel","4.4 /5",0,21999,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",NA,"0.2 miles","City centre","2.7 miles","Donauturm","Innere Stadt",116,"price for 1 night","Vienna",3,3,4,"_ACCOM_TYPE@Vacation home Condo",NA,1,22001,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",NA,"0.2 miles","City centre","2.7 miles","Donauturm","Innere Stadt",107,"price for 1 night","Vienna",3.5,NA,NA,"_ACCOM_TYPE@Apartment",NA,1,22002,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",NA,"0.2 miles","City centre","2.7 miles","Donauturm","Innere Stadt",127,"price for 1 night","Vienna",3.5,NA,NA,"_ACCOM_TYPE@Apartment",NA,1,22003,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",NA,"0.2 miles","City centre","2.7 miles","Donauturm","Innere Stadt",104,"price for 1 night","Vienna",3.5,NA,NA,"_ACCOM_TYPE@Apartment",NA,1,22004,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",11,"0.2 miles","City centre","2.6 miles","Donauturm","Innere Stadt",168,"price for 1 night","Vienna",3.5,3.5,4,"_ACCOM_TYPE@Apartment","4 /5",1,22005,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",150,"0.5 miles","City centre","3.2 miles","Donauturm","Innere Stadt",544,"price for 1 night","Vienna",5,4.5,1178,"_ACCOM_TYPE@Hotel","4.8 /5",0,22006,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",531,"0.5 miles","City centre","3.2 miles","Donauturm","Innere Stadt",252,"price for 1 night","Vienna",5,4.5,1050,"_ACCOM_TYPE@Hotel","4.6 /5",0,22007,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",253,"0.5 miles","City centre","3.2 miles","Donauturm","Innere Stadt",323,"price for 1 night","Vienna",5,4.5,1168,"_ACCOM_TYPE@Hotel","4.5 /5",0,22008,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",47,"0.3 miles","City centre","3.1 miles","Donauturm","Innere Stadt",158,"price for 1 night","Vienna",3,4,232,"_ACCOM_TYPE@Hotel","4.3 /5",1,22009,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",19,"0.2 miles","City centre","2.7 miles","Donauturm","Innere Stadt",156,"price for 1 night","Vienna",3.5,NA,NA,"_ACCOM_TYPE@Apartment","4 /5",1,22010,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",124,"0.2 miles","City centre","2.6 miles","Donauturm","Innere Stadt",218,"price for 1 night","Vienna",4,5,1112,"_ACCOM_TYPE@Hotel","4.6 /5",1,22011,1,"50%-75% offer",2017,11,0,0
+"Austria","Vienna",115,"0.1 miles","City centre","2.7 miles","Donauturm","Innere Stadt",218,"price for 1 night","Vienna",4,4.5,475,"_ACCOM_TYPE@Hotel","4.5 /5",0,22012,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",110,"0.3 miles","City centre","2.6 miles","Donauturm","Innere Stadt",135,"price for 1 night","Vienna",3,3.5,162,"_ACCOM_TYPE@Hotel","3.9 /5",0,22013,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",16,"0.6 miles","City centre","2.6 miles","Donauturm","Innere Stadt",219,"price for 1 night","Vienna",2,NA,NA,"_ACCOM_TYPE@Apartment","4 /5",1,22014,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",467,"0.5 miles","City centre","3.3 miles","Donauturm","Innere Stadt",179,"price for 1 night","Vienna",4,4.5,423,"_ACCOM_TYPE@Hotel","4.4 /5",1,22016,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",NA,"0.5 miles","City centre","3.3 miles","Donauturm","Innere Stadt",511,"price for 1 night","Vienna",3.5,NA,NA,"_ACCOM_TYPE@Apartment",NA,1,22017,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",650,"0.7 miles","City centre","3.5 miles","Donauturm","Innere Stadt",157,"price for 1 night","Vienna",4,4.5,1380,"_ACCOM_TYPE@Hotel","4.5 /5",0,22018,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",95,"0.3 miles","City centre","2.8 miles","Donauturm","Innere Stadt",146,"price for 1 night","Vienna",4,4.5,770,"_ACCOM_TYPE@Hotel","4.5 /5",1,22019,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",564,"0.4 miles","City centre","2.9 miles","Donauturm","Innere Stadt",200,"price for 1 night","Vienna",5,4,1850,"_ACCOM_TYPE@Hotel","4.3 /5",0,22020,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",168,"0.1 miles","City centre","2.8 miles","Donauturm","Innere Stadt",157,"price for 1 night","Vienna",4,4,392,"_ACCOM_TYPE@Hotel","4.1 /5",1,22021,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",NA,"0.3 miles","City centre","2.6 miles","Donauturm","Innere Stadt",138,"price for 1 night","Vienna",4,NA,NA,"_ACCOM_TYPE@Apartment",NA,1,22022,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",175,"0.3 miles","City centre","2.5 miles","Donauturm","Innere Stadt",108,"price for 1 night","Vienna",3,3.5,234,"_ACCOM_TYPE@Hotel","3.5 /5",1,22023,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",NA,"0.2 miles","City centre","2.6 miles","Donauturm","Innere Stadt",290,"price for 1 night","Vienna",3.5,NA,NA,"_ACCOM_TYPE@Apartment",NA,1,22025,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",426,"0.8 miles","City centre","3.1 miles","Donauturm","Innere Stadt",127,"price for 1 night","Vienna",4,4,840,"_ACCOM_TYPE@Hotel","4 /5",0,22026,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",1,"0.7 miles","City centre","3.0 miles","Donauturm","Innere Stadt",114,"price for 1 night","Vienna",3,NA,NA,"_ACCOM_TYPE@Guest House","3 /5",1,22027,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",148,"0.4 miles","City centre","2.7 miles","Donauturm","Innere Stadt",163,"price for 1 night","Vienna",4,4,388,"_ACCOM_TYPE@Hotel","4.1 /5",1,22028,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",163,"0.2 miles","City centre","2.8 miles","Donauturm","Innere Stadt",116,"price for 1 night","Vienna",4,4.5,212,"_ACCOM_TYPE@Apart-hotel","4.5 /5",1,22029,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",493,"0.5 miles","City centre","3.3 miles","Donauturm","Innere Stadt",226,"price for 1 night","Vienna",5,4.5,2985,"_ACCOM_TYPE@Hotel","4.3 /5",0,22030,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",56,"0.1 miles","City centre","2.7 miles","Donauturm","Innere Stadt",231,"price for 1 night","Vienna",4,4.5,282,"_ACCOM_TYPE@Hotel","4.4 /5",0,22031,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",247,"0.4 miles","City centre","2.6 miles","Donauturm","Innere Stadt",116,"price for 1 night","Vienna",4,4.5,1274,"_ACCOM_TYPE@Hotel","4.4 /5",1,22032,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",169,"0.4 miles","City centre","2.6 miles","Donauturm","Innere Stadt",76,"price for 1 night","Vienna",3,4,167,"_ACCOM_TYPE@Guest House","3.7 /5",1,22033,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",1,"0.3 miles","City centre","2.6 miles","Donauturm","Innere Stadt",135,"price for 1 night","Vienna",3.5,NA,NA,"_ACCOM_TYPE@Apartment","1 /5",1,22034,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",599,"0.6 miles","City centre","2.7 miles","Donauturm","Innere Stadt",184,"price for 1 night","Vienna",5,4.5,1330,"_ACCOM_TYPE@Hotel","4.5 /5",0,22035,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",258,"0.6 miles","City centre","2.5 miles","Donauturm","Innere Stadt",384,"price for 1 night","Vienna",5,5,1207,"_ACCOM_TYPE@Hotel","4.8 /5",0,22036,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",703,"0.6 miles","City centre","2.8 miles","Donauturm","Innere Stadt",166,"price for 1 night","Vienna",4,4,1592,"_ACCOM_TYPE@Hotel","4.3 /5",1,22037,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",230,"0.5 miles","City centre","3.1 miles","Donauturm","Innere Stadt",187,"price for 1 night","Vienna",5,4,468,"_ACCOM_TYPE@Hotel","4.1 /5",0,22038,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",112,"0.5 miles","City centre","3.1 miles","Donauturm","Innere Stadt",371,"price for 1 night","Vienna",5,4.5,1319,"_ACCOM_TYPE@Hotel","4.6 /5",0,22039,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",278,"0.1 miles","City centre","2.7 miles","Donauturm","Innere Stadt",156,"price for 1 night","Vienna",4,4.5,272,"_ACCOM_TYPE@Pension","4.4 /5",1,22040,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",NA,"0.3 miles","City centre","2.5 miles","Donauturm","Innere Stadt",220,"price for 1 night","Vienna",3.5,NA,NA,"_ACCOM_TYPE@Apartment",NA,1,22041,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",81,"0.3 miles","City centre","2.5 miles","Donauturm","Innere Stadt",169,"price for 1 night","Vienna",4,4.5,561,"_ACCOM_TYPE@Hotel","4.5 /5",1,22042,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",NA,"0.3 miles","City centre","2.7 miles","Donauturm","Innere Stadt",103,"price for 1 night","Vienna",3,NA,NA,"_ACCOM_TYPE@Apartment",NA,1,22043,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",15,"0.3 miles","City centre","2.6 miles","Donauturm","Innere Stadt",266,"price for 1 night","Vienna",5,NA,NA,"_ACCOM_TYPE@Apartment","4.5 /5",1,22044,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",203,"0.1 miles","City centre","2.9 miles","Donauturm","Innere Stadt",131,"price for 1 night","Vienna",3,4,338,"_ACCOM_TYPE@Pension","3.9 /5",1,22045,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",150,"0.2 miles","City centre","2.8 miles","Donauturm","Innere Stadt",168,"price for 1 night","Vienna",4,4.5,154,"_ACCOM_TYPE@Apartment","4.6 /5",1,22046,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",NA,"0.2 miles","City centre","2.6 miles","Donauturm","Innere Stadt",101,"price for 1 night","Vienna",3,NA,NA,"_ACCOM_TYPE@Apartment",NA,1,22047,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",NA,"0.2 miles","City centre","3.0 miles","Donauturm","Innere Stadt",364,"price for 1 night","Vienna",3.5,NA,NA,"_ACCOM_TYPE@Apartment",NA,1,22049,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",404,"0.0 miles","City centre","2.8 miles","Donauturm","Innere Stadt",242,"price for 1 night","Vienna",4,4.5,2165,"_ACCOM_TYPE@Hotel","4.8 /5",0,22050,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",404,"0.0 miles","City centre","2.8 miles","Donauturm","Innere Stadt",242,"price for 1 night","Vienna",4,4.5,2165,"_ACCOM_TYPE@Hotel","4.8 /5",0,22050,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",123,"0.5 miles","City centre","2.4 miles","Donauturm","Innere Stadt",223,"price for 1 night","Vienna",4,3.5,276,"_ACCOM_TYPE@Hotel","3.5 /5",1,22051,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",653,"0.3 miles","City centre","2.7 miles","Donauturm","Innere Stadt",149,"price for 1 night","Vienna",4,4.5,930,"_ACCOM_TYPE@Hotel","4.4 /5",1,22052,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",NA,"0.2 miles","City centre","2.7 miles","Donauturm","Innere Stadt",232,"price for 1 night","Vienna",3.5,NA,NA,"_ACCOM_TYPE@Apartment",NA,1,22053,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",388,"0.5 miles","City centre","2.3 miles","Donauturm","Innere Stadt",114,"price for 1 night","Vienna",4,4,836,"_ACCOM_TYPE@Hotel","4 /5",0,22054,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",1,"0.1 miles","City centre","2.8 miles","Donauturm","Innere Stadt",253,"price for 1 night","Vienna",3.5,NA,NA,"_ACCOM_TYPE@Apartment","2 /5",1,22055,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",230,"0.3 miles","City centre","2.6 miles","Donauturm","Innere Stadt",163,"price for 1 night","Vienna",4,4.5,203,"_ACCOM_TYPE@Apart-hotel","4.4 /5",1,22057,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",69,"0.4 miles","City centre","3.1 miles","Donauturm","Innere Stadt",116,"price for 1 night","Vienna",3,4.5,774,"_ACCOM_TYPE@Pension","4.1 /5",1,22059,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",34,"0.2 miles","City centre","2.9 miles","Donauturm","Innere Stadt",139,"price for 1 night","Vienna",4,3.5,54,"_ACCOM_TYPE@Hotel","3.5 /5",1,22061,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",6,"0.2 miles","City centre","2.7 miles","Donauturm","Innere Stadt",91,"price for 1 night","Vienna",3.5,NA,NA,"_ACCOM_TYPE@Apartment","3.2 /5",1,22063,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",102,"1.4 miles","City centre","3.6 miles","Donauturm","Josefstadt",79,"price for 1 night","Vienna",3,3.5,127,"_ACCOM_TYPE@Hotel","3.5 /5",1,22064,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",65,"1.1 miles","City centre","3.2 miles","Donauturm","Josefstadt",66,"price for 1 night","Vienna",4,3.5,85,"_ACCOM_TYPE@Pension","3.7 /5",1,22065,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",9,"1.1 miles","City centre","3.2 miles","Donauturm","Josefstadt",100,"price for 1 night","Vienna",3,4,17,"_ACCOM_TYPE@Apartment","3 /5",1,22066,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",11,"1.3 miles","City centre","3.4 miles","Donauturm","Josefstadt",75,"price for 1 night","Vienna",2.5,3.5,33,"_ACCOM_TYPE@Pension","3 /5",1,22067,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",51,"1.2 miles","City centre","3.3 miles","Donauturm","Josefstadt",73,"price for 1 night","Vienna",2,3,87,"_ACCOM_TYPE@Pension","3.5 /5",1,22068,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",298,"0.8 miles","City centre","3.4 miles","Donauturm","Josefstadt",127,"price for 1 night","Vienna",5,4,876,"_ACCOM_TYPE@Hotel","4.1 /5",1,22069,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",354,"0.9 miles","City centre","3.4 miles","Donauturm","Josefstadt",110,"price for 1 night","Vienna",3,4,419,"_ACCOM_TYPE@Hotel","4.1 /5",0,22071,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",92,"0.9 miles","City centre","3.3 miles","Donauturm","Josefstadt",88,"price for 1 night","Vienna",3,4,509,"_ACCOM_TYPE@Hotel","4.4 /5",1,22072,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",66,"1.2 miles","City centre","3.5 miles","Donauturm","Josefstadt",59,"price for 1 night","Vienna",3,4,88,"_ACCOM_TYPE@Pension","3.7 /5",0,22073,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",NA,"1.6 miles","City centre","3.8 miles","Donauturm","Josefstadt",355,"price for 1 night","Vienna",4,NA,NA,"_ACCOM_TYPE@Apartment",NA,1,22074,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",128,"1.6 miles","City centre","3.7 miles","Donauturm","Josefstadt",59,"price for 1 night","Vienna",3,4,967,"_ACCOM_TYPE@Hotel","3.9 /5",1,22075,1,"50%-75% offer",2017,11,0,0
+"Austria","Vienna",530,"0.9 miles","City centre","3.4 miles","Donauturm","Josefstadt",119,"price for 1 night","Vienna",4,4,1358,"_ACCOM_TYPE@Hotel","4 /5",0,22076,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",342,"0.9 miles","City centre","3.4 miles","Donauturm","Josefstadt",152,"price for 1 night","Vienna",4,4,1461,"_ACCOM_TYPE@Hotel","4.3 /5",0,22077,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",194,"1.0 mile","City centre","3.4 miles","Donauturm","Josefstadt",102,"price for 1 night","Vienna",4,4,346,"_ACCOM_TYPE@Hotel","4 /5",0,22078,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",1,"1.5 miles","City centre","3.5 miles","Donauturm","Josefstadt",363,"price for 1 night","Vienna",3.5,NA,NA,"_ACCOM_TYPE@Apartment","5 /5",1,22079,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",63,"1.1 miles","City centre","3.4 miles","Donauturm","Josefstadt",54,"price for 1 night","Vienna",3,3,85,"_ACCOM_TYPE@Hotel","3.2 /5",1,22080,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",67,"1.1 miles","City centre","3.3 miles","Donauturm","Josefstadt",101,"price for 1 night","Vienna",3,4,44,"_ACCOM_TYPE@Apartment","4 /5",1,22081,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",84,"0.9 miles","City centre","3.5 miles","Donauturm","Josefstadt",75,"price for 1 night","Vienna",2,4.5,304,"_ACCOM_TYPE@Hotel","4 /5",1,22082,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",30,"0.9 miles","City centre","3.5 miles","Donauturm","Josefstadt",73,"price for 1 night","Vienna",2,4,103,"_ACCOM_TYPE@Hotel","3.9 /5",1,22083,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",169,"1.0 mile","City centre","3.4 miles","Donauturm","Josefstadt",94,"price for 1 night","Vienna",3,4,452,"_ACCOM_TYPE@Hotel","4.1 /5",1,22084,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",65,"1.1 miles","City centre","3.3 miles","Donauturm","Josefstadt",64,"price for 1 night","Vienna",4,4,251,"_ACCOM_TYPE@Pension","3.5 /5",1,22085,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",91,"1.0 mile","City centre","3.3 miles","Donauturm","Josefstadt",81,"price for 1 night","Vienna",3.5,3.5,260,"_ACCOM_TYPE@Apart-hotel","3.7 /5",0,22086,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",1,"1.6 miles","City centre","4.0 miles","Donauturm","Josefstadt",162,"price for 1 night","Vienna",3,NA,NA,"_ACCOM_TYPE@Apartment","4 /5",1,22087,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",765,"0.9 miles","City centre","3.5 miles","Donauturm","Josefstadt",115,"price for 1 night","Vienna",4,4.5,2150,"_ACCOM_TYPE@Hotel","4.5 /5",0,22088,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",80,"1.2 miles","City centre","3.8 miles","Donauturm","Josefstadt",101,"price for 1 night","Vienna",4,4.5,90,"_ACCOM_TYPE@Apartment","4.4 /5",1,22089,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",43,"0.9 miles","City centre","3.2 miles","Donauturm","Josefstadt",68,"price for 1 night","Vienna",3,3.5,182,"_ACCOM_TYPE@Hotel","3.7 /5",1,22090,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",78,"0.4 miles","City centre","3.2 miles","Donauturm","Kaerntner Strasse",354,"price for 1 night","Vienna",5,4.5,1504,"_ACCOM_TYPE@Hotel","4.5 /5",0,22092,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",184,"0.2 miles","City centre","3.0 miles","Donauturm","Kaerntner Strasse",153,"price for 1 night","Vienna",4,4,700,"_ACCOM_TYPE@Hotel","4.1 /5",1,22093,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",276,"0.2 miles","City centre","3.0 miles","Donauturm","Kaerntner Strasse",202,"price for 1 night","Vienna",5,4,615,"_ACCOM_TYPE@Hotel","4.3 /5",1,22094,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",313,"0.3 miles","City centre","3.1 miles","Donauturm","Kaerntner Strasse",169,"price for 1 night","Vienna",4,4,760,"_ACCOM_TYPE@Hotel","4.1 /5",1,22095,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",323,"0.5 miles","City centre","3.3 miles","Donauturm","Kaerntner Strasse",182,"price for 1 night","Vienna",4,4.5,327,"_ACCOM_TYPE@Hotel","4.5 /5",0,22097,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",NA,"0.1 miles","City centre","2.9 miles","Donauturm","Kaerntner Strasse",193,"price for 1 night","Vienna",3,NA,NA,"_ACCOM_TYPE@Apartment",NA,1,22098,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",90,"0.2 miles","City centre","3.0 miles","Donauturm","Kaerntner Strasse",138,"price for 1 night","Vienna",4,4.5,408,"_ACCOM_TYPE@Pension","4.1 /5",1,22099,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",140,"0.4 miles","City centre","3.1 miles","Donauturm","Kaerntner Strasse",527,"price for 1 night","Vienna",5,5,1748,"_ACCOM_TYPE@Hotel","4.8 /5",1,22100,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",512,"0.1 miles","City centre","2.8 miles","Donauturm","Kaerntner Strasse",142,"price for 1 night","Vienna",4,4,837,"_ACCOM_TYPE@Hotel","4.4 /5",0,22101,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",NA,"0.4 miles","City centre","3.1 miles","Donauturm","Kaerntner Strasse",98,"price for 1 night","Vienna",3.5,NA,NA,"_ACCOM_TYPE@Apartment",NA,1,22102,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",340,"0.6 miles","City centre","3.2 miles","Donauturm","Landstrasse",110,"price for 1 night","Vienna",4,4.5,2718,"_ACCOM_TYPE@Hotel","4.3 /5",0,22104,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",34,"1.9 miles","City centre","3.2 miles","Donauturm","Landstrasse",82,"price for 1 night","Vienna",3.5,4,25,"_ACCOM_TYPE@Apartment","4.1 /5",1,22107,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",26,"0.9 miles","City centre","2.4 miles","Donauturm","Landstrasse",91,"price for 1 night","Vienna",3.5,NA,NA,"_ACCOM_TYPE@Apartment","2.5 /5",1,22108,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",NA,"1.6 miles","City centre","3.0 miles","Donauturm","Landstrasse",150,"price for 1 night","Vienna",3.5,NA,NA,"_ACCOM_TYPE@Apartment",NA,1,22109,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",97,"1.7 miles","City centre","3.0 miles","Donauturm","Landstrasse",83,"price for 1 night","Vienna",3.5,4.5,35,"_ACCOM_TYPE@Apartment","4.4 /5",1,22110,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",11,"1.8 miles","City centre","3.1 miles","Donauturm","Landstrasse",95,"price for 1 night","Vienna",4.5,NA,NA,"_ACCOM_TYPE@Apartment","4 /5",1,22111,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",15,"1.4 miles","City centre","2.8 miles","Donauturm","Landstrasse",131,"price for 1 night","Vienna",3,NA,NA,"_ACCOM_TYPE@Apartment","3.7 /5",0,22112,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",84,"1.1 miles","City centre","2.8 miles","Donauturm","Landstrasse",162,"price for 1 night","Vienna",4,5,610,"_ACCOM_TYPE@Bed and breakfast","4.8 /5",1,22113,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",152,"0.5 miles","City centre","3.0 miles","Donauturm","Landstrasse",177,"price for 1 night","Vienna",5,4,2015,"_ACCOM_TYPE@Hotel","4.3 /5",0,22114,1,"50%-75% offer",2017,11,0,0
+"Austria","Vienna",3,"1.5 miles","City centre","3.6 miles","Donauturm","Landstrasse",122,"price for 1 night","Vienna",2,NA,NA,"_ACCOM_TYPE@Apartment","4 /5",1,22115,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",25,"1.6 miles","City centre","3.7 miles","Donauturm","Landstrasse",79,"price for 1 night","Vienna",3,NA,NA,"_ACCOM_TYPE@Apartment","2 /5",1,22116,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",181,"1.4 miles","City centre","3.1 miles","Donauturm","Landstrasse",82,"price for 1 night","Vienna",4,4,395,"_ACCOM_TYPE@Hotel","4 /5",0,22117,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",359,"1.7 miles","City centre","3.3 miles","Donauturm","Landstrasse",82,"price for 1 night","Vienna",4,4,717,"_ACCOM_TYPE@Hotel","4.1 /5",1,22118,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",160,"1.8 miles","City centre","3.4 miles","Donauturm","Landstrasse",66,"price for 1 night","Vienna",3,3.5,203,"_ACCOM_TYPE@Hotel","3.9 /5",0,22119,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",303,"0.8 miles","City centre","2.7 miles","Donauturm","Landstrasse",169,"price for 1 night","Vienna",4,4,1208,"_ACCOM_TYPE@Hotel","4.1 /5",0,22120,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",254,"0.8 miles","City centre","2.7 miles","Donauturm","Landstrasse",59,"price for 1 night","Vienna",3,3.5,189,"_ACCOM_TYPE@Guest House","3.7 /5",1,22122,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",173,"1.5 miles","City centre","3.8 miles","Donauturm","Landstrasse",109,"price for 1 night","Vienna",4,4,666,"_ACCOM_TYPE@Hotel","4.1 /5",0,22123,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",114,"0.7 miles","City centre","2.6 miles","Donauturm","Landstrasse",104,"price for 1 night","Vienna",3,3,72,"_ACCOM_TYPE@Hotel","3.4 /5",1,22125,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",249,"0.9 miles","City centre","2.5 miles","Donauturm","Landstrasse",145,"price for 1 night","Vienna",3.5,4.5,730,"_ACCOM_TYPE@Hotel","4.3 /5",0,22126,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",1,"1.4 miles","City centre","3.6 miles","Donauturm","Landstrasse",58,"price for 1 night","Vienna",3.5,NA,NA,"_ACCOM_TYPE@Apartment","2 /5",1,22127,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",6,"1.3 miles","City centre","3.4 miles","Donauturm","Landstrasse",107,"price for 1 night","Vienna",4,NA,NA,"_ACCOM_TYPE@Vacation home Condo","4.3 /5",1,22129,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",13,"0.8 miles","City centre","2.1 miles","Donauturm","Landstrasse",85,"price for 1 night","Vienna",3,3.5,183,"_ACCOM_TYPE@Hotel","3.5 /5",1,22130,1,"50%-75% offer",2017,11,0,0
+"Austria","Vienna",18,"0.7 miles","City centre","2.2 miles","Donauturm","Landstrasse",184,"price for 1 night","Vienna",4,4,5,"_ACCOM_TYPE@Apartment","4.5 /5",1,22131,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",497,"1.0 mile","City centre","3.3 miles","Donauturm","Landstrasse",137,"price for 1 night","Vienna",4.5,4,1060,"_ACCOM_TYPE@Hotel","4.1 /5",0,22132,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",503,"1.1 miles","City centre","3.3 miles","Donauturm","Landstrasse",116,"price for 1 night","Vienna",4.5,4.5,1591,"_ACCOM_TYPE@Hotel","4.5 /5",0,22134,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",70,"1.1 miles","City centre","3.3 miles","Donauturm","Landstrasse",157,"price for 1 night","Vienna",2,3.5,52,"_ACCOM_TYPE@Apartment","3.7 /5",0,22135,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",109,"1.3 miles","City centre","3.3 miles","Donauturm","Landstrasse",110,"price for 1 night","Vienna",3,3.5,529,"_ACCOM_TYPE@Hotel","3.7 /5",1,22136,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",171,"0.6 miles","City centre","3.0 miles","Donauturm","Landstrasse",134,"price for 1 night","Vienna",4,4.5,343,"_ACCOM_TYPE@Hotel","4.3 /5",1,22138,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",79,"1.3 miles","City centre","3.3 miles","Donauturm","Landstrasse",79,"price for 1 night","Vienna",4,3.5,77,"_ACCOM_TYPE@Hotel","3.7 /5",1,22140,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",13,"1.4 miles","City centre","3.3 miles","Donauturm","Landstrasse",143,"price for 1 night","Vienna",3,NA,NA,"_ACCOM_TYPE@Apartment","4.5 /5",1,22141,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",281,"1.0 mile","City centre","3.2 miles","Donauturm","Landstrasse",132,"price for 1 night","Vienna",4,4,1403,"_ACCOM_TYPE@Hotel","4.1 /5",0,22142,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",108,"1.3 miles","City centre","3.5 miles","Donauturm","Landstrasse",68,"price for 1 night","Vienna",4,4,162,"_ACCOM_TYPE@Apartment","4 /5",1,22143,1,"50%-75% offer",2017,11,0,0
+"Austria","Vienna",267,"0.6 miles","City centre","2.3 miles","Donauturm","Leopoldstadt",128,"price for 1 night","Vienna",4,4,1437,"_ACCOM_TYPE@Hotel","4.1 /5",0,22144,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",183,"1.5 miles","City centre","1.6 miles","Donauturm","Leopoldstadt",99,"price for 1 night","Vienna",3,4.5,491,"_ACCOM_TYPE@Hotel","4.5 /5",0,22145,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",5,"0.9 miles","City centre","1.9 miles","Donauturm","Leopoldstadt",149,"price for 1 night","Vienna",2,NA,NA,"_ACCOM_TYPE@Apartment","2.2 /5",1,22148,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",136,"1.8 miles","City centre","1.0 mile","Donauturm","Leopoldstadt",86,"price for 1 night","Vienna",4,3.5,326,"_ACCOM_TYPE@Hotel","4 /5",0,22149,1,"50%-75% offer",2017,11,0,0
+"Austria","Vienna",11,"1.9 miles","City centre","1.4 miles","Donauturm","Leopoldstadt",155,"price for 1 night","Vienna",3,4,28,"_ACCOM_TYPE@Apartment","4.1 /5",0,22150,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",242,"1.0 mile","City centre","1.9 miles","Donauturm","Leopoldstadt",63,"price for 1 night","Vienna",3,3,183,"_ACCOM_TYPE@Hotel","3.4 /5",1,22152,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",81,"0.6 miles","City centre","2.3 miles","Donauturm","Leopoldstadt",157,"price for 1 night","Vienna",2,3.5,12,"_ACCOM_TYPE@Apartment","3.7 /5",0,22153,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",16,"0.6 miles","City centre","2.2 miles","Donauturm","Leopoldstadt",134,"price for 1 night","Vienna",3.5,4.5,70,"_ACCOM_TYPE@Hotel","4 /5",1,22155,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",6,"1.7 miles","City centre","1.4 miles","Donauturm","Leopoldstadt",141,"price for 1 night","Vienna",5,NA,NA,"_ACCOM_TYPE@Apartment","4.3 /5",1,22156,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",122,"0.9 miles","City centre","1.9 miles","Donauturm","Leopoldstadt",79,"price for 1 night","Vienna",3,4,290,"_ACCOM_TYPE@Hotel","3.7 /5",0,22157,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",250,"0.5 miles","City centre","2.3 miles","Donauturm","Leopoldstadt",138,"price for 1 night","Vienna",4,4,1023,"_ACCOM_TYPE@Hotel","4 /5",0,22158,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",603,"1.0 mile","City centre","1.8 miles","Donauturm","Leopoldstadt",113,"price for 1 night","Vienna",4,4.5,1516,"_ACCOM_TYPE@Hotel","4.5 /5",1,22159,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",25,"1.5 miles","City centre","1.3 miles","Donauturm","Leopoldstadt",171,"price for 1 night","Vienna",3,NA,NA,"_ACCOM_TYPE@Apartment","3.5 /5",1,22160,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",52,"1.5 miles","City centre","1.4 miles","Donauturm","Leopoldstadt",56,"price for 1 night","Vienna",2,4,1666,"_ACCOM_TYPE@Hotel","3.5 /5",0,22161,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",152,"1.5 miles","City centre","1.4 miles","Donauturm","Leopoldstadt",84,"price for 1 night","Vienna",3,4,1249,"_ACCOM_TYPE@Hotel","3.9 /5",0,22162,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",293,"1.1 miles","City centre","2.0 miles","Donauturm","Leopoldstadt",72,"price for 1 night","Vienna",2,4.5,302,"_ACCOM_TYPE@Hotel","4 /5",0,22163,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",1,"0.7 miles","City centre","2.2 miles","Donauturm","Leopoldstadt",587,"price for 1 night","Vienna",5,5,7,"_ACCOM_TYPE@Hotel","1 /5",1,22164,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",84,"0.9 miles","City centre","2.1 miles","Donauturm","Leopoldstadt",68,"price for 1 night","Vienna",3,4,129,"_ACCOM_TYPE@Hotel","4 /5",1,22165,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",208,"1.5 miles","City centre","1.4 miles","Donauturm","Leopoldstadt",102,"price for 1 night","Vienna",3.5,4,281,"_ACCOM_TYPE@Hotel","3.9 /5",0,22166,1,"50%-75% offer",2017,11,0,0
+"Austria","Vienna",29,"1.5 miles","City centre","1.4 miles","Donauturm","Leopoldstadt",96,"price for 1 night","Vienna",3,3.5,7,"_ACCOM_TYPE@Apartment","3.4 /5",1,22167,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",57,"0.9 miles","City centre","1.9 miles","Donauturm","Leopoldstadt",81,"price for 1 night","Vienna",1,3.5,141,"_ACCOM_TYPE@Hotel","3.7 /5",0,22168,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",267,"1.6 miles","City centre","1.7 miles","Donauturm","Leopoldstadt",82,"price for 1 night","Vienna",3,4,727,"_ACCOM_TYPE@Hotel","4.1 /5",0,22169,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",275,"1.1 miles","City centre","1.7 miles","Donauturm","Leopoldstadt",66,"price for 1 night","Vienna",3,4,407,"_ACCOM_TYPE@Hotel","4 /5",1,22170,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",23,"0.8 miles","City centre","2.2 miles","Donauturm","Leopoldstadt",87,"price for 1 night","Vienna",3,4,51,"_ACCOM_TYPE@Apartment","3.9 /5",1,22171,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",NA,"0.6 miles","City centre","2.3 miles","Donauturm","Leopoldstadt",364,"price for 1 night","Vienna",4,NA,NA,"_ACCOM_TYPE@Apartment",NA,1,22173,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",240,"0.4 miles","City centre","2.4 miles","Donauturm","Leopoldstadt",240,"price for 1 night","Vienna",5,4.5,2098,"_ACCOM_TYPE@Hotel","4.5 /5",0,22175,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",374,"0.8 miles","City centre","2.1 miles","Donauturm","Leopoldstadt",113,"price for 1 night","Vienna",3,4.5,1686,"_ACCOM_TYPE@Hotel","4.5 /5",0,22176,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",468,"1.0 mile","City centre","1.9 miles","Donauturm","Leopoldstadt",106,"price for 1 night","Vienna",3,4.5,1449,"_ACCOM_TYPE@Hotel","4.5 /5",1,22177,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",422,"1.6 miles","City centre","1.2 miles","Donauturm","Leopoldstadt",89,"price for 1 night","Vienna",3,4,1580,"_ACCOM_TYPE@Hotel","4.1 /5",0,22179,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",307,"0.9 miles","City centre","2.2 miles","Donauturm","Leopoldstadt",61,"price for 1 night","Vienna",2,4,1027,"_ACCOM_TYPE@Hotel","4 /5",0,22180,1,"50%-75% offer",2017,11,0,0
+"Austria","Vienna",2,"0.8 miles","City centre","2.3 miles","Donauturm","Leopoldstadt",92,"price for 1 night","Vienna",3.5,NA,NA,"_ACCOM_TYPE@Apartment","4.5 /5",1,22181,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",527,"0.8 miles","City centre","2.0 miles","Donauturm","Leopoldstadt",106,"price for 1 night","Vienna",4,4,739,"_ACCOM_TYPE@Hotel","4.1 /5",1,22182,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",637,"0.8 miles","City centre","2.0 miles","Donauturm","Leopoldstadt",100,"price for 1 night","Vienna",4,4,584,"_ACCOM_TYPE@Hotel","4 /5",1,22183,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",461,"0.7 miles","City centre","2.2 miles","Donauturm","Leopoldstadt",75,"price for 1 night","Vienna",3,4,827,"_ACCOM_TYPE@Hotel","4.1 /5",0,22184,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",3,"0.8 miles","City centre","2.2 miles","Donauturm","Leopoldstadt",84,"price for 1 night","Vienna",3,4,92,"_ACCOM_TYPE@Hotel","2.2 /5",1,22185,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",3,"0.8 miles","City centre","2.2 miles","Donauturm","Leopoldstadt",84,"price for 1 night","Vienna",3,4,92,"_ACCOM_TYPE@Hotel","2.2 /5",1,22185,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",104,"0.5 miles","City centre","2.3 miles","Donauturm","Leopoldstadt",151,"price for 1 night","Vienna",4,4.5,1272,"_ACCOM_TYPE@Hotel","4.6 /5",0,22187,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",90,"0.9 miles","City centre","1.9 miles","Donauturm","Leopoldstadt",87,"price for 1 night","Vienna",3,3.5,314,"_ACCOM_TYPE@Hotel","3.5 /5",0,22188,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",75,"0.5 miles","City centre","2.3 miles","Donauturm","Leopoldstadt",117,"price for 1 night","Vienna",4,4.5,836,"_ACCOM_TYPE@Hotel","4.4 /5",1,22189,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",139,"1.9 miles","City centre","1.9 miles","Donauturm","Leopoldstadt",120,"price for 1 night","Vienna",4,4,807,"_ACCOM_TYPE@Hotel","4.5 /5",0,22190,1,"50%-75% offer",2017,11,0,0
+"Austria","Vienna",NA,"0.8 miles","City centre","2.1 miles","Donauturm","Leopoldstadt",132,"price for 1 night","Vienna",3.5,NA,NA,"_ACCOM_TYPE@Apartment",NA,1,22191,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",41,"0.9 miles","City centre","1.9 miles","Donauturm","Leopoldstadt",68,"price for 1 night","Vienna",2.5,4,85,"_ACCOM_TYPE@Hotel","3.9 /5",0,22192,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",122,"1.9 miles","City centre","4.7 miles","Donauturm","Margareten",383,"price for 1 night","Vienna",3,4,382,"_ACCOM_TYPE@Hotel","4 /5",1,22193,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",6,"1.6 miles","City centre","4.4 miles","Donauturm","Margareten",160,"price for 1 night","Vienna",4,NA,NA,"_ACCOM_TYPE@Apartment","4.3 /5",1,22194,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",NA,"2.0 miles","City centre","4.8 miles","Donauturm","Margareten",135,"price for 1 night","Vienna",2,NA,NA,"_ACCOM_TYPE@Apartment",NA,1,22195,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",137,"2.0 miles","City centre","4.8 miles","Donauturm","Margareten",111,"price for 1 night","Vienna",4.5,4.5,659,"_ACCOM_TYPE@Hotel","4.5 /5",0,22196,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",144,"1.5 miles","City centre","4.3 miles","Donauturm","Margareten",174,"price for 1 night","Vienna",4,4.5,1650,"_ACCOM_TYPE@Hotel","4.3 /5",0,22198,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",80,"2.0 miles","City centre","4.7 miles","Donauturm","Margareten",63,"price for 1 night","Vienna",3,3.5,335,"_ACCOM_TYPE@Hotel","3.5 /5",0,22199,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",11,"1.4 miles","City centre","4.2 miles","Donauturm","Margareten",73,"price for 1 night","Vienna",3,NA,NA,"_ACCOM_TYPE@Apartment","4.3 /5",1,22200,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",58,"1.5 miles","City centre","4.3 miles","Donauturm","Margareten",100,"price for 1 night","Vienna",3.5,4.5,15,"_ACCOM_TYPE@Hotel","4.5 /5",0,22201,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",NA,"1.7 miles","City centre","4.4 miles","Donauturm","Margareten",162,"price for 1 night","Vienna",3.5,NA,NA,"_ACCOM_TYPE@Apartment",NA,1,22202,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",303,"1.4 miles","City centre","4.2 miles","Donauturm","Margareten",86,"price for 1 night","Vienna",4,3.5,1708,"_ACCOM_TYPE@Hotel","3.9 /5",0,22203,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",NA,"1.9 miles","City centre","4.7 miles","Donauturm","Margareten",103,"price for 1 night","Vienna",3,NA,NA,"_ACCOM_TYPE@Guest House",NA,1,22204,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",82,"1.8 miles","City centre","4.5 miles","Donauturm","Margareten",67,"price for 1 night","Vienna",3,4,909,"_ACCOM_TYPE@Hotel","4 /5",0,22205,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",248,"1.3 miles","City centre","4.1 miles","Donauturm","Margareten",129,"price for 1 night","Vienna",4,4,372,"_ACCOM_TYPE@Hotel","4.1 /5",0,22206,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",151,"1.9 miles","City centre","4.6 miles","Donauturm","Margareten",80,"price for 1 night","Vienna",3,4,161,"_ACCOM_TYPE@Apartment","4.1 /5",1,22208,1,"50%-75% offer",2017,11,0,0
+"Austria","Vienna",7,"1.9 miles","City centre","4.7 miles","Donauturm","Margareten",131,"price for 1 night","Vienna",2,NA,NA,"_ACCOM_TYPE@Apartment","3.2 /5",1,22209,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",2,"1.6 miles","City centre","4.3 miles","Donauturm","Margareten",150,"price for 1 night","Vienna",3.5,NA,NA,"_ACCOM_TYPE@Apartment","5 /5",1,22210,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",3,"1.1 miles","City centre","3.9 miles","Donauturm","Mariahilf",159,"price for 1 night","Vienna",3,NA,NA,"_ACCOM_TYPE@Apartment","4.6 /5",1,22211,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",85,"1.3 miles","City centre","4.1 miles","Donauturm","Mariahilf",86,"price for 1 night","Vienna",3,4,383,"_ACCOM_TYPE@Hotel","4 /5",1,22212,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",3,"0.9 miles","City centre","3.6 miles","Donauturm","Mariahilf",96,"price for 1 night","Vienna",2,NA,NA,"_ACCOM_TYPE@Hotel","3.7 /5",1,22213,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",258,"0.7 miles","City centre","3.4 miles","Donauturm","Mariahilf",131,"price for 1 night","Vienna",4,4,682,"_ACCOM_TYPE@Hotel","4.1 /5",0,22214,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",13,"2.0 miles","City centre","4.7 miles","Donauturm","Mariahilf",103,"price for 1 night","Vienna",4,NA,NA,"_ACCOM_TYPE@Apartment","4.1 /5",1,22215,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",95,"1.0 mile","City centre","3.8 miles","Donauturm","Mariahilf",85,"price for 1 night","Vienna",2,4,618,"_ACCOM_TYPE@Hotel","4 /5",0,22217,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",44,"1.4 miles","City centre","4.2 miles","Donauturm","Mariahilf",80,"price for 1 night","Vienna",3,3.5,170,"_ACCOM_TYPE@Hotel","3.9 /5",0,22218,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",125,"1.1 miles","City centre","3.9 miles","Donauturm","Mariahilf",93,"price for 1 night","Vienna",4,4,410,"_ACCOM_TYPE@Hotel","4 /5",1,22219,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",5,"1.8 miles","City centre","4.6 miles","Donauturm","Mariahilf",81,"price for 1 night","Vienna",3.5,NA,NA,"_ACCOM_TYPE@Apartment","4.5 /5",1,22221,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",161,"1.9 miles","City centre","4.6 miles","Donauturm","Mariahilf",77,"price for 1 night","Vienna",3,4,2102,"_ACCOM_TYPE@Hotel","4 /5",0,22222,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",210,"0.8 miles","City centre","3.6 miles","Donauturm","Mariahilf",140,"price for 1 night","Vienna",4,5,1495,"_ACCOM_TYPE@Hotel","4.8 /5",1,22223,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",264,"1.0 mile","City centre","3.8 miles","Donauturm","Mariahilf",99,"price for 1 night","Vienna",4,4,1228,"_ACCOM_TYPE@Hotel","4 /5",1,22224,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",49,"1.1 miles","City centre","3.9 miles","Donauturm","Mariahilf",75,"price for 1 night","Vienna",4,4,151,"_ACCOM_TYPE@Pension","4.1 /5",1,22225,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",162,"1.4 miles","City centre","4.1 miles","Donauturm","Mariahilf",105,"price for 1 night","Vienna",4,4.5,716,"_ACCOM_TYPE@Hotel","4.4 /5",0,22226,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",581,"1.7 miles","City centre","4.4 miles","Donauturm","Mariahilf",100,"price for 1 night","Vienna",3.5,4.5,1414,"_ACCOM_TYPE@Hotel","4.5 /5",0,22227,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",55,"1.0 mile","City centre","3.8 miles","Donauturm","Mariahilf",89,"price for 1 night","Vienna",3,4,67,"_ACCOM_TYPE@Pension","3.7 /5",1,22228,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",39,"1.1 miles","City centre","3.9 miles","Donauturm","Mariahilf",82,"price for 1 night","Vienna",3,3.5,78,"_ACCOM_TYPE@Hotel","3.9 /5",0,22229,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",484,"1.8 miles","City centre","4.5 miles","Donauturm","Mariahilf",82,"price for 1 night","Vienna",4,4,1150,"_ACCOM_TYPE@Hotel","3.9 /5",0,22230,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",NA,"1.8 miles","City centre","4.5 miles","Donauturm","Mariahilf",88,"price for 1 night","Vienna",3,NA,NA,"_ACCOM_TYPE@Apartment",NA,1,22231,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",NA,"1.6 miles","City centre","4.4 miles","Donauturm","Mariahilf",150,"price for 1 night","Vienna",3,NA,NA,"_ACCOM_TYPE@Apartment",NA,1,22233,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",10,"1.6 miles","City centre","4.4 miles","Donauturm","Mariahilf",134,"price for 1 night","Vienna",2,NA,NA,"_ACCOM_TYPE@Apartment","3.7 /5",1,22234,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",45,"1.9 miles","City centre","4.7 miles","Donauturm","Mariahilf",87,"price for 1 night","Vienna",4,4,290,"_ACCOM_TYPE@Hotel","3.5 /5",0,22235,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",98,"1.6 miles","City centre","4.3 miles","Donauturm","Mariahilf",100,"price for 1 night","Vienna",4,3.5,372,"_ACCOM_TYPE@Hotel","3.7 /5",0,22236,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",239,"1.6 miles","City centre","4.3 miles","Donauturm","Mariahilf",84,"price for 1 night","Vienna",4,4,561,"_ACCOM_TYPE@Hotel","4.3 /5",0,22237,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",170,"0.9 miles","City centre","3.7 miles","Donauturm","Mariahilf",52,"price for 1 night","Vienna",2,4,112,"_ACCOM_TYPE@Hotel","3.7 /5",1,22238,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",100,"0.8 miles","City centre","3.5 miles","Donauturm","Neubau",98,"price for 1 night","Vienna",4,4,650,"_ACCOM_TYPE@Hotel","3.7 /5",1,22239,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",310,"0.7 miles","City centre","3.4 miles","Donauturm","Neubau",333,"price for 1 night","Vienna",5,5,1523,"_ACCOM_TYPE@Hotel","4.9 /5",0,22240,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",305,"1.8 miles","City centre","4.4 miles","Donauturm","Neubau",99,"price for 1 night","Vienna",3,4,1171,"_ACCOM_TYPE@Hotel","4.1 /5",0,22241,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",105,"1.5 miles","City centre","4.1 miles","Donauturm","Neubau",77,"price for 1 night","Vienna",3,4,98,"_ACCOM_TYPE@Bed and breakfast","4 /5",1,22243,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",6,"1.6 miles","City centre","4.3 miles","Donauturm","Neubau",160,"price for 1 night","Vienna",3.5,NA,NA,"_ACCOM_TYPE@Apartment","4.6 /5",1,22244,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",1,"1.6 miles","City centre","4.3 miles","Donauturm","Neubau",160,"price for 1 night","Vienna",3.5,NA,NA,"_ACCOM_TYPE@Apartment","5 /5",1,22245,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",141,"1.6 miles","City centre","4.2 miles","Donauturm","Neubau",76,"price for 1 night","Vienna",3,3.5,265,"_ACCOM_TYPE@Hotel","3.5 /5",0,22246,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",14,"1.6 miles","City centre","4.1 miles","Donauturm","Neubau",89,"price for 1 night","Vienna",3,4,36,"_ACCOM_TYPE@Bed and breakfast","4.4 /5",1,22247,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",6,"0.8 miles","City centre","3.6 miles","Donauturm","Neubau",113,"price for 1 night","Vienna",3,NA,NA,"_ACCOM_TYPE@Hotel","3.7 /5",1,22248,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",328,"0.9 miles","City centre","3.6 miles","Donauturm","Neubau",110,"price for 1 night","Vienna",4,4.5,2436,"_ACCOM_TYPE@Hotel","4.4 /5",0,22249,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",123,"1.0 mile","City centre","3.7 miles","Donauturm","Neubau",184,"price for 1 night","Vienna",4,4.5,2431,"_ACCOM_TYPE@Hotel","4.6 /5",0,22250,1,"50%-75% offer",2017,11,0,0
+"Austria","Vienna",181,"1.7 miles","City centre","4.2 miles","Donauturm","Neubau",33,"price for 1 night","Vienna",2,3.5,308,"_ACCOM_TYPE@Hotel","3.2 /5",0,22251,1,"50%-75% offer",2017,11,0,0
+"Austria","Vienna",77,"1.0 mile","City centre","3.8 miles","Donauturm","Neubau",1012,"price for 1 night","Vienna",3,4,364,"_ACCOM_TYPE@Hotel","4.3 /5",1,22252,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",308,"1.7 miles","City centre","4.4 miles","Donauturm","Neubau",99,"price for 1 night","Vienna",4,4,612,"_ACCOM_TYPE@Hotel","4.1 /5",0,22253,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",54,"0.8 miles","City centre","3.5 miles","Donauturm","Neubau",122,"price for 1 night","Vienna",3,4,143,"_ACCOM_TYPE@Hotel","3.9 /5",1,22254,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",544,"1.7 miles","City centre","4.3 miles","Donauturm","Neubau",122,"price for 1 night","Vienna",4,4,978,"_ACCOM_TYPE@Hotel","4.3 /5",0,22255,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",359,"1.7 miles","City centre","4.3 miles","Donauturm","Neubau",105,"price for 1 night","Vienna",4,4,816,"_ACCOM_TYPE@Hotel","4 /5",0,22256,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",3,"1.7 miles","City centre","4.2 miles","Donauturm","Neubau",98,"price for 1 night","Vienna",4,NA,NA,"_ACCOM_TYPE@Apartment","5 /5",1,22257,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",NA,"1.4 miles","City centre","4.1 miles","Donauturm","Neubau",92,"price for 1 night","Vienna",3.5,NA,NA,"_ACCOM_TYPE@Apartment",NA,1,22258,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",98,"1.4 miles","City centre","4.0 miles","Donauturm","Neubau",109,"price for 1 night","Vienna",4,4,582,"_ACCOM_TYPE@Hotel","4 /5",0,22259,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",54,"1.2 miles","City centre","3.9 miles","Donauturm","Neubau",105,"price for 1 night","Vienna",3,4.5,412,"_ACCOM_TYPE@Hotel","4.1 /5",1,22260,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",22,"2.0 miles","City centre","4.4 miles","Donauturm","Ottakring",133,"price for 1 night","Vienna",2,NA,NA,"_ACCOM_TYPE@Apartment","3.2 /5",1,22265,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",4,"2.3 miles","City centre","4.6 miles","Donauturm","Ottakring",133,"price for 1 night","Vienna",2.5,NA,NA,"_ACCOM_TYPE@Apartment","4.3 /5",1,22266,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",69,"3.1 miles","City centre","5.2 miles","Donauturm","Ottakring",52,"price for 1 night","Vienna",3,3.5,193,"_ACCOM_TYPE@Hotel","3.5 /5",0,22268,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",17,"1.8 miles","City centre","4.1 miles","Donauturm","Ottakring",134,"price for 1 night","Vienna",2,NA,NA,"_ACCOM_TYPE@Apartment","3.7 /5",1,22269,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",83,"4.1 miles","City centre","6.0 miles","Donauturm","Ottakring",80,"price for 1 night","Vienna",4,4,265,"_ACCOM_TYPE@Hotel","4 /5",0,22271,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",36,"2.9 miles","City centre","5.3 miles","Donauturm","Rudolfsheim-Funfhaus",91,"price for 1 night","Vienna",2,4,42,"_ACCOM_TYPE@Hotel","4 /5",1,22272,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",NA,"2.6 miles","City centre","5.2 miles","Donauturm","Rudolfsheim-Funfhaus",129,"price for 1 night","Vienna",4,NA,NA,"_ACCOM_TYPE@Apartment",NA,1,22273,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",153,"1.9 miles","City centre","4.6 miles","Donauturm","Rudolfsheim-Funfhaus",47,"price for 1 night","Vienna",2,3.5,549,"_ACCOM_TYPE@Hostel","3.7 /5",1,22274,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",136,"1.8 miles","City centre","4.4 miles","Donauturm","Rudolfsheim-Funfhaus",70,"price for 1 night","Vienna",4,3.5,1020,"_ACCOM_TYPE@Hotel","3.9 /5",0,22275,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",17,"2.3 miles","City centre","4.9 miles","Donauturm","Rudolfsheim-Funfhaus",88,"price for 1 night","Vienna",3.5,NA,NA,"_ACCOM_TYPE@Apartment","2.2 /5",1,22276,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",156,"1.9 miles","City centre","4.5 miles","Donauturm","Rudolfsheim-Funfhaus",136,"price for 1 night","Vienna",3,4.5,1452,"_ACCOM_TYPE@Hotel","4.5 /5",0,22277,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",81,"2.1 miles","City centre","4.8 miles","Donauturm","Rudolfsheim-Funfhaus",80,"price for 1 night","Vienna",3,4,464,"_ACCOM_TYPE@Hotel","4.1 /5",1,22279,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",40,"2.3 miles","City centre","4.9 miles","Donauturm","Rudolfsheim-Funfhaus",131,"price for 1 night","Vienna",2,NA,NA,"_ACCOM_TYPE@Apartment","3.9 /5",1,22280,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",54,"2.4 miles","City centre","4.9 miles","Donauturm","Rudolfsheim-Funfhaus",81,"price for 1 night","Vienna",3,4.5,635,"_ACCOM_TYPE@Hotel","4.1 /5",1,22281,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",13,"2.5 miles","City centre","5.1 miles","Donauturm","Rudolfsheim-Funfhaus",133,"price for 1 night","Vienna",2,NA,NA,"_ACCOM_TYPE@Apartment","3.7 /5",0,22284,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",225,"3.6 miles","City centre","6.1 miles","Donauturm","Rudolfsheim-Funfhaus",66,"price for 1 night","Vienna",4,3.5,388,"_ACCOM_TYPE@Hotel","3.7 /5",1,22285,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",144,"2.8 miles","City centre","5.5 miles","Donauturm","Rudolfsheim-Funfhaus",77,"price for 1 night","Vienna",3,4,241,"_ACCOM_TYPE@Hotel","4 /5",0,22286,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",2,"1.8 miles","City centre","4.4 miles","Donauturm","Rudolfsheim-Funfhaus",121,"price for 1 night","Vienna",3,NA,NA,"_ACCOM_TYPE@Apartment","4.5 /5",1,22287,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",525,"2.1 miles","City centre","4.8 miles","Donauturm","Rudolfsheim-Funfhaus",69,"price for 1 night","Vienna",4,3.5,399,"_ACCOM_TYPE@Hotel","3.7 /5",0,22288,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",113,"2.1 miles","City centre","4.8 miles","Donauturm","Rudolfsheim-Funfhaus",83,"price for 1 night","Vienna",3,4,260,"_ACCOM_TYPE@Hotel","4.1 /5",0,22289,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",10,"1.9 miles","City centre","4.6 miles","Donauturm","Rudolfsheim-Funfhaus",53,"price for 1 night","Vienna",2,4.5,604,"_ACCOM_TYPE@Hostel","4.1 /5",1,22290,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",2,"2.7 miles","City centre","5.3 miles","Donauturm","Rudolfsheim-Funfhaus",133,"price for 1 night","Vienna",3.5,NA,NA,"_ACCOM_TYPE@Apartment","4 /5",1,22291,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",78,"1.8 miles","City centre","4.5 miles","Donauturm","Rudolfsheim-Funfhaus",77,"price for 1 night","Vienna",4,3,212,"_ACCOM_TYPE@Hotel","3.9 /5",0,22293,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",69,"2.0 miles","City centre","4.7 miles","Donauturm","Rudolfsheim-Funfhaus",48,"price for 1 night","Vienna",2,4.5,945,"_ACCOM_TYPE@Hostel","4.5 /5",1,22294,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",314,"2.9 miles","City centre","5.5 miles","Donauturm","Rudolfsheim-Funfhaus",142,"price for 1 night","Vienna",4.5,4,831,"_ACCOM_TYPE@Hotel","4.3 /5",0,22295,1,"50%-75% offer",2017,11,0,0
+"Austria","Vienna",134,"1.7 miles","City centre","4.3 miles","Donauturm","Rudolfsheim-Funfhaus",121,"price for 1 night","Vienna",4,4,7,"_ACCOM_TYPE@Hotel","3.9 /5",0,22296,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",38,"3.6 miles","City centre","6.2 miles","Donauturm","Schonbrunn",68,"price for 1 night","Vienna",3,4,116,"_ACCOM_TYPE@Hotel","3.5 /5",1,22299,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",65,"2.0 miles","City centre","4.8 miles","Donauturm","Schonbrunn",63,"price for 1 night","Vienna",3,3.5,199,"_ACCOM_TYPE@Hotel","3.7 /5",0,22300,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",92,"2.1 miles","City centre","4.9 miles","Donauturm","Schonbrunn",101,"price for 1 night","Vienna",3,4.5,187,"_ACCOM_TYPE@Hotel","4.5 /5",0,22301,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",100,"2.6 miles","City centre","5.4 miles","Donauturm","Schonbrunn",75,"price for 1 night","Vienna",4,3.5,309,"_ACCOM_TYPE@Hotel","3.7 /5",0,22302,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",910,"3.6 miles","City centre","6.2 miles","Donauturm","Schonbrunn",156,"price for 1 night","Vienna",4,4,1122,"_ACCOM_TYPE@Hotel","4.3 /5",0,22303,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",79,"3.7 miles","City centre","6.3 miles","Donauturm","Schonbrunn",56,"price for 1 night","Vienna",3,4,177,"_ACCOM_TYPE@Hotel","3.5 /5",0,22304,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",1541,"2.4 miles","City centre","5.2 miles","Donauturm","Schonbrunn",82,"price for 1 night","Vienna",3.5,4.5,1245,"_ACCOM_TYPE@Hotel","4.5 /5",0,22306,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",183,"2.6 miles","City centre","5.4 miles","Donauturm","Schonbrunn",82,"price for 1 night","Vienna",4,4,1148,"_ACCOM_TYPE@Hotel","4.4 /5",0,22307,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",30,"4.1 miles","City centre","6.8 miles","Donauturm","Schonbrunn",106,"price for 1 night","Vienna",3,3,69,"_ACCOM_TYPE@Hotel","3.7 /5",1,22309,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",24,"3.1 miles","City centre","5.9 miles","Donauturm","Schonbrunn",85,"price for 1 night","Vienna",3,3,114,"_ACCOM_TYPE@Hotel","2.7 /5",1,22310,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",18,"2.6 miles","City centre","5.4 miles","Donauturm","Schonbrunn",83,"price for 1 night","Vienna",3.5,NA,NA,"_ACCOM_TYPE@Hotel","4.5 /5",1,22311,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",140,"2.9 miles","City centre","5.6 miles","Donauturm","Schonbrunn",92,"price for 1 night","Vienna",4,4,753,"_ACCOM_TYPE@Hotel","4.1 /5",0,22312,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",14,"2.3 miles","City centre","5.1 miles","Donauturm","Schonbrunn",169,"price for 1 night","Vienna",3,NA,NA,"_ACCOM_TYPE@Apartment","4.3 /5",1,22314,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",8,"2.7 miles","City centre","5.4 miles","Donauturm","Schonbrunn",77,"price for 1 night","Vienna",3,4.5,79,"_ACCOM_TYPE@Guest House","3.5 /5",1,22315,1,"15-50% offer",2017,11,0,0
+"Austria","Schwechat",333,"11 miles","City centre","11 miles","Donauturm","Schwechat",92,"price for 1 night","Vienna",3,4,196,"_ACCOM_TYPE@Hotel","4.3 /5",0,22317,0,"0% no offer",2017,11,0,0
+"Austria","Schwechat",923,"11 miles","City centre","11 miles","Donauturm","Schwechat",166,"price for 1 night","Vienna",4,4,2400,"_ACCOM_TYPE@Hotel","4 /5",0,22318,1,"1-15% offer",2017,11,0,0
+"Austria","Schwechat",122,"7.7 miles","City centre","7.9 miles","Donauturm","Schwechat",137,"price for 1 night","Vienna",4,3.5,191,"_ACCOM_TYPE@Hotel","3.7 /5",1,22319,0,"0% no offer",2017,11,0,0
+"Austria","Schwechat",26,"7.7 miles","City centre","7.9 miles","Donauturm","Schwechat",99,"price for 1 night","Vienna",3,3.5,191,"_ACCOM_TYPE@Hotel","3.7 /5",0,22320,0,"0% no offer",2017,11,0,0
+"Austria","Schwechat",73,"7.8 miles","City centre","8.0 miles","Donauturm","Schwechat",140,"price for 1 night","Vienna",4,4,127,"_ACCOM_TYPE@Hotel","3.5 /5",1,22321,0,"0% no offer",2017,11,0,0
+"Austria","Schwechat",161,"6.3 miles","City centre","6.9 miles","Donauturm","Schwechat",80,"price for 1 night","Vienna",3,3.5,247,"_ACCOM_TYPE@Hotel","3.2 /5",0,22322,0,"0% no offer",2017,11,0,0
+"Austria","Schwechat",39,"6.7 miles","City centre","8.2 miles","Donauturm","Schwechat",91,"price for 1 night","Vienna",3,3.5,161,"_ACCOM_TYPE@Hotel","3.5 /5",0,22323,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",NA,"4.3 miles","City centre","6.7 miles","Donauturm","Vienna",105,"price for 1 night","Vienna",3.5,NA,NA,"_ACCOM_TYPE@Apartment",NA,1,22324,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",2,"2.6 miles","City centre","5.4 miles","Donauturm","Vienna",130,"price for 1 night","Vienna",2,NA,NA,"_ACCOM_TYPE@Apartment","4 /5",1,22325,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",16,"4.7 miles","City centre","7.0 miles","Donauturm","Vienna",110,"price for 1 night","Vienna",3,4.5,29,"_ACCOM_TYPE@Pension","4.3 /5",1,22326,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",124,"2.0 miles","City centre","3.4 miles","Donauturm","Vienna",117,"price for 1 night","Vienna",4,4,192,"_ACCOM_TYPE@Hotel","4 /5",0,22328,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",9,"5.4 miles","City centre","8.1 miles","Donauturm","Vienna",106,"price for 1 night","Vienna",4,4,12,"_ACCOM_TYPE@Pension","4.1 /5",1,22330,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",33,"3.9 miles","City centre","6.4 miles","Donauturm","Vienna",66,"price for 1 night","Vienna",3,3.5,129,"_ACCOM_TYPE@Hotel","3.7 /5",0,22331,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",16,"3.5 miles","City centre","1.3 miles","Donauturm","Vienna",266,"price for 1 night","Vienna",5,5,2,"_ACCOM_TYPE@Apartment","4.6 /5",1,22332,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",57,"2.4 miles","City centre","3.7 miles","Donauturm","Vienna",58,"price for 1 night","Vienna",2,3.5,1051,"_ACCOM_TYPE@Hotel","3.5 /5",0,22333,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",21,"3.7 miles","City centre","6.4 miles","Donauturm","Vienna",81,"price for 1 night","Vienna",3.5,3,12,"_ACCOM_TYPE@Hotel","4.1 /5",1,22334,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",160,"3.5 miles","City centre","6.2 miles","Donauturm","Vienna",109,"price for 1 night","Vienna",4,3.5,386,"_ACCOM_TYPE@Hotel","4 /5",0,22335,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",985,"2.3 miles","City centre","1.9 miles","Donauturm","Vienna",114,"price for 1 night","Vienna",4.5,4.5,2454,"_ACCOM_TYPE@Hotel","4.3 /5",0,22336,1,"50%-75% offer",2017,11,0,0
+"Austria","Vienna",69,"2.3 miles","City centre","1.1 miles","Donauturm","Vienna",125,"price for 1 night","Vienna",3.5,4,261,"_ACCOM_TYPE@Apart-hotel","4.4 /5",0,22337,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",51,"1.7 miles","City centre","1.8 miles","Donauturm","Vienna",69,"price for 1 night","Vienna",3,3.5,53,"_ACCOM_TYPE@Guest House","3.7 /5",1,22338,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",NA,"2.6 miles","City centre","2.3 miles","Donauturm","Vienna",69,"price for 1 night","Vienna",3,NA,NA,"_ACCOM_TYPE@Apartment",NA,1,22339,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",72,"3.1 miles","City centre","5.9 miles","Donauturm","Vienna",97,"price for 1 night","Vienna",4,4,277,"_ACCOM_TYPE@Hotel","4 /5",0,22340,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",65,"4.8 miles","City centre","7.3 miles","Donauturm","Vienna",74,"price for 1 night","Vienna",4,4,73,"_ACCOM_TYPE@Hotel","3.9 /5",1,22341,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",147,"3.7 miles","City centre","6.4 miles","Donauturm","Vienna",69,"price for 1 night","Vienna",4,3.5,320,"_ACCOM_TYPE@Hotel","3.7 /5",0,22342,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",45,"3.9 miles","City centre","6.6 miles","Donauturm","Vienna",83,"price for 1 night","Vienna",4,3.5,121,"_ACCOM_TYPE@Hotel","4 /5",0,22343,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",50,"3.9 miles","City centre","6.6 miles","Donauturm","Vienna",50,"price for 1 night","Vienna",3,4,12,"_ACCOM_TYPE@Hotel","3.9 /5",0,22344,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",27,"4.7 miles","City centre","7.4 miles","Donauturm","Vienna",130,"price for 1 night","Vienna",2,3.5,36,"_ACCOM_TYPE@Apartment","3.2 /5",0,22345,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",2,"3.7 miles","City centre","6.2 miles","Donauturm","Vienna",134,"price for 1 night","Vienna",3,NA,NA,"_ACCOM_TYPE@Apartment","3 /5",1,22346,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",12,"6.9 miles","City centre","9.6 miles","Donauturm","Vienna",134,"price for 1 night","Vienna",3,NA,NA,"_ACCOM_TYPE@Apartment","4 /5",1,22347,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",26,"3.7 miles","City centre","5.0 miles","Donauturm","Vienna",77,"price for 1 night","Vienna",3,3.5,21,"_ACCOM_TYPE@Hotel","4 /5",1,22348,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",28,"5.3 miles","City centre","7.6 miles","Donauturm","Vienna",102,"price for 1 night","Vienna",3,4.5,204,"_ACCOM_TYPE@Hotel","4 /5",0,22349,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",30,"2.5 miles","City centre","5.2 miles","Donauturm","Vienna",56,"price for 1 night","Vienna",3.5,3.5,88,"_ACCOM_TYPE@Apartment","3.2 /5",1,22350,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",1,"2.7 miles","City centre","5.4 miles","Donauturm","Vienna",185,"price for 1 night","Vienna",3,NA,NA,"_ACCOM_TYPE@Apartment","3 /5",1,22351,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",12,"6.6 miles","City centre","9.4 miles","Donauturm","Vienna",130,"price for 1 night","Vienna",3,4,20,"_ACCOM_TYPE@Hotel","4.4 /5",1,22353,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",171,"3.2 miles","City centre","4.5 miles","Donauturm","Vienna",78,"price for 1 night","Vienna",3,4,811,"_ACCOM_TYPE@Hotel","4.3 /5",0,22354,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",34,"3.3 miles","City centre","4.6 miles","Donauturm","Vienna",76,"price for 1 night","Vienna",3,4,61,"_ACCOM_TYPE@Hotel","3.7 /5",1,22355,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",69,"4.5 miles","City centre","5.2 miles","Donauturm","Vienna",68,"price for 1 night","Vienna",4,3.5,87,"_ACCOM_TYPE@Hotel","4 /5",1,22356,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",84,"2.7 miles","City centre","3.7 miles","Donauturm","Vienna",116,"price for 1 night","Vienna",4,4,493,"_ACCOM_TYPE@Hotel","4 /5",0,22358,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",212,"2.2 miles","City centre","3.8 miles","Donauturm","Vienna",172,"price for 1 night","Vienna",4,4,401,"_ACCOM_TYPE@Hotel","4.1 /5",1,22359,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",15,"5.2 miles","City centre","7.6 miles","Donauturm","Vienna",80,"price for 1 night","Vienna",2,3.5,187,"_ACCOM_TYPE@Hostel","3.2 /5",1,22361,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",12,"2.4 miles","City centre","3.9 miles","Donauturm","Vienna",87,"price for 1 night","Vienna",3,4,30,"_ACCOM_TYPE@Hotel","4 /5",1,22362,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",89,"4.6 miles","City centre","7.4 miles","Donauturm","Vienna",90,"price for 1 night","Vienna",3,3,78,"_ACCOM_TYPE@Hotel","3 /5",1,22363,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",74,"2.7 miles","City centre","4.2 miles","Donauturm","Vienna",100,"price for 1 night","Vienna",3.5,4,282,"_ACCOM_TYPE@Hotel","4.4 /5",1,22364,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",3,"3.1 miles","City centre","4.6 miles","Donauturm","Vienna",173,"price for 1 night","Vienna",2,NA,NA,"_ACCOM_TYPE@Apartment","3.2 /5",1,22365,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",44,"2.5 miles","City centre","4.1 miles","Donauturm","Vienna",92,"price for 1 night","Vienna",2,3.5,35,"_ACCOM_TYPE@Pension","3.2 /5",1,22366,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",6,"2.6 miles","City centre","5.3 miles","Donauturm","Vienna",133,"price for 1 night","Vienna",2,NA,NA,"_ACCOM_TYPE@Apartment","3.7 /5",1,22369,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",3,"5.1 miles","City centre","7.7 miles","Donauturm","Vienna",134,"price for 1 night","Vienna",3.5,NA,NA,"_ACCOM_TYPE@Apartment","3.2 /5",1,22370,1,"50%-75% offer",2017,11,0,0
+"Austria","Vienna",2,"5.2 miles","City centre","7.8 miles","Donauturm","Vienna",209,"price for 1 night","Vienna",3,NA,NA,"_ACCOM_TYPE@Apartment","4 /5",1,22371,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",44,"1.6 miles","City centre","1.8 miles","Donauturm","Vienna",66,"price for 1 night","Vienna",3,NA,NA,"_ACCOM_TYPE@Apartment","4.4 /5",1,22372,1,"75%+ offer ",2017,11,0,0
+"Austria","Vienna",35,"1.4 miles","City centre","2.2 miles","Donauturm","Vienna",114,"price for 1 night","Vienna",4,5,12,"_ACCOM_TYPE@Apartment","4.9 /5",1,22373,1,"50%-75% offer",2017,11,0,0
+"Austria","Voesendorf",38,"7.0 miles","City centre","9.7 miles","Donauturm","Voesendorf",89,"price for 1 night","Vienna",4,3,73,"_ACCOM_TYPE@Hotel","3.5 /5",0,22377,0,"0% no offer",2017,11,0,0
+"Austria","Voesendorf",115,"7.1 miles","City centre","9.9 miles","Donauturm","Voesendorf",92,"price for 1 night","Vienna",4,3.5,545,"_ACCOM_TYPE@Hotel","3.7 /5",0,22378,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",186,"1.9 miles","City centre","2.7 miles","Donauturm","Wahring",84,"price for 1 night","Vienna",3,4.5,982,"_ACCOM_TYPE@Hotel","4.4 /5",0,22380,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",27,"1.8 miles","City centre","3.2 miles","Donauturm","Wahring",124,"price for 1 night","Vienna",2,2.5,26,"_ACCOM_TYPE@Apartment","3.5 /5",1,22381,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",45,"2.1 miles","City centre","3.0 miles","Donauturm","Wahring",185,"price for 1 night","Vienna",4,4,142,"_ACCOM_TYPE@Hotel","4.4 /5",1,22382,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",168,"3.0 miles","City centre","3.2 miles","Donauturm","Wahring",85,"price for 1 night","Vienna",4,3.5,553,"_ACCOM_TYPE@Hotel","4 /5",0,22384,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",1,"1.9 miles","City centre","3.1 miles","Donauturm","Wahring",133,"price for 1 night","Vienna",2,NA,NA,"_ACCOM_TYPE@Apartment","4 /5",1,22385,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",77,"1.6 miles","City centre","4.0 miles","Donauturm","Wieden",110,"price for 1 night","Vienna",3.5,4.5,116,"_ACCOM_TYPE@Hotel","4.5 /5",0,22386,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",72,"1.6 miles","City centre","4.0 miles","Donauturm","Wieden",86,"price for 1 night","Vienna",3,4,89,"_ACCOM_TYPE@Hotel","4.3 /5",0,22387,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",158,"1.0 mile","City centre","3.6 miles","Donauturm","Wieden",118,"price for 1 night","Vienna",4,4,436,"_ACCOM_TYPE@Hotel","4.1 /5",0,22388,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",15,"0.9 miles","City centre","3.6 miles","Donauturm","Wieden",126,"price for 1 night","Vienna",3.5,NA,NA,"_ACCOM_TYPE@Hotel","4.5 /5",1,22389,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",291,"1.3 miles","City centre","3.9 miles","Donauturm","Wieden",92,"price for 1 night","Vienna",3,4,688,"_ACCOM_TYPE@Hotel","4.3 /5",0,22390,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",317,"0.8 miles","City centre","3.5 miles","Donauturm","Wieden",197,"price for 1 night","Vienna",4,4.5,1840,"_ACCOM_TYPE@Hotel","4.8 /5",1,22391,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",193,"1.3 miles","City centre","4.0 miles","Donauturm","Wieden",39,"price for 1 night","Vienna",2.5,3.5,69,"_ACCOM_TYPE@Guest House","3.5 /5",1,22393,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",280,"1.2 miles","City centre","3.9 miles","Donauturm","Wieden",135,"price for 1 night","Vienna",4,4,1121,"_ACCOM_TYPE@Hotel","4.5 /5",0,22394,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",47,"1.2 miles","City centre","3.7 miles","Donauturm","Wieden",125,"price for 1 night","Vienna",4,4.5,229,"_ACCOM_TYPE@Hotel","4.4 /5",0,22395,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",7,"1.0 mile","City centre","3.8 miles","Donauturm","Wieden",67,"price for 1 night","Vienna",2,4.5,1583,"_ACCOM_TYPE@Hostel","3.4 /5",0,22396,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",125,"0.8 miles","City centre","3.5 miles","Donauturm","Wieden",134,"price for 1 night","Vienna",4,4.5,615,"_ACCOM_TYPE@Hotel","4.5 /5",0,22397,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",34,"0.9 miles","City centre","3.7 miles","Donauturm","Wieden",91,"price for 1 night","Vienna",3,3.5,383,"_ACCOM_TYPE@Hotel","3.5 /5",1,22398,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",112,"0.8 miles","City centre","3.6 miles","Donauturm","Wieden",110,"price for 1 night","Vienna",3,4,263,"_ACCOM_TYPE@Hotel","3.9 /5",0,22399,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",1,"0.9 miles","City centre","3.6 miles","Donauturm","Wieden",84,"price for 1 night","Vienna",3.5,NA,NA,"_ACCOM_TYPE@Apartment","5 /5",1,22400,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",77,"1.2 miles","City centre","3.7 miles","Donauturm","Wieden",100,"price for 1 night","Vienna",3,4,149,"_ACCOM_TYPE@Hotel","4 /5",1,22401,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",572,"1.5 miles","City centre","3.9 miles","Donauturm","Wieden",95,"price for 1 night","Vienna",4,4,1003,"_ACCOM_TYPE@Hotel","4.1 /5",1,22402,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",53,"1.5 miles","City centre","4.0 miles","Donauturm","Wieden",73,"price for 1 night","Vienna",3,3,293,"_ACCOM_TYPE@Hotel","3.4 /5",1,22403,1,"1-15% offer",2017,11,0,0
+"Austria","Vienna",2,"1.5 miles","City centre","3.8 miles","Donauturm","Wieden",109,"price for 1 night","Vienna",3,3,14,"_ACCOM_TYPE@Apartment","5 /5",1,22404,1,"50%-75% offer",2017,11,0,0
+"Austria","Vienna",145,"0.8 miles","City centre","3.6 miles","Donauturm","Wieden",185,"price for 1 night","Vienna",5,4,740,"_ACCOM_TYPE@Hotel","4.3 /5",0,22406,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",112,"1.0 mile","City centre","3.7 miles","Donauturm","Wieden",100,"price for 1 night","Vienna",4,4.5,1006,"_ACCOM_TYPE@Hotel","4.4 /5",1,22407,0,"0% no offer",2017,11,0,0
+"Austria","Vienna",169,"1.4 miles","City centre","4.1 miles","Donauturm","Wieden",58,"price for 1 night","Vienna",3,3,135,"_ACCOM_TYPE@Hotel","3.2 /5",0,22408,1,"15-50% offer",2017,11,0,0
+"Austria","Vienna",80,"0.7 miles","City centre","3.5 miles","Donauturm","Wieden",110,"price for 1 night","Vienna",3.5,NA,NA,"_ACCOM_TYPE@Apartment","4 /5",1,22409,1,"1-15% offer",2017,11,0,0
