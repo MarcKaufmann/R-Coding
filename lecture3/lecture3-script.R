@@ -229,10 +229,12 @@ select(flights, origin, dest, everything())
 # 
 # ## Assignment 4
 # 
-# 1. Read Chapter 5 of Grolemund and Wickham parts 1 through 3 (until select) of Grolemund and Wickham for anything we did not cover. We will cover the remaining parts next week.
+# 1. Read Chapter 5 of Grolemund and Wickham parts 1 through 4 (including select) of Grolemund and Wickham for anything we did not cover. We will cover the remaining parts next week.
 # 2. Turn the script (.R file) from class into a markdown file which displays the graphs and tables. Add any comments that might benefit you later on, such as reminders of things you found confusing, etc.
 #   Make sure that you comment the graphs where appropriate, either through captions or in the accompanying text.
-# 3. Repeat the steps from chapter 5 in parts 1 through 3, but using hotels data instead of the nycflights data. Since the two datasets don't have the same columns, either pick some variable you'd like to filter on and see results on, or use the following suggested mapping:
+# 3. Repeat the steps from chapter 5 in parts 1 through 3, but using hotels data instead of the nycflights data. 
+# Since the two datasets don't have the same columns, either pick some variable you'd like to filter on and see results on, or use the following suggested mapping:
+# Repeat every step for which Grolemund and Wickham show the output - thus ignore all the exercises, or options they mention without.
 #   - When filtering (etc) on month for flights, use stars in the hotels data
 #   - Instead of flight duration, use hotel price
 #   - For travel times, use distance (you can reuse distance for different types of time)
@@ -242,3 +244,5 @@ select(flights, origin, dest, everything())
 # you should do
 # filter(hotels, stars == <some-number-you-like>)
 # Create similar output to Grolemund and Wickham, i.e. show what the output is of various commands.
+# 
+# See (Discourse)[https://discourse.trichotomy.xyz/t/week-4-assignment-description/89/2] for an example of what counts as a step.
