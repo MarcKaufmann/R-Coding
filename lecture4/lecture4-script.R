@@ -284,40 +284,6 @@ not_missing_planes %>%
 # ggplot which gets plussed into geoms
 # Try a few values for how many flights one should have done
 
-  
-# 5.6.4 Summary functions
-
-## These need to turn a vector of things into a single thing
-
-
-# What does quantile do?
-
-# Not that helpful. Let's use it and find out.
-
-# Exercise: Find out what these do
-# first(x)
-# first(c(3, 4, 2))
-# last(x)
-# nth(x, 2)
-
-# Counts are important
-
-# Count the number of flights to each destination
-
-# Count the number of distinct carriers to each location
-
-# Short hand
-
-# You can weight the counting, here by distance
-# This counts how many airmiles a given airplane did from NYC
-
-
-## Number of flights each day before 5am
-
-# How many flights are delayed each day by more than 1 hour?
-
-# Class Exercise: Why do I use the mean above? How does that get the proportion?
-
 # Assignment 5: 
 
 # 1. Do the exercises in this script file and work through the examples we 
