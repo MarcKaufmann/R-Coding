@@ -1,0 +1,503 @@
+---
+title: "Assignment 4"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Follows Grolemund and Wickham, chapter 5
+
+
+Install the dataset if you don't have it
+install.packages("nycflights13")
+
+```{r, eval = FALSE}
+library(nycflights13)
+flights
+?flights
+View(flights)
+view(flights)
+?view
+
+library(tidyverse)
+```
+
+The following functions will be covered in this markdown:
+1. filter()
+2. arrange()
+3. select()
+
+
+Filtering (choosing) rows with filter()
+
+```{r}
+library(nycflights13)
+library(tidyverse)
+#filter(flights, month = 1) # Produces an error
+filter(flights, month == 1)
+filter(flights, month == 1, day == 1)
+filter(flights, dep_time == 517)
+```
+
+dplyr functions don't change the data frame that you give it. They return a new one.
+flights
+Save the filtered data
+
+```{r}
+jan1 <- filter(flights, month == 1, day == 1)
+jan1
+```
+
+
+Assign and print, use (varname <- ...)
+```{r}
+
+(feb1 <- filter(flights, month == 2, day == 1))
+```
+
+# Check it really assigned
+```{r}
+
+feb1
+```
+
+
+Some notes on comparisons
+
+```{r}
+sqrt(2)^2 == 2
+sqrt(4)^2 == 4
+(1/3)*3 == 1
+1/49*49 == 1
+1/(7^9)*7^9 == 1
+```
+
+
+In short, you can't rely on "It works because it works for what I tried".
+For floating point comparisons, use near() to compare numbers
+
+```{r}
+near(sqrt(2)^2, 2)
+```
+
+
+
+Exercise: What counts as near? Find out. Can you change it?
+
+Multiple constraints
+|: is 'or' operator
+
+```{r}
+(jan_feb <- filter(flights, month == 1 | month == 2))
+(not_jan <- filter(flights, !(month == 1)))
+```
+
+
+
+Class exercise: How do we know these actually worked?
+
+```{r}
+
+filter(not_jan, month == 1)
+#View(jan_feb)
+unique(not_jan$month)
+jan <- filter(flights, month == 1)
+nrow(flights) == nrow(jan) + nrow(not_jan)
+(jan_to_june1 <- filter(flights, month <= 6))
+jan_to_june2 <- filter(flights, month %in% c(1,2,3,4,5,6))
+```
+
+
+Check same number of observations
+
+```{r}
+nrow(jan_to_june1) == nrow(jan_to_june2)
+```
+
+
+
+Class Exercise: What does this do?
+
+```{r}
+mystery_filter <- filter(flights, !(arr_delay > 120 | dep_delay > 120))
+mystery_filter2 <- filter(flights, arr_delay <= 120, dep_delay <= 120)
+mystery_filter
+mystery_filter2
+identical(mystery_filter2, mystery_filter)
+```
+
+
+
+arr_delay > 120 OR dep_delay > 120
+True if:
+(140, 140)
+(140, 0)
+(0, 140)
+ (0, 0)
+Vote:
+1. All flights that started and landed 120 minutes late
+2. All flights that started 120 minutes late or landed 120 minutes late
+3. All flights that started less than 120 minutes late or landed less than 120 minutes late
+4. All flights that started and landed less than 120 minutes late
+
+Class Exercise: Get the filter command for number 3 above
+3. All flights that started less than 120 minutes late or landed less than 120 minutes late
+
+```{r}
+number3 <- filter(flights, arr_delay <= 120 | dep_delay <= 120)
+number3 <- filter(flights, arr_delay < 120 | dep_delay < 120)
+```
+
+
+
+
+Class Exercise: get all flights that departed with less than 120 minutes delay but arrived with more than 120 minutes delay.
+
+```{r}
+dep_ok_arr_not <- filter(flights, dep_delay <= 120, arr_delay > 120)
+
+ggplot(data = dep_ok_arr_not,
+       mapping = aes(x = dep_delay)) +
+  geom_histogram() + 
+  labs(x = "Delay in departure time", y = "No. of Flights",
+       title = "No. of Flights with Departure Delay =< 120 & Arrival Delay > 120",
+       caption = "Source: nycflights")
+```
+
+
+
+
+Let's look at the data to see what the departure was for planes that arrived late but didn't start quite as late
+
+```{r}
+ggplot(data = flights,
+       mapping = aes(x = dep_delay)) + 
+  geom_histogram() + 
+  labs(x = "Delay in departure time", y = "No. of Flights",
+       title = "No. of Flights with Arrival Delay",
+       caption = "Source: nycflights")
+```
+
+
+
+Filter flights by those that had dep_delay <= 120, then plot histogram
+
+```{r}
+dep_ok <- filter(flights, dep_delay <= 120)
+ggplot(data = dep_ok,
+       mapping = aes(x = dep_delay)) + 
+  geom_histogram() +
+  labs(x = "Delay in departure time", y = "No. of Flights",
+       title = "No. of Flights with Dep Delay <= 120",
+       caption = "Source: nycflights")
+```
+
+
+
+
+NA: Not available
+
+```{r}
+NA > 5
+10 == NA
+NA == NA
+FALSE & NA
+TRUE & NA
+NA & FALSE
+```
+
+
+
+Nice example from G&W
+
+Let x be Mary's age. We don't know how old she is.
+
+
+```{r}
+x <- NA
+```
+
+Let y be John's age. We don't know how old he is.
+
+```{r}
+y <- NA
+```
+
+Are John and Mary the same age?
+
+```{r}
+x == y
+```
+
+We don't know!
+
+
+```{r}
+NA^0
+0 * NA
+```
+
+
+```{r}
+is.na(x)
+df <- tibble(x = c(1, NA, 3))
+df
+filter(df, x > 1)
+filter(df, x > 1 | is.na(x))
+```
+
+
+
+```{r}
+#arrange()
+
+flights
+arrange(flights, year, month, day)
+arrange(flights, dep_delay)
+arrange(flights, desc(dep_delay))
+
+arrange(df, x)
+arrange(df, desc(x))
+```
+
+
+
+Class exercise (do at home): How can we get the missing values at the top?
+
+```{r}
+arrange(flights, desc(is.na(arr_delay)))
+
+```
+
+
+Fastest flight
+
+```{r}
+colnames(flights)
+
+arrange(flights, air_time)
+```
+
+
+
+Better ways of getting some special columns
+
+select()
+
+```{r}
+select(flights, year, month, day)
+
+select(arrange(flights, air_time), air_time, origin, dest)
+```
+
+
+
+That's tedious to write. Hence the pipe.
+
+
+```{r}
+flights %>%
+  arrange(air_time) %>%
+  select(air_time, origin, dest)
+```
+
+
+
+Notice that the data doesn't have to be mentioned and the first argument should not have to be provided
+
+
+```{r}
+
+select(flights, year:day)
+# Same as ..
+
+flights %>% select(year:day)
+colnames(flights)
+```
+
+
+
+dropping cols
+
+```{r}
+select(flights, -(year:day))
+```
+
+
+
+Some helper functions
+
+```{r}
+select(flights, starts_with("arr"))
+select(flights, -starts_with("arr"))
+select(flights, ends_with("hour"))
+select(flights, -contains("time"))
+```
+
+# For more do
+?select
+
+# Function for renaming columns
+```{r}
+rename(flights, destination = dest)
+```
+
+
+
+Hard to see if it worked, so...
+```{r}
+
+flights %>% rename(destination = dest) %>% select(year:day, destination)
+```
+It is very confusing that the assignment is inversed and counter-intuitive. The column to be renamed is usually on the left hand side of the assignment operator but in this case it is on the right.
+
+
+Moving some columns to the start
+
+```{r}
+
+select(flights, origin, dest, everything())
+```
+
+
+Class Exercise: What happens if you include a variable multiple times?
+
+ANS: Nothing Happens. The resulting dataframe still displays the column I included multiple times only once.
+
+
+```{r}
+
+select(flights, origin, origin, origin, dest, dest)
+```
+
+Assignment 4
+
+Resources
+
+
+If you have no experience coding, this may be helpful: https://rstudio-education.github.io/hopr/
+
+Assignment 4
+
+1. Read Chapter 5 of Grolemund and Wickham parts 1 through 4 (including select) of Grolemund and Wickham for anything we did not cover. 
+We will cover the remaining parts next week.
+2. Turn the script (.R file) from class into a markdown file which displays the graphs and tables. 
+
+Add any comments that might benefit you later on, such as reminders of things you found confusing, etc.
+Make sure that you comment the graphs where appropriate, either through captions or in the accompanying text.
+
+3. Repeat the steps from chapter 5 in parts 1 through 3, but using hotels data instead of the nycflights data. 
+Since the two datasets don't have the same columns, either pick some variable you'd like to filter on and see results on, or use the following suggested mapping:
+Repeat every step for which Grolemund and Wickham show the output - thus ignore all the exercises, or options they mention without.
+- When filtering (etc) on month for flights, use stars in the hotels data
+- Instead of flight duration, use hotel price
+- For travel times, use distance (you can reuse distance for different types of time)
+
+Example: Instead of doing
+filter(flights, month == 1)
+you should do filter(hotels, stars == <some-number-you-like>)
+Create similar output to Grolemund and Wickham, i.e. show what the output is of various commands.
+
+See (Discourse)[https://discourse.trichotomy.xyz/t/week-4-assignment-description/89/2] for an example of what counts as a step.
+
+
+```{r}
+
+library(tidyverse)
+library(scales)
+
+dir <-  Sys.getenv("C:/Users/faaez/OneDrive - Central European University/Current Courses/Data Coding 1 - Data Management and Analysis in R/Assignment 4/R-Coding")
+
+data_in <- paste0(dir,"da_data_repo/hotels-vienna/clean/")
+# load vienna
+vienna <- read_csv(paste0(data_in,"hotels-vienna.csv"))
+
+```
+
+5.2 Filter
+
+```{r}
+filter(vienna, stars == 3)
+
+three_stars <- filter(vienna, stars == 3)
+
+(three_stars <- filter(vienna, stars == 3))
+```
+
+5.2.2 Logical Operators
+
+```{r}
+filter(vienna, stars == 1 | stars == 3)
+
+#in example
+nov_dec <- filter(vienna, month %in% c(11, 12))
+
+#logical operator sample De Morgans Law
+#distance less then 2 and stars more than or equal to 3
+a <- filter(vienna, !(distance >= 2 | stars < 3))
+b <- filter(vienna, distance < 2, stars >= 3)
+identical(a, b)
+```
+
+5.3 Arrange
+
+```{r}
+#arrange example - arrange year, month and then stars in ascending order
+arrange(vienna, year, month, stars)
+
+
+#desc example - arrange by descending stars
+arrange(vienna, desc(stars))
+```
+
+5.4 Select
+
+```{r}
+#select columns by name
+
+select(vienna, city, stars, rating, distance)
+
+#select all columns between country and stars
+
+select(vienna, country:stars)
+
+#select all columns except those between country and stars
+
+select(vienna, -(country:stars))
+```
+
+Helper functions examples
+
+```{r}
+
+#starts_with("rating"): 
+select(vienna, starts_with("rating"))
+
+#ends_with("city"): 
+select(vienna, ends_with("city"))
+
+#contains("rating"): 
+select(vienna, contains("rating"))
+
+#matches("(.)\\1"): 
+select(vienna, matches("ci"))
+
+#num_range("x", 1:3):
+select(vienna, num_range("city", 1:3))
+```
+
+
+Rename Examples
+
+```{r}
+rename(vienna, hotel_country = country)
+```
+
+select() and everything() helper
+
+```{r}
+select(vienna, distance, city, stars, everything())
+```
+
