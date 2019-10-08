@@ -204,7 +204,7 @@ p + geom_point(mapping = aes(size = count), alpha = 0.2) +
 # Finally...
 
 
-# Exercise as part of assignment 5: The above does not take into account 
+# Optional exercise as part of assignment 5 (somewhat harder): The above does not take into account 
 # the number of flights per location. A location with 1 flight matters as much
 # for smoothing as a location with 300. 
 # That is rarely what we want when smoothing globally. Read the following code,
@@ -216,12 +216,20 @@ p + geom_point(mapping = aes(size = count), alpha = 0.2) +
 # So, not too misleading, but still...
 # END OF EXERCISE
 
-# doing this with a pipe, and filtering out destinations with 
+# Doing this with a pipe, and filtering out destinations with 
 # - less than 20 flights
 # - to HNL (Honululu), since it's by far the furthest
 # Note: I am not a big fan of dropping things that 'look too different'.
 # You should do such robustness checks, but you shouldn't start there. 
 
+delays <- flights %>% 
+  group_by(dest) %>%
+  summarise(
+    delay = mean(arr_delay, na.rm = TRUE),
+    count = n(),
+    distance = mean(distance, na.rm = TRUE)
+    ) %>%
+  filter( count > 20, dest != "HNL")
 
 # Exercise: Rewrite the above command without the pipe. Which one do you find 
 # easier to read?
