@@ -1,0 +1,62 @@
+---
+title: "Coding 1: Lecture 3"
+author: |
+  | Marc Kaufmann
+  | Central European University
+date: "30/09/2019"
+output: 
+  beamer_presentation:
+    theme: metropolis
+    slide_level: 2
+    latex_engine: xelatex
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Goal of the Class
+
+Your backgrounds are quite varied:
+
+- From no programming/data analysis to substantial programming
+- Some stated as goal to "learn programming"
+  - I can't teach you programming in 12 weeks, and teach basic data analysis
+  - Focus on basic data analysis while comfortable with programming to get it done
+  - Code snippets and scripts, hardly any (non-supervised) programs
+  
+## Attendance Check
+
+Sign the signup sheet. 
+
+- I apprecite if you also check your attendance via 'youhere.org'
+  - Class is 'r-coding'
+- If it does not work, can you tell me and check if your location is on on the phone
+  - If you are fine, test it with location on (and then switch location off again)
+
+## Participation: Team Assignment on state of the class
+
+Let's pick Team 2.
+
+## Today and next week
+
+Today:
+
+- Introduction to data munging: selecting and filtering
+- Visualizing hotels data
+
+Next Week (probably):
+
+- Introduction to transforming and summarizing Data
+- Application: clean hotels data
+
+## Questions?
+
+Any questions about: \pause{}
+
+- Moodle and grading assignments? (You should be assessing yourself)\pause{}
+  - From now on, failure to upload in time *will* cost you.\pause{}
+- Any lingering problems uploading .html/.pdf to Moodle?\pause{}
+- Do you get emails from Discourse?\pause{}
+- Any other remaining technical problem?\pause{}
+- Anything else?

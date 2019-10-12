@@ -1,0 +1,90 @@
+---
+title: "Coding 1: Lecture 2"
+author: |
+  | Marc Kaufmann
+  | Central European University
+date: "23/09/2019"
+output: 
+  beamer_presentation:
+    theme: metropolis
+    slide_level: 2
+    latex_engine: xelatex
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Assignment 1: Errors
+
+- Knitting to pdf, seem mostly solved (should be)
+- R Chunks, in particular `eval=FALSE` and `eval=TRUE`
+    - `eval=FALSE` is useful to include code in output without running it
+    - Especially useful when you want to include code that produces errors
+- `library(ggplot2)`, but you use `ggplot(...)`
+
+## Assignment 1: Comments on Errors
+
+Include your comments by quoting them on Discourse: 
+
+- See my post on Discourse on adding error messages.
+
+Don't include `install.packages(...)` in .Rmd files:
+
+- It suggests you have to install it every time you knit.
+
+## Warning: The following objects are masked
+
+
+```
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+```
+
+Example.
+
+## Attendance Check
+
+You should sign the signup sheet. I nonetheless appreciate it if you could also check your attendance via 'youhere.org' -- although it is not mandatory.
+
+- It will help me see how well it works, both for other classes and for research
+
+## Participation: Team Assignment on state of the class
+
+Team assignments as part of participation: 3 to 4 people. 
+
+- 1 to 2 pages (RMarkdown, with html and pdf)
+- Goal 1: How is *learning* in general going
+    - Such as 'it is too hard' and 'I am learning nothing new' or other
+- Goal 2: Identify one topic (a command, an exercise, a data analysis, ...) from class
+    - deal with issues others had
+- Get data from your classmates (survey, poll, by hand,...) to choose topic and identify learning
+    - Nothing huge, but at least one vector with one data point per student (like `languages_heard_of` in lecture 1)
+
+## Team Assignment on state of the class: Example
+
+For this week for instance, possible topic would have been:
+
+- Get knitting to work, quick write up on how to do it
+  - Use pre-existing links and descriptions
+  - Make sure to cover different OSes, highlight main errors
+
+My guess (without data):
+
+- Mostly everyone getting set up, not yet gotten into much learning
+  - But could identify if everyone 'gets' chunks, mark down, etc
+
+## Today and next week
+
+Today: 
+
+- Continue and finish basic visualization
+
+Next week:
+
+- Data munging with hotels data
+
+## Questions?
+
+Any questions?
