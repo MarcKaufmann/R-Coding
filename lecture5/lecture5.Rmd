@@ -366,15 +366,15 @@ There are several other geom_* that you should know of and the assignment asks y
 
 Reminder: Pick only 3 of the 8 possible ones.
 
-**Exercise 2:** Find all the rows with NA values in two specific columns (of your choosing) for the following datasets: 
+**Exercise 2:** Find all the rows with NA values in **the first two columns** for the following datasets: 
 
 - diamonds
 - flights
 - mtcars
 
-If you can't find a dataset, do `??<dataset>` to find out more about it and what library you need to load. 
+The next exercise asks you to check *all* columns, but you don't want to do that with `filter()`. Why do you not want to do that with filter, especially for a dataset with hundreds of columns?
 
-If you had to find all the rows containing `NA` values in some column, how would use filter for that? Don't write this command out, but you should realize that this would be unpleasant (and errorprone). 
+If you can't find a dataset, do `??<dataset>` to find out more about it and what library you need to load. 
 
 **Exercise 3:** Look up `filter_all` and look at the examples at the end of the documentation. Use this (with some google-fu or discourse help) to find all the rows with NA values in *any* column for the following datasets: 
 
@@ -382,7 +382,8 @@ If you had to find all the rows containing `NA` values in some column, how would
 - flights
 - mtcars
 
-Thus, the output should be those rows that *do* contain NA values.
+Thus, the output should be those rows that *do* contain NA values. Then look up `na.omit` (hat tip @kristof) and use that do achieve the same goal.
+
 
 **Exercise 4:** Pick your favourite dataset. Use it to illustrate the following types of plots, and describe briefly (2-3 sentences) what each plot means. I.e. for the boxplot, what do different lines mean in general, and thus what do they say about the specific data, such as the mean?
 
