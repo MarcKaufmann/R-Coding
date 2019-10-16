@@ -358,7 +358,7 @@ There are several other geom_* that you should know of and the assignment asks y
 - The number of flights (in the whole year) to each destination
 - The number and list of distinct airports in the US
 - The number and list of distinct airports that have at least one flight in the whole year from NYC
-- The number and list of distinct airports that have at least one flight **per day** from NYC
+- The number and list of distinct airports that have at least one flight **per day (on average)** from NYC
 - The number airports that are further south than NYC (Hint: look up longitude and latitude.)
 - The top 5 carriers that have the lowest average delay times. 
 - What is the worst day of the year to fly in terms of arrival delay?
