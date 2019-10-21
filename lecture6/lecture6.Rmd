@@ -192,27 +192,9 @@ Load each of these data sets that are in the lecture6 folder:
 
 df1 <- read_csv("test-data1.csv") # You have to fix this
 
-### ANSWERS
-
-df1 <- read_csv("lecture6/test-data1.csv", col_names = FALSE)
-
-df2 <- read_csv("lecture6/test-data2.csv", 
-                col_types = cols(
-                  col_character(),
-                  col_number(), 
-                  col_factor()), 
-                na = c(".")
-)
-
-df3 <- read_csv("test-data3.csv") 
-# Check tail(df3) to see what goes wrong with that read
-tail(read_csv("test-data3.csv", col_typesj = "ccccc"))
-tail(read_csv("test-data3.csv", col_types = "nnccf"))
-df3 <- read_csv("test-data3.csv", col_types = "nnccf")
-tail(df3)
 ```
 
-### Chapter 12: Tidy Data
+### Chapter 12: Tidy Data (for next week)
 
 So far we always had the data in a form where we didn't have to change the structure of the table to analyse it. Often this isn't the case, in particular we may want to put it in a tidy shape, as this works better with our tools.
 
@@ -246,22 +228,16 @@ stocks %>%
   spread(key = year, value = return) %>%
   gather(key = "year", value = "return", `2015`, `2016`)
 
+```
+
+Here are some exercises from R4DS that you can attempt.
+
+```{r}
 # Exercise 12.3 the second
 # Why does this code fail?
 
 table4a %>% 
   gather(1999, 2000, key = "year", value = "cases")
-
-# Solution: the numbers give the number of the column, if they are given as numbers
-# backticks around the name.
-
-table4a %>%
-  gather(2, 3, key = "year", value = "cases")
-
-# In order to access a column called `1999` (which is a bad name), you have to put
-
-table4a %>% 
-  gather(`1999`, `2000`, key = "year", value = "cases")
 
 # Exericse 3 in 12.3
 # Why does spreading this table fail? How could adding an additional column help?
@@ -278,6 +254,9 @@ people <- tribble(
 people %>%
   spread(key = key, value = value)
 
+# Not clear to me how adding a column helps. Of course this column could contain 'age1' and 'age2'.
+# But whether that's a good solution or not depends on the context.
+
 # Exercise 4 
 # Tidy the tibble. Do you need to separate or gather?
 preg <- tribble(
@@ -285,9 +264,5 @@ preg <- tribble(
   "yes",     NA,    10,
   "no",      20,    12
 )
-# Answer
-preg %>% 
-  gather(key = "gender", value = "count", "male", "female")
-
 ```
 
