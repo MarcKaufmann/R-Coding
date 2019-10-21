@@ -353,12 +353,12 @@ There are several other geom_* that you should know of and the assignment asks y
 
 **Exercise 0:** Manage your time. If you spend too much time on the assignment, it may be too long, and you may benefit from skipping an exercise. Since this lesson is lost on most people, exercise 0 requires you to skip one of the other exercises this week.^[If you want to be cute, skip exercise 0.] That is, write down which exercise you want to skip and why ("saves the most of time because it is the hardest" or "it's the most useless as you are quite confident in material"). Do not work on it. Of course, if you skip any additional exercise due to lack of time, highlight this, but that will cost some part of the grade, whereas skipping an exercise as part of exercise 0 will not.
 
-**Exercise 1:** Using the nycflights13 data. Note that it also contains a tibble called `airports` (as well as others). Use these two dataframes to find the answer to 4 of the following, and print them out in a separate chunk (i.e. the chunk should print the tibble, thus showing the first 10 lines of each):
+**Exercise 1:** Using the nycflights13 data. Note that it also contains a tibble called `airports` (as well as others). Use these two dataframes to find the answer to 3 of the following, and print them out in a separate chunk (i.e. the chunk should print the tibble, thus showing the first 10 lines of each):
 
 - The number of flights (in the whole year) to each destination
 - The number and list of distinct airports in the US
 - The number and list of distinct airports that have at least one flight in the whole year from NYC
-- The number and list of distinct airports that have at least one flight **per day** from NYC
+- The number and list of distinct airports that have at least one flight **per day (on average)** from NYC
 - The number airports that are further south than NYC (Hint: look up longitude and latitude.)
 - The top 5 carriers that have the lowest average delay times. 
 - What is the worst day of the year to fly in terms of arrival delay?
@@ -366,15 +366,15 @@ There are several other geom_* that you should know of and the assignment asks y
 
 Reminder: Pick only 3 of the 8 possible ones.
 
-**Exercise 2:** Find all the rows with NA values in two specific columns (of your choosing) for the following datasets: 
+**Exercise 2:** Find all the rows with NA values in **the first two columns** for the following datasets: 
 
 - diamonds
 - flights
 - mtcars
 
-If you can't find a dataset, do `??<dataset>` to find out more about it and what library you need to load. 
+The next exercise asks you to check *all* columns, but you don't want to do that with `filter()`. Why do you not want to do that with filter, especially for a dataset with hundreds of columns?
 
-If you had to find all the rows containing `NA` values in some column, how would use filter for that? Don't write this command out, but you should realize that this would be unpleasant (and errorprone). 
+If you can't find a dataset, do `??<dataset>` to find out more about it and what library you need to load. 
 
 **Exercise 3:** Look up `filter_all` and look at the examples at the end of the documentation. Use this (with some google-fu or discourse help) to find all the rows with NA values in *any* column for the following datasets: 
 
@@ -382,7 +382,8 @@ If you had to find all the rows containing `NA` values in some column, how would
 - flights
 - mtcars
 
-Thus, the output should be those rows that *do* contain NA values.
+Thus, the output should be those rows that *do* contain NA values. Then look up `na.omit` (hat tip @kristof) and use that do achieve the same goal.
+
 
 **Exercise 4:** Pick your favourite dataset. Use it to illustrate the following types of plots, and describe briefly (2-3 sentences) what each plot means. I.e. for the boxplot, what do different lines mean in general, and thus what do they say about the specific data, such as the mean?
 

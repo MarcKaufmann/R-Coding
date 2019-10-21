@@ -1,0 +1,268 @@
+---
+title: "Lecture 6"
+author: "Marc Kaufmann"
+date: "10/14/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#### Class Exercises
+
+The following chunks have most, but not all of the code necessary to achieve their goal. Fix as many of them as you can. **Note:** You'll have to switch off the `eval = FALSE`.
+
+```{r, eval = TRUE}
+# Compute for every day how many minutes above the average delay a given flight is.
+
+# 1. Compute the average delay (per day) and put it in the rows
+# 2. Then use that with dep_delay to compute the minutes above average
+
+flights_small %>%
+  group_by(year, month, day) %>%
+  mutate(difference_from_daily_mean_dep_delay = dep_delay - mean(dep_delay, na.rm=TRUE)) %>%
+  select(difference_from_daily_mean_dep_delay, everything())
+```
+
+Now compute the daily standard deviation in departure delays. Explain in one sentence what it means for that to be higher or lower.
+
+```{r, eval = FALSE}
+# Compute for every day how many minutes above the average delay a given flight is.
+
+flights_small %>%
+  group_by(...) %>%
+  mutate(daily_sd_dep_delay = <some-function-name>(...))
+```
+
+Now combine the previous two commands with a third to compute how many standard deviations a given flight is from the mean. A value of $-1$ indicates that the flight had 1 sd less departure delay than the average flights that day, $1$ indicates that it had 1 sd more departure delay than the average flight that day.
+  
+```{r, eval = FALSE}
+
+flights_small %>%
+  group_by(...) %>%
+  mutate(
+    difference_from_daily_mean_dep_delay = ...,
+    daily_sd_dep_delay  = ...,
+    diff_from_daily_mean_in_sd = .../...
+  )
+```
+    
+And finally (if time permits, which is unlikely):
+
+```{r, eval = FALSE}
+# What time of the day should you fly to avoid delays the most?
+# Start with dep_time. Then realize this is bad.
+
+not_missing %>%
+  mutate(hour = dep_time %/% 100) %>%
+  group_by(hour) %>%
+  summarise(delay = mean(arr_delay))
+  
+# Fix the variable, check what it computes before ranking
+not_missing %>%
+  mutate(hour = ...%/% 100) %>%
+  group_by(hour) %>%
+  summarise(delay = mean(arr_delay))
+
+# Now rank (in reality you would change the earlier code, rather than repeat)
+not_missing %>%
+  mutate(hour = ...%/% 100) %>%
+  group_by(hour) %>%
+  summarise(delay = mean(arr_delay)) %>%
+  mutate(rank_delay = rank(delay)) %>%
+  arrange(rank_delay)
+```
+
+## Ceci n'est pas a tibble
+
+If you have a data frame that is not a tibble you can change it to one with `as_tibble()`:
+
+```{r}
+ceci_nest_pas_a_tibble <- iris
+is_tibble(ceci_nest_pas_a_tibble)
+ceci_nest_pas_a_tibble # Run in console, rstudio seems to do conversion automatically
+a_tibble <- as_tibble(ceci_nest_pas_a_tibble)
+a_tibble
+```
+
+Sometimes we want to call a function at the end of a pipe that does not take a data frame, but a vector. For instance if we want to compute a t-test:
+
+```{r}
+df <- tibble(
+  x = runif(100),
+  y = runif(100, min=-0.5, max=0.5),
+  z = rnorm(100)
+)
+
+df %>% select(x) %>% t.test() # ERROR!
+df %>% .$x # OK
+df %>% t.test(.$x) # ERROR?! WHAT? Somewhat baffled.
+df %>% .$x %>% t.test() # A bit tedious
+df %>% select(x) %>% deframe() %>% t.test() # Just to show that we can be even more tedious
+
+# And if you can't figure it out... you don't have to pipe everything. 
+
+t_test_this <- df$x
+t.test(t_test_this)
+
+# For t.test(x,y): I couldn't figure out one of the above ways.
+t.test(df$x, df$y)
+library(magrittr)
+# Notice it is %$%, not %>%
+df %$% t.test(x, y)  # Now we're talking
+
+
+```
+
+The above may not often be sufficiently justified to go through the hassle. Just assign to a variable and deal with vectors directly.
+
+## Chapter 11: Data Import
+
+Now on to importing data.
+
+```{r}
+library(tidyverse)
+
+(test_data1 <- read_csv("test-data.csv"))
+
+read_csv(
+  "djflsjflkdsjfklsdjfkl
+   a,b,c
+   1,2,3
+   4,5,6",
+  skip = 1)
+
+read_csv(
+   "1,2,3
+   4,.,6",
+  col_names = FALSE,
+  na = ".")
+
+?read_delim
+?read_tsv
+
+# Class Exercise 5 in 11.2
+# IDentify what is wrong with each of 
+
+read_csv("a,b\n1,2,3\n4,5,6")
+read_csv("a,b,c\n1,2\n1,2,3,4")
+read_csv("a,b\n\"1")
+read_csv("a,b\n1,2\na,b")
+read_csv("a;b\n1;3")
+
+# 11.3 Parsing a vector
+
+str(parse_logical(c("TRUE", "FALSE", "NA")))
+str(parse_integer(c("1", "2", "3")))
+str(parse_date(c("2010-10-01", "1974-01-14")))
+
+x <- parse_integer(c("123", "234", "abc", "12.3"))
+x
+problems(x)
+
+parse_double("11.23")
+parse_double("11,23")
+
+parse_number("$100")
+
+# 11.4
+
+challenge <- read_csv(readr_example("challenge.csv"))
+challenge
+challenge <- read_csv(readr_example("challenge.csv"),
+                      col_types = cols(
+                        x = col_double(),
+                        y = col_date()))
+
+```
+
+
+## Class Exercise
+
+Load each of these data sets that are in the lecture6 folder:
+
+- test-data1.csv
+- test-data2.csv
+- test-data3.csv
+
+```{r}
+# Your final command should be of this kind:
+# df1 <- read_csv("test-data1.csv", col_types = cols(...))
+
+df1 <- read_csv("test-data1.csv") # You have to fix this
+
+```
+
+### Chapter 12: Tidy Data (for next week)
+
+So far we always had the data in a form where we didn't have to change the structure of the table to analyse it. Often this isn't the case, in particular we may want to put it in a tidy shape, as this works better with our tools.
+
+You should read sections 1 and 2 of chapter 12 on your own.
+
+```{r}
+# 12.3.1 Gathering
+
+library(tidyverse)
+
+table4a # This is defined 
+tidy4a <-  table4a %>%
+  gather(`1999`, `2000`, key = "year", value = "cases")
+
+tidy4b <- table4b %>%
+  gather(`1999`, `2000`, key = "year", value = "population")
+
+# We will see more on joins in the coming weeks
+tidy4 <- left_join(tidy4a, tidy4b)
+
+table2 %>% 
+  spread(key = "type", value = "count")
+
+stocks <- tibble(
+  year   = c(2015, 2015, 2016, 2016),
+  half  = c(   1,    2,     1,    2),
+  return = c(1.88, 0.59, 0.92, 0.17)
+)
+
+stocks %>%
+  spread(key = year, value = return) %>%
+  gather(key = "year", value = "return", `2015`, `2016`)
+
+```
+
+Here are some exercises from R4DS that you can attempt.
+
+```{r}
+# Exercise 12.3 the second
+# Why does this code fail?
+
+table4a %>% 
+  gather(1999, 2000, key = "year", value = "cases")
+
+# Exericse 3 in 12.3
+# Why does spreading this table fail? How could adding an additional column help?
+people <- tribble(
+  ~name,             ~key,    ~value,
+  #-----------------|--------|------
+  "Phillip Woods",   "age",       45,
+  "Phillip Woods",   "height",   186,
+  "Phillip Woods",   "age",       50,
+  "Jessica Cordero", "age",       37,
+  "Jessica Cordero", "height",   156
+)
+
+people %>%
+  spread(key = key, value = value)
+
+# Not clear to me how adding a column helps. Of course this column could contain 'age1' and 'age2'.
+# But whether that's a good solution or not depends on the context.
+
+# Exercise 4 
+# Tidy the tibble. Do you need to separate or gather?
+preg <- tribble(
+  ~pregnant, ~male, ~female,
+  "yes",     NA,    10,
+  "no",      20,    12
+)
+```
+
