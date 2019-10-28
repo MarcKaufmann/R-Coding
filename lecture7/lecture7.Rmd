@@ -7,6 +7,7 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
 ```
 
 ## Class Exercise
@@ -63,7 +64,7 @@ stocks %>%
 
 Here are some exercises from R4DS that you can attempt.
 
-```{r}
+```{r, eval=FALSE}
 # Exercise 12.3 the second
 # Why does this code fail?
 
@@ -112,15 +113,49 @@ table3sep <- table3 %>%
 
 For the reverse action, use `unite()`:
 
-
 ```{r, unite}
 table3sep %>%
   unite(new, century, year, sep="")
 
 ```
 
-# 12.6 Case Study
+## Small Test 
 
+Let us test whether the answers to the questions are actually different or not. People with a given id gave answers to 6 different questions, wtatest, wta{1,2,3,4,5}. We want to test, by using t.tests, whether the answers to these questions are different. That is, we want to know if the means are different.
+
+```{r, t_test}
+df <- read_csv("some_choices.csv")
+
+# Let's spread by question_name
+df2 <- df %>%
+  spread(key = question_name, value = answer) %>%
+  # Keep only those that have no missing values for any answer
+  filter(!is.na(wtatest), !is.na(wta1), !is.na(wta2), !is.na(wta3), !is.na(wta4), !is.na(wta5))
+
+library(magrittr)
+
+df2 %$% t.test(wta1, wta2)  
+df2 %$% t.test(wta1, wta3)  
+df2 %$% t.test(wta1, wta4)  
+df2 %$% t.test(wta1, wta5)  
+  
+# Or, to introduce some loops
+
+for(otherwta in c("wta2", "wta3", "wta4", "wta5")) {
+  print(t.test(df2[["wta1"]], df2[[otherwta]]))
+}
+
+# Plot it
+library(ggplot2)
+
+ggplot(df, aes(x = question_name, y = answer)) +
+  geom_boxplot()
+
+```
+
+## 12.6 Case Study
+
+```{r}
 View(who)
 who1 <- who %>%
   gather(key = "key", value = "cases", starts_with("new"), na.rm = TRUE)
@@ -141,6 +176,7 @@ who %>%
   separate(key, into = c("is_new", "TB type", "sex_age"), sep = "_") %>%
   select(-is_new, -iso2, -iso3) %>%
   separate(sex_age, into = c("sex", "age"), sep = 1)
+```
 
 
 ## Assignment 7
