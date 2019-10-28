@@ -35,6 +35,8 @@ Minimum passing grade is 51%. Every increase in 7% leads to a higher grade: 51 t
 
 **Assignments:** Since there are weekly assignments, I will not be able to grade them all. Instead, you will grade each others assignments. Thus, in week 2, you will grade two assignments of others from week 3, as well as your own. I will provide you with a rubric to do so. A third of your grade from assignments comes from grading others – two thirds of it come from the grade on your actual assignment. 
 
+If you have a question regarding a particular assignment -- whether about the grade or otherwise -- make sure to email me.
+
 Grading the assignments of others serves several purposes:
 
 - There are too many assignments for me to grade
