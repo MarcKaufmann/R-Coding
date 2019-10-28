@@ -97,6 +97,52 @@ preg <- tribble(
 )
 ```
 
+## Separate and Unite: One column <-> many columns
+
+If you want to turn one column into many, such as the string "745/19987071" into "745" and "19987071", then you use `separate()`:
+
+```{r, separate}
+table3
+table3sep <- table3 %>%
+  separate(rate, into = c("cases", "population"), convert = TRUE) %>%
+  separate(year, into = c("century", "year"), sep = 2)
+
+?extract
+```
+
+For the reverse action, use `unite()`:
+
+
+```{r, unite}
+table3sep %>%
+  unite(new, century, year, sep="")
+
+```
+
+# 12.6 Case Study
+
+View(who)
+who1 <- who %>%
+  gather(key = "key", value = "cases", starts_with("new"), na.rm = TRUE)
+who1
+
+who2 <- who1 %>%
+  mutate(key = stringr::str_replace(key, "newrel", "new_rel"))
+
+who3 <- who2 %>%
+  separate(key, into = c("is_new", "TB type", "demographics"), sep = "_")
+
+(who4 <- who3 %>%
+  separate(demographics, into = c("gender", "age_range"), sep = 1))
+
+who %>%
+  gather(key = "key", value = "cases", starts_with("new"), na.rm = TRUE) %>%
+  mutate(key = stringr::str_replace(key, "newrel", "new_rel")) %>%
+  separate(key, into = c("is_new", "TB type", "sex_age"), sep = "_") %>%
+  select(-is_new, -iso2, -iso3) %>%
+  separate(sex_age, into = c("sex", "age"), sep = 1)
+
+
 ## Assignment 7
 
 **Exercise 1:** Make sure that you create a *new* .Rmd file for your assignment. Read chapter 8 in R4DS on [Workflow: projects](https://r4ds.had.co.nz/workflow-projects.html) and set up the folder for lecture 7 as a project. Make sure you open your assignment file as a new project. That way, when you try to read files in this folder, it should automatically find them.
