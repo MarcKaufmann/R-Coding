@@ -18,6 +18,10 @@ The following chunks have most, but not all of the code necessary to achieve the
 
 # 1. Compute the average delay (per day) and put it in the rows
 # 2. Then use that with dep_delay to compute the minutes above average
+library(tidyverse)
+library(nycflights13)
+
+flights_small <- flights
 
 flights_small %>%
   group_by(year, month, day) %>%
@@ -27,12 +31,13 @@ flights_small %>%
 
 Now compute the daily standard deviation in departure delays. Explain in one sentence what it means for that to be higher or lower.
 
-```{r, eval = FALSE}
+```{r}
 # Compute for every day how many minutes above the average delay a given flight is.
 
 flights_small %>%
-  group_by(...) %>%
-  mutate(daily_sd_dep_delay = <some-function-name>(...))
+  group_by(year, month, day) %>%
+  mutate(daily_sd_dep_delay = sd(dep_delay, na.rm=TRUE)) %>%
+  select(daily_sd_dep_delay, everything())
 ```
 
 Now combine the previous two commands with a third to compute how many standard deviations a given flight is from the mean. A value of $-1$ indicates that the flight had 1 sd less departure delay than the average flights that day, $1$ indicates that it had 1 sd more departure delay than the average flight that day.
@@ -40,12 +45,12 @@ Now combine the previous two commands with a third to compute how many standard 
 ```{r, eval = FALSE}
 
 flights_small %>%
-  group_by(...) %>%
+  group_by(year, month, day) %>%
+  filter(!is.na(dep_delay)) %>%
   mutate(
-    difference_from_daily_mean_dep_delay = ...,
-    daily_sd_dep_delay  = ...,
-    diff_from_daily_mean_in_sd = .../...
-  )
+    diff_mean_in_sd = (dep_delay - mean(dep_delay)) / sd(dep_delay)
+  ) %>%
+  select(diff_mean_in_sd, dep_delay, everything())
 ```
     
 And finally (if time permits, which is unlikely):
