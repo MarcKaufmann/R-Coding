@@ -14,6 +14,12 @@ knitr::opts_chunk$set(echo = TRUE)
 The following chunks have most, but not all of the code necessary to achieve their goal. Fix as many of them as you can. **Note:** You'll have to switch off the `eval = FALSE`.
 
 ```{r, eval = TRUE}
+library(nycflights13)
+library(tidyverse)
+flights
+# Get the worst 10 arrivers for every day
+flights_small <- flights %>%
+  select(year:day, starts_with("arr"), starts_with("dep"))
 # Compute for every day how many minutes above the average delay a given flight is.
 
 # 1. Compute the average delay (per day) and put it in the rows
@@ -27,12 +33,14 @@ flights_small %>%
 
 Now compute the daily standard deviation in departure delays. Explain in one sentence what it means for that to be higher or lower.
 
-```{r, eval = FALSE}
+```{r}
+library(nycflights13)
 # Compute for every day how many minutes above the average delay a given flight is.
 
 flights_small %>%
-  group_by(...) %>%
-  mutate(daily_sd_dep_delay = <some-function-name>(...))
+  group_by(year, month, day ) %>%
+  mutate(daily_sd_dep_delay = sd(dep_delay,na.rm = TRUE)) %>% 
+  select(daily_sd_dep_delay, everything())
 ```
 
 Now combine the previous two commands with a third to compute how many standard deviations a given flight is from the mean. A value of $-1$ indicates that the flight had 1 sd less departure delay than the average flights that day, $1$ indicates that it had 1 sd more departure delay than the average flight that day.
@@ -147,7 +155,7 @@ read_csv(
 
 read_csv("a,b\n1,2,3\n4,5,6")
 read_csv("a,b,c\n1,2\n1,2,3,4")
-read_csv("a,b\n\"1")
+read_csv("a,b\n1")
 read_csv("a,b\n1,2\na,b")
 read_csv("a;b\n1;3")
 
@@ -175,6 +183,14 @@ challenge <- read_csv(readr_example("challenge.csv"),
                         x = col_double(),
                         y = col_date()))
 
+```
+```{r}
+challenge <- read_csv(readr_example("challenge.csv"),
+                      col_types = cols(
+                        x = col_double(),
+                        y = col_date()))
+challenge
+tail(challenge)
 ```
 
 

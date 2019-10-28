@@ -1,0 +1,443 @@
+---
+title: "Assignment_6"
+author: "Agnes Kollaine Stark"
+date: "10/15/2019"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r message = FALSE}
+library(readr)
+library(tidyverse)
+library(nycflights13)
+library(ggplot2)
+```
+
+```{r eval = FALSE}
+airports
+```
+
+```{r}
+View(airports)
+```
+
+**Exercise 0.:**
+
+***I did not skip any exercise, my idea was that maybe the one that turns out to be the **worst** could be neglegted.***
+***if that is not possible please disregard exercise 2***
+
+
+**Exercise 1.:**
+
+
+- The number of flights (in the whole year) to each destination
+- The number and list of distinct airports in the US **done**
+- The number and list of distinct airports that have at least one flight in the whole year from NYC **done**
+- The number and list of distinct airports that have at least one flight **per day** from NYC **attempted**
+- The number airports that are further south than NYC (Hint: look up longitude and latitude.)
+- The top 5 carriers that have the lowest average delay times. **done**
+- What is the worst day of the year to fly in terms of arrival delay? **done**
+- What is the best day of the year to fly in terms of departure delay? **done**
+
+Reminder: Pick only 3 of the 8 possible ones.
+
++ q1.) - The number and list of distinct airports in the US
+
+```{r}
+airports %>% 
+  group_by(name) %>% 
+summarise(count = n_distinct(name)) %>% 
+  arrange(desc(count))
+```
+```{r}
+airports %>% 
+  select(name) %>% 
+    group_by(name) %>% 
+  summarise(n = n())
+```
+***Answer:***
+
+We get 1440 rows, so that is the number of distinct airports in the US. ( wow!There's like 8 in Hungary)  
+
++ q2.)
+- The number and list of distinct airports that have at least one flight in the whole year from NYC  
+```{r}
+flights %>% 
+  group_by(dest) %>% 
+  summarise(count= n_distinct(dest)) %>% # this gives me the number:105
+arrange(count) # this gives me the list.
+```
+***Answer:***
+
+There are 105 airports that have at least one flight from NYC in the whole year.
+
++ q3.) The number and list of distinct airports that have at least one flight **per day** from NYC  
+
+Here I want it to count rows and display those DEST-s that appear in at least 365 rows.  
+I think I should use summarise and not filter, as summarise will give me the number by subgroup.
+
+```{r}
+flights %>% 
+    group_by(dest) %>% 
+  summarise(count = n_distinct(dest) >= 365) %>% 
+arrange(desc(count))
+# Hm, this doesn't seem to work...I think it'll be saying FALSE in all rows,
+# as it seems 1 for count in each of them.
+# But I'll leave it like this for now, as I wasn't able to find an example only
+# that is similar to this, and I understand what should be done, just can't get my code to do it.
+```
+
+
++ q4.)
+
+The top 5 carriers that have the lowest average delay times.
+```{r}
+flights %>% 
+  group_by(carrier) %>% 
+  summarise(arr_delay =mean(arr_delay, na.rm = TRUE)) %>% 
+  arrange(arr_delay) %>% 
+  top_n(arr_delay, n= -5)
+```
+***Answer: **
+
+top 5 carriers: AS, HA, AA, DL and VX.
+
++ q5.) 
+
+What is the worst day of the year to fly in terms of arrival delay?
+
+```{r}
+flights %>% 
+  group_by(year, month, day) %>% 
+  summarise( 
+    ave_delay = mean(arr_delay, na.rm= TRUE)) %>% 
+  arrange(desc(ave_delay))
+# I think this may actually be the right way to calculate, so in my opinion it's 8th of March.
+```
++ q6.)
+- What is the best day of the year to fly in terms of departure delay?  
+```{r}
+flights %>% 
+  group_by(year, month, day) %>% 
+  summarise(
+    ave_dep_delay = mean(dep_delay, na.rm = TRUE) ) %>% 
+  arrange(ave_dep_delay)
+# if my previous logic is correct,the best day to fly in terms of departure delay, is 24th September.
+```
+
+
+**Exercise 2:** Find all the rows with NA values in two specific columns (of your choosing) for the following datasets: 
+
+- diamonds
+- flights
+- mtcars
+
+If you can't find a dataset, do `??<dataset>` to find out more about it and what library you need to load. 
+
+If you had to find all the rows containing `NA` values in some column, how would use filter for that? Don't write this command out, but you should realize that this would be unpleasant (and errorprone). 
+```{r eval = FALSE}
+mtcars
+```
+
+```{r}
+df <- select( mtcars,mpg,cyl) # narrow down to 2 columns
+df
+```
+
+
+to find the rows, that have missing values in a column, can use subset.
+```{r}
+subset(df,is.na(mpg)) # this gives me 0 rows
+```
+
+```{r}
+df[is.na(df$mpg),] # this just lists the cars types,
+#actually I learnt thet [,] should be the same as subset, but a better choice.
+```
+
+```{r eval = FALSE}
+# maybe I should try `case_when`, but it just keeps telling me about
+# is.na(mpg) not being a logical vector.
+# the stackoverflow answers didn't get me closer to the solution.
+dr <- df %>% 
+  mutate(case_when(is.na(mpg)))
+```
+
+the error I get
+Error: Case 1 (`is.na(mpg)`) must be a two-sided formula, not a logical vector
+
+```{r}
+sum(is.na(mtcars$mpg))
+# this above - which I got from -
+# [https://discuss.analyticsvidhya.com/t/how-to-count-the-missing-value-in-r/2949/5] 
+# seems to be giving a reasonable answer.
+# It seems from this that there are no missing values for mpg.
+```
+
+Let's try using `is.na` simply, to see what we get:
+
+```{r}
+as.tibble(is.na(diamonds$price))
+# as fars as I understand, wherever I see "TRUE" that is a missing value.
+```
+
+```{r}
+as.tibble(is.na(diamonds$carat))
+as.tibble(is.na(mtcars$mpg))
+as.tibble(is.na(mtcars$cyl))
+as.tibble(is.na(flights$arr_delay))
+as.tibble(is.na(flights$dep_delay))
+```
+Theoretically I could sum these, as with the mtcars above,
+but this will give me the number of missing values, and not the rows.
+At least it's a good way to check, whether there are any missing values,
+so that when trying to find the right solution for rows with missing values in the specified columns, 
+I know what number I am looking for.
+The columns I am using for the various datasets, are:  
+
++ mpg and cyl for mtcars
++ price and carat for diamonds
++ arr_delay and dep_delay for flights
+
+
+```{r}
+sum(is.na(diamonds$price))
+sum(is.na(diamonds$carat))
+sum(is.na(mtcars$cyl))
+sum(is.na(flights$arr_delay))
+sum(is.na(flights$dep_delay))
+```
+***Answer: ***  
+
+So as per the above, it could be the case that diamonds and mtcars do not have missing values in the 
+columns I checked (price and carat in diamonds and mpg and cyl in mtcars).
+Whereas flights has 9430  and 8255 in columns arr_delay and dep_delay respectively.
+
+**Exercise 3:** Look up `filter_all` and look at the examples at the end of the documentation. Use this (with some google-fu or discourse help) to find all the rows with NA values in *any* column for the following datasets: 
+
+- diamonds
+- flights
+- mtcars
+
+Thus, the output should be those rows that *do* contain NA values.
+
+```{r eval = FALSE}
+diamonds
+```
+
+```{r eval = FALSE}
+?filter_all()
+```
+
+```{r}
+filter_all(mtcars, any_vars(is.na(.))) # this seems to return nothing, in line with exercize 2.
+filter_all(diamonds, any_vars(is.na(.))) # this also seems to return nothing.
+# somehow it's hard to believe that there are no missing values in diamonds.
+filter_all(flights, any_vars(is.na(.))) # this is showing the NA values across multiple columns,
+# so I think this works.
+```
+
+
+***Answer***  
+
+So in summary, it seems that there are no missing values in cars and diamonds, only in flights.
+
+**Exercise 4:** Pick your favourite dataset. Use it to illustrate the following types of plots, and describe briefly (2-3 sentences) what each plot means. I.e. for the boxplot, what do different lines mean in general, and thus what do they say about the specific data, such as the mean?
+
+- boxplot
+- violin plot
+- boxploth (Hint: You need to import the right library for this)
+- bin2d
+- hex
+
+Thus the code for each plot should be `ggplot(data = <your-data-set>, mapping = aes(...) + geom_...()` and is not the main challenge. The main part is for you to look at and understand the data.
+
+```{r}
+summary(diamonds)
+```
+
+***Boxplot***
+
+Found some help in plotting from {http://www.rpubs.com/ameilij/EDA_lesson3} 
+The explanations there weren't too detailed, so those I came up with by myself.
+
+Boxplot 1.:
+Price distribution of diamonds, based on cut.
+There isn't that much variation in price depending on the various cuts.
+A bigger difference would mean that some of the boxplots are in in the upper range of the prices  
+while others on the lower.
+Since we don't see any points at the end of the whiskers, there seem to be no outliers.
+```{r}
+ggplot(diamonds, aes(factor(cut),price, fill = cut)) + geom_boxplot() + coord_cartesian(ylim=c(0,7500))
+```
+
+Boxplot 2.:  
+
+Price distribution of diamonds based on clarity. 
+
+The picture here is more varied, there are even outlier points in categories VVS1 and IF.
+The outliers mean that while the median price in categories VVS1 and IF are just above 1000 USD, and even the end of quantile 4 is below 5000 USD, some values are as high as 8000 USD.  
+
+After checking the documentation I saw that IF was the worst category in terms of clarity and VVS1 the second to worst, which can be seen in the IQR range in terms of price. However the numerous outliers above the 4th quantile are a surprise.  
+
+Categories VS2 and VS1 seem to be similar in terms of clarity according to price, with a median just above 2000 USD, and a large proportion of the prices in the third quantile between 2000 and 6000 USD.
+```{r eval = FALSE}
+?diamonds
+```
+
+```{r warning = FALSE}
+ggplot(diamonds, aes(factor(clarity),price, fill= clarity )) +
+  geom_boxplot() + 
+  coord_cartesian(ylim=c(0,7500))
+```
+
+***Bin2d***
+
+```{r eval = FALSE}
+
+??bin2d # trying to find documentation for bin2d.
+```
+
++ Bin2d 1.)  
+
+Found information on bin2d at [ggplot2.tidyverse.org] {https://ggplot2.tidyverse.org/reference/geom_bin2d.html}  
+
+It says that the bin2d will divide the plane into rectangles, count the number of cases in each rectangle, and map the number of cases to each rectangle's fill.
+It says it is useful if geom_point doesn't work well, because of overplotting.
+Using one of the simplest examples for the plot from the referenced site.
+
+The plot shows the correlation of width and length of the diamond ( x,y ) with the price. The lighter the blue, the higher the price.
+We can see that the lightest blue is in the lowest part of the plot.So the diamond with the highest price seems to be quite small.
+
+
+```{r warning = FALSE}
+ggplot(diamonds,aes(x,y))+ xlim(4,10) +ylim(4,10) + geom_bin2d()
+# (xlim and ylim are limiting the axis, so that the data is readable.)
+```
+
++ Bin2d 2.)  
+
+It's possible to specify the size of the bins here too, so we know how many values are in each bin.
+( for example 30 in our case.)
+
+```{r warning = FALSE}
+ggplot(diamonds, aes(x,y)) +xlim(4,10) +ylim(4,10) + geom_bin2d(bins = 30)
+```
+
+***Violinplot***
+
++ 1.)
+
+Using the previous example for boxplot, price in accordance to clarity. 
+( I tried price in accordance to cut, but that was not very readable, as one could assume after the conclusion of the boxplot.)
+```{r}
+ggplot (diamonds, aes(clarity, price, fill = clarity)) +coord_cartesian(ylim=c(0,7500)) +
+  geom_violin()
+```
+This is probably not the best example for the violin plot, although the box-plot showed significant correlation between price and clarity, or at least we were able to see whether or not there is a relation. 
+In this violin plot maybe the 2 worst categories contain some information, namely that the majority of those diamonds are sold at the smaller price.
+Applying the scale_y_log will help here, idea from {https://www.tutorialgateway.org/r-ggplot2-violin-plot/}
+
++ 2.)
+```{r message = FALSE}
+library(scales)
+ggplot(diamonds, aes(clarity, price, fill = clarity)) + geom_violin() + scale_y_log10()
+#removed the cartesian coordinates because of y_log
+```
+
+***Hex plot***
+
+```{r warning = FALSE}
+ggplot(diamonds, aes(x,y)) + geom_hex() # this doesn't seem much different from bin2d, 
+# except that they are hexagons.
+# let's fix the function a bit, as above.
+ggplot(diamonds, aes( x, y)) + xlim(4,10) + ylim(4,10) +geom_hex(bins = 30)
+```
+
+***Boxploth***
+```{r eval = FALSE}
+install.packages('ggstance')
+```
+
+
+```{r}
+library(ggplot2)
+library(ggstance)
+boxploth <- ggplot(diamonds, aes( x,y, fill = color)) + geom_boxploth()
+boxploth
+ggsave("boxploth.jpg")
+# after installing the ggstance package, it is possible to use the boxpolth geoms,
+# which is the horiztontal version of the boxplot.
+# the colors indicate the different colors of the diamonds, and y is the length,
+# x is the width.
+# the largest plot is of color H, where the median is 6 mm width, but the majority
+# of the values are in the 2nd quantile 
+# ( so width below 6mm, and height varying from about 28 mm to 37 mm).
+```
+**Exercise 5:** Come up with an exercise to help you  -- and others -- learn `summarise` and `group_by` better. The more confused you are, the more you should simply try to come up with, or even copy, an example from somewhere and highlight what confuses you. Is it the order or arguments? Their role? If you are less confused, try to find a (non-obvious) use. Mention any resources used. 
+
++ I watched this video on [youtube.com] {https://www.youtube.com/watch?v=6iE1iQgoi5Q} 
++ `summarise` will generate summary statistics.
+
+
+```{r eval = FALSE}
+flights
+```
+
+```{r}
+summarise(flights,
+          count = n(),
+          avg_dep_delay = mean(dep_delay, na.rm = TRUE),
+          avg_arr_delay = mean(arr_delay, na.rm = TRUE),
+          avg_air_time = mean(air_time, na.rm = TRUE)
+          )
+```
++ `group_by` sorts the data based on variable levels.
+
+```{r}
+flights %>%  
+  group_by(dest) %>% 
+  summarise( count = n(),
+             avg_dep_delay = mean(dep_delay, na.rm = TRUE),
+             avg_arr_delay = mean(arr_delay, na.rm = TRUE),
+             avg_air_time = mean(air_time, na.rm = TRUE))
+```
+
+***Answer***
+
+
+So my example would be, to first `summarise` the flights data, by counting all rows, the average arrival-and departure 
+delay, and the average air time (air time: not calculated, but based on the column included in the flight).
+Then to show the added value of `group_by` I would sort the above information by destination.
+Then we would have the average departure and arrival delay for each destination, as well as the average air time.
+( I'm quite sure we already did this in class, but I did not look back into my previous notes to check, I just came up with this based on pratice.)
+
+**Exercise 6:** Work through sections 11.1 and 11.2 (skip exercises).
+```{r}
+height <- read_csv("heights.csv") # I imported the file, by cloning the github repo of r4ds.
+read_csv("a,b,c
+         1,2,3
+         4,5,6")
+read_csv("The first line of metadata 
+         The second line of meatadata
+         x,y,z
+         1,2,3", skip = 2) # skipping line 2
+read_csv("# the comment I want to skip
+  x,y,z
+  1,2,3 ", comment = "#") # skipping a comment
+         
+```
+
+```{r}
+read_csv("1,2,3\n4,5,6", col_names = FALSE ) # adding columns names ( default from x1 to xn)
+read_csv("1,2,3\n4,5,6", col_names = c("x","y","z")) # here we define the column names
+read_csv("a,b,c\n1,2,. " , na = ".") # define how to indicate missing values
+
+```
+
+End of file
