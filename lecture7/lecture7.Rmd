@@ -1,0 +1,210 @@
+---
+title: "Lecture 7: Reading and tidying data"
+author: "Marc Kaufmann"
+date: "10/28/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+## Class Exercise
+
+Load each of these data sets that are in the lecture6 and lecture7 folders:
+
+- test-data1.csv
+- test-data2.csv
+- test-data3.csv
+
+```{r}
+# Your final command should be of this kind:
+# df1 <- read_csv("test-data1.csv", col_types = cols(...))
+
+df1 <- read_csv("test-data1.csv") # You have to fix this
+
+```
+
+### Chapter 12: Tidy Data (for next week)
+
+So far we always had the data in a form where we didn't have to change the structure of the table to analyse it. Often this isn't the case, in particular we may want to put it in a tidy shape, as this works better with our tools.
+
+You should read sections 1 and 2 of chapter 12 on your own.
+
+```{r}
+# 12.3.1 Gathering
+
+library(tidyverse)
+
+table4a # This is defined 
+tidy4a <-  table4a %>%
+  gather(`1999`, `2000`, key = "year", value = "cases")
+
+tidy4b <- table4b %>%
+  gather(`1999`, `2000`, key = "year", value = "population")
+
+# We will see more on joins in the coming weeks
+tidy4 <- left_join(tidy4a, tidy4b)
+
+table2 %>% 
+  spread(key = "type", value = "count")
+
+stocks <- tibble(
+  year   = c(2015, 2015, 2016, 2016),
+  half  = c(   1,    2,     1,    2),
+  return = c(1.88, 0.59, 0.92, 0.17)
+)
+
+stocks %>%
+  spread(key = year, value = return) %>%
+  gather(key = "year", value = "return", `2015`, `2016`)
+
+```
+
+Here are some exercises from R4DS that you can attempt.
+
+```{r, eval=FALSE}
+# Exercise 12.3 the second
+# Why does this code fail?
+
+table4a %>% 
+  gather(1999, 2000, key = "year", value = "cases")
+
+# Exericse 3 in 12.3
+# Why does spreading this table fail? How could adding an additional column help?
+people <- tribble(
+  ~name,             ~key,    ~value,
+  #-----------------|--------|------
+  "Phillip Woods",   "age",       45,
+  "Phillip Woods",   "height",   186,
+  "Phillip Woods",   "age",       50,
+  "Jessica Cordero", "age",       37,
+  "Jessica Cordero", "height",   156
+)
+
+people %>%
+  spread(key = key, value = value)
+
+# Not clear to me how adding a column helps. Of course this column could contain 'age1' and 'age2'.
+# But whether that's a good solution or not depends on the context.
+
+# Exercise 4 
+# Tidy the tibble. Do you need to separate or gather?
+preg <- tribble(
+  ~pregnant, ~male, ~female,
+  "yes",     NA,    10,
+  "no",      20,    12
+)
+```
+
+## Separate and Unite: One column <-> many columns
+
+If you want to turn one column into many, such as the string "745/19987071" into "745" and "19987071", then you use `separate()`:
+
+```{r, separate}
+table3
+table3sep <- table3 %>%
+  separate(rate, into = c("cases", "population"), convert = TRUE) %>%
+  separate(year, into = c("century", "year"), sep = 2)
+
+?extract
+```
+
+For the reverse action, use `unite()`:
+
+```{r, unite}
+table3sep %>%
+  unite(new, century, year, sep="")
+
+```
+
+## Small Test 
+
+Let us test whether the answers to the questions are actually different or not. People with a given id gave answers to 6 different questions, wtatest, wta{1,2,3,4,5}. We want to test, by using t.tests, whether the answers to these questions are different. That is, we want to know if the means are different.
+
+```{r, t_test}
+df <- read_csv("some_choices.csv")
+
+# Let's spread by question_name
+df2 <- df %>%
+  spread(key = question_name, value = answer) %>%
+  # Keep only those that have no missing values for any answer
+  filter(!is.na(wtatest), !is.na(wta1), !is.na(wta2), !is.na(wta3), !is.na(wta4), !is.na(wta5))
+
+library(magrittr)
+
+df2 %$% t.test(wta1, wta2)  
+df2 %$% t.test(wta1, wta3)  
+df2 %$% t.test(wta1, wta4)  
+df2 %$% t.test(wta1, wta5)  
+  
+# Or, to introduce some loops
+
+for(otherwta in c("wta2", "wta3", "wta4", "wta5")) {
+  print(t.test(df2[["wta1"]], df2[[otherwta]]))
+}
+
+# Plot it
+library(ggplot2)
+
+ggplot(df, aes(x = question_name, y = answer)) +
+  geom_boxplot()
+
+```
+
+## 12.6 Case Study
+
+```{r}
+View(who)
+who1 <- who %>%
+  gather(key = "key", value = "cases", starts_with("new"), na.rm = TRUE)
+who1
+
+who2 <- who1 %>%
+  mutate(key = stringr::str_replace(key, "newrel", "new_rel"))
+
+who3 <- who2 %>%
+  separate(key, into = c("is_new", "TB type", "demographics"), sep = "_")
+
+(who4 <- who3 %>%
+  separate(demographics, into = c("gender", "age_range"), sep = 1))
+
+who %>%
+  gather(key = "key", value = "cases", starts_with("new"), na.rm = TRUE) %>%
+  mutate(key = stringr::str_replace(key, "newrel", "new_rel")) %>%
+  separate(key, into = c("is_new", "TB type", "sex_age"), sep = "_") %>%
+  select(-is_new, -iso2, -iso3) %>%
+  separate(sex_age, into = c("sex", "age"), sep = 1)
+```
+
+
+## Assignment 7
+
+**Exercise 1:** Make sure that you create a *new* .Rmd file for your assignment. Read chapter 8 in R4DS on [Workflow: projects](https://r4ds.had.co.nz/workflow-projects.html) and set up the folder for lecture 7 as a project. Make sure you open your assignment file as a new project. That way, when you try to read files in this folder, it should automatically find them.
+
+**Exercise 2:** Make sure you know how to load the test files. You do not have to prove this, so if you think you are fine, simply say "All done". If not, write down where you get stuck, and explain why you expected your commands to work, or why you think there should be no error.
+
+**Exercise 3:** I added the hotels-europe dataset to the lecture7 folder. Make sure that you can read in the *clean* data from the csv file. Lookup `read_dta` from the *haven* package (you have to load it first to get the help text). Use this to load the clean hotels data from the .dta files, which is the Stata native format. Compare the two datasets that you loaded, and show a few ways to test whether the two have identical data.
+
+**Exercise 4:** Pick a small subset of the hotels-europe dataset that you loaded in exercise 3 of 200 lines. Write it to a file. Now screw up some lines in the file in such a way that the normal `read_csv()` will either fail, or not yet load the dataset in the proper way. Make sure to specify:
+
+1. Which lines you changed
+2. Why this will lead either to a direct error or a parsing problem
+3. How you would notice the error, diagnose the problem, and fix it
+
+We had many examples of parsing problems, so take your inspiration from there or google for issues other people had.
+
+**Exercise 5:** Do the [final case study 12.6](https://r4ds.had.co.nz/tidy-data.html#case-study) in R4DS.
+
+**Exercise 6:** Take the following dataset and tidy it:
+
+1. First by hand: Describe what you have to do manually to tidy it. This will make it clear to you what the arguments to `gather()` are and why they are what they are.
+    - Make sure you realize which data you have to repeat across rows for this to work
+2. By coding it with `gather()`
+
+Here is the data:
+
+```{r, data_exercise_t}
+df <- tibble(name = c("A123", "B456"), age = c(30, 60), answer1 = c(0, 1), answer2 = c(1,1), answer3 = c(1,0), answer4 = c(0,0))
+```

@@ -1,7 +1,7 @@
 ---
 title: "Lecture 6"
 author: "Marc Kaufmann"
-date: "10/14/2019"
+date: "10/28/2019"
 output: html_document
 ---
 
@@ -24,6 +24,10 @@ flights_small <- flights %>%
 
 # 1. Compute the average delay (per day) and put it in the rows
 # 2. Then use that with dep_delay to compute the minutes above average
+library(tidyverse)
+library(nycflights13)
+
+flights_small <- flights
 
 flights_small %>%
   group_by(year, month, day) %>%
@@ -34,12 +38,20 @@ flights_small %>%
 Now compute the daily standard deviation in departure delays. Explain in one sentence what it means for that to be higher or lower.
 
 ```{r}
+<<<<<<< HEAD
 library(nycflights13)
 # Compute for every day how many minutes above the average delay a given flight is.
 
 flights_small %>%
   group_by(year, month, day ) %>%
   mutate(daily_sd_dep_delay = sd(dep_delay,na.rm = TRUE)) %>% 
+=======
+# Compute for every day how many minutes above the average delay a given flight is.
+
+flights_small %>%
+  group_by(year, month, day) %>%
+  mutate(daily_sd_dep_delay = sd(dep_delay, na.rm=TRUE)) %>%
+>>>>>>> upstream/master
   select(daily_sd_dep_delay, everything())
 ```
 
@@ -48,12 +60,12 @@ Now combine the previous two commands with a third to compute how many standard 
 ```{r, eval = FALSE}
 
 flights_small %>%
-  group_by(...) %>%
+  group_by(year, month, day) %>%
+  filter(!is.na(dep_delay)) %>%
   mutate(
-    difference_from_daily_mean_dep_delay = ...,
-    daily_sd_dep_delay  = ...,
-    diff_from_daily_mean_in_sd = .../...
-  )
+    diff_mean_in_sd = (dep_delay - mean(dep_delay)) / sd(dep_delay)
+  ) %>%
+  select(diff_mean_in_sd, dep_delay, everything())
 ```
     
 And finally (if time permits, which is unlikely):
@@ -193,92 +205,4 @@ challenge
 tail(challenge)
 ```
 
-
-## Class Exercise
-
-Load each of these data sets that are in the lecture6 folder:
-
-- test-data1.csv
-- test-data2.csv
-- test-data3.csv
-
-```{r}
-# Your final command should be of this kind:
-# df1 <- read_csv("test-data1.csv", col_types = cols(...))
-
-df1 <- read_csv("test-data1.csv") # You have to fix this
-
-```
-
-### Chapter 12: Tidy Data (for next week)
-
-So far we always had the data in a form where we didn't have to change the structure of the table to analyse it. Often this isn't the case, in particular we may want to put it in a tidy shape, as this works better with our tools.
-
-You should read sections 1 and 2 of chapter 12 on your own.
-
-```{r}
-# 12.3.1 Gathering
-
-library(tidyverse)
-
-table4a # This is defined 
-tidy4a <-  table4a %>%
-  gather(`1999`, `2000`, key = "year", value = "cases")
-
-tidy4b <- table4b %>%
-  gather(`1999`, `2000`, key = "year", value = "population")
-
-# We will see more on joins in the coming weeks
-tidy4 <- left_join(tidy4a, tidy4b)
-
-table2 %>% 
-  spread(key = "type", value = "count")
-
-stocks <- tibble(
-  year   = c(2015, 2015, 2016, 2016),
-  half  = c(   1,    2,     1,    2),
-  return = c(1.88, 0.59, 0.92, 0.17)
-)
-
-stocks %>%
-  spread(key = year, value = return) %>%
-  gather(key = "year", value = "return", `2015`, `2016`)
-
-```
-
-Here are some exercises from R4DS that you can attempt.
-
-```{r}
-# Exercise 12.3 the second
-# Why does this code fail?
-
-table4a %>% 
-  gather(1999, 2000, key = "year", value = "cases")
-
-# Exericse 3 in 12.3
-# Why does spreading this table fail? How could adding an additional column help?
-people <- tribble(
-  ~name,             ~key,    ~value,
-  #-----------------|--------|------
-  "Phillip Woods",   "age",       45,
-  "Phillip Woods",   "height",   186,
-  "Phillip Woods",   "age",       50,
-  "Jessica Cordero", "age",       37,
-  "Jessica Cordero", "height",   156
-)
-
-people %>%
-  spread(key = key, value = value)
-
-# Not clear to me how adding a column helps. Of course this column could contain 'age1' and 'age2'.
-# But whether that's a good solution or not depends on the context.
-
-# Exercise 4 
-# Tidy the tibble. Do you need to separate or gather?
-preg <- tribble(
-  ~pregnant, ~male, ~female,
-  "yes",     NA,    10,
-  "no",      20,    12
-)
-```
 

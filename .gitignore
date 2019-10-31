@@ -49,3 +49,4 @@ rsconnect/
 # Don't track some folders
 private/
 pdfs/
+videos/
