@@ -203,7 +203,7 @@ We had many examples of parsing problems, so take your inspiration from there or
     - Make sure you realize which data you have to repeat across rows for this to work
 2. By coding it with `gather()`
 
-Here is the data:
+Here is the data, where answer1 etc are all the same type of question at different times (implicit in the name of the answer, that is the owner of the database would answer1 differs from answer2).
 
 ```{r, data_exercise_t}
 df <- tibble(name = c("A123", "B456"), age = c(30, 60), answer1 = c(0, 1), answer2 = c(1,1), answer3 = c(1,0), answer4 = c(0,0))
