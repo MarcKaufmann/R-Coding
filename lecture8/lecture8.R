@@ -207,8 +207,18 @@ ggplot(sim1, aes(x,y)) +
 
 # Exercise 5. Use your model estimated on Vienna to predict prices for another city.
 # How well does your model do, if you use the parameter values estimated on Vienna?
+# Example: In part 3 you will have run some model similar to 
+# vienna_model <- lm(y ~ x, data = my_vienna_data)
+# or some such. Use the vienna_model, with the parameters estimated on the Vienna dataset
+# to see how well it does (and what it predicts) for some other city.
+# the notes on lecture8-pre-class.R contain code that computes predictions. 
+# You pick how you measure 'how well it does'.
 
 # Exercise 6. Reestimate your favorite model (the same as from exercise 1) for
 # another city. How much do the parameter values change? How well does the model
 # do now? If you had to summarise the difference between the 2 cities in one 
 # number based on your model, what would it be?
+# Example: In this exercise, you should run the same formula as in exercise 3, but
+# run it on the data for another city (the same one as in exercise 5).
+# Thus if you ran lm(y ~ x, data = my_vienna_data), you now run lm(y ~ x, data = my_other_city_data)
+
