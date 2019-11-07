@@ -1,4 +1,5 @@
 # Lecture 9
+sim3
 
 # Chapter 23 continued
 
@@ -33,8 +34,10 @@ ggplot(df, aes(x,y)) +
 ggplot(df, aes(x, resid)) + 
   geom_point()
 
+# Note: they have mean 0. Must hold whenever we minimize the mean-squared error.
+
 # You can also use predict and residuals from base R, but make sure you haven't
-# changed the order of the rows on the dataset!
+# changed the order of the rows on the dataset.
 (df <- df %>%
   mutate(
     pred2 = predict(sim1_mod),
@@ -47,6 +50,34 @@ ggplot(sim3, aes(x1, y, color = x2)) +
 
 mod1 <- lm(y ~ x1 + x2, data = sim3)
 mod2 <- lm(y ~ x1 * x2, data = sim3)
+
+sim3 <- sim3 %>%
+  add_predictions(mod1, var = "mod1") %>%
+  add_predictions(mod2, var = "mod2")
+
+# Plot model 1 lines
+ggplot(sim3, aes(x = x1, y = y, color = x2)) +
+  geom_point() +
+  geom_line(aes(y = mod1))
+
+# Plot model 2 lines
+ggplot(sim3, aes(x = x1, y = y, color = x2)) +
+  geom_point() +
+  geom_line(aes(y = mod2))
+
+# It would be nice to plot both next to each other.
+# We can use facet_wrap for this, but have to tell it which data
+# goes into which facet, thus we should gather all models
+# into one column.
+
+(sim3 <- sim3 %>%
+  gather(key = model, value = pred, mod1, mod2))
+
+ggplot(sim3, aes(x = x1, y = y, color = x2)) +
+  geom_point() +
+  geom_line(aes(y = pred)) +
+  # Docs say to use vars(model). Don't ask me why. 
+  facet_wrap(vars(model))
 
 mod1
 mod2
@@ -80,253 +111,234 @@ diamonds %>%
 
 # How to plot a function with ggplot
 
-square_func <- function(x) {x*x}
+square_func <- function(x) {x^2}
+cube <- function(x) {x^3}
 
-p <- ggplot(data = data.frame(x = 0), mapping = aes(x = x))t
-p + stat_function(fun = square_func) + xlim(-5,5)
+p <- ggplot(data = data.frame(x = 0), mapping = aes(x = x))
+p + 
+  # What happens if I add color = 'square' without aes()?
+  stat_function(fun = square_func, aes(color = 'square')) + 
+  stat_function(fun = cube, aes(color = 'cube')) +
+  xlim(-5,5)
 
-# More general example:
+# Based on R skills by Gergo Daroczi, lectures 1 and 2
 
-p +
-    layer(stat = "function",
-          fun = fun.1,
-          mapping = aes(color = "fun.1")
-          ) +
-    layer(stat = "function",
-          fun = fun.2,
-          mapping = aes(color = "fun.2")
-          ) +
-    layer(stat = "function",
-          fun = fun.3,
-          mapping = aes(color = "fun.3")
-          ) +
-    scale_x_continuous(limits = c(-5, 5)) +
-    scale_color_manual(name = "Functions",
-                       values = c("blue", "red", "green"), # Color specification
-                       labels = c("X^2 + X", "-X + 10", "3X + 2"))
+## Simulate Brownian motion (random walk) in 1D
+# BM is: You go forward or backward 1 step every period
+# You do so with equal probability.
+# The question is: where are you after N steps?
+# Important in physics, in finance, in lots of things
 
-# FROM GERGO LECTURE 1.R
-
-## TODO simulate Brownian motion (random walk) in 1D
-round(runif(1))
-round(runif(1))*2 - 1
-sign(runif(1) - 0.5)
+# First, get +1 or -1 with equal probability
 sign(runif(1, min = -0.5, max = 0.5))
 
 ## loop approach
+# If you want to be able to replicate bugs, make sure to set the seed
+# This means you get the same 'random' sequence each time
+set.seed(42)
+x <- 0
+step1 <- sign(runif(1) - 0.5)
+x <- x + step1
+step2 <- sign(runif(1) - 0.5)
+x <- x + step2
+# ... getting bored already. First, let's define a next_step function
+next_step <- function() {
+  sign(runif(1) - 0.5)
+}
+
+(x <- x + next_step())
+(x <- x + next_step())
+# ... getting bored again
+# Let's start again
 set.seed(42)
 x <- 0
 for (i in 1:25) {
-    x <- x + sign(runif(1) - 0.5)
+    x <- x + next_step()
 }
 x
 
 ## vectorized approach
-round(runif(5))
-round(runif(5))*2 - 1
-cumsum(round(runif(25))*2 - 1)
-
-plot(cumsum(round(runif(25))*2 - 1), type = 's')
-
-## plot multiple simulations
+# vectorized things are special forms of for loops
+# Reset seed for comparison
 set.seed(42)
-plot(cumsum(round(runif(25))*2 - 1), type = 's')
+(all_steps <- sign(runif(25, min = -0.5, max = 0.5)))
+(x <- sum(all_steps))
 
-for (i in 2:6) {
-    lines(cumsum(round(runif(25))*2 - 1), type = 's', col = i)
+# Even nicer than the for loop
+# What if we want the whole evolution of the BM?
+cumsum(all_steps)
+ggplot(mapping = aes(x = 1:25, y = cumsum(all_steps))) + 
+  geom_point() +
+  geom_line()
+
+# What if we want to plot BMs of various lengths?
+
+plot_BM <- function(N) {
+  # TODO: Refactor, I keep typing the same parameters again and again. 
+  all_steps <- sign(runif(N, min = -0.5, max = 0.5))
+  all_xs <- cumsum(all_steps)
+  df <- tibble(time = 1:N, position = all_xs)
+  ggplot(df, aes(x = time, y = position)) +
+    #geom_point() + 
+    geom_line()
 }
 
-## pro tipp: set ylim to accommodate all possible outcomes
-plot(c(1, 25), c(-25, 25), type = 'n')
-plot(NULL, NULL, xlim = c(1, 25), ylim = c(-25, 25))
+plot_BM(25)
+plot_BM(250)
+plot_BM(2500)
 
-## pro tipp: use "sample" instead of transforming a random number between 0 and 1
-sample(c(-1, 1), 25, replace = TRUE)
+# But... what if we want to use the data of these BMs? We now only have the plot.
+# Bad design of the function. A function should (ideally) do one thing.
 
-## pro tipp: create a new function generating these numbers
-minus_or_plus <- function(n) {
-    sample(c(-1, 1), n, replace = TRUE)
+get_steps <- function(n) {
+  sample(c(-1,1), N, replace = TRUE)
 }
-minus_or_plus(5)
 
-## TODO plot a histogram of results running the above simulation for 1K times each with 500 rounds
-res <- replicate(n = 1000, expr = sum(minus_or_plus(500)))
-hist(res)
-
-## TODO plot the histogram at the 400th iteration
-res <- replicate(n = 1000, expr = sum(minus_or_plus(400)))
-hist(res)
-
-res <- replicate(n = 1000, expr = cumsum(minus_or_plus(500)))
-hist(res[400, ])
-
-res <- lapply(1:1000, function(i) cumsum(minus_or_plus(500)))
-str(res)
-res <- do.call(cbind, res)
-hist(res[400, ])
-
-## better to store simulations in rows
-res <- lapply(1:1000, function(i) cumsum(minus_or_plus(500)))
-str(res)
-res <- do.call(rbind, res)
-hist(res[, 400])
-
-## NOTE simplify it right away
-res <- sapply(1:1000, function(i) cumsum(minus_or_plus(500)))
-str(res)
-
-## TODO plot a histogram doing the same simulation but after the 100th, 200th, 300th etc iteration
-library(animation)
-saveGIF({
-    for (i in 1:500) {
-        hist(res[i, ])
-    }
-})
-
-library(animation)
-ani.options(interval = 0.5)
-saveGIF({
-    for (i in seq(1, 500, by = 25)) {
-        hist(res[i, ], main = i)
-        abline(v = mean(res[i, ]), col = 'red')
-    }
-})
-
-## TODO compute the minimum value for each simulation
-?lapply
-?sapply
-?replicate
-?apply
-
-apply(res, 1, min)
-apply(res, 2, min)
-
-# FROM GERGO LECTURE 2
-
-## recap from last week
-minus_or_plus <- function(n) {
-    sample(c(-1, 1), n, replace = TRUE)
+get_BM <- function(N) {
+  #all_steps <- sign(runif(N, min = -0.5, max = 0.5))
+  all_xs <- cumsum(get_steps(N))
+  return(all_xs) # Not necessary, as default is to return last thing
 }
-minus_or_plus(5)
 
-res <- replicate(n = 1000, expr = sum(minus_or_plus(500)))
-str(res)
+plot_BM <- function(bm) {
+  df <- tibble(time = 1:length(bm), position = bm)
+  ggplot(df, aes(x = time, y = position)) +
+    geom_line()
+}
+
+# We can do as before:
+plot_BM(get_BM(500))
+
+# But we can also first get the BM if we need it:
+bm1 <- get_BM(500)
+plot_BM(bm1)
+
+# What if we want to plot multiple BMs?
+# I'll skip it, since there is some rather esoteric stuff going on
+# to get it working. Namely, see the use of aes_ (note the underscore).
+# There is a tidy way (meaning to use the tidyverse way of thinking) to do it too.
+# Our plotting function is a little too specific
+# Let's pass in a list of BMs, and make sure to say what time to plot
+
+# Read this in your own time if you want to know why you should *not*
+# use for loops with ggplot.
+
+plot_BMs_bug <- function(lbm, N) {
+  p <- ggplot()
+  for (bm in lbm) {
+    p <- p + geom_line(mapping = aes(x = 1:N, y = bm))
+  }
+  return(p)
+}
+
+plot_BMs <- function(lbm, N) {
+  p <- ggplot()
+  for (bm in lbm) {
+    p <- p + geom_line(mapping = aes_(x = 1:N, y = bm))
+  }
+  return(p)
+}
+
+list_of_bms <- list(get_BM(5), get_BM(5), get_BM(5))
+plot_BMs(list_of_bms, 5)
+plot_BMs_bug(list_of_bms, 5)
+
+# The bug is somewhat subtle.
+# See https://stackoverflow.com/questions/26235825/for-loop-only-adds-the-final-ggplot-layer
+# Lesson: Do *not* put ggplot in a for loop. Bugs will ensue.
+
+## Plot the histogram of results for where a BM is after 500 steps. 
+res <- replicate(n = 1000, expr = get_BM(500)[500])
+hist(res) # Good for quick and dirty, not good for publication and reports.
+
+## Plot the histogram at the 400th iteration
+res <- replicate(n = 1000, expr = get_BM(500)[400])
 hist(res)
 
-res <- lapply(1:1000, function(i) cumsum(minus_or_plus(500)))
-res <- do.call(cbind, res)
-str(res)
-hist(res[500, ])
+# But it makes more sense to compute the BMs once, then get differnt positions.
+bms <- replicate(n = 1000, expr = get_BM(500))
+head(bms)
 
-res <- sapply(1:1000, function(i) cumsum(minus_or_plus(500)))
-str(res)
-hist(res[500, ])
-
-## TODO rerun with setting the rnd seed to 42
-set.seed(42)
-res <- sapply(1:1000, function(i) cumsum(minus_or_plus(500)))
-
-## TODO list all simulation when the value did not become negative
-which(apply(res, 2, min) > 0)
-## eg
-res[, 23]
+# Can you tell whether a single BM is in a row or in a column?
+# It is in a column. So the Nth row (the first number) gives the Nth observation
+# for every BM.
+hist(bms[400,])
 
 ## TODO roll 3 dices! 1-6 x 3
 sample(1:6, 3, replace = TRUE)
 
 ## TODO roll 3 dices 1K times and plot the sum of points
-dices <- function() sample(1:6, 3, replace = TRUE)
-dices_sum <- function() sum(dices())
+set.seed(42)
+dices <- function() {sample(1:6, 3, replace = TRUE)}
+dices_sum <- function() {sum(dices())}
 dices_sum()
 hist(replicate(1000, dices_sum()))
 ## NOTE interesting, should be symmetric?
 
+df <- tibble(x = replicate(1e5, dices_sum()))
+ggplot(df, aes(x = x))  + 
+  geom_histogram()
+ggplot(df, aes(x = x))  + 
+  geom_histogram(bins = 16)
+ggplot(df, aes(x = x)) +
+  geom_bar()
+# Lesson: Use bar charts for discrete data, histogram for continuous
+# In base R:
 hist(replicate(100000, dices_sum()))
 hist(replicate(1e5, dices_sum()))
+hist(replicate(1e5, dices_sum()), breaks = 2:18)
 table(replicate(1e5, dices_sum()))
 barplot(table(replicate(1e5, dices_sum())))
-hist(replicate(1e5, dices_sum()), breaks = 2:18)
-
-## TODO how many times out of 1K rolls we had the same points on each dice?
-set.seed(42)
-res <- replicate(1000, dices())
-str(res)
-which(apply(res, 2, sd) == 0)
-res[, 58]
-length(which(apply(res, 2, sd) == 0))
-
-## TODO playing on roulette – always bet on red (or 18-36)
-roulette <- function() sample(0:36, 1)
-wallet <- 100
-bet <- 1
-for (i in 1:100) {
-    wallet <- wallet - bet
-    number <- roulette()
-    if (number > 18) {
-        cat('win!\n')
-        wallet <- wallet + bet * 2
-    } else {
-        cat('lost :(\n')
-    }
-}
-wallet
-
-## advanced logging
-library(futile.logger)
-flog.info('Win!')
-flog.error('Duh :/')
-
-## TODO vectorize
-sum(ifelse(sample(0:36, 100, replace = TRUE) > 18, 1, -1))
-
-## #############################################################################
-
-## NOTE read.csv -> readxl from the Internet for MDS
-
-## distance between 40 Hungarian cities -> 2D scatterplot
-download.file('http://bit.ly/hun-cities-distance', 'cities.xls')
-## on windows
-download.file('http://bit.ly/hun-cities-distance', 'cities.xls', mode = 'wb')
-
-library(readxl)
-cities <- read_excel('cities.xls')
-str(cities)
-
-## get rid of 1st column and last row (metadata)
-cities <- cities[, -1]
-cities <- cities[-nrow(cities), ]
-
-mds <- cmdscale(as.dist(cities))
-mds
-
-plot(mds)
-text(mds[, 1], mds[, 2], names(cities))
-
-## flipping both x and y axis
-mds <- -mds
-plot(mds)
-text(mds[, 1], mds[, 2], names(cities))
-
-## non-geo example
-?mtcars
-str(mtcars)
-mtcars
-
-mds <- cmdscale(dist(mtcars))
-plot(mds)
-text(mds[, 1], mds[, 2], rownames(mtcars))
-
-mds <- as.data.frame(mds)
-library(ggplot2)
-ggplot(mds, aes(V1, -V2, label = rownames(mtcars))) +
-    geom_text() + theme_bw()
-
-library(ggrepel)
-ggplot(mds, aes(V1, -V2, label = rownames(mtcars))) +
-    geom_text_repel() + theme_bw()
-
-## NOTE think about why the above visualization is off
 
 # Assignment
 
+# Exercise 1: Map each coefficient from mod1 and mod2 to a feature of the plot 
+# with two facets. For instance, what is x1 in summaryd(mod2)? Where could you
+# read it off (roughly) from the graph? Etc for x1:x2b and so on. If you get
+# stuck, do ask for specific questions on Discourse. Correct answers for any 
+# parameter look like this:
+# x1 is the [slope/intercept/difference between slopes/intercepts of] for ... 
+# Since it is [positive/negative] this means that ... is [larger/smaller] than ...
 
+# Exercise 2: Redo the faceting with gather_predictions and if needed with data_grid.
+# Look at chapter 23 for help.
+
+# Exercise 3: Read/Skim 21.2, 21.3, and 21.4 so you are aware of some issues.
+# Pick a short example from the notes that you feel you want to understand better
+# and use some other use case to illustrate it (using the Vienna data, or 
+# diamonds, or the same but in a different way.)
+
+# Exercise 4: Use the dices example and the simulations to compute the following
+# probabilities. Write functions for those probabilities that have a
+# parameter, i.e. that ask the same question for different numbers.
+
+# 1. Probability of getting the sum 9
+# 2. Probability of getting the sum 5
+# 3. Probability of getting the sum N for any number N from 3 to 18
+# 4. Probability of getting either the sum n or the sum m
+
+# Tip: Write a function for part 3, and once you have that function, use it
+# to write another function for part 4. If you get stuck, try to reuse your code
+# for a given number, e.g. for the sum 9, and replace 9 by the parameter N.
+
+# Exercise 5: 
+# Part 1: Complete the code so it computes the probability of getting
+# any sum inside of x.
+
+x <- c(3,4,5)
+total_probability <- 0
+for(value in x) {
+  #...
+}
+total_probability # Should now have the correct probability of getting 3, 4, or 5.
+
+# Part 2:
+# Define a function using the for loop above. The function should take the vector
+# x as an argument, and should compute the probability of getting any sum
+# in that vector.
+
+# Exercise 6: Generalize the functions in exercise 5 so that you can also
+# change how many dice you are throwing. If you get stuck for too long, leave it.
+# If you want to try, rewrite the functions for 2 dice (or even 1) and see
+# what you need to change to make the code work. The difficulty of this exercise
+# mostly depends on how much programming experience you have.
