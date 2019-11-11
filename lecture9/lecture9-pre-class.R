@@ -109,10 +109,14 @@ diamonds %>%
 
 # Functions, Iterations, Conditionals and all that
 
+## For those with background in programming, feel free to leave
+
 # How to plot a function with ggplot
 
 square_func <- function(x) {x^2}
 cube <- function(x) {x^3}
+
+# Note on return()
 
 p <- ggplot(data = data.frame(x = 0), mapping = aes(x = x))
 p + 
@@ -188,7 +192,8 @@ plot_BM(250)
 plot_BM(2500)
 
 # But... what if we want to use the data of these BMs? We now only have the plot.
-# Bad design of the function. A function should (ideally) do one thing.
+# Bad design of the function. 
+# A function should (ideally) do one thing.
 
 get_steps <- function(n) {
   sample(c(-1,1), N, replace = TRUE)
@@ -213,39 +218,7 @@ plot_BM(get_BM(500))
 bm1 <- get_BM(500)
 plot_BM(bm1)
 
-# What if we want to plot multiple BMs?
-# I'll skip it, since there is some rather esoteric stuff going on
-# to get it working. Namely, see the use of aes_ (note the underscore).
-# There is a tidy way (meaning to use the tidyverse way of thinking) to do it too.
-# Our plotting function is a little too specific
-# Let's pass in a list of BMs, and make sure to say what time to plot
-
-# Read this in your own time if you want to know why you should *not*
-# use for loops with ggplot.
-
-plot_BMs_bug <- function(lbm, N) {
-  p <- ggplot()
-  for (bm in lbm) {
-    p <- p + geom_line(mapping = aes(x = 1:N, y = bm))
-  }
-  return(p)
-}
-
-plot_BMs <- function(lbm, N) {
-  p <- ggplot()
-  for (bm in lbm) {
-    p <- p + geom_line(mapping = aes_(x = 1:N, y = bm))
-  }
-  return(p)
-}
-
-list_of_bms <- list(get_BM(5), get_BM(5), get_BM(5))
-plot_BMs(list_of_bms, 5)
-plot_BMs_bug(list_of_bms, 5)
-
-# The bug is somewhat subtle.
-# See https://stackoverflow.com/questions/26235825/for-loop-only-adds-the-final-ggplot-layer
-# Lesson: Do *not* put ggplot in a for loop. Bugs will ensue.
+# What if we want to plot multiple BMs? See Appendix to these lecture notes
 
 ## Plot the histogram of results for where a BM is after 500 steps. 
 res <- replicate(n = 1000, expr = get_BM(500)[500])
@@ -291,6 +264,30 @@ table(replicate(1e5, dices_sum()))
 barplot(table(replicate(1e5, dices_sum())))
 
 # Assignment
+
+# Optional Exercise 0 for non-programmers (if you get stuck): 
+# If you wonder how to write functions, read chpater 19 in R4DS.
+#
+# Important note: It is very hard to write functions well, since at the deep level it is about
+# how to organize your code, which is about understanding what it is you want to do
+# and how to express this succinctly, clearly, and correctly. Defining a single simple function
+# is very easy - such as defining a function that computes the square. But knowing
+# which functions to write, how to make them play nicely with each other, how to not
+# repeat code, etc etc is hard. I say this so you realize that it is normal to be confused,
+# and to remain confused. I certainly am confused by some of the higher-level functions,
+# by modules/libraries/packages (which are a kind of mega-function), by macros (another
+# type of mega-function, but in a different direction), etc etc. So be patient with yourself,
+# try to take it one small step at a time and to get the job done, without expecting to 
+# understand everything.
+# 
+# Optional Exercise 0 (no need to report on it, but I recommend it for educational purposes): 
+# Read https://r4ds.had.co.nz/iteration.html#the-map-functions, section 21.5 on map functions,
+# especially if you come from imperative or object-oriented languages. If you know how to use
+# map functions, the pipe and functional style starts to become substantially more powerful,
+# while if you still think in OO ways, you will constantly fight the way the tidyverse works.
+# This is not to say that this type of functional programming is better, but that it is the
+# way the tidyverse is organized, and that it has a lot going for it. If after you grok maps
+# you still don't like it, that's fine. At least you know what you don't like.
 
 # Exercise 1: Map each coefficient from mod1 and mod2 to a feature of the plot 
 # with two facets. For instance, what is x1 in summaryd(mod2)? Where could you
@@ -342,3 +339,40 @@ total_probability # Should now have the correct probability of getting 3, 4, or 
 # If you want to try, rewrite the functions for 2 dice (or even 1) and see
 # what you need to change to make the code work. The difficulty of this exercise
 # mostly depends on how much programming experience you have.
+
+# Appendix
+
+# OPTIONAL: For the curious, if you plan on writing functions with ggplot.
+# I'll skip it, since there is some rather esoteric stuff going on
+# to get it working. Namely, see the use of aes_ (note the underscore).
+# There is a tidy way (meaning to use the tidyverse way of thinking) to do it too.
+# Our plotting function is a little too specific
+# Let's pass in a list of BMs, and make sure to say what time to plot
+
+# Read this in your own time if you want to know why you should *not*
+# use for loops with ggplot.
+
+plot_BMs_bug <- function(lbm, N) {
+  p <- ggplot()
+  for (bm in lbm) {
+    p <- p + geom_line(mapping = aes(x = 1:N, y = bm))
+  }
+  return(p)
+}
+
+plot_BMs <- function(lbm, N) {
+  p <- ggplot()
+  for (bm in lbm) {
+    p <- p + geom_line(mapping = aes_(x = 1:N, y = bm))
+  }
+  return(p)
+}
+
+list_of_bms <- list(get_BM(5), get_BM(5), get_BM(5))
+plot_BMs(list_of_bms, 5)
+plot_BMs_bug(list_of_bms, 5)
+
+# The bug is somewhat subtle.
+# See https://stackoverflow.com/questions/26235825/for-loop-only-adds-the-final-ggplot-layer
+# Lesson: Do *not* put ggplot in a for loop. Bugs will ensue.
+
