@@ -109,7 +109,8 @@ diamonds %>%
 
 # Functions, Iterations, Conditionals and all that
 
-## For those with background in programming, feel free to leave
+# For those with background in programming, feel free to leave
+# Make sure to quickly scan the code, but you should be fine
 
 # How to plot a function with ggplot
 
