@@ -188,3 +188,45 @@ plot_BM(5000)
 # Bad design of function
 # A function should (ideally) do one thing
 
+
+# Assignment
+
+# Optional Exercise 0 for non-programmers (if you get stuck): 
+# If you wonder how to write functions, read chpater 19 in R4DS.
+#
+# Important note: It is very hard to write functions well, since at the deep level it is about
+# how to organize your code, which is about understanding what it is you want to do
+# and how to express this succinctly, clearly, and correctly. Defining a single simple function
+# is very easy - such as defining a function that computes the square. But knowing
+# which functions to write, how to make them play nicely with each other, how to not
+# repeat code, etc etc is hard. I say this so you realize that it is normal to be confused,
+# and to remain confused. I certainly am confused by some of the higher-level functions,
+# by modules/libraries/packages (which are a kind of mega-function), by macros (another
+# type of mega-function, but in a different direction), etc etc. So be patient with yourself,
+# try to take it one small step at a time and to get the job done, without expecting to 
+# understand everything.
+# 
+# Optional Exercise 0 (no need to report on it, but I recommend it for educational purposes): 
+# Read https://r4ds.had.co.nz/iteration.html#the-map-functions, section 21.5 on map functions,
+# especially if you come from imperative or object-oriented languages. If you know how to use
+# map functions, the pipe and functional style starts to become substantially more powerful,
+# while if you still think in OO ways, you will constantly fight the way the tidyverse works.
+# This is not to say that this type of functional programming is better, but that it is the
+# way the tidyverse is organized, and that it has a lot going for it. If after you grok maps
+# you still don't like it, that's fine. At least you know what you don't like.
+
+# Exercise 1: Map each coefficient from mod1 and mod2 to a feature of the plot 
+# with two facets. For instance, what is x1 in summaryd(mod2)? Where could you
+# read it off (roughly) from the graph? Etc for x1:x2b and so on. If you get
+# stuck, do ask for specific questions on Discourse. Correct answers for any 
+# parameter look like this:
+# x1 is the [slope/intercept/difference between slopes/intercepts of] for ... 
+# Since it is [positive/negative] this means that ... is [larger/smaller] than ...
+
+# Exercise 2: Do the faceting with gather_predictions and if needed with data_grid.
+# Look at chapter 23 for help.
+
+# Exercise 3: Read/Skim 21.2, 21.3, and 21.4 so you are aware of some issues.
+# Pick a short example from the notes that you feel you want to understand better
+# and use some other use case to illustrate it (using the Vienna data, or 
+# diamonds, or the same but in a different way.)
