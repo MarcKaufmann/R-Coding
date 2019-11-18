@@ -1,5 +1,138 @@
 # Lecture 10
 
+# Based on R skills by Gergo Daroczi, lectures 1 and 2
+
+# Plot Brownian Motions (BMs)
+
+plot_BM <- function(N) {
+  # TODO: Refactor, I keep typing the same parameters again and again. 
+  all_steps <- sign(runif(N, min = -0.5, max = 0.5))
+  all_xs <- cumsum(all_steps)
+  df <- tibble(time = 1:N, position = all_xs)
+  ggplot(df, aes(x = time, y = position)) +
+    #geom_point() + 
+    geom_line()
+}
+
+plot_BM(25)
+plot_BM(250)
+plot_BM(2500)
+
+# But... what if we want to use the data of these BMs? We now only have the plot.
+# Bad design of the function. 
+# A function should (ideally) do one thing.
+
+get_steps <- function(n) {
+  sample(c(-1,1), N, replace = TRUE)
+}
+
+get_BM <- function(N) {
+  #all_steps <- sign(runif(N, min = -0.5, max = 0.5))
+  all_xs <- cumsum(get_steps(N))
+  return(all_xs) # Not necessary, as default is to return last thing
+}
+
+plot_BM <- function(bm) {
+  df <- tibble(time = 1:length(bm), position = bm)
+  ggplot(df, aes(x = time, y = position)) +
+    geom_line()
+}
+
+# We can do as before:
+plot_BM(get_BM(500))
+
+# But we can also first get the BM if we need it:
+bm1 <- get_BM(500)
+plot_BM(bm1)
+
+# What if we want to plot multiple BMs? See Appendix to these lecture notes
+
+## Plot the histogram of results for where a BM is after 500 steps. 
+res <- replicate(n = 1000, expr = get_BM(500)[500])
+hist(res) # Good for quick and dirty, not good for publication and reports.
+
+## Plot the histogram at the 400th iteration
+res <- replicate(n = 1000, expr = get_BM(500)[400])
+hist(res)
+
+# But it makes more sense to compute the BMs once, then get differnt positions.
+bms <- replicate(n = 1000, expr = get_BM(500))
+head(bms)
+
+# Can you tell whether a single BM is in a row or in a column?
+# It is in a column. So the Nth row (the first number) gives the Nth observation
+# for every BM.
+hist(bms[400,])
+
+# Another example: simulating dice rolls
+
+## roll 3 dices! 1-6 x 3
+sample(1:6, 3, replace = TRUE)
+
+## TODO roll 3 dices 1K times and plot the sum of points
+set.seed(42)
+dices <- function() {sample(1:6, 3, replace = TRUE)}
+dices_sum <- function() {sum(dices())}
+dices_sum()
+hist(replicate(1000, dices_sum()))
+## NOTE shouldn't this be symmetric?
+
+df <- tibble(x = replicate(1e5, dices_sum()))
+ggplot(df, aes(x = x))  + 
+  geom_histogram()
+ggplot(df, aes(x = x))  + 
+  geom_histogram(bins = 16)
+ggplot(df, aes(x = x)) +
+  geom_bar()
+# Lesson: Use bar charts for discrete data, histogram for continuous
+# In base R:
+hist(replicate(100000, dices_sum()))
+hist(replicate(1e5, dices_sum()))
+hist(replicate(1e5, dices_sum()), breaks = 2:18)
+table(replicate(1e5, dices_sum()))
+barplot(table(replicate(1e5, dices_sum())))
+
+# =========================================================
+# Appendix
+
+# OPTIONAL: For the curious, if you plan on writing functions with ggplot.
+# I'll skip it, since there is some rather esoteric stuff going on
+# to get it working. Namely, see the use of aes_ (note the underscore).
+# There is a tidy way (meaning to use the tidyverse way of thinking) to do it too.
+# Our plotting function is a little too specific
+# Let's pass in a list of BMs, and make sure to say what time to plot
+
+# Read this in your own time if you want to know why you should *not*
+# use for loops with ggplot.
+
+plot_BMs_bug <- function(lbm, N) {
+  p <- ggplot()
+  for (bm in lbm) {
+    p <- p + geom_line(mapping = aes(x = 1:N, y = bm))
+  }
+  return(p)
+}
+
+plot_BMs <- function(lbm, N) {
+  p <- ggplot()
+  for (bm in lbm) {
+    p <- p + geom_line(mapping = aes_(x = 1:N, y = bm))
+  }
+  return(p)
+}
+
+list_of_bms <- list(get_BM(5), get_BM(5), get_BM(5))
+plot_BMs(list_of_bms, 5)
+plot_BMs_bug(list_of_bms, 5)
+
+# The bug is somewhat subtle.
+# See https://stackoverflow.com/questions/26235825/for-loop-only-adds-the-final-ggplot-layer
+# Lesson: Do *not* put ggplot in a for loop if you want multiple graphs on the same plot.
+# Use ggplot functionality to create multiple plots directly (i.e. pass a dataframe with all the
+# data, and group correctly).
+# Bugs will ensue.
+# =========================================================
+
 # Chapter 16
 
 library(tidyverse)
@@ -42,22 +175,6 @@ flights %>%
   mutate(departure_date = make_date(year, month, day))
 
 # Class exercise
-
-#make_datetime_100 <- function(year, month, day, time) {
-#  make_datetime(year, month, day, time %/% 100, time %% 100)
-#}
-
-#flights_dt <- flights %>%
-#  filter(!is.na(dep_time), !is.na(arr_time)) %>%
-#  mutate(
-#    dep_time = make_datetime_100(year, month, day, dep_time),
-#    arr_time = make_datetime_100(year, month, day, arr_time),
-#    sched_dep_time = make_datetime_100(year, month, day, sched_dep_time),
-#    sched_arr_time = make_datetime_100(year, month, day, sched_arr_time)
-#  )  %>%
-#  select(origin, dest, ends_with("delay"), ends_with("time"))
-
-#flights_dt
 
 make_datetime_100 <- function(year, month, day, time) {
   make_datetime(...)
@@ -123,7 +240,7 @@ flights_dt %>%
   ggplot(aes(week)) +
   #ggplot(aes(dep_time)) +
   # Wow, that's one hell of weird effect...
-  # geom_freqpoly(bins = 52) +
+  # geom_freqpoly(bins = ...) +
   geom_freqpoly(bins = 52)
 
 (datetime <- ymd_hms("2016-07-08 12:34:56"))
