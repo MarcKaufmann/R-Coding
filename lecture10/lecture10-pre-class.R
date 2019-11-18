@@ -176,19 +176,27 @@ flights %>%
 
 # Class exercise
 
+# You have time = 1015
+# You want hour = 10, minute = 15
 make_datetime_100 <- function(year, month, day, time) {
-  make_datetime(...)
+  # year = 2013
+  # month = 2
+  # day = 3
+  # time = 2010
+  hour <- time %/% 100 # divide time by 100
+  minute <- time %% 100 # modulus of time wrt 100
+  make_datetime(year, month, day, hour, minute)
 }
 
-flights_dt <- flights %>%
+(flights_dt <- flights %>%
   filter(!is.na(dep_time), !is.na(arr_time)) %>%
   mutate(
-    dep_time = ...,
-    arr_time = ...,
-    sched_dep_time = ...,
-    sched_arr_time = ...
+    dep_time = make_datetime_100(year, month, day, dep_time),
+    arr_time = make_datetime_100(year, month, day, arr_time)
+    #sched_dep_time = ...,
+    #sched_arr_time = ...
   ) %>%
-  select(origin, dest, ends_with("delay"), ends_with("time"))
+  select(origin, dest, ends_with("delay"), ends_with("time")))
 
 flights_dt %>%
   ggplot(aes(x = dep_time)) +
@@ -295,8 +303,10 @@ he <- tibble(hun = hun_numbers, eng = eng_numbers)
 he[2, 1]
 he[2, 2]
 he[2, ]
-he[, 2]
-he[, 1]
+he[ , 2]
+he[ , 1]
+he[5, ] <- c("ot", "five")
+he[5, ]
 he[, "eng"]
 he[, eng]
 he[3, "eng"]
@@ -316,7 +326,11 @@ fit$qr$rank
 df$z <- df$x^2 + 5*rnorm(3)
 df
 
-df[[1]]
+for (item in seq_along(df)) {
+  item...
+}
+df
+df[[1]][1]
 df$x
 df[[2]]
 df$y
@@ -324,3 +338,7 @@ df$y
 for (i in seq_along(df)) {
   print(df[[i]])
 }
+
+m <- c()
+m[1, ] <- c(1,2,3)
+matrix(c(1,2,3,4), byrow = TRUE, nrow = 2)
