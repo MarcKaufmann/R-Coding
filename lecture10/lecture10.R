@@ -101,3 +101,62 @@ dmy("31-January-2017")
 dmy("31-1-2017")
 mdy("1 31st, 2017")
 mdy("January 31st, 2017")
+
+# Dipping our toes outside the tidyverse
+
+# socviz.co, Appendix on "The basics of accessing and selecting things"
+
+eng_numbers <- c("one", "two", "three", "four")
+hun_numbers <- c("egy", "ketto", "harom", "negy")
+
+eng_numbers[3]
+hun_numbers[3]
+hun_numbers[7]
+hun_numbers[-1]
+hun_numbers[2:4]
+eng_numbers[c(2,3,4)]
+eng_numbers[c(2,4)]
+eng_numbers[c(4,2)]
+he <- tibble(hun = hun_numbers, eng = eng_numbers)
+he[2, 1]
+he[2, 2]
+he[2, ]
+he[ , 2]
+he[ , 1]
+he[5, ] <- c("ot", "five")
+he[5, ]
+he[, "eng"]
+he[, eng]
+he[3, "eng"]
+he[3, ]
+
+he$eng
+he$eng[3]
+
+df <- tibble(x = c(1,2,3), y = 2*x + rnorm(3))
+fit <-lm(y ~ x, df)
+str(fit)
+fit$coefficients
+fit$coefficients[2]
+str(fit$coefficients)
+fit$call
+fit$qr$rank
+df$z <- df$x^2 + 5*rnorm(3)
+df
+
+for (item in seq_along(df)) {
+  item...
+}
+df
+df[[1]][1]
+df$x
+df[[2]]
+df$y
+
+for (i in seq_along(df)) {
+  print(df[[i]])
+}
+
+m <- c()
+m[1, ] <- c(1,2,3)
+matrix(c(1,2,3,4), byrow = TRUE, nrow = 2)
