@@ -1,5 +1,8 @@
+# Chapter 7 from Data Visualization
+
 library(tidyverse)
 library(socviz)
+
 election %>%
   select(state, total_vote, r_points, pct_trump, party, census) %>%
   sample_n(5)
@@ -41,13 +44,14 @@ us_states %>%
   coord_map(projection = "albers", lat0 = 39, lat1 = 45) +
   guides(fill = FALSE)
 
+# Join map data with election data
 (election$region <- tolower(election$state))
-us_states
+as_tibble(us_states)
 election
 anti_join(us_states, election)
-us_states_election <- us_states %>% 
+(us_states_election <- us_states %>% 
   left_join(election) %>%
-  as_tibble()
+  as_tibble())
 
 p_pct_dem <- us_states_election %>%
   filter(region %nin% "district of columnbia") %>%
@@ -64,16 +68,19 @@ p_pct_trump <- us_states_election %>%
              fill = pct_trump))
 
 p_pct_trump +
+  # How does ggplot know how to change the color of the states?
   geom_polygon(color = "gray90", size = 0.1) + 
   coord_map(projection = "albers", lat0 = 39, lat1 = 45) +
   labs(title = "Republican vote 2016", fill = "Percent")
 
+# This does not do what I expected
 p_pct_trump +
   geom_polygon(color = "gray90", size = 0.1) + 
   coord_map(projection = "albers", lat0 = 39, lat1 = 45) +
   scale_fill_gradient2(low = "blue", high = "red", mid = "white") +
   labs(title = "Republican vote 2016", fill = "Percent")
 
+# This does
 p_pct_dem +
   geom_polygon(color = "gray90", size = 0.1) + 
   coord_map(projection = "albers", lat0 = 39, lat1 = 45) +
@@ -97,6 +104,7 @@ library(socviz)
 library(maps)
 # Make sure you have the package mapproj installed
 
+# Join opiates with states
 opiates
 opiates <- opiates %>% 
   mutate(region = tolower(state)) %>%
@@ -112,6 +120,22 @@ opiates_map <- opiates_map %>%
 
 # Draw the map for a single year
 opiates2000 <- opiates_map %>% filter(year == 2000)
+
+# Build it one step at a time
+
+ggplot(opiates2000,
+       aes(x = long, 
+           y = lat,
+           group = group,
+           fill = adjusted)) +
+  scale_fill_gradient(low = "dark blue", high = "yellow") +
+  coord_map(projection = "albers", lat0 = 39, lat1 = 45) +
+  geom_polygon() +
+  theme(legend.position = "bottom",
+        strip.background = element_blank()) +
+  theme(axis.ticks = element_blank(),
+        axis.text = element_blank()) +
+  labs(fill = "Deaths per 100,000", x = "", y = "") 
 
 ggplot(opiates_map,
        aes(x = long, 
@@ -135,9 +159,11 @@ p1 <- ggplot(drop_na(opiates, division_name),
            y = adjusted,
            group = state)) + 
   geom_line(color = "gray70")
+p1
 
 (p2 <- p1 + 
   geom_smooth(mapping = aes(group = division_name), se = FALSE))
+# What's with the error messages?
 
 library(ggrepel)
 (p3 <- p2 + 
@@ -147,5 +173,6 @@ library(ggrepel)
                     mapping = aes(x = year, y = adjusted, label = abbr),
                     size = 1.8, segment.color = NA, nudge_x = 30))
 
+# Split next into two
 (p4 <- p3 + 
     facet_wrap(~reorder(division_name, -adjusted, na.rm = TRUE)))
