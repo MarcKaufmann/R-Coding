@@ -78,14 +78,15 @@ Use this and plot the standard error against $B$.
 3. What is the non-bootstrap standard error? How can you get it out of R? (Hint: The mean function doesn't give it to you, but you can run a linear regression of a special kind that essentially only computes the average. You can solve this question differently as well.)
 4. Compute the bootstrap standard error for the `median()` rather than `mean()`. Define a function `bootstrap_median` for this which takes again an input vector $v$ for which you compute the mean, as well as a parameter $B$.
 5. Compute the bootstrap standard error for:
-  - `mean()` and
-  - `median()` and
-  - the top quartile and
-  - the standard deviation of the price (yes, I want the standard deviation of the standard deviation... If this confuses you, go through the mean example and replace the computation of the `mean` by `the_thing_we_want` and realize that `the_thing_we_want` can be the standard deviation)
-  - `max()`
-One way to approach this is to define a new function for each. Another is to write a `bootstrap_func` function that takes an additional argument called `fun`, and then you call it `bootstrap_func(B, v, median)` to have the same effect as `bootstrap_median`. Implement this function `bootstrap_func`.
+    - `mean()` and
+    - `median()` and
+    - the top quartile and
+    - the standard deviation of the price (yes, I want the standard deviation of the standard deviation... If this confuses you, go through the mean example and replace the computation of the `mean` by `the_thing_we_want` and realize that `the_thing_we_want` can be the standard deviation)
+    - `max()`
+   
+    One way to approach this is to define a new function for each. Another is to write a `bootstrap_func` function that takes an additional argument called `fun`, and then you call it `bootstrap_func(B, v, median)` to have the same effect as `bootstrap_median`. Implement this function `bootstrap_func`.
 
-Example calls to this function: `bootstrap_func(1000, vienna_data$price, mean)` and `bootstrap_func(1000, vienna_data, some_function_that_takes_a_dataframe_as_argument)`. Notice that the second argument can be a vector or a dataframe, and this depends on what function you pass in. The mean requires a vector, the `some_function_that_takes_a_dataframe_as_argument` takes a dataframe. Computing linear model coefficients requires a dataframe for instance.
+    Example calls to this function: `bootstrap_func(1000, vienna_data$price, mean)` and `bootstrap_func(1000, vienna_data, some_function_that_takes_a_dataframe_as_argument)`. Notice that the second argument can be a vector or a dataframe, and this depends on what function you pass in. The mean requires a vector, the `some_function_that_takes_a_dataframe_as_argument` takes a dataframe. Computing linear model coefficients requires a dataframe for instance.
 6. Use your new function to compute bootstrap estimators for the standard errors of some linear model coefficients on the vienna dataset. You have to define and name a function that returns the *coefficient* of the right linear model, and pass this function as one of the arguments to `bootstrap_func`.
 7. Compare the bootstrap estimators to the ones that `summary(lm(...))` spits out. Show the output that gives these estimators.
 
