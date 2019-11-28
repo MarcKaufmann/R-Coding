@@ -1,6 +1,7 @@
 # Chapter 7 from Data Visualization
 
 library(tidyverse)
+# install.packages("socviz")
 library(socviz)
 
 election %>%
@@ -16,6 +17,7 @@ p0 <- ggplot(data = filter(election, st %nin% "DC"),
 
 p1 <- p0 + geom_vline(xintercept = 0) +
   geom_point(size = 2)
+p1
 
 p2 <- p1 + scale_color_manual(values = party_colors)
 p2
@@ -54,14 +56,14 @@ anti_join(us_states, election)
   as_tibble())
 
 p_pct_dem <- us_states_election %>%
-  filter(region %nin% "district of columnbia") %>%
+  filter(region %nin% "district of columbia") %>%
   ggplot(aes(x = long, 
              y = lat, 
              group = group,
              fill = d_points))
 
 p_pct_trump <- us_states_election %>%
-  filter(region %nin% "district of columnbia") %>%
+  filter(region %nin% "district of columbia") %>%
   ggplot(aes(x = long, 
              y = lat, 
              group = group,
@@ -85,7 +87,7 @@ p_pct_dem +
   geom_polygon(color = "gray90", size = 0.1) + 
   coord_map(projection = "albers", lat0 = 39, lat1 = 45) +
   scale_fill_gradient2(low = "red", high = "blue", mid = "white") +
-  labs(title = "Republican vote 2016", fill = "Percent")
+  labs(title = "Democrat vote 2016", fill = "Percent")
 
 ggplot(data = filter(us_states_election,
                      region %nin% "district of columbia"),
@@ -96,7 +98,7 @@ ggplot(data = filter(us_states_election,
   geom_polygon(color = "gray90", size = 0.1) + 
   coord_map(projection = "albers", lat0 = 39, lat1 = 45) +
   scale_fill_gradient2(low = "red", high = "blue", mid = scales::muted("purple")) +
-  labs(title = "Republican vote 2016", fill = "Percent")
+  labs(title = "Democrat vote 2016", fill = "Percent")
 
 # Chapter 7, part 4 of socviz.co
 
@@ -112,7 +114,7 @@ opiates <- opiates %>%
 (us_states <- as_tibble(us_states))
 # Check all us_states match
 anti_join(us_states, opiates)
-(opiates_map <- left_join(us_states, opiates))
+(opiates_map <- as_tibble(left_join(us_states, opiates)))
 # Why does this map have so many rows?
 
 opiates_map <- opiates_map %>%
@@ -154,7 +156,7 @@ ggplot(opiates_map,
 
 # Plot all the lines over time for states
 
-p1 <- ggplot(drop_na(opiates, division_name),
+p1 <- ggplot(drop_na(opiates, division_name, state, adjusted),
        aes(x = year,
            y = adjusted,
            group = state)) + 

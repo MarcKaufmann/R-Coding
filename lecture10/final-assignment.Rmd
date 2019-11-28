@@ -76,7 +76,7 @@ Your mission, whether or not your are willing to accept it, is to write the code
 - `v`: the column on Vienna prices (or more generally whatever column you want to compute the mean of), the one from which you sample the simulated datasets
 Use this and plot the standard error against $B$.
 3. What is the non-bootstrap standard error? How can you get it out of R? (Hint: The mean function doesn't give it to you, but you can run a linear regression of a special kind that essentially only computes the average. You can solve this question differently as well.)
-4. Compute the bootstrap standard error for the `median()` rather than `mean()`. Define a function `bootstrap_median` for this which takes again an input vector $v$ for which you compute the mean, as well as a parameter $B$.
+4. Compute the bootstrap standard error for the `median()` rather than `mean()`. Define a function `bootstrap_median` for this which takes again an input vector $v$ for which you compute the median, as well as a parameter $B$.
 5. Compute the bootstrap standard error for:
     - `mean()` and
     - `median()` and
