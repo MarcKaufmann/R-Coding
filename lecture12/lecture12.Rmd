@@ -1,0 +1,89 @@
+---
+title: "Lecture 12"
+author: "Marc Kaufmann"
+date: "12/2/2019"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Other Features of R
+
+### `map` and friends
+
+Some quick examples.
+
+### Data Table
+
+If you need more performance, you should use `data.table`. It has a [useful vignette](https://cran.r-project.org/web/packages/data.table/vignettes/datatable-intro.html). 
+
+### Sourcing code
+
+```{r}
+source(...)
+```
+
+### Connecting directly to databases
+
+...
+
+## Other Features of RStudio
+
+There are several packages that help making books, articles, or blogs:
+
+- `bookdown` for books, which can be used for making articles too
+  - I spent 3+ hours last week fiddling around with it to get it to work properly with articles. Oh the fun...
+- `blogdown` for blogs
+- Slides for presentations
+
+### Includ Python Code
+
+```{python}
+def square(x):
+    return(x*x)
+
+square(1)
+square(-2)
+```
+
+```{r, eval=FALSE}
+py$square(3)
+```
+
+With the library `reticulate`, you can even call python things from R code.
+
+```{r}
+library(reticulate)
+```
+
+```{python}
+def square(x):
+    return(x*x)
+
+square(1)
+square(-2)
+```
+
+```{r}
+py$square(3)
+```
+
+For more, see [https://rstudio.github.io/reticulate/articles/r_markdown.html].
+
+### Shiny Apps
+
+...
+
+## Where Next?
+
+One advantage of RStudio and R tools is that most of what we do here can be done on the command line too. Thus you can (and I do) integrate these tools into shell scripts or make files or the like. This has two major benefits:
+
+1. You can script tasks, whether simply for convenience or because you want to automate it as part of a pipeline
+2. You can move away from RStudio, while keeping much of the workflow.
+  - I don't like editing code in RStudio when I don't need to explore data or visualizations.
+  
+Kieran Healy has another book at [http://plain-text.co/] on how to work with text files. It is geared towards academics since it focuses on replicability, but much of it should apply to data analysts and scientists.
+
+R4DS has a nice final page that covers a few of the above and some more: [https://r4ds.had.co.nz/r-markdown-formats.html]. In particular, it mentions dashboards as a separate content type which I hadn't known about. It looks nifty.
