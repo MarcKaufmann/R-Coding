@@ -15,19 +15,153 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Some quick examples.
 
-### Data Table
-
-If you need more performance, you should use `data.table`. It has a [useful vignette](https://cran.r-project.org/web/packages/data.table/vignettes/datatable-intro.html). 
+See [https://r4ds.had.co.nz/iteration.html#the-map-functions] for some examples on using map and [https://r4ds.had.co.nz/iteration.html#other-patterns-of-for-loops] for `reduce`. These are common functions in particular in functional programming languages, although there is nothing disallowing them in other languages. They are great replacements for various types of for-loops and iterations, although it may take some time to get used to them. Once you do get used to them, they can be quite succinct, and work well in pipes.
 
 ### Sourcing code
 
+You can load other code via `source(...)`, e.g. another .R file that has some tools
+
 ```{r}
-source(...)
+source('toy_tools.R')
+sourcerer()
 ```
+
+This is most useful for some utilities that you keep using, or some such. 
 
 ### Connecting directly to databases
 
-...
+When your dataset gets very large, it can be more efficient (or necessary) to keep it in a database. R allows you to connect to the database and perform actions there. Once you have selected (in the database) the subset of data you want to work on, you can fully load it into R to perform analysis on it.
+
+```{r include=FALSE}
+library(RSQLite)
+
+# Create toy in-memory database
+con <- dbConnect(RSQLite::SQLite(), ":memory:")
+summary(con)
+dbListTables(con)
+dbWriteTable(con, "flights", nycflights13::flights)
+dbListTables(con)
+dbListFields(con, "flights")
+dbReadTable(con, "flights") 
+res <- dbSendQuery(con, "SELECT year, month, day, dep_time, arr_delay FROM flights WHERE arr_delay > 120")
+dbFetch(res)
+dbClearResult(res)
+dbDisconnect(con)
+```
+
+```{r, database_again, include=FALSE}
+
+# Or use dplyr from tidyverse
+library(tidyverse)
+the_db <- src_sqlite(":memory:", create = TRUE)
+flights <- nycflights13::flights
+flights <- copy_to(the_db, flights)
+dbListTables(the_db$con)
+res <- tbl(the_db, "flights") %>%
+  filter( arr_delay > 120) %>%
+  select(year, month, day, dep_time, arr_delay)
+# Not all resulsts are there
+res
+# Now they are there
+collect(res)
+dbDisconnect(the_db$con)
+```
+
+
+### Faster/more efficient code
+
+#### Compile
+
+Sometimes you might want to get a little extra speed by compiling, although this won't help much with the standard functions which will already be compiled and optimized anyway:
+
+```{r, already_compiled}
+mean
+```
+
+Compiling can help a bit with for loops.
+
+```{r, for_loops}
+library(compiler)
+
+mean_of_squares <- function(n) {
+  s <- 0
+  for(i in seq_len(n)) {
+    s <- s + (i*i/n)
+  }
+  s
+}
+
+mean_of_squares(2)
+mean_of_squares(3)
+system.time(mean_of_squares(40000))
+
+compiled_mos <- cmpfun(mean_of_squares)
+system.time(compiled_mos(40000))
+
+# But what you really should do
+vec_mos <- function(n) {
+  mean((1:n)^2)
+}
+
+system.time(vec_mos(40000))
+
+```
+
+Plus, compiling sometimes doesn't help much at all. 
+
+```{r, fibonacci}
+
+fibo <- function(n) {
+  if (n == 1 | n == 2) {
+    1
+  } else {
+    fibo(n-1) + fibo(n-2)
+  }    
+}
+fibo(5)
+fibo(6)
+fibo(7)
+
+system.time(n <- fibo(31))
+n
+#system.time(n <- fibo(32))
+#n
+
+compiled_fibo <- cmpfun(fibo)
+
+system.time(n <- compiled_fibo(31))
+n
+#system.time(n <- compiled_fibo(32))
+#n
+
+smart_fibo <- function(n, last_fibo, second_to_last_fibo) {
+  if (n == 2) {
+    return(last_fibo)
+  } else {
+    return(smart_fibo(n - 1, last_fibo + second_to_last_fibo, last_fibo))
+  }
+}
+
+smart_fibo_wrap <- function(n) {
+  if (n > 2) {
+    smart_fibo(n, 1, 1)
+  } else {
+    1
+  }
+}
+
+smart_fibo_wrap(5)
+smart_fibo_wrap(8)
+smart_fibo_wrap(32)
+smart_fibo_wrap(40)
+smart_fibo_wrap(100)
+```
+
+As you can see, better thinking beats compiling, but since it doesn't take much effort to try out if compiling works faster, why not? Notice that you have to compile the function you are calling.
+
+#### Data Table
+
+If you need more performance, you should use `data.table`. It has a [useful vignette](https://cran.r-project.org/web/packages/data.table/vignettes/datatable-intro.html). 
 
 ## Other Features of RStudio
 
@@ -70,11 +204,11 @@ square(-2)
 py$square(3)
 ```
 
-For more, see [https://rstudio.github.io/reticulate/articles/r_markdown.html].
+For more, see [https://rstudio.github.io/reticulate/articles/r_markdown.html]. Without it, you can still add Python code, but you cannot share objects between your Python and R code.
 
 ### Shiny Apps
 
-...
+Some of you have a whole course on this, and I have never used it. But have a look at it.
 
 ## Where Next?
 
