@@ -1,9 +1,8 @@
 ---
-title: "Coding 1: Lecture 1"
+title: "Intro to R: Lecture 1"
 author: |
   | Marc Kaufmann
   | Central European University
-date: "9/10/2019"
 output: 
   beamer_presentation:
     theme: metropolis
@@ -16,16 +15,6 @@ knitr::opts_chunk$set(echo = FALSE)
 ```
 
 # Coding 1: Data Management and Analysis with R
-
-## Basic Admin
-
-- Weeks 1 to 6: Mondays 13:30-15:10
-- Weeks 7 to 12: Mondays 17:30-19:10
-- Instructor: Marc Kaufmann (call me Marc)
-- Teaching Assistant: Júlia Hermann gives 3 sessions
-  - 17:30-19:10 on Tuesday October 8th
-  - 17:30-19:10 on Tuesday November 5th
-  - 17:30-19:10 on Tuesday November 19th
 
 ## Who am I?
 
@@ -59,7 +48,7 @@ Or expressed in R (pseudo-)code:
 \pause{}
 
 ```{r, eval=FALSE, echo=TRUE}
-library(msc_ba)
+library(intro_to_r)
 
 eureka_or_bust <- your_great_ideas %>% 
   # We need data to figure this out. Let's...
@@ -110,7 +99,7 @@ Since we cover much of the data analysis cycle and have little time:
 - Focus on correct code; then maintainable; then fast
 - Focus on *fluency* 
 - Focus on teaching you how to learn
-  - Clean code; documenting; debugging; communicating
+  - Write readable, self-documenting code
   - How to get help
 
 ## Focus of the Class
@@ -122,17 +111,13 @@ Since we cover much of the data analysis cycle and have little time:
 
 ## Assignments and Grading
 
-
-- Participation (30%): helping yourself and helping others 
-  - Includes attendance. Starting week 2, will take attendance via https://www.youhere.org/
-    - Let me know if you cannot or do not want to use that.
-- Assignments (77-78%): weekly assignments in the form of R Markdown notebooks, and assessing those of your peers
-  - Grading is N% in week N ($N = 1, ..., 12$)
+- Participation (30 points): helping yourself and helping others 
+- Assignments (15 points / week): weekly assignments of exercises, also graded by peers
 - No exam
   
 \pause{}
 
-Total: 107-108%
+Total: 120 points
 
 ## Useful Resources
 
@@ -143,8 +128,6 @@ When you get stuck, the following fantastic books may help:
 
 Additionally:
 
-- Tuesdays 17:30-19:10, N13 309: Coding practice with R
-- Júlia's sessions
 - Ask questions on https://discourse.trichotomy.xyz
 
 ## Where you should be
@@ -156,13 +139,7 @@ You should:
 - Have cloned the repository for the course
 - Have an account on https://discourse.trichotomy.xyz
 
-## First time I teach R
-
-I tend to experiment quite a bit:
-
-- Early on, still worth figuring out what works
-- Especially assignments and how to incentivize teamwork
-- After week 3, should be ironed out
+## Questions?
 
 \pause{}
 

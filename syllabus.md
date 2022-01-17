@@ -27,8 +27,7 @@ Class materials are hosted on https://github.com/MarcKaufmann/R-Coding. Look the
 ### Assessment (including minimum pass requirement and grading)
 
 - Participation (30 points): helping yourself and helping others. This will be based on your contribution to the online class forum, as well as your team's team work. This can include getting help from classmates, or searching online forums and email lists. Part of the weekly assignment will be to document your use of any of these resources.
-- Short weekly assignments (60 points = 10 points per week): You will have weekly assignments consisting primarily of short exercises to get you fluent in R. You will also assess the exercises submitted by your peers. 
-- Final pdf write-up (30 points): you will pick some small dataset and do some exploratory data analysis with it. Do not be overly ambitious, the course is too short for that.
+- Short weekly assignments (90 points = 15 points per week): You will have weekly assignments consisting primarily of short exercises to get you fluent in R. You will also assess the exercises submitted by your peers. 
 
 This sums to 120 points, yet your final score will be truncated at 100 (which will count as 100%): if you have a final score of 110, I will treat it as a score of 100 and grade based on that. Thus you have 20 points to lose without it affecting your grade. 
 
