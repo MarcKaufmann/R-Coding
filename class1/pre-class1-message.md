@@ -1,6 +1,6 @@
 Dear all,
 
-for our first class on Monday September 16th, you should do the following to be prepared:
+for our first class, you should do the following to be prepared:
 
 Discourse Forum
 
@@ -26,7 +26,7 @@ If you have any questions
 
 While I encourage the use of the Discourse Forum to ask questions of a technical nature (other issues are fine by email) since others may benefit from them, you can email me if you hit a problem with the setup (kaufmannm@ceu.edu) if you are unsure or unable to use Discourse. Please let me know if and when you find ambiguities that you are unsure about.
 
-See you all on Monday.
+See you all in class.
 
 Best,
 Marc
