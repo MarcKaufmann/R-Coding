@@ -16,7 +16,7 @@ If you don't seem to receive confirmation emails (or other emails), make sure to
 GitHub Account and Repository
 
 1. Go to the github repository for this class: https://github.com/MarcKaufmann/R-Coding
-2. Complete all the steps in Lecture 0: Technical Prerequisites before Class 1
+2. Complete all the steps in README.md under *Lecture 0: Technical Prerequisites before Class 1*
 
 Syllabus and where to get updates
 
