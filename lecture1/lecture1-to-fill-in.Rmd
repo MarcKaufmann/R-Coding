@@ -9,7 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-This introduction is essentially Chapter 2 from Kieran Healy's book [Data Visualization](http://socviz.co/), which you should read as part of Assignment 2 and to find your way around RStudio. The reason I start with this (and continue for one or two more weeks) is that visualization is one of the more fun parts of data analysis, as well as one you should go through -- so it makes for a great starting point.
+This introduction is essentially Chapter 2 from Kieran Healy's book [Data Visualization](http://socviz.co/), which you should read as part of Assignment 2 and to find your way around RStudio. The reason I start with this (and continue for one or two more weeks) is that visualization is one of the more fun parts of data analysis making it a great starting point.
 
 We will use exclusively R Markdown files. In this case, you should simply open the file 'lecture1-to-fill.Rmd' from the repository and you are set. Whenever you create a new file, you should choose to make an R Markdown file.
 
