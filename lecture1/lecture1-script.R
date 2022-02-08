@@ -1,3 +1,10 @@
+# git: what it is and how it works (roughly)
+# git clone the repo
+# git pull from the repo
+# If/when working on assignments in the repository, you should either:
+#  i) create a folder that is not stored in git
+#  ii) make sure that you commit your changes before you pull from the repo
+
 # Things to Know about R
 # 1. Everything has a name
 2
@@ -47,10 +54,13 @@ list_of_programming_languages <- c(
   "C",
   "Perl",
   "Logo",
-  "Scratch"
+  "Scratch",
+  "Julia",
+  "Rust",
+  "Python"
 )
 
-languages_heard_of <- c(11, 4, 5, 3, 4, 5, 5, 7, 5, 5, 5, 5, 5, 4, 4, 6, 7, 5, 6, 5, 5, 4, 8, 7, 7, 9, 5, 5, 5, 5, 4, 6)
+languages_heard_of <- c()
 languages_heard_of
 
 # 3. You do things using functions

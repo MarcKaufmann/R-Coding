@@ -63,14 +63,14 @@ marcs_new_object <- ...
 marcs_new_object
 ```
 
-One important function to create objects is the $c()$ function, which combines several items into one objects:
+One important function to create objects is the $c()$ function, which combines several items into one object:
 
 ```{r, eval=FALSE}
 marcs_new_combined_object <- c(...)
 marcs_new_combined_object
 ```
 
-In principle, you can use '=' to assign values, but this is very non-idiomatic R. I will subtract points for using '='. Use '<-'.
+In principle, you can use '=' to assign values, but this is very non-idiomatic R. I discourage that you use '='. 
 
 **Class Exercise:** Let's start doing something with data. How many of the following programming languages have you *heard* of? 
 
@@ -165,19 +165,17 @@ Read chapter 2 of [Data Visualization](http://socviz.co/gettingstarted.html). Ma
 
 ### Part 2
 
-Complete all the exercises in the lectures notes of lecture 1. Put your answer to an exercise right after the question of the exrcise in the R Markdown file. When done, knit the document, commit the changes with the commit message "Part 1 of assignment 2" and push them to your GitHub repository.
+Complete all the exercises and fill all the holes in the notes of lecture 1. Put your answer to an exercise right after the question of the exercise in the R Markdown file. When done, knit the document, commit the changes with the commit message "Part 1 of assignment 2" and push them to your GitHub repository.
+
+Knit the slides for class 1 to html and/or pdf, commit the .Rmd and .html files -- but not the pdf -- and push. 
+
+**Note:** To get pdf generation working, the easiest is to install the package `tinytex`. See https://www.rdocumentation.org/packages/tinytex for installation instructions, it is specifically geared towards use in R Markdown files. Pdf and Latex issues can be... interesting shall we say, so ask for help.
+
+**Note:** If you can't figure out how to use git, ask a question on Slack.
 
 ### Part 3
 
-Fill in the holes in the lecture notes of lecture 1, if you didn't complete it during class. When done, knit the document, commit the changes with the commit message "Part 3 of assignment 2" and push them to your GitHub repository.
-
-Knit the slides for class 1 to html and/or pdf, commit the .Rmd and .html files -- but not the pdf -- and push. If the pdf is hard to get working (due to weird error messages), see whether you can find out *what* the problem is (Stackoverflow, Discourse...) without trying to solve it yet. Pdf and Latex issues can be... interesting shall we say.
-
-**Note:** If you can't figure out how to use git, post a question on the discourse forum and send me the html file by email.
-
-### Part 4
-
-Track as many error messages as possible that you made during this week (stop once you get to 4). Put the code that caused the error in the chunk below, and copy the error message as a comment below it. I provide an example.
+You have to get in the habit of reading and making sense of error messages, even though initially they might be written in a language you don't understand. Track as many error messages as possible that you received during this week (but stop at 4). Put the code that caused the error in the chunk below, and copy the error message as a comment below it. I provide an example.
 
 ```{r, eval=FALSE}
 
@@ -189,16 +187,4 @@ Track as many error messages as possible that you made during this week (stop on
 # Your examples below
 ```
 
-Post one of these 4 errors on discourse.
-
-### Part 5
-
-
-Try fo figure out two of the following and post your answers on Discourse for others to read:
-
-- Identify elements from my *eureka_or_bust* example in the slides and see whether you can figure out what the different elements mean to R.
-- What does *eval=FALSE* mean in part 4? Figure this out by replacing it by *eval=TRUE* and seeing what you get.
-- What is the Tidyverse?
-- Who is Hadley Wickham?
-
-## Resources for this lecture 
+Post one of these 4 errors in Slack. 

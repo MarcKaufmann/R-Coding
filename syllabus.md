@@ -26,16 +26,16 @@ Class materials are hosted on https://github.com/MarcKaufmann/R-Coding. Look the
 
 ### Assessment (including minimum pass requirement and grading)
 
-- Participation (30 points): helping yourself and helping others. This will be based on your contribution to the online class forum, as well as your team's team work. This can include getting help from classmates, or searching online forums and email lists. Part of the weekly assignment will be to document your use of any of these resources.
-- Short weekly assignments (90 points = 15 points per week): You will have weekly assignments consisting primarily of short exercises to get you fluent in R. You will also assess the exercises submitted by your peers. 
+- Participation (15 points): helping yourself and helping others. This will be based on your contribution to the online class forum, as well as your team's team work. This can include getting help from classmates, or searching online forums and email lists. Part of the weekly assignment will be to document your use of any of these resources.
+- Short weekly assignments (90 points, 15 points per week, 25 points for the final week): You will have weekly assignments consisting primarily of short exercises to get you fluent in R. You will also assess the exercises submitted by your peers, which makes up 5 out of the 15 points per week (10 points out of the 25 for the final week). 
 
-This sums to 120 points, yet your final score will be truncated at 100 (which will count as 100%): if you have a final score of 110, I will treat it as a score of 100 and grade based on that. Thus you have 20 points to lose without it affecting your grade. 
+This sums to 115 points, yet your final score will be truncated at 100 (which will count as 100%): if you have a final score of 110, I will treat it as a score of 100 and grade based on that. Thus you have 20 points to lose without it affecting your grade. 
 
 There will be no final exam. 
 
 Minimum passing grade is 51%. Every increase in 7% leads to a higher grade: 51 to 57 yields a C; 58 to 64 yields a C+; 65 to 71 yields a B-; 72 to 78 yields a B; 79 to 85 yields a B+, 86 to 92 yields an A-; 93 to 100 yields an A.
 
-**Assignments:** Since there are weekly assignments, I will not be able to grade them all. Instead, you will grade and provide feedback on each others assignments. 
+**Assignments:** Since there are weekly assignments, I will not be able to grade them all. Instead, you will grade and provide feedback on each others assignments. I will review a random subset of the submissions and reviewers, making sure to grade everyone at least once (and grading the final assignment of everyone). In general, you will receive full marks on reviewing others, unless it is obvious that you did not care to provide helpful feedback. In that case, you will receive a warning, which means that I will check all your future and past reviews. Any future low-effort review receives 0 points, and any past low-effort review receives 50% of the points at most. I will not discuss reasons for low effort after being caught, nor discuss whether the review was actually low effort. If you cannot do an earnest review in one week, do what you can (which might be nothing) and write me an email *before* the submission deadline. You can use this opportunity once without consequence, the second time you will get more reviews in later weeks.
 
 If you have a question regarding a particular assignment -- whether about the grade or otherwise -- make sure to email me.
 
