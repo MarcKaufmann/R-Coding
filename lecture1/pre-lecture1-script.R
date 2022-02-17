@@ -1,4 +1,5 @@
 # git: what it is and how it works (roughly)
+# git fork to your repo
 # git clone the repo
 # git pull from the repo
 # If/when working on assignments in the repository, you should either:
@@ -40,8 +41,8 @@ c
 marcs_new_object <- "I am a fancy object"
 marcs_new_object
 
-marc_new_combined_object <- c(marcs_new_object, "Some apples, because they are healthy")
-marc_new_combined_object
+marcs_new_combined_object <- c(marcs_new_object, "Some apples, because they are healthy")
+marcs_new_combined_object
 
 list_of_programming_languages <- c(
   "R",
@@ -92,16 +93,35 @@ z
 c("thing", 1010)
 list("thing", 1010)
 c("thing", 10, function(x) {x})
+list("a" = "thing", "b" = 1010)
 
 help(summary)
 summary(languages_heard_of)
 ?summary
+?help
+
 # This does not work
 ?==
 help("==")  
 ?ggplot
 ?"=="
 ? == help
+help == help
+?'?'
+??ggplot
+?'??'
+
+# Write first function
+help_reminder <- function() {
+  print("Ways to get help, for example on `ggplot` or `==`:")
+  print("")
+  print("For help on commands: `help()`, `?`, `??`")
+  print("")
+  print("For information on objects: `summary`, `str`. And of course, just look at the object by typing its name in the REPL.")
+}
+
+# Your second function
+double <- function(x) { 2*x }
 
 # Make the first figures
 install.packages("gapminder")

@@ -29,7 +29,7 @@ Relevant for this class:
 
 - Collect my own data in (mostly online) experiments
 - Analyze said data: Fairly basic, since design is up to me 
-- Program in Racket, bash/unix, Python, and R (in that order of competence)
+- Program in Racket, bash/unix, R, and Python (in that order of competence)
 
 \pause{}
 
@@ -96,6 +96,7 @@ Since we cover much of the data analysis cycle and have little time:
 
 - Focus on few libraries and commands (80/20 rule)
   - Tidyverse only: coherent set of tools with sane interface
+  - Has inspired other languages (Julia, Python)
 - Focus on correct code; then maintainable; then fast
 - Focus on *fluency* 
 - Focus on teaching you how to learn
@@ -111,13 +112,13 @@ Since we cover much of the data analysis cycle and have little time:
 
 ## Assignments and Grading
 
-- Participation (30 points): helping yourself and helping others 
-- Assignments (15 points / week): weekly assignments of exercises, also graded by peers
+- Participation (15 points): helping yourself and helping others 
+- Assignments (15 points / week, 25 points final week): weekly assignments of exercises, graded by peers
 - No exam
   
 \pause{}
 
-Total: 120 points
+Total: 115 points
 
 ## Useful Resources
 
@@ -128,7 +129,7 @@ When you get stuck, the following fantastic books may help:
 
 Additionally:
 
-- Ask questions on https://discourse.trichotomy.xyz
+- Ask questions on Slack
 
 ## Where you should be
 
@@ -136,8 +137,8 @@ You should:
 
 - Have RStudio set up up and working
 - Have git set up and working
-- Have cloned the repository for the course
-- Have an account on https://discourse.trichotomy.xyz
+- Have (forked and) cloned the repository for the course
+- Have a Slack account
 
 ## Questions?
 
