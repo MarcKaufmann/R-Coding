@@ -2,14 +2,12 @@ Dear all,
 
 for our first class, you should do the following to be prepared:
 
-Discourse Forum
+Slack
 
-In order to participate in the class, you will be required to participate in the (private) forum for this class. I prefer Discourse over Moodle, thus I'll ask you to sign up for an account with a discourse forum for this class:
+In order to participate in the class, you will be required to participate in the (private) Slack for this class. I prefer Slack over Moodle, thus I am asking you to sign up for an account for this class:
 
-1. Go to https://discourse.trichotomy.xyz and sign up for an account.
-2. You will have to wait until I approve your account.
-3. Go through the interactive tutorial with Discobot (in the top right corner you should see that you have a message from Discobot)
-4. Reply to First Use of Discourse to introduce yourself briefly.
+1. Go to Moodle and follow the link to sign up
+2. Reply to my message asking you to introduce yourself briefly
 
 If you don't seem to receive confirmation emails (or other emails), make sure to check your spam folders, both for CEU and your private accounts, depending on which email you provided and how you forward emails.
 
@@ -20,11 +18,11 @@ GitHub Account and Repository
 
 Syllabus and where to get updates
 
-I will update the syllabus mildly by the first class and include it on the GitHub repository. The Github repository will constitute the valid and updated version of the syllabus -- not Moodle (or elsewhere).
+The syllabus in the GitHub repository is the up-to-date one, and I might change it mildly over time -- Moodle (or elsewhere) will not necessarily be updated.
 
 If you have any questions
 
-While I encourage the use of the Discourse Forum to ask questions of a technical nature (other issues are fine by email) since others may benefit from them, you can email me if you hit a problem with the setup (kaufmannm@ceu.edu) if you are unsure or unable to use Discourse. Please let me know if and when you find ambiguities that you are unsure about.
+Slack should be your first option when you have a question, in particular for technical questions, since others may benefit from them. Feel free to email me if Slack does not fit the question. Please let me know if and when you find ambiguities that you are unsure about.
 
 See you all in class.
 
