@@ -1,19 +1,13 @@
 ---
 title: "Lecture 2: Chapter 3 by Kieran Healy"
 author: "Marc Kaufmann"
-date: "September 23, 2019"
+date: "Feburary 2022"
 output: html_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-
-## Team Assignments: Choosing First Group
-
-For the first group, I will pick 4 students who will complete a group assignment to share in 2 weeks time (lecture 4). Since it is the first group, I am happy to provide a bit more feedback if needed. So let's do this.
-
-If you want to switch with someone else and someone else is happy to, then please go ahead and swap - just let me know before the weekend.
 
 ## Note to the interested student
 
@@ -44,7 +38,7 @@ How to use ggplot:
 library(ggplot2)
 ... + geom_point() # Produces scatterplots
 ... + geom_bar() # Bar plots
-.... + geom_boxplot() # boxplots
+... + geom_boxplot() # boxplots
 ... # 
 ```
 
@@ -72,14 +66,14 @@ In detail:
 - `aes(x = gdpPercap, y = lifeExp)` maps the GDP data onto `x`, which is a known aesthetic (the x-coordinate) and life expectancy data onto `x`
   - `x` and `y` are  predefined names that are used by `ggplot` and friends
   
-Importantly, mappings don't say *what* color or shape some variable will have -- rather, it says that a given dataset will be mapped *to* the color or *to* the shape.
+Importantly, mappings don't say *what* color or shape some variable will have. Rather, it says that a given column/variable will be mapped *to* color or *to* shape: thus `color = gender` means that different genders will be displayed by different colors.
 
-```{r, what_is_in_p}
+```{r}
 str(p)
 str(p + geom_point())
 ```
 
-**Exercise:** Make sure that your knitted version doesn't include all the output from the `str(...)` commands, it's too tedious.
+**Exercise:** Make sure that your knitted version doesn't include all the output from the `str(...)` commands, it's too tedious. (Hint: click on the 'gear' symbol in the code block above and then on the link to 'Chunk Options' to get help with chunk options.)
 
 Finally, we add a *layer*. This says how some data gets turned into concrete visual aspects.
 
@@ -88,7 +82,7 @@ p + geom_point()
 p + geom_smooth()
 ```
 
-**Note:** Both geom's use the same mapping, where the x-axis represents ... and the y-axis ... . But the first one maps the data to individual points, the other one maps it to a smooth line with error ranges.
+**Note:** Both geom's use the same mapping, where the x-axis represents ... and the y-axis ... based on the mappings you defined before. But the first one maps the data to individual points, the other one maps it to a smooth line with error ranges.
 
 We get a message that tells us that `geom_smooth()` is using the method = 'gam', so presumably we can use other methods. Let's see if we can figure out which other methods there are.
 
@@ -128,11 +122,11 @@ p + geom_point() +
 
 **Exercise:** How can you find other ways of relabeling the scales when using `scale_x_log10()`?
 
-### The Ggplot Recipe
+### The ggplot Recipe
 
 1. Tell the `ggplot()` function what our data is.
-2. Tell `ggplot()` *what* relationships we want to see. For convenience we will put the results of the first two steps in an object called `p`.
-3. Tell `ggplot` *how* we want to see the relationships in our data.
+2. Tell `ggplot()` *what* variables we want to map to features of plots. For convenience we will put the results of the first two steps in an object called `p`.
+3. Tell `ggplot` *how* to display relationships in our data.
 4. Layer on geoms as needed, by adding them on the `p` object one at a time.
 5. Use some additional functions to adjust scales, labels, tickmarks, titles. 
   - The `scale_`, `labs()`, and `guides()` functions
@@ -160,7 +154,7 @@ One way to avoid such mistakes is to read arguments inside `aes(<property> = <va
 
 Aesthetics convey information about a variable in the dataset, whereas setting the color of all points to yellow conveys no information about the dataset - it changes the appearance of the plot in a way that is independent of the underlying data. 
 
-Remember: `color = 'yellow'` and `aes(color = 'yellow')` are very different, and the second makes usually no sense, as `'yellow'` is treated as *data*.
+Remember: `color = 'yellow'` and `aes(color = 'yellow')` are very different, and the second makes usually no sense, as `'yellow'` is treated as *data* that has the same value always -- namely the value 'yellow'.
 
 ```{r, exercise_args_for_smooth}
 p <- ggplot(data = gapminder,
@@ -214,7 +208,7 @@ p + geom_point(mapping = aes(color = continent)) +
 
 ## Additional (not Optional) Exercises 
 
-**Exercise (Discourse):** Find ways to save the figures that you made so that you can use them elsewhere too. Create a new folder to save only images. Use the command for saving to save the picture for the last image in your new folder, after you have updated the axes, title, subtitle, and caption of the image. Post your solution on Discourse and use it to include the final image above with a caption saying "Saved by <your-name>" inside your Discourse post.
+**Exercise:** Find ways to save the figures that you made so that you can use them elsewhere too. Create a new folder to save only images. Use the command for saving to save the picture for the last image in your new folder, after you have updated the axes, title, subtitle, and caption of the image. Post your solution on Slack and use it to include the final image above with a caption saying "Saved by <your-name>" inside your Slack message (see https://slack.com/help/articles/4403914924435-Add-descriptions-to-images). (Hint: `??save`)
 
 **Exercise:** Read section 3.8 "Where to go next" from DV. Based on those ideas, experiment and create two different graphs with the gapminder data. Describe each briefly in one sentence.
 
@@ -222,16 +216,14 @@ p + geom_point(mapping = aes(color = continent)) +
 
 **Exercise:** Do exercise 3.2.4 from [R for Data Science](https://r4ds.had.co.nz/data-visualisation.html#first-steps). Include your code in chunks, describe the output and code (where necessary) in the surrounding text.
 
-**Exercise:** Go through Exercises in 3.3.1. If an exercise does not make sense immediately (such as you don't know what a categorical variable is), replace the question by a question that addresses that point (in the case of the caregorical variable "What are categorical and continuous variables and how are they different in R?"). Write it down, try to answer that question, and ignore the original question. That way you don't end up spending too much time on this one exercise.
+**Exercise:** Go through Exercises in 3.3.1. If an exercise does not make sense immediately (such as you don't know what a categorical variable is), replace the question by a question that addresses that point (in the case of the categorical variable "What are categorical and continuous variables and how are they different in R?"). Write it down, try to answer that question, and ignore the original question. That way you don't end up spending too much time on this one exercise.
 
 **Exercise:** Read the (very short) [Chapter 4 of R for Data Science](https://r4ds.had.co.nz/workflow-basics.html) and try exercise 1 in section 4.4.
 
 **Bonus Exercise:** Why did I load the `scales` library twice via `library(scales)` to knit? 
 
-## Assignment 3
+## Assignment 1
 
-1. Do the exercises in these lecture notes.
+1. Do the exercises in these and the previous lecture notes.
 1. Knit lectures 2, making sure to get rid of those `eval=FALSE` that are just there because I didn't complete the code
-1. Upload your pdf on Moodle
-1. Grade assignment 2 on Moodle -- let me know if you can't access Moodle!
-1. If you are part of the team that does the first group assignment, start thinking about how you are going to do the assignment. You have until lecture 4.
+1. Submit the pdf on the server
