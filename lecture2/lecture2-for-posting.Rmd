@@ -22,7 +22,7 @@ Try to follow along by typing it yourself, adding comments as you make mistakes 
 library(tidyverse)
 ```
 
-The code specifies the connections between the variables in the data on one hand and the colors, points, and shapes you see on the screen. These logical connections are called *aesthetic mappings* or simply *aesthetics*.
+The code specifies the connections between the variables in the data on one hand and the colors, points, and shapes displayed on the screen on the other. These logical connections are called *aesthetic mappings* or simply *aesthetics*.
 
 How to use ggplot:
 
@@ -212,11 +212,9 @@ p + geom_point(mapping = aes(color = continent)) +
 
 **Exercise:** Read section 3.8 "Where to go next" from DV. Based on those ideas, experiment and create two different graphs with the gapminder data. Describe each briefly in one sentence.
 
-**Exercise:** Read section 1.6 of [R for Data Science](https://r4ds.had.co.nz/introduction.html) on *Getting help and learning more*. Go back to an error from your previous assignment -- or pick a new one -- and post a reproducible error as described in that section on the discourse forum.
+**Exercise:** Read section 1.6 of [R for Data Science](https://r4ds.had.co.nz/introduction.html) on *Getting help and learning more*. Report 3 errors you hit during this week and include a reproducible example of one of these errors as described in that section.
 
 **Exercise:** Do exercise 3.2.4 from [R for Data Science](https://r4ds.had.co.nz/data-visualisation.html#first-steps). Include your code in chunks, describe the output and code (where necessary) in the surrounding text.
-
-**Exercise:** Go through Exercises in 3.3.1. If an exercise does not make sense immediately (such as you don't know what a categorical variable is), replace the question by a question that addresses that point (in the case of the categorical variable "What are categorical and continuous variables and how are they different in R?"). Write it down, try to answer that question, and ignore the original question. That way you don't end up spending too much time on this one exercise.
 
 **Exercise:** Read the (very short) [Chapter 4 of R for Data Science](https://r4ds.had.co.nz/workflow-basics.html) and try exercise 1 in section 4.4.
 
@@ -224,6 +222,6 @@ p + geom_point(mapping = aes(color = continent)) +
 
 ## Assignment 1
 
-1. Do the exercises in these and the previous lecture notes.
-1. Knit lectures 2, making sure to get rid of those `eval=FALSE` that are just there because I didn't complete the code
-1. Submit the pdf on the server
+1. Do the exercises in these lecture notes.
+1. Knit lectures 2 to a pdf file. Get rid of those `eval=FALSE` that are in the current file. They are there to keep RStudio from complaining about code that is incomplete. 
+1. Submit the pdf on the server (explanations coming)
