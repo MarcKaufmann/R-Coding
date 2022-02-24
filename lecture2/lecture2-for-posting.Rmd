@@ -196,6 +196,16 @@ p <- ggplot(data = gapminder,
 p + geom_point()
 p + geom_point() + scale_x_log10(labels = dollar)
 p + geom_point() + scale_x_log10(labels = dollar) + geom_smooth(aes(color = continent))
+
+## Now plotting two geoms for different data sets
+
+# Get data for points before 1970
+gmPre70 <- gapminder %>% filter(year < 1970)
+p + geom_point() +
+  scale_x_log10(labels = dollar) +
+  geom_smooth() +
+  geom_smooth(data = gmPre70, color = 'red')
+
 ```
 
 **Exercise:** What does `fill = continent` do? What do you think about the match of colors between lines and error bands?
@@ -217,11 +227,6 @@ p + geom_point(mapping = aes(color = continent)) +
   geom_smooth(mapping = aes(color = continent, fill = continent)) + 
   scale_x_log10() + 
   geom_smooth(mapping = aes(color = continent), method = "gam")
-
-gm <- gapminder %>%
-  filter(year < 1970, year > 1960)
-p2 <- ggplot(data = gm, 
-             mapping = aes(x = gdpPercap, y = lifeExp)) 
 ```
 
 ## Additional (not Optional) Exercises 
