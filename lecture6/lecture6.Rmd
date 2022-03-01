@@ -57,20 +57,7 @@ And finally (if time permits, which is unlikely):
 
 ```{r, eval = FALSE}
 # What time of the day should you fly to avoid delays the most?
-# Start with dep_time. Then realize this is bad.
 
-not_missing %>%
-  mutate(hour = dep_time %/% 100) %>%
-  group_by(hour) %>%
-  summarise(delay = mean(arr_delay))
-  
-# Fix the variable, check what it computes before ranking
-not_missing %>%
-  mutate(hour = ...%/% 100) %>%
-  group_by(hour) %>%
-  summarise(delay = mean(arr_delay))
-
-# Now rank (in reality you would change the earlier code, rather than repeat)
 not_missing %>%
   mutate(hour = ...%/% 100) %>%
   group_by(hour) %>%
@@ -117,7 +104,6 @@ library(magrittr)
 # Notice it is %$%, not %>%
 df %$% t.test(x, y)  # Now we're talking
 
-
 ```
 
 The above may not often be sufficiently justified to go through the hassle. Just assign to a variable and deal with vectors directly.
@@ -148,7 +134,7 @@ read_csv(
 ?read_tsv
 
 # Class Exercise 5 in 11.2
-# IDentify what is wrong with each of 
+# Identify what is wrong with each of 
 
 read_csv("a,b\n1,2,3\n4,5,6")
 read_csv("a,b,c\n1,2\n1,2,3,4")

@@ -1,12 +1,7 @@
 # Lecture 6 script
 
-# 1. Notes on Assignment 3
-# 2. No assignment next week
-# 3. Team presentation
-# 4. Record OBS
-
-# This week: how to read in data
-# Next week: how to join data
+# This class: how to read in data
+# Next class: how to join data
 # From then on, explore various topics (and non-tidyverse)
 
 # Ceci n'est pas a tibble
