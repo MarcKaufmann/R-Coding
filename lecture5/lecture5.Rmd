@@ -117,10 +117,10 @@ not_missing %>%
   group_by(year, month, day) %>%
   summarise(sum(dep_time < 500))
 
-# How many flights are delayed each day by more than 1 hour?
+# What proportion of flights is delayed each day by more than 1 hour?
 not_missing %>%
   group_by(year, month, day) %>%
-  summarise(one_hour_fq = mean(arr_delay > 60))
+  summarise(one_hour_fc = mean(arr_delay > 60))
 
 # Class Exercise: Why do I use the mean above? How does that get the proportion?
 ```
@@ -131,6 +131,9 @@ If you want to get rid of earlier groupings, use `ungroup()`:
 
 ```{r}
 daily <- flights %>%
+  group_by(year, month, day)
+
+daily2 <- flights %>%
   group_by(year, month, day)
 
 daily %>%
@@ -167,7 +170,7 @@ flights_small %>%
   filter(delay_rank <= 2)
 ```
 
-How many rows does this return? Why? How many rows were there before we filtered?
+How many rows does this return? Why? How many rows were there before we filtered? Why is it not 2 per day?
 
 
 ```{r}
@@ -185,26 +188,28 @@ popular_destinations <- flights %>%
 
 The following chunks have most, but not all of the code necessary to achieve their goal. Fix as many of them as you can. **Note:** You'll have to switch off the `eval = FALSE`.
 
-```{r, eval = TRUE}
-# Compute for every day how many minutes above the average delay a given flight is.
+```{r, eval = FALSE}
+# Compute for every day how many minutes above the average delay for that day a given flight is.
 
 # 1. Compute the average delay (per day) and put it in the rows
 # 2. Then use that with dep_delay to compute the minutes above average
 
 flights_small %>%
   group_by(year, month, day) %>%
-  mutate(difference_from_daily_mean_dep_delay = dep_delay - mean(dep_delay, na.rm=TRUE)) %>%
+  mutate(difference_from_daily_mean_dep_delay = ...)) %>%
   select(difference_from_daily_mean_dep_delay, everything())
 ```
 
 Now compute the daily standard deviation in departure delays. Explain in one sentence what it means for that to be higher or lower.
 
 ```{r, eval = FALSE}
-# Compute for every day how many minutes above the average delay a given flight is.
+# Compute for every day how many minutes above the average delay (for that day) a given flight is.
 
 flights_small %>%
   group_by(...) %>%
-  mutate(daily_sd_dep_delay = <some-function-name>(...))
+  mutate(
+    difference_from_daily_mean_dep_delay = <some-function-name>(...)
+    )
 ```
 
 Now combine the previous two commands with a third to compute how many standard deviations a given flight is from the mean. A value of $-1$ indicates that the flight had 1 sd less departure delay than the average flights that day, $1$ indicates that it had 1 sd more departure delay than the average flight that day.
@@ -224,25 +229,13 @@ And finally (if time permits, which is unlikely):
 
 ```{r, eval = FALSE}
 # What time of the day should you fly to avoid delays the most?
-# Start with dep_time. Then realize this is bad.
-
-not_missing %>%
-  mutate(hour = dep_time %/% 100) %>%
-  group_by(hour) %>%
-  summarise(delay = mean(arr_delay))
-  
-# Fix the variable, check what it computes before ranking
-not_missing %>%
-  mutate(hour = ...%/% 100) %>%
-  group_by(hour) %>%
-  summarise(delay = mean(arr_delay))
 
 # Now rank (in reality you would change the earlier code, rather than repeat)
 not_missing %>%
   mutate(hour = ...%/% 100) %>%
   group_by(hour) %>%
-  summarise(delay = mean(arr_delay)) %>%
-  mutate(rank_delay = rank(delay)) %>%
+  summarise(delay = ...) %>%
+  mutate(rank_delay = ...) %>%
   arrange(rank_delay)
 ```
 
@@ -272,34 +265,6 @@ diamonds %>%
 
 diamonds %>%
   count(cut_width(carat, 0.5))
-
-# Why do we care? The following should be done changing the code, rather than copy-pasting.
-
-# Bin the carats, and make box plots for every bin
-
-diamonds %>%
-  mutate(carat_bin = cut_width(carat, 0.2)) %>%
-  ggplot(mapping = aes(x = carat_bin, y = price)) + 
-  geom_boxplot()
-
-ggplot(data = diamonds,
-       mapping = aes(x = carat, y = price)) + 
-  geom_boxplot(mapping = aes(x = cut_width(carat, 0.2)))
-
-ggplot(data = diamonds,
-       mapping = aes(x = carat, y = price)) + 
-  geom_boxplot(mapping = aes(group = cut_width(carat, 0.2)))
-
-bin_diamonds <- diamonds %>%
-  mutate(carat_bin = cut_width(carat, 0.2))
-
-ggplot(data = bin_diamonds, 
-       mapping = aes(x = carat, y = price)) + 
-  geom_boxplot(mapping = aes(group = carat_bin))
-
-ggplot(data = bin_diamonds,
-       mapping = aes(x = carat, y = price)) + 
-  geom_boxplot(mapping = aes(group = carat_bin), varwidth = TRUE)
 ```
 
 #### ifelse() and case_when()
@@ -318,7 +283,7 @@ case_when(
 )
 ```
 
-This is vectorized, so you can use it in mutates:
+These are vectorized, so you can use them in mutates:
 
 ```{r}
 # Let'd deal with weird variables in diamonds, which happen to be for y below 3 and above 20
@@ -332,6 +297,9 @@ Look at the code below and try to think about what it does before running it, in
 
 ```{r}
 # Highway mileage per class
+ggplot(data = mpg, mapping = aes(x = class, y = hwy)) +
+  geom_boxplot()
+
 ggplot(data = mpg, 
        mapping = aes(x = reorder(class, hwy, FUN = median), y = hwy)) + 
   geom_boxplot()
