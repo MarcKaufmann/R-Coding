@@ -1,22 +1,7 @@
 # Script for lecture 5
 
-# Team 4
-# Péter
-# Alexandra
-# Kristof
-# Miklos
-
-# Points:
-# 1. Don't list all functions, e.g. geoms
-# 2. Exam in DA1
-# 3. Look at file before submitting
-# 4. ggsave
-# 5. using vienna code and theming
-# 6. Team: How to assign/report exercises
-# 7. After week 6, change of time (17:30-19:00), same room
-
 # Today: group_by(), summarise()
-# Next week(s): read_*, parse_*, spread() and gather() tidy the data
+# Next class: read_*, parse_*, spread() and gather() tidy the data
 
 # Summary functions
 
