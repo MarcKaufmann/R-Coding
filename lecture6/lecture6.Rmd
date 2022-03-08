@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 The following chunks have most, but not all of the code necessary to achieve their goal. Fix as many of them as you can. **Note:** You'll have to switch off the `eval = FALSE`.
 
-```{r, eval = TRUE}
+```{r, eval = FALSE}
 # Compute for every day how many minutes above the average delay a given flight is.
 
 # 1. Compute the average delay (per day) and put it in the rows
@@ -24,19 +24,20 @@ library(nycflights13)
 flights_small <- flights
 
 flights_small %>%
-  group_by(year, month, day) %>%
-  mutate(difference_from_daily_mean_dep_delay = dep_delay - mean(dep_delay, na.rm=TRUE)) %>%
-  select(difference_from_daily_mean_dep_delay, everything())
+  group_by(...) %>%
+  mutate(difference_from_daily_mean_dep_delay = ...) %>%
+  # to put the new data in the first column
+  select(difference_from_daily_mean_dep_delay, everything()) 
 ```
 
 Now compute the daily standard deviation in departure delays. Explain in one sentence what it means for that to be higher or lower.
 
-```{r}
-# Compute for every day how many minutes above the average delay a given flight is.
+```{r, eval = FALSE}
+# Compute for every day the standard many minutes above the average delay a given flight is. ## GREAT COMMENT!
 
 flights_small %>%
   group_by(year, month, day) %>%
-  mutate(daily_sd_dep_delay = sd(dep_delay, na.rm=TRUE)) %>%
+  mutate(daily_sd_dep_delay = ...) %>%
   select(daily_sd_dep_delay, everything())
 ```
 
@@ -46,9 +47,8 @@ Now combine the previous two commands with a third to compute how many standard 
 
 flights_small %>%
   group_by(year, month, day) %>%
-  filter(!is.na(dep_delay)) %>%
   mutate(
-    diff_mean_in_sd = (dep_delay - mean(dep_delay)) / sd(dep_delay)
+    diff_mean_in_sd = ...)
   ) %>%
   select(diff_mean_in_sd, dep_delay, everything())
 ```
@@ -61,8 +61,8 @@ And finally (if time permits, which is unlikely):
 not_missing %>%
   mutate(hour = ...%/% 100) %>%
   group_by(hour) %>%
-  summarise(delay = mean(arr_delay)) %>%
-  mutate(rank_delay = rank(delay)) %>%
+  summarise(delay = ...) %>%
+  mutate(rank_delay = ...) %>%
   arrange(rank_delay)
 ```
 
@@ -112,7 +112,7 @@ The above may not often be sufficiently justified to go through the hassle. Just
 
 Now on to importing data.
 
-```{r}
+```{r, echo = FALSE}
 library(tidyverse)
 
 (test_data1 <- read_csv("test-data.csv"))
@@ -142,6 +142,7 @@ read_csv("a,b\n\"1")
 read_csv("a,b\n1,2\na,b")
 read_csv("a;b\n1;3")
 
+# To fix, lookup ?read_csv, ?read_tsv, ?read_delim, ?read_csv2
 # 11.3 Parsing a vector
 
 str(parse_logical(c("TRUE", "FALSE", "NA")))
@@ -161,10 +162,19 @@ parse_number("$100")
 
 challenge <- read_csv(readr_example("challenge.csv"))
 challenge
+
+# Identify problems by reading in as characters and using `tail`
+challenge2 <- read_csv(readr_example("challenge.csv"), col_types = cols(
+  x = col_character(),
+  y = col_character()
+))
+
+tail(challenge2)
+
 challenge <- read_csv(readr_example("challenge.csv"),
                       col_types = cols(
-                        x = col_double(),
-                        y = col_date()))
+                        x = ...,
+                        y = ...))
 
 ```
 
