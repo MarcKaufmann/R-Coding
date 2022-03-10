@@ -312,14 +312,14 @@ ggplot(data = mpg,
 
 There are several other geom_* that you should know of and the assignment asks you to find out more about them.
 
-## Exercises for Lecture 5
+## Assignment 3: Exercises for Lecture 5
 
 **Notes:** 
 
 1. Please highlight the start of each exercise properly, as well as where your answer starts and ends. 
 1. Upload **only your exercises** and answers to Moodle, not all of the lecture notes.
 
-**Exercise 1:** Using the nycflights13 data. Note that it also contains a tibble called `airports` (as well as others). Use these two dataframes to find the answer to 4 of the following, and print them out in a separate chunk (i.e. the chunk should print the tibble, thus showing the first 10 lines of each):
+**Exercise 1:** Using the nycflights13 data. Note that it also contains a tibble called `airports` (as well as others). Use these two dataframes to find the answer to 5 of the following, and print them out in a separate chunk (i.e. the chunk should print the tibble, thus showing the first 10 lines of each):
 
 - The number of flights (in the whole year) to each destination
 - The number and list of distinct airports in the US
@@ -330,7 +330,7 @@ There are several other geom_* that you should know of and the assignment asks y
 - What is the worst day of the year to fly in terms of arrival delay?
 - What is the best day of the year to fly in terms of departure delay?
 
-Reminder: Pick only 4 of the 8 possible ones.
+Reminder: Pick only 5 of the 8 possible ones.
 
 **Exercise 2:** Find all the rows with no NA values in **the first two columns** for the following datasets: 
 
