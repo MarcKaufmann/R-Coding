@@ -71,7 +71,7 @@ unique(weather$origin)
   filter(rank(desc(n)) < 11) %>%
   arrange(desc(n)))
   
-# Get only the flights to the top destinations
+# Class Exercise: Get only the flights to the top destinations
 
 flights %>% 
   filter(dest %in% top10$dest)
@@ -92,6 +92,9 @@ flights %>%
 # `semi-join()` expresses intent clearer, more self-documenting.
 # I prefer it.
 # Semi-join is more convenient with multiple fields
+# For instance, try to get the flights that occur on the 10 worst days by delay
+# That is, get the 10 days with the worst average delays
+# Then get all the flights from those 10 days
 
 (worst_days <- flights %>%
   group_by(year, month, day) %>%
@@ -134,11 +137,12 @@ ggplot(sim1, aes(x,y)) +
 ))
 
 ggplot(sim1, aes(x,y)) + 
-  geom_abline(data = models, aes(intercept= a1, slope= a2), alpha = 1/4) +
+  geom_abline(data=models, aes(intercept=a1, slope=a2), alpha=1/4) +
   geom_point()
 
-# Take model and data and plots the model for all the x's in the data
-# Computes the y-value for the x-value in the data, predicted by linear model a
+# Take model and data and plot the model for all the x's in the data
+# Computes the y-value for the x-value in the data, predicted by linear model 'a'
+# 'a' is a vector of two values, a[1] and a[2], intercept and slope
 model1 <- function(a, data) {
   a[1] + data$x * a[2]
 }
@@ -189,7 +193,7 @@ ggplot(sim1, aes(x,y)) +
   geom_point() + 
   geom_abline(intercept = best$par[1], slope = best$par[2])
 
-# finding the 'best' linear model is so common, it's built in (or coures)
+# finding the 'best' linear model is so common, it's built in
 sim1_mod <- lm(y ~ x, data = sim1)
 # Check the parameter is the same
 coef(sim1_mod)
@@ -208,9 +212,9 @@ coef(sim1_mod)
   add_residuals(sim1_mod))
 
 # Plot the predicted points. Obviously they are on the line.
-ggplot(df, aes(x,y)) + 
+ggplot(df, aes(x = x,y = y)) + 
   geom_point() +
-  geom_point(aes(x,pred), color = "red") + 
+  geom_point(aes(x = x, y = pred), color = "red") + 
   geom_abline(aes(intercept = coef(sim1_mod)[1], slope = coef(sim1_mod)[2]), color = "red")
 
 # Do the residuals look randomish? 
