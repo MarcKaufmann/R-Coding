@@ -112,7 +112,7 @@ The above may not often be sufficiently justified to go through the hassle. Just
 
 Now on to importing data.
 
-```{r, echo = FALSE}
+```{r eval=FALSE, include=FALSE}
 library(tidyverse)
 
 (test_data1 <- read_csv("test-data.csv"))
