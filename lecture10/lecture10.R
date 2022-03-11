@@ -124,6 +124,7 @@ he[2, ]
 he[ , 2]
 he[ , 1]
 he[5, ] <- c("ot", "five")
+he[5, ] <- list(hun = "ot", eng = "five")
 he[5, ]
 he[, "eng"]
 he[, eng]
@@ -145,7 +146,7 @@ df$z <- df$x^2 + 5*rnorm(3)
 df
 
 for (item in seq_along(df)) {
-  item...
+  print(item)
 }
 df
 df[[1]][1]
@@ -157,6 +158,4 @@ for (i in seq_along(df)) {
   print(df[[i]])
 }
 
-m <- c()
-m[1, ] <- c(1,2,3)
 matrix(c(1,2,3,4), byrow = TRUE, nrow = 2)

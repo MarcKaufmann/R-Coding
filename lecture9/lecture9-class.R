@@ -1,19 +1,5 @@
 # Lecture 9
 
-# Illustration of exercises 5 and 6 of lecture 8
-
-vienna_model_estimate <- lm(price ~ distance, data = my_vienna_data)
-
-# This will give some coefficients, e.g. distance para is 2.35
-
-# Ex 5
-# What do these parameters predict for London?
-
-# Ex 6
-
-london_model_estimate <-lm(price ~ distance, data = my_london_data)
-# you might get a parameter of 3.7
-
 library(modelr)
 library(ggplot2)
 library(tidyverse)

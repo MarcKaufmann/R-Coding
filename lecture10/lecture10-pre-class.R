@@ -22,7 +22,7 @@ plot_BM(2500)
 # Bad design of the function. 
 # A function should (ideally) do one thing.
 
-get_steps <- function(n) {
+get_steps <- function(N) {
   sample(c(-1,1), N, replace = TRUE)
 }
 
