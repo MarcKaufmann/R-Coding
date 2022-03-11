@@ -30,7 +30,7 @@ This is most useful for some utilities that you keep using, or some such.
 
 ### Connecting directly to databases
 
-When your dataset gets very large, it can be more efficient (or necessary) to keep it in a database. R allows you to connect to the database and perform actions there. Once you have selected (in the database) the subset of data you want to work on, you can fully load it into R to perform analysis on it.
+When your dataset gets large, it can be more efficient (or necessary) to keep it in a database. R allows you to connect to the database and perform actions there. Once you have selected (in the database) the subset of data you want to work on, you can fully load it into R to perform analysis on it.
 
 ```{r include=FALSE}
 library(RSQLite)
@@ -41,48 +41,49 @@ summary(con)
 dbListTables(con)
 dbWriteTable(con, "flights", nycflights13::flights)
 dbListTables(con)
+
+# Can do standard SQL
 dbListFields(con, "flights")
 dbReadTable(con, "flights") 
 res <- dbSendQuery(con, "SELECT year, month, day, dep_time, arr_delay FROM flights WHERE arr_delay > 120")
 dbFetch(res)
 dbClearResult(res)
 dbDisconnect(con)
+
+# Or do simpler with R
 ```
 
 ```{r, database_again, include=FALSE}
 
 # Or use dplyr from tidyverse
 library(tidyverse)
-the_db <- src_sqlite(":memory:", create = TRUE)
-flights <- nycflights13::flights
-flights <- copy_to(the_db, flights)
-dbListTables(the_db$con)
-res <- tbl(the_db, "flights") %>%
-  filter( arr_delay > 120) %>%
-  select(year, month, day, dep_time, arr_delay)
-# Not all resulsts are there
-res
-# Now they are there
-collect(res)
+con <- dbConnect(RSQLite::SQLite(), ":memory:")
+copy_to(con, nycflights13::flights, "flights")
+flights_db <- tbl(con, "flights")
+dbListTables(con)
+tailnum_delay_db <- flights_db %>% 
+  group_by(tailnum) %>%
+  summarise(
+    delay = mean(arr_delay),
+    n = n()
+  ) %>% 
+  arrange(desc(delay)) %>%
+  filter(n > 100)
+
+tailnum_delay_db
+tailnum_delay_db %>% show_query()
+# we did not yet get all the data
+nrow(tailnum_delay_db)
+tail(tailnum_delay_db)
+# Once you got the query right, use collect() to get all the data
+tailnum <- tailnum_delay_db %>% collect()
 dbDisconnect(the_db$con)
 ```
 
 
 ### Faster/more efficient code
 
-#### Compile
-
-Sometimes you might want to get a little extra speed by compiling, although this won't help much with the standard functions which will already be compiled and optimized anyway:
-
-```{r, already_compiled}
-mean
-```
-
-Compiling can help a bit with for loops.
-
 ```{r, for_loops}
-library(compiler)
-
 mean_of_squares <- function(n) {
   s <- 0
   for(i in seq_len(n)) {
@@ -95,10 +96,6 @@ mean_of_squares(2)
 mean_of_squares(3)
 system.time(mean_of_squares(40000))
 
-compiled_mos <- cmpfun(mean_of_squares)
-system.time(compiled_mos(40000))
-
-# But what you really should do
 vec_mos <- function(n) {
   mean((1:n)^2)
 }
@@ -107,7 +104,7 @@ system.time(vec_mos(40000))
 
 ```
 
-Plus, compiling sometimes doesn't help much at all. 
+Another classic:
 
 ```{r, fibonacci}
 
@@ -125,13 +122,6 @@ fibo(7)
 system.time(n <- fibo(31))
 n
 #system.time(n <- fibo(32))
-#n
-
-compiled_fibo <- cmpfun(fibo)
-
-system.time(n <- compiled_fibo(31))
-n
-#system.time(n <- compiled_fibo(32))
 #n
 
 smart_fibo <- function(n, last_fibo, second_to_last_fibo) {
@@ -157,8 +147,6 @@ smart_fibo_wrap(40)
 smart_fibo_wrap(100)
 ```
 
-As you can see, better thinking beats compiling, but since it doesn't take much effort to try out if compiling works faster, why not? Notice that you have to compile the function you are calling.
-
 #### Data Table
 
 If you need more performance, you should use `data.table`. It has a [useful vignette](https://cran.r-project.org/web/packages/data.table/vignettes/datatable-intro.html). 
@@ -168,11 +156,11 @@ If you need more performance, you should use `data.table`. It has a [useful vign
 There are several packages that help making books, articles, or blogs:
 
 - `bookdown` for books, which can be used for making articles too
-  - I spent 3+ hours last week fiddling around with it to get it to work properly with articles. Oh the fun...
+  - I spent 3+ hours at some point fiddling around with it to get it to work properly with articles. Oh the fun...
 - `blogdown` for blogs
 - Slides for presentations
 
-### Includ Python Code
+### Include Python Code
 
 ```{python}
 def square(x):

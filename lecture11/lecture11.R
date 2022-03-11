@@ -2,7 +2,9 @@
 
 library(tidyverse)
 # install.packages("socviz")
+# Make sure you have the package mapproj installed
 library(socviz)
+
 
 election %>%
   select(state, total_vote, r_points, pct_trump, party, census) %>%
@@ -10,7 +12,8 @@ election %>%
 
 party_colors <- c("#2E74C0", "#CB454A") 
 
-p0 <- ggplot(data = filter(election, st %nin% "DC"),
+# Let's plot the vote share of republicans by state
+p0 <- ggplot(data = filter(election, state %nin% "DC"),
              mapping = aes(x = r_points, 
                            y = reorder(state, r_points), 
                            color = party))
@@ -22,12 +25,14 @@ p1
 p2 <- p1 + scale_color_manual(values = party_colors)
 p2
 
+# Start simple, then build up bigger. Does it differ by census region?
 p3 <- p2 + facet_wrap(~ census, ncol = 1, scales = "free_y") +
   guides(color = FALSE) + 
   labs(y = "", x = "Point Margin") + 
   theme(axis.text=element_text(size=8))
 p3
 
+# Let's visualize this nicely
 library(maps)
 us_states <- map_data("state")
 head(us_states)
@@ -42,7 +47,7 @@ us_states %>%
                        y = lat, 
                        group = group,
                        fill = region)) +
-  geom_polygon(color = "gray90", size = 0.1) + 
+  geom_polygon(color = "gray90", size = 0.1) +
   coord_map(projection = "albers", lat0 = 39, lat1 = 45) +
   guides(fill = FALSE)
 
@@ -104,7 +109,6 @@ ggplot(data = filter(us_states_election,
 
 library(socviz)
 library(maps)
-# Make sure you have the package mapproj installed
 
 # Join opiates with states
 opiates
@@ -165,7 +169,6 @@ p1
 
 (p2 <- p1 + 
   geom_smooth(mapping = aes(group = division_name), se = FALSE))
-# What's with the error messages?
 
 library(ggrepel)
 (p3 <- p2 + 
@@ -175,6 +178,6 @@ library(ggrepel)
                     mapping = aes(x = year, y = adjusted, label = abbr),
                     size = 1.8, segment.color = NA, nudge_x = 30))
 
-# Split next into two
+# Next, do this by division
 (p4 <- p3 + 
     facet_wrap(~reorder(division_name, -adjusted, na.rm = TRUE)))
