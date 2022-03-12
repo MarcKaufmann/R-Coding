@@ -194,10 +194,6 @@ py$square(3)
 
 For more, see [https://rstudio.github.io/reticulate/articles/r_markdown.html]. Without it, you can still add Python code, but you cannot share objects between your Python and R code.
 
-### Shiny Apps
-
-Some of you have a whole course on this, and I have never used it. But have a look at it.
-
 ## Where Next?
 
 One advantage of RStudio and R tools is that most of what we do here can be done on the command line too. Thus you can (and I do) integrate these tools into shell scripts or make files or the like. This has two major benefits:
