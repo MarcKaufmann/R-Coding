@@ -3,6 +3,7 @@ output:
   pdf_document: default
   html_document: default
 ---
+
 # Report Instructions
 
 Follow these guidelines when submitting your assignment reports. 
