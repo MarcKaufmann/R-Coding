@@ -1,0 +1,74 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+# Report Instructions
+
+Follow these guidelines when submitting your assignment reports. 
+
+## Format
+
+- Create a .Rmd (R Markdown) file that you knit to pdf.
+- Provide a header for each new exercise and include a brief description of the exercise that uniquely and clearly identifies the exercise:
+    - For exercises from an online resource, include the Book and numbering (e.g. R4DS, Chapter 5.2, Exercise 3) and a link to the resource. Example: [R4DS, Exercise 5.3.1](https://r4ds.had.co.nz/transform.html#exercises-9)
+    - For exercises in the assignments, provide the lecture notes, the number, and a short description (to help with the topic)
+
+## Code
+
+Include *all* the code needed to produce the answers except for `install.packages(...)` (which is implicit in `library(...)`). You should also include enough output from your code that it is easy to see that it does what you claim it does. 
+
+### Include all dependencies at the top
+
+Load libraries that you need in a separate chunk that does not display messages and warnings, to avoid cluttering the report. 
+
+```{r, warning=FALSE, message=FALSE}
+library(tidyverse)
+library(nycflights13)
+```
+
+### Run your code
+
+Your code should be run and the output visible. That is, you should not use `eval = FALSE` to avoid printing much output. You can always avoid printing output by assigning the final result to a named variable. It is important to run your code to be sure that it could be run by someone else and that it is not broken. Broken code that you did not realize is broken counts as a fail on that exercise.
+
+Example on how to avoid printing too much output. Since `iris` is not a tibble, if I print it, it will use up a lot of space. If we want to print some of the dataset, we can either turn it into a tibble and print that, or manually choose some rows we want to print. If instead we do not want to print it at all, or not after every step, we can do the following:
+
+```{r}
+exercise1_part_a <- iris %>%
+  as_tibble() %>%
+  select(Sepal.Length, Species)
+```
+
+### Conceptual explanations belong in main text
+
+Long conceptual explanations and descriptions of how a function works that you were asked to explore belong in the main text, not in comments in chunks.
+
+### Comment the code, but don't overexplain
+
+Do not write long comments, and don't comment the obvious. But you should label the code such that someone who reads the report and looks for your answer to Exercise 2, part 3, they can easily find it. (This would be overcommenting for pure code, but you are writing a report, not a pure script.) Similarly, when there are many ways of doing some part (such as choosing one of many functions to explore or there are multiple steps), at the very least describe in a single line comment *what* and *why* you are doing it. Otherwise the reader has to guess.
+
+Whenever you are supposed to interpret or comment on data, you should write this between code chunks in the main text, not as comments in the code. Comments in the code can be used for short explanations of why or what you are doing, but without repeating literally what the code says. For example:
+
+```{r}
+# Step 1 of exercise: get average arrival delay by day
+flights %>%
+  group_by(year, month, day) %>%
+  summarize(
+    avg_delay = mean(arr_delay, na.rm = TRUE)
+  )
+```
+
+If the exercise consisted only of this one step, then providing the header of the exercise and then the code chunk without any comments would be fine.
+
+The comments should help the reader to quickly find the part of the report (in our case, the exercise or sub exercise), so they can scan faster. It should not explain that `filter(flights, arr_delay > 5)` gets the flights with an arrival delay of more than 5.
+
+### Including code that should not be run
+
+When including code that should not be run, say because it throws an error or because it is a call to the documentation (`?min_rank`), include it in a chunk that is not evaluated, but the code should throw the error if it was run. If it would throw an error, copy-paste the error as a comment underneath the code:
+
+```{r eval=FALSE, include=TRUE}
+"a" - "b" 
+# -> Error in "a" - "b" : non-numeric argument to binary operator
+```
+
+When asked to look up the documentation, you should summarize in one or two sentences what you learned from this.
