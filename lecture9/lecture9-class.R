@@ -204,8 +204,7 @@ plot_BM(5000)
 # Exercise 1: Map each coefficient from mod1 and mod2 to a feature of the plot 
 # with two facets. For instance, what is x1 in summaryd(mod2)? Where could you
 # read it off (roughly) from the graph? Etc for x1:x2b and so on. If you get
-# stuck, do ask for specific questions on Discourse. Correct answers for any 
-# parameter look like this:
+# stuck, do ask for help. Correct answers for any parameter look like this:
 # x1 is the [slope/intercept/difference between slopes/intercepts of] for ... 
 # Since it is [positive/negative] this means that ... is [larger/smaller] than ...
 

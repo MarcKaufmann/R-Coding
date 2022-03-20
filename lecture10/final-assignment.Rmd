@@ -1,7 +1,7 @@
 ---
 title: "Final Assignment"
 author: "Marc Kaufmann"
-date: "11/12/2019"
+date: "20/03/2022"
 output: pdf_document
 ---
 
@@ -11,24 +11,11 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Grading
 
-You will submit this assignment twice, and assess each other in between:
-
-- First submission Wednesday November 27th
-  - Worth 4.4% of total grade (40% of 11%)
-- Assess by December 2nd
-  - You submit *a single pdf page* as feedback
-  - I will ignore everything past the first page, without exception
-  - Worth 6.6% of total grade (60% of 11%)
-- Second submission based on feedback December 9th
-  - Worth 12% of total grade
-
-The grading is such that you can not lose too much on the first submission and so that you can improve your submission for the final submission based on the feedback you receive from others. Therefore the feedback you give matters for your grade, since it should help the person receiving it.
-
-It also means that you should attempt all parts on your first submission, so that you can receive helpful feedback on all parts.
+This assignment is worth 25 points. If you get stuck, remember to (a) ask for help (b) that you have quite a buffer in this class and cut your losses.
 
 ## Instructions
 
-This time, upload your .Rmd file to Moodle, which will get run/knitted.
+Upload your pdf on the server, and your send your .Rmd file in an email to me (kaufmannm@ceu.edu), which will get run/knitted to check it works.
 
 ### The Bootstrap
 
@@ -36,7 +23,7 @@ You will implement the bootstrap without using specialized libraries to do so (e
 
 We will use the bootstrap to compute the uncertainty of our estimates. For instance, if we find that the mean price of hotels is \$100, what does that mean? How 'confident' are we in this? The mean can be \$100 because all the hotels cost exactly \$100 per night, or because one half costs \$20 and the other half \$180.
 
-This is of course what the standard deviation tells us. But... how do we compute the standard deviation of the mean? If you run a regression model, the `summary()` function will provide you with an estimate of the uncertainty, usually the standard error. The problem is that the standard error depends on rather strong assumptions. When these assumptions are violated (that errors are Gaussian or uncorrelated or your model is wrong) then the standard errors are wrong -- usually by overstating the certainty, or understating the uncertainty.^[*Sidenote:* Ideally, I would do the following exercise with confidence intervals as well as standard errors, but I believe that may complicate a lot and interfere with understanding the bootstrap. So we'll stick with standard error.]
+This is of course what the standard deviation tells us. But... how do we compute the standard deviation of the mean? If you run a regression model, the `summary()` function will provide you with an estimate of the uncertainty, usually the standard error. The problem is that the standard error depends on rather strong assumptions. When these assumptions are violated (that errors are Gaussian or uncorrelated or your model is wrong) then the standard errors are wrong -- usually by overstating the certainty, or understating the uncertainty.
 
 Before diving in: What is it that we want the standard error to tell us? We want it to answer the following question: "If I gather new data of this kind, how far away am I going to be from my current mean estimate, most of the time?" The *most of the time* part often means *95% percent of the time* by custom -- there is no objective reason that it should be 95% percent. The bootstrap makes it easy to change your definition of *most of the time*, but we won't go there.
 
@@ -70,11 +57,10 @@ Notice that you can do this for *every* statistic that you can compute: i.e. if 
 
 Your mission, whether or not your are willing to accept it, is to write the code for the bootstrap as described above, by creating functions that allow you to compute the bootstrap for lots and lots of different functions (ideally for any function that takes a dataframe and returns a number).
 
-1. Write the code that does what I describe above for the vienna dataset. That is, compute the mean price and compute the bootstrap standard deviation of this mean (aka 'the standard error'). Don't worry yet about writing functions that can be used for more general things.
+1. Write the code that does what I describe above for the vienna dataset. That is, set a global value $B$ to 100, and then generate 100 simulations of the prices in the Vienna dataset (each simulation has to have the same length as the original vector of prices). For each of the simulated vectors, compute its mean price. From these $B$ mean prices, compute the (bootstrap) standard deviation of this mean (aka 'the standard error'). Don't worry yet about writing functions that can be used for more general things.
 2. Write a function `bootstrap_mean` that takes two arguments:
 - `B`: the number of simulations/replications you want to run (how many datasets to generate)
-- `v`: the column on Vienna prices (or more generally whatever column you want to compute the mean of), the one from which you sample the simulated datasets
-Use this and plot the standard error against $B$.
+- `v`: the column on Vienna prices (or more generally whatever column you want to compute the mean of), the one from which you sample the simulated datasets. Use this function to do step 1 by passing and plot the standard error against $B$.
 3. What is the non-bootstrap standard error? How can you get it out of R? (Hint: The mean function doesn't give it to you, but you can run a linear regression of a special kind that essentially only computes the average. You can solve this question differently as well.)
 4. Compute the bootstrap standard error for the `median()` rather than `mean()`. Define a function `bootstrap_median` for this which takes again an input vector $v$ for which you compute the median, as well as a parameter $B$.
 5. Compute the bootstrap standard error for:
@@ -86,10 +72,22 @@ Use this and plot the standard error against $B$.
    
     One way to approach this is to define a new function for each. Another is to write a `bootstrap_func` function that takes an additional argument called `fun`, and then you call it `bootstrap_func(B, v, median)` to have the same effect as `bootstrap_median`. Implement this function `bootstrap_func`.
 
-    Example calls to this function: `bootstrap_func(1000, vienna_data$price, mean)` and `bootstrap_func(1000, vienna_data, some_function_that_takes_a_dataframe_as_argument)`. Notice that the second argument can be a vector or a dataframe, and this depends on what function you pass in. The mean requires a vector, the `some_function_that_takes_a_dataframe_as_argument` takes a dataframe. Computing linear model coefficients requires a dataframe for instance.
-6. Use your new function to compute bootstrap estimators for the standard errors of some linear model coefficients on the vienna dataset. You have to define and name a function that returns the *coefficient* of the right linear model, and pass this function as one of the arguments to `bootstrap_func`.
-7. Compare the bootstrap estimators to the ones that `summary(lm(...))` spits out. Show the output that gives these estimators.
+    Example call to this function: `bootstrap_func(1000, vienna_data$price, mean)`.
+    
+6. Generalize the function further so that the second argument ($v$) can be a vector or a dataframe. Therefore, the third argument can be a function that takes a vector -- such as `mean` -- or a function that takes a dataframe and returns some number -- such as a function that computes a linear model and returns the estimate of the linear model. Use this new function to compute bootstrap estimators for the standard errors of some linear model coefficients on the vienna dataset -- e.g. the effect of stars on prices. You have to define and name a function that returns the *coefficient* of the right linear model (say `estimate_of_stars_on_prices <- ...`), and pass this function as one of the arguments to `bootstrap_func`.  Compare the bootstrap standard errors for the model to those that `summary(lm(...))` spits out. (Where do you see those?) Show the output that gives these estimators.
 
-You are done. For the second week you should make your functions as user-friendly as possible, using feedback from others on how to do this.
+Hint: To extract the estimate from a linear model, look at `lm`, as well as `str(model1)` where `model1` is the object returned by `lm(...)` for some linear model. For example, to get the estimate from a simple model, you can do the following:
 
-**Note:** The current assignment might make you think that the bootstrap always works, or is the right tool for all things. This is not the case, although it is beyond the scope of the assignment to show why. Sometimes the bootstrap can be badly off. Read Chapter 6 part 7 of [Advanced Data Analysis from an Elementary Point of View](http://www.stat.cmu.edu/~cshalizi/ADAfaEPoV/) by Cosma Shalizi for more. In addition, even when it is not misleading, because the bootstrap makes fewer assumptions, it is less precise - i.e. the bootstrap standard errors are larger than the ones you get by default. This is usually a good thing, since the usual assumpations are often violated. However, when you do believe that some assumption makes sense, you should use the knowledge it provides to get tighter bounds.
+```{r}
+library(tidyverse)
+df <- tibble(
+  x = c(0, 1, 2, 3),
+  y = c(0, 3, 2, 3)
+)
+m1 <- lm(x ~ y, data = df)
+m1$coefficients[["y"]]
+```
+
+You would call this as follows: `bootstrap_func(1000, vienna_data, some_function_that_takes_a_dataframe_as_argument)`. Notice that the second argument can be a vector or a dataframe, and this depends on what function you pass in. The mean requires a vector, the `some_function_that_takes_a_dataframe_as_argument` takes a dataframe. Computing linear model coefficients requires a dataframe for instance.
+
+**Note:** The current assignment might make you think that the bootstrap always works, or is the right tool for all things. This is not the case, although it is beyond the scope of the assignment to show why. Sometimes the bootstrap can be badly off. Read Chapter 6 part 7 of [Advanced Data Analysis from an Elementary Point of View](http://www.stat.cmu.edu/~cshalizi/ADAfaEPoV/) by Cosma Shalizi for more. In addition, even when it is not misleading, because the bootstrap makes fewer assumptions, it is less precise - i.e. the bootstrap standard errors are larger than the ones you get by default. This is usually a good thing, since the usual assumptions are often violated. However, when you do believe that some assumption makes sense, you should use the knowledge it provides to get tighter bounds.

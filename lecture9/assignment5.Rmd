@@ -1,0 +1,28 @@
+---
+title: "Assignment 5"
+author: "You Know Who"
+date: "20/03/2022"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r, warning=FALSE, message=FALSE}
+library(tidyverse)
+```
+
+Write your answers to the assignment in this file and knit it.
+
+**Exercise 1.** Come up with 3 models to explore what drives the price of hotels in Vienna (data in lecture7/ folder). Plot the price of hotels against some of the main variables that seem to have the most explanatory power.
+
+**Exercise 2.** Look at the residuals from your favorite model. Now plot these residuals against 3 variables that you didn't include earlier - or if you included all, plot them against some variables in a form that you did not do before  (squares, logs, interactions). Do the residuals look random?
+
+**Exercise 3.** Try to find out some methods to check if residuals are random and how to code this in R. Find at least two ways.
+
+**Exercise 4.** Use your model and the values estimated on Vienna to predict prices for another city. How well does your model do, if you use the parameter values estimated on Vienna?
+
+**Exercise 5.** Reestimate your favorite model (the same as from exercise 1) for another city. How much do the parameter values change? How well does the model do now? If you had to summarise the difference between the 2 cities in one number based on your model, what would it be?
+
+**Exercise 6.** Map each coefficient from mod1 and mod2 (lecture 10) to a feature of the plot  with two facets. For instance, what is x1 in summaryd(mod2)? Where could you read it off (roughly) from the graph? Etc for x1:x2b and so on. If you get stuck, do ask for help. Include the plots as facet plot. Correct answers for any parameter look like this:
+
+> x1 is the [slope/intercept/difference between slopes/intercepts of] for ... Since it is [positive/negative] this means that ... is [larger/smaller] than ... .
