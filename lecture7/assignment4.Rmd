@@ -13,15 +13,15 @@ library(tidyverse)
 
 Write your answers to the assignment in this file and knit it.
 
-**Exercise 0:** Read the introduction to Chapter 12 on [Tidy Data](https://r4ds.had.co.nz/tidy-data.html) and make sure you understand what tidy data means.
+**Exercise 0, part 1:** Read the introduction to Chapter 12 on [Tidy Data](https://r4ds.had.co.nz/tidy-data.html) and make sure you understand what tidy data means.
 
-**Exercise 1:** Read chapter 8 in R4DS on [Workflow: projects](https://r4ds.had.co.nz/workflow-projects.html) and set up the folder for lecture 7 as a project (it has the data you need). Open your assignment file as a new project. That way, when you try to read files in this folder, it should automatically find them, and you don't have to provide the path.
+**Exercise 0, part 2:** Read chapter 8 in R4DS on [Workflow: projects](https://r4ds.had.co.nz/workflow-projects.html) and set up the folder for lecture 7 as a project (it has the data you need). Open your assignment file as a new project. That way, when you try to read files in this folder, it should automatically find them, and you don't have to provide the path.
 
-**Exercise 2:** Make sure you know how to load the test data files. You do not have to prove this, so if you think you are fine, simply say "All done". If not, write down where you get stuck, and explain why you expected your commands to work, or why you think there should be no error.
+**Exercise 1:** Make sure you know how to load the test data files. You do not have to prove this, so if you think you are fine, simply say "All done". If not, write down where you get stuck, and explain why you expected your commands to work, or why you think there should be no error.
 
-**Exercise 3:** I added the hotels-europe dataset to the lecture7 folder. Make sure that you can read in the *clean* data from the csv file. Lookup `read_dta` from the *haven* package (you have to load it first to get the help text). Use this to load the clean hotels data from the .dta files, which is the Stata native format. Compare the two datasets that you loaded (the .csv and the .dta), and show a few ways to test whether the two have identical data. Explain (2-3 sentences) how you test it conceptually before providing the code.
+**Exercise 2:** I added the hotels-europe dataset to the lecture7 folder. Make sure that you can read in the *clean* data from the csv file. Lookup `read_dta` from the *haven* package (you have to load it first to get the help text). Use this to load the clean hotels data from the .dta files, which is the Stata native format. Compare the two datasets that you loaded (the .csv and the .dta), and show a few ways to test whether the two have identical data. Explain (2-3 sentences) how you test it conceptually before providing the code.
 
-**Exercise 4:** Pick a small subset of the hotels-europe dataset that you loaded in exercise 3 of 200 lines. Write it to a file. Now screw up some lines in the file in such a way that the normal `read_csv()` will either fail, or not yet load the dataset in the proper way. Make sure to specify:
+**Exercise 3:** Pick a small subset of the hotels-europe dataset that you loaded in exercise 3 of 200 lines. Write it to a file. Now screw up some lines in the file in such a way that the normal `read_csv()` will either fail, or not yet load the dataset in the proper way. Make sure to specify:
 
 1. Which lines you changed
 2. Why this will lead either to a direct error or a parsing problem
@@ -29,7 +29,7 @@ Write your answers to the assignment in this file and knit it.
 
 We had many examples of parsing problems, so take your inspiration from there or google for issues other people had.
 
-**Exercise 5:** Consider the following dataset:
+**Exercise 4:** Consider the following dataset:
 
 ```{r, data_exercise_t}
 df <- tibble(name = c("A123", "B456"), age = c(30, 60), answer1 = c(0, 1), answer2 = c(1,1), answer3 = c(1,0), answer4 = c(0,0))
@@ -43,11 +43,11 @@ Tidy it:
     - Make sure you realize which data you have to repeat across rows for this to work
 2. By coding it with `pivot_longer()`
 
-**Exercise 6:** Read in test-data3.csv properly. When there are problems:
+**Exercise 5:** Read in test-data3.csv properly. When there are problems:
 
 1. RTFM: Read the free message
 2. `problems(df3)` or use `tail()` to look at the problematic rows
 3. Force the reading in as characters via col_types = "ccccc..." (see documentation)
 4. And then fix one column at a time
 
-**Exercise 7** Use the `nycflights13` data, specifically the `flights` and `airports` tables for this question. Compute the number of minutes between the departure time (in `dep_time`) and arrival time (in `arr_time`). Note that this requires you to take into account the time zone of the destination airport. If there are data issues/missing data, make sure to highlight it. Describe in the main text how you answer this question (2-3 sentences are enough).
+**Exercise 6** Use the `nycflights13` data, specifically the `flights` and `airports` tables for this question. Compute the number of minutes between the departure time (in `dep_time`) and arrival time (in `arr_time`). Note that this requires you to take into account the time zone of the destination airport. If there are data issues/missing data, make sure to highlight it. Describe in the main text how you answer this question (2-3 sentences are enough).
