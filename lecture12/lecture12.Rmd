@@ -205,3 +205,14 @@ One advantage of RStudio and R tools is that most of what we do here can be done
 Kieran Healy has another book at [http://plain-text.co/] on how to work with text files. It is geared towards academics since it focuses on replicability, but much of it should apply to data analysts and scientists.
 
 R4DS has a nice final page that covers a few of the above and some more: [https://r4ds.had.co.nz/r-markdown-formats.html]. In particular, it mentions dashboards as a separate content type which I hadn't known about. It looks nifty.
+
+Finally, the material covered in this class can be used relatively straightforwardly in Python and Julia:
+
+- Python: 
+  - dplyr (+ other parts of tidyverse) are similar to pandas (+ ??)
+  - ggplot2: plotnine package seems similar; matplotlib seems different
+- Julia:
+  - Dataframes.jl is similar to dplyr
+  - Gadfly.jl is similar to ggplot2
+  
+See https://dataframes.juliadata.org/stable/man/comparisons/ on a comparison from the Julia side. As you'll see, much of what you learned can be used with small syntactic changes. In fact, you can call R and Python code from Julia, which is helpful when there are missing packages in Julia, which is the youngest language.
