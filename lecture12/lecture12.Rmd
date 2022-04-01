@@ -49,7 +49,7 @@ res <- dbSendQuery(con, "SELECT year, month, day, dep_time, arr_delay FROM fligh
 dbFetch(res)
 dbClearResult(res)
 dbDisconnect(con)
-
+res
 # Or do simpler with R
 ```
 
@@ -58,6 +58,7 @@ dbDisconnect(con)
 # Or use dplyr from tidyverse
 library(tidyverse)
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
+dbListTables(con)
 copy_to(con, nycflights13::flights, "flights")
 flights_db <- tbl(con, "flights")
 dbListTables(con)
@@ -77,7 +78,9 @@ nrow(tailnum_delay_db)
 tail(tailnum_delay_db)
 # Once you got the query right, use collect() to get all the data
 tailnum <- tailnum_delay_db %>% collect()
-dbDisconnect(the_db$con)
+dbDisconnect(con)
+tailnum
+tailnum_delay_db
 ```
 
 
@@ -145,6 +148,7 @@ smart_fibo_wrap(8)
 smart_fibo_wrap(32)
 smart_fibo_wrap(40)
 smart_fibo_wrap(100)
+system.time(smart_fibo_wrap(32))
 ```
 
 #### Data Table
@@ -155,12 +159,20 @@ If you need more performance, you should use `data.table`. It has a [useful vign
 
 There are several packages that help making books, articles, or blogs:
 
+```{r gratuitous_define}
+too_much_time <- 3
+```
+
 - `bookdown` for books, which can be used for making articles too
-  - I spent 3+ hours at some point fiddling around with it to get it to work properly with articles. Oh the fun...
+  - I spent `r too_much_time`+ hours at some point fiddling around with it to get it to work properly with articles. Oh the fun...
 - `blogdown` for blogs
 - Slides for presentations
 
 ### Include Python Code
+
+```{r}
+library(reticulate)
+```
 
 ```{python}
 def square(x):
@@ -171,14 +183,11 @@ square(-2)
 ```
 
 ```{r, eval=FALSE}
-py$square(3)
+res <- py$square(3)
 ```
 
 With the library `reticulate`, you can even call python things from R code.
 
-```{r}
-library(reticulate)
-```
 
 ```{python}
 def square(x):
