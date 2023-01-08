@@ -4,7 +4,7 @@
 
 - Instructor: Kaufmann Marc; Email: KaufmannM@ceu.edu
 - Credits: 2 CEU (4 ECTS) 
-- Term: Winder 2021-2022
+- Term: Winder 2022-2023
 - Course level:  MA/MSc
 - Prerequisites: None
 
@@ -16,7 +16,7 @@ The course serves as an introduction to the R programming language and software 
 
 - Produce meaningful descriptive statistics and informative graphs
 - Become familiar with the R ecosystem 
-- Learn how to get help, how to debug, how to learn programming
+- Learn how to get help, how to debug, how to do basic programming
 - Learn how to use R for the most common data tasks: loading, cleaning, transforming, summarizing, and visualizing data
 - Learn basics of source control with `git`
 
@@ -24,12 +24,13 @@ The course serves as an introduction to the R programming language and software 
 
 Class materials are hosted on https://github.com/MarcKaufmann/R-Coding. Look there for an up-to-date syllabus.
 
-### Assessment (including minimum pass requirement and grading)
+### Assessment 
 
-- Participation (15 points): helping yourself and helping others. This will be based on your contribution to the online class forum, as well as your team's team work. This can include getting help from classmates, or searching online forums and email lists. Part of the weekly assignment will be to document your use of any of these resources.
-- Weekly assignments (100 points, 15 points per week, 25 points for the final week): You will have weekly assignments consisting primarily of short exercises to get you fluent in R. You will also assess the exercises submitted by your peers, which makes up 5 out of the 15 points per week (10 points out of the 25 for the final week). 
+- In-class quizzes (20 points)
+- (Tentatively) Automatically graded exercises (30 points)
+- Data project of your own choice (60 points)
 
-This sums to 115 points, yet your final score will be truncated at 100 (which will count as 100%): if you have a final score of 110, I will treat it as a score of 100 and grade based on that. Thus you have 20 points to lose without it affecting your grade. 
+This sums to 110 points, yet your final score will be truncated at 100 (which will count as 100%): if you have a final score of 110, I will treat it as a score of 100 and grade based on that. Thus you have 10 points to lose without it affecting your grade. 
 
 There will be no final exam. 
 
