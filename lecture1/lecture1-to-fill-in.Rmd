@@ -150,7 +150,7 @@ For built-in functions, you can also ask for help or bring up the documentation 
 
 As you can see, some datasets are conveniently bundled for you as libraries.
 
-## Assignment 2
+## Assignment 1 (not graded)
 
 This assignment is due before the start of class 2. Commit your knitted assignment2.html to your git and push it to your repository regularly as you make progress.
 
@@ -186,5 +186,3 @@ You have to get in the habit of reading and making sense of error messages, even
 
 # Your examples below
 ```
-
-Post one of these 4 errors in Slack. 
