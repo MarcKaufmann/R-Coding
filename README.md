@@ -15,15 +15,15 @@ library(ggplot2)
 ggplot(diamonds, aes(cut)) + geom_bar()
 ```
 
-The remaining steps will allow you to install `git` and use it with RStudio:
+The remaining steps will allow you to install `git`:
 
 5. Bookmark, watch, or star this repository so that you can easily find it later
 6. Install `git` from https://git-scm.com/
    - If you have no idea what git is and how and why to use it, this video does a decent job: [Git & GitHub Crash Course For Beginners](https://www.youtube.com/watch?v=SWYqp7iY_Tc)
 8. If you want to use SSH to pull/push changes, create an SSH key, see the [instructions on GitHub](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent).
-9. Fork the repository on GitHub: this will create a copy of the repository in my account and put this copy in your account, making it easy to pull (meaning 'get') new changes as I write them, while allowing you to make changes to your copy for assignments.
+9. Fork the repository on GitHub: this will create a copy of my repository and put this copy in your account, making it easy to pull (meaning 'get') new changes as I write them, while allowing you to make changes to your copy as you follow along.
 
-The next steps may be trickier to get right, so try to set it up for a while and ask for help -- but if it takes you longer than . We will go through in the first class as well, but you should attempt it.
+The next steps may be trickier to get right, so try to set it up for a while and ask for help -- if you get stuck for more than 15 minutes on any given step, give up and ask for help in class. We will go through in the first class as well, but you should attempt it.
 
 9. Clone your fork of the repository on Github (that is in *your* account) to a folder on your computer, say to your /home/<your-name>/<path-to-course-materials>/R-Coding. For this, go to your fork of the repository and click on the green button saying 'Code' and copy the appropriate link:
         - if you did set up SSH keys, copy the SSH url (starting with `git@github.com`)
@@ -63,10 +63,6 @@ First search the internet to see if you can find the answer to your solution. Lo
 
 Second, use the class specific slack channel to post your questions. Make sure to respond to others' questions that you know how to solve.
 
-##### How To Ask for Help
-
-TO BE COMPLETED
-
 #### 4. Message Instructor/TA on Slack
 
 If you are uncomfortable posting your question to the whole class, you can message us directly on Slack.
@@ -79,8 +75,8 @@ One particularly fun episode (far from the most time-consuming) was when it took
 $ sudo ufw allow https
 ```
 
-yet it had wasted 3 hours of my time. Close to one hour per word I had to type.
+yet it had wasted 3 hours of my time. Close to one hour per word typed.
 
 #### 5. Email 
 
-I discourage emails for technical issues, which should be kept on Slack for the benefit of users. For non-technical questions or concerns that are unlikely to be of interest to other students, or if you have a question that is somewhat private, you are welcome to write emails.
+I encourage Slack for technical issues, so that others can benefit as well. For non-technical questions or concerns that are unlikely to be of interest to other students, or if you have a question that is somewhat private, you are welcome to send us a private Slack message or email us (kaufmannm@ceu.edu or Bardits_Anna@phd.ceu.edu).
