@@ -29,7 +29,7 @@ Relevant for this class:
 
 - Collect my own data in (mostly online) experiments
 - Analyze said data: Fairly basic, since design is up to me 
-- Program in Racket, bash/unix, R, and Python (in that order of competence)
+- Program in Racket, R, bash/unix, and Python (in that order of competence)
 
 \pause{}
 
@@ -112,14 +112,11 @@ Since we cover much of the data analysis cycle and have little time:
 
 ## Assignments and Grading
 
-- Participation (15 points): helping yourself and helping others 
-- Assignments (15 points / week, 25 points final week): weekly assignments of exercises, graded by peers
-- No exam
+- Data Report (60 points): Create a basic data cleaning and exploration
+    - Exploration should include visualization, no need for fancy statistics that we don't cover (but fine)
+- Assignments (0 points): There will be several assigments as practice, but won't be graded
+- Quizzes/Exercies (40 points): 4 sets of exercises to complete at home
   
-\pause{}
-
-Total: 115 points
-
 ## Useful Resources
 
 When you get stuck, the following fantastic books may help:
