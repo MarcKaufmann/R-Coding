@@ -182,9 +182,13 @@ p <- ggplot(data = gapminder,
             mapping = aes(x = gdpPercap, y = lifeExp, color = continent, fill = continent))
 p + geom_point()
 p + geom_point() + scale_x_log10(labels = dollar)
-<<<<<<< HEAD
 p + geom_point() + scale_x_log10(labels = dollar) + geom_smooth(aes(color = continent))
 
+```
+
+**Exercise:** How can you plot to `geom`s for two different datasets on the same plot (assuming they share the same x- and y-axis)? 
+
+```{r, plotting_two_geoms}
 ## Now plotting two geoms for different data sets
 
 # Get data for points before 1970
@@ -194,9 +198,7 @@ p + geom_point() +
   geom_smooth() +
   geom_smooth(data = gmPre70, color = 'red')
 
-=======
 p + geom_point() + scale_x_log10(labels = dollar) + geom_smooth()
->>>>>>> parent of fc43491 (lecture 2: code from class)
 ```
 
 **Exercise:** What does `fill = continent` do? What do you think about the match of colors between lines and error bands?
@@ -220,7 +222,7 @@ p + geom_point(mapping = aes(color = continent)) +
   geom_smooth(mapping = aes(color = continent), method = "gam")
 ```
 
-## Additional (not Optional) Exercises 
+## Additional Exercises 
 
 **Exercise:** Find ways to save the figures that you made so that you can use them elsewhere too. Create a new folder to save only images. Use the command for saving to save the picture for the last image in your new folder, after you have updated the axes, title, subtitle, and caption of the image. Post your solution on Slack and use it to include the final image above with a caption saying "Saved by <your-name>" inside your Slack message (see https://slack.com/help/articles/4403914924435-Add-descriptions-to-images). (Hint: `??save`)
 
@@ -234,8 +236,7 @@ p + geom_point(mapping = aes(color = continent)) +
 
 **Bonus Exercise:** Why did I load the `scales` library twice via `library(scales)` to knit? 
 
-## Assignment 1
+## Assignment 1 (optional)
 
 1. Do the exercises in these lecture notes.
 1. Knit lectures 2 to a pdf file. Get rid of those `eval=FALSE` that are in the current file. They are there to keep RStudio from complaining about code that is incomplete. 
-1. Submit the pdf on the server (explanations coming)
