@@ -1,26 +1,75 @@
 ---
-title: "Lecture 2: Chapter 3 by Kieran Healy"
+title: 'Lecture 2: Chapter 3 by Kieran Healy'
 author: "Marc Kaufmann"
 date: "January 2023"
-output: html_document
+output:
+  html_document: default
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Note to the interested student
+## From last time: How to get help
 
-Try to follow along by typing it yourself, adding comments as you make mistakes or realize things. Write the code out in chunks:
+```{r, eval=FALSE}
+help(help)
+?help
+?'=='
+help(==)
+help('==')
+? == help
+help == help
+mean == mean
+mean
+mean
+?ggplot
+'?ggplot'
+??ggplot
+???
+?'??'
+?'??'
+??ggplot
+?mean
+?summary
+summary(iris)
+str(iris)
+```
+
+Let's define our first function:
 
 ```{r}
+double <- function(x) { 2*x }
+double(4)
+double2 <- function(x)  2*x
+double2(4)
+double(c(0, 1, 2))
+# 3 * "3"
+rep(3)
+?rep
+rep(3, 9)
 ```
+
 
 ## How ggplot Works
 
 ```{r, load, warning=FALSE}
 library(tidyverse)
+# install.packages("gapminder")
+library(gapminder)
+gapminder
+View(gapminder)
+help(gapminder)
+library(ggplot2)
+
+p <- ggplot(
+  data = gapminder,
+  mapping = aes(x = gdpPercap, y = lifeExp)
+) 
+p + geom_point()
 ```
+
 
 The code specifies the connections between the variables in the data on one hand and the colors, points, and shapes displayed on the screen on the other. These logical connections are called *aesthetic mappings* or simply *aesthetics*.
 
@@ -36,10 +85,13 @@ How to use ggplot:
   
 ```{r, geoms, eval=FALSE}
 library(ggplot2)
-... + geom_point() # Produces scatterplots
-... + geom_bar() # Bar plots
-... + geom_boxplot() # boxplots
-... # 
+p1 <- ggplot(
+  data = gapminder,
+  mapping = aes(x = continent))
+ggplot(
+  data = gapminder,
+  mapping = aes(x = continent, y = lifeExp)
+) + geom_boxplot()
 ```
 
 You link these steps by *literally* adding them together with `+` as we'll see.
@@ -80,6 +132,11 @@ Finally, we add a *layer*. This says how some data gets turned into concrete vis
 ```{r, scatter_plot}
 p + geom_point()
 p + geom_smooth()
+p + geom_smooth(method = "loess")
+p + geom_point() + geom_smooth()
+p + geom_smooth() + geom_point() # the order of geoms matters
+p + geom_point() + geom_smooth(color = 'yellow')
+p + geom_point() + geom_smooth() + scale_x_log10(labels = scales::dollar) 
 ```
 
 **Note:** Both geom's use the same mapping, where the x-axis represents ... and the y-axis ... based on the mappings you defined before. But the first one maps the data to individual points, the other one maps it to a smooth line with error ranges.
@@ -143,8 +200,10 @@ This is interesting (or annoying): the points are not yellow. How can we tell gg
 
 ```{r, yellow_points, eval=FALSE}
 p <- ggplot(data = gapminder,
-            mapping = aes(x = gdpPercap, y = lifeExp, ...))
-p + geom_point(...) + scale_x_log10()
+            mapping = aes(x = gdpPercap, y = lifeExp, color = continent))
+p + geom_point() + scale_x_log10()
+ggplot(data = gapminder,
+       mapping = aes(x = gdpPercap, y = lifeExp)) + geom_point(color = 'yellow')
 ```
 
 **Exercise:** Based on the discussion in Chapter 3 of *Data Visualization* (read it), describe in your words what is going on. 
@@ -181,8 +240,8 @@ library(scales)
 p <- ggplot(data = gapminder,
             mapping = aes(x = gdpPercap, y = lifeExp, color = continent, fill = continent))
 p + geom_point()
-p + geom_point() + scale_x_log10(labels = dollar)
-p + geom_point() + scale_x_log10(labels = dollar) + geom_smooth(aes(color = continent))
+p + geom_point() + scale_x_log10(labels = scales::dollar)
+p + geom_point() + scale_x_log10(labels = scales::dollar) + geom_smooth(aes(color = continent))
 
 ```
 
