@@ -3,8 +3,8 @@ title: 'Lecture 2: Chapter 3 by Kieran Healy'
 author: "Marc Kaufmann"
 date: "January 2023"
 output:
-  html_document: default
   pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -54,12 +54,12 @@ rep(3, 9)
 
 ## How ggplot Works
 
-```{r, load, warning=FALSE}
+```{r, load, warning=FALSE, message=FALSE}
 library(tidyverse)
 # install.packages("gapminder")
 library(gapminder)
 gapminder
-View(gapminder)
+# View(gapminder)
 help(gapminder)
 library(ggplot2)
 
@@ -120,7 +120,7 @@ In detail:
   
 Importantly, mappings don't say *what* color or shape some variable will have. Rather, it says that a given column/variable will be mapped *to* color or *to* shape: thus `color = gender` means that different genders will be displayed by different colors.
 
-```{r}
+```{r, eval=FALSE}
 str(p)
 str(p + geom_point())
 ```
