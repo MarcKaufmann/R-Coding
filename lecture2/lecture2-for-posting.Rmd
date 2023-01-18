@@ -1,7 +1,7 @@
 ---
 title: "Lecture 2: Chapter 3 by Kieran Healy"
 author: "Marc Kaufmann"
-date: "Feburary 2022"
+date: "January 2023"
 output: html_document
 ---
 
