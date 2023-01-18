@@ -16,7 +16,7 @@ Try to follow along by typing it yourself, adding comments as you make mistakes 
 ```{r}
 ```
 
-## How Ggplot Works
+## How ggplot Works
 
 ```{r, load, warning=FALSE}
 library(tidyverse)
