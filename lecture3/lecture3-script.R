@@ -86,16 +86,15 @@ mystery_filter
 mystery_filter2
 
 # arr_delay > 120 OR dep_delay > 120
-# True if:
-# - (140, 140)
-# - (140, 0)
-# - (0, 140)
-# - (0, 0)
 # Vote:
 # 1. All flights that started and landed 120 minutes late
 # 2. All flights that started 120 minutes late or landed 120 minutes late
 # 3. All flights that started less than 120 minutes late or landed less than 120 minutes late
 # 4. All flights that started and landed less than 120 minutes late
+# - (140, 140)
+# - (140, 0)
+# - (0, 140)
+# - (0, 0)
 
 # How to convince ourselves? could use row_number() to add row_number and check the same row numbers are in both filters
 # Class Exercise: Get the filter command for number 3 above
@@ -165,6 +164,8 @@ arrange(flights, desc(dep_delay))
 
 arrange(df, x)
 arrange(df, desc(x))
+arrange(df, desc(is.na(x)), desc(x))
+arrange(df, x, desc(x))
 
 # Class exercise (do at home): How can we get the missing values at the top? Use `is.na()`
 
@@ -186,7 +187,12 @@ select(arrange(flights, air_time), air_time, origin, dest)
 
 flights %>%
   arrange(air_time) %>%
-  select(air_time, origin, dest)
+  select(air_time, origin, destination)
+
+# Or the basic pipe!
+flights |>
+  arrange(air_time) |>
+  select(air_time, origin, destination)
 
 # Notice that the data doesn't have to be mentioned in the call, 
 # it gets used as the first argument automatically. Therefore
