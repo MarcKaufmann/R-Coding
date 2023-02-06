@@ -20,7 +20,7 @@ non_human_hair <- function(df) {
   df #FIXME: write as function
 }
 
-#Use the `msleep` data (bulit-in dataset in the dplyr package) for Exercises 4-7
+#Use the `msleep` data (bulit-in dataset in the ggplot2 package) for Exercises 4-7
 
 
 #Exercise 4. Get all the animals who are heavier than the average bodyweight in the data
