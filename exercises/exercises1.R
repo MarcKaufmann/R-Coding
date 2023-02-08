@@ -7,7 +7,8 @@ sq <- function(x) {
   x  # FIXME
 }
 
-# Exercise 2: From the `starwars` data, get all the non-human characters with yellow or blue-gray eyes.
+# Exercise 2: From the `starwars` data, get all the non-human characters with 
+# eyes that contain yellow or blue-gray eyes.
 # Keep all the columns.
 non_human_eyes <- starwars # FIXME
 
