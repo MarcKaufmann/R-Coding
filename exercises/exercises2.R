@@ -14,7 +14,7 @@ library(nycflights13)
 flights_time <- flights # FIXME
 
 
-# Exercise 2: Get all the columns that contain text (i.e. character <chr>
+# Exercise 2: Keep the columns that contain text (i.e. character <chr>
 # type) and where the contents of the columns are at most 3 characters 
 # long. (NA data counts as 0-length.) 
 # Look up how to get the length of strings in library stringr.
@@ -75,6 +75,7 @@ starwars_by_height_by_species <- starwars  # FIXME
 flights_carrier_best_worst <- flights # FIXME
 
 
-# Exercise 7: Find the days such that the most delayed flight on that
-# day is more delayed than the most delayed flight on the previous day.
+# Exercise 7: Find the days such that the most delayed flight (by departure)
+# on that day of the year is more delayed than the most delayed flight on the 
+# previous day. Keep yeary, month, day, and dep_delay columns.
 flights_days_getting_worse <- flights # FIXME
