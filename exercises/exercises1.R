@@ -14,7 +14,7 @@ non_human_eyes <- starwars # FIXME
 
 # Exercise 3: write the body of the function `non_human_hair` that takes a single argument.
 # This argument is a subset from the `starwars` data, and your function should return all the
-# non-human characters who could possibly have brown, auburn, or no hair
+# non-human characters who COULD POSSIBLY have brown, auburn, or no hair
 # Keep only the following columns: name, species, eye_color, homeworld, and hair_color IN THAT ORDER
 # Order the rows by species, then eye_color, both ascending alphabetically
 non_human_hair <- function(df) {

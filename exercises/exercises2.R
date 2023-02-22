@@ -75,7 +75,8 @@ starwars_by_height_by_species <- starwars  # FIXME
 flights_carrier_best_worst <- flights # FIXME
 
 
-# Exercise 7: Find the days such that the most delayed flight (by departure)
+# Exercise 7: Consider only days with dep_delay not missing. Find the days such 
+# that the most delayed flight (by departure) 
 # on that day of the year is more delayed than the most delayed flight on the 
 # previous day. Keep yeary, month, day, and dep_delay columns.
 flights_days_getting_worse <- flights # FIXME
