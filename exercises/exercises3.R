@@ -32,7 +32,8 @@ stats_by_month <- flights # FIXME
 
 
 # Exercise 4: With the nycflights13 data, compute for each flight how
-# many standard deviations worse it is in terms of dep_delay than
+# many standard deviations worse it is in terms of dep_delay (i.e. only for
+# those that have non-missing values) than
 # the monthly average. This means you need to compare the dep_delay
 # of a given flight to the average dep_delay in that month, and figure
 # out how many standard deviations (for that month!) this is (negative
@@ -41,8 +42,6 @@ stats_by_month <- flights # FIXME
 # column, calling it stdevs_better_than_month.
 
 delay_sddiff<-flights #FIXME
-
-
 
 #Exercise 5. Copy the hotels_europe_strange.csv file to your working directory. This is a comma delimited file, the first row
 #contains the variable names and the second one descriptions of the variables (variable labels).
