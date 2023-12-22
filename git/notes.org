@@ -1,0 +1,33 @@
+#+title: Git Notes
+
+* Basics on Local Machine
+
+1. Create folder
+2. Create origin
+3. Init
+4. Add initial commit
+5. Create local (a clone of the origin folder on the same machine)
+6. Add change on origin
+7. Look at config and set the remote
+8. Patronizing remarks about GUIs
+   - Primarily: know what you are doing (or what the GUI is doing) rather than clicking your way to oblivion
+   - Applies to cli too: knwo what you are doing, rather than cli-ing your way to oblivion
+
+
+** Commands to play with
+
+- `git init`
+- `git clone`
+- `git remote`, also with -v
+- `git remote add <name> <path>`
+- `git pull`
+  - Mention `git fetch`
+- `git status`
+- `git restore` (as opposed to `reset`)
+- `git log`
+- `git log --help`
+- `git mv ...`
+- `git revert`
+- `git branch`
+- `git stash`
+- `git tag`
