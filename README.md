@@ -8,6 +8,7 @@ Please bring your own laptop to class and make sure to follow the steps below to
 2. Install `RStudio Desktop` (Open Source License) from https://www.rstudio.com/products/rstudio/download
 3. Register an account at https://github.com
 4. In this step you install the tidyverse packages, which includes `ggplot2`, the plotting library that we will use in this course. Enter the following commands in the R console (bottom left panel of RStudio) and make sure you see a plot in the bottom right panel and no errors in the R console:
+5. Bookmark, watch, or star this repository if you want to find it easier later.
 
 ```r
 install.packages('tidyverse')
@@ -15,9 +16,10 @@ library(ggplot2)
 ggplot(diamonds, aes(cut)) + geom_bar()
 ```
 
-The remaining steps will allow you to install `git`:
+## Optional: git
 
-5. Bookmark, watch, or star this repository so that you can easily find it later
+The remaining steps will allow you to install `git`. In the past, I required this. Experience tells me that I cannot teach git properly in this course, as it would require 1 or more lectures, which is not the point of the class. Thus, follow these steps only if you feel like it, otherwise you will have to download the scripts from the github repository manually. 
+
 6. Install `git` from https://git-scm.com/
    - If you have no idea what git is and how and why to use it, this video does a decent job: [Git & GitHub Crash Course For Beginners](https://www.youtube.com/watch?v=SWYqp7iY_Tc)
 8. If you want to use SSH to pull/push changes, create an SSH key, see the [instructions on GitHub](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent).
@@ -79,4 +81,4 @@ yet it had wasted 3 hours of my time. Close to one hour per word typed.
 
 #### 5. Email 
 
-I encourage Slack for technical issues, so that others can benefit as well. For non-technical questions or concerns that are unlikely to be of interest to other students, or if you have a question that is somewhat private, you are welcome to send us a private Slack message or email us (kaufmannm@ceu.edu or Bardits_Anna@phd.ceu.edu).
+I encourage Slack for technical issues, so that others can benefit as well. For non-technical questions or concerns that are unlikely to be of interest to other students, or if you have a question that is somewhat private, you are welcome to send us a private Slack message or email me (kaufmannm@ceu.edu).
