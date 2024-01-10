@@ -1,11 +1,3 @@
-# git: what it is and how it works (roughly)
-# git fork to your repo
-# git clone the repo
-# git pull from the repo
-# If/when working on assignments in the repository, you should either:
-#  i) create a folder that is not stored in git
-#  ii) make sure that you commit your changes before you pull from the repo
-
 # Things to Know about R
 # 1. Everything has a name
 2
