@@ -1,0 +1,131 @@
+---
+title: "Intro to R: Lecture 1"
+author: |
+  | Marc Kaufmann
+  | Central European University
+format: 
+  beamer:
+    theme: metropolis
+    slide-level: 2
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Introduction to Data Analysis in R
+
+## Who am I?
+
+\pause{}
+
+- Assistant Professor in Economics and Business
+- Research in Psychology and Economics (aka Behavioral Economics)
+
+\pause{}
+
+Relevant for this class:
+
+- Collect my own data in (mostly online) experiments
+- Analyze said data: Fairly basic, since design is up to me 
+- Program in Racket, R, bash/unix, and Python (in that order of competence)
+
+\pause{}
+
+Most importantly: I am good at getting help.
+
+## Goal for the class in one sentence
+
+\pause{}
+
+> Generate basic insights\pause{} from existing data\pause{} that is small\pause{} and relational\pause{} in a reproducible and replicable manner.
+
+\pause{}
+
+## Goals of the Course
+
+```{r, eval=FALSE, echo=TRUE}
+code_1 <- function(collected_data) { 
+  collected_data |>
+    read()       |>
+    clean()      |>
+    explore()    |>
+    visualize()  |>
+    summarize()  |>
+    tidy()       |>
+    analyze()    |> 
+    render()
+}
+```
+
+## Focus of the Class
+
+Since we cover much of the data analysis cycle and have little time:
+
+- Focus on few libraries and commands (80/20 rule)
+  - Tidyverse only: coherent set of tools with sane interface
+  - Has inspired other languages (Julia, Python)
+- Focus on *fluency* (rather than complete understanding)
+- Focus on teaching you how to learn
+  - Write readable, self-documenting code
+  - How to get help
+
+## Assignments and Grading
+
+- Data Reports (100 points): 4 short reports with simple data
+  - DR1: 15 points
+  - DR2: 20 points
+  - DR3: 25 points
+  - DR4: 40 points
+- Exercises (0 points, for practice)
+  
+## Data Report
+
+Rubric for data report written in Quarto (.qmd, format: html):
+
+- Describe dataset: 20%
+  - Where does it come from, what do the variables mean? You may have to ask.
+- Data cleaning: 20%
+  - Always keep the raw data, create new files for the cleaned data
+  - Explore and describe cleaning process, provide summaries (tables, summary stats)
+- Explore for insight: 40%
+  - Include one visualization and some analysis (summaries, mostly) and explain
+- Write up and conclusions: 20%
+
+Report has to be replicable and well documented (name, etc). 
+
+## Data Reports: Tentative Deadlines
+
+Most likely schedule (depends somewhat on progress):
+
+- Data Report 1: week 4 (deadline week 5)
+- Data Report 2: week 6 (deadline week 7)
+- Data Report 3: week 8 (deadline week 9)
+- Data Report 4: week 10 (deadline week 12)
+
+You lose 33% of score for how each day late (rounded up). No ex-post exceptions.
+
+## Useful Resources
+
+When you get stuck, the following fantastic books may help:
+
+- Kieran Healy's book on *Data Visualization* (http://socviz.co/)
+- Grolemund and Wickham's book *R for Data Science* (https://r4ds.had.co.nz/)
+
+Additionally:
+
+- Ask questions on Slack
+
+## Where you should be
+
+You should:
+
+- Have RStudio set up up and working
+- Have git set up and working
+- Have joined Slack and posted your intro
+
+## Questions?
+
+\pause{}
+
+Any questions?

@@ -4,7 +4,7 @@
 
 - Instructor: Kaufmann Marc; Email: KaufmannM@ceu.edu
 - Credits: 2 CEU (4 ECTS) 
-- Term: Winder 2022-2023
+- Term: Winder 2023-2024
 - Course level:  MA/MSc
 - Prerequisites: None
 
@@ -18,7 +18,6 @@ The course serves as an introduction to the R programming language and software 
 - Become familiar with the R ecosystem 
 - Learn how to get help, how to debug, how to do basic programming
 - Learn how to use R for the most common data tasks: loading, cleaning, transforming, summarizing, and visualizing data
-- Learn basics of source control with `git`
 
 ### Reading list
 
@@ -26,10 +25,8 @@ Class materials are hosted on https://github.com/MarcKaufmann/R-Coding. Look the
 
 ### Assessment 
 
-- Graded exercises (40 points)
-- Data project of your own choice (70 points)
-
-This sums to 110 points, yet your final score will be truncated at 100 (which will count as 100%): if you have a final score of 110, I will treat it as a score of 100 and grade based on that. Thus you have 10 points to lose without it affecting your grade. 
+- Four data reports (100 points)
+  - 15, 20, 25, and 40 points respectively (increasing over time)
 
 There will be no final exam. 
 
@@ -39,24 +36,31 @@ If you have a question regarding a particular assignment -- whether about the gr
 
 ### Technical/laptop requirement
 
-You will need your laptop with RStudio, R, and git installed in order to participate in class.
+You will need your laptop with RStudio and R installed in order to participate in class. Optionally, you can install git too.
 
 ### Tentative Course schedule 
 
 **Note:** This is subject to reording and minor changes, but the broad set of topics should remain fairly stable.
 
-1. git; R ecosystem, basic syntax, R Markdown; how to get help; first plot
+1. R ecosystem, basic syntax; how to get help; first plot
 1. ggplot2: data visualization; introduction to functions
 1. Tidyverse: choosing data with `filter()`, `select()`, `arrange()`
 1. Tidyverse: transforming data with `mutate()`, `summarise()`, `group_by()`
 1. Tidyverse: more transformations with `group_by()`, `mutate()`, and `filter()`
 1. Tidyverse: reading data with `read_csv()` and `parse_*()`
-1. Tidyverse: tidying data with `spread()` and `gather()`; basic hypotheses testing
-1. Tidyverse: `left_join()` and `join()`; basic regressions
-1. Functions, loops, and friends; sampling, simulating, bootstrapping (GD)
-1. working with data the non-tidyverse way; lubridate for working with dates
-1. Basic Spatial Data
-1. All the rest
+1. Tidyverse: tidying data with `pivot_wider()` and `pivot_longer()`
+1. Tidyverse: `left_join()` and `join()`
+1. Visualizing Spatial Data
+
+Items spread across lectures:
+
+* Functions, loops, and friends; sampling, simulating, bootstrapping (GD)
+* working with data the non-tidyverse way; lubridate for working with dates
+
+Additional topics (time permitting):
+
+* Shiny apps
+
 
 ### Short bio of the instructor (1 para)
 
