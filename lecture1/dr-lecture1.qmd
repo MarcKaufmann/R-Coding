@@ -1,0 +1,86 @@
+---
+title: "Toy Data Report 1"
+author: "Marc"
+format: html
+---
+
+# Notes
+
+Anything labeled a *Note* should not be in an actual data report, but serves only as commentary for pedagogical purposes. 
+
+# Dataset
+
+**Source**: first class of *Introduction to Data Analysis in R* (2024). The instructor asked the students present to raise their hand for each of the programming languages that they had heard of.
+
+```{r}
+list_of_programming_languages <- c(
+"R",
+"SQL",
+"Racket",
+"Lisp",
+"JavaScript",
+"ECMAScript",
+"Julia",
+"bash",
+"$tata",
+"C",
+"Perl",
+"Logo",
+"Scratch", 
+"Rust",
+"Python"
+)
+
+languages_heard_of <- c()
+```
+
+# Cleaning
+
+Given the simplicity of the dataset, there is not much cleaning necessary in terms of removing outliers. However, there are several things we can do to simplify later data analysis:
+
+1.  The instructor misspelled Stata as \$tata (truly hilarious), which we should rename.
+2.  The data is currently stored in two separate vectors. It is better to store it instead in a single data frame with a column for the programming language and the number of students who have heard of it
+3.  We should record the total number of students present - which seems like an important quantity.
+
+**Note:** In general we should write the data to a file. Here we won't do it, since it is toy data and we already use enough code that you haven't seen. 
+
+```{r cleaning}
+lopl_clean <- list_of_programming_languages
+lopl_clean[9] <- "Stata"
+
+prog_langs_known <- data.frame(
+  programming_language = lopl_clean,
+  n_students = 1:15
+) 
+
+n <- 20
+```
+
+# Exploration
+
+Let's rank the languages from most to least well-known and let us compute the average number of students who know any language, as well as the average number of languages a student knows.
+
+**Note:** For the ranking, we will use the `arrange` function from the `dplyr` package, which we will see in more detail in a later lecture. It arranges a dataframe in the order of the column provided:
+
+**Note:** As this is the first report, we skip the visualization. 
+
+```{r exploration}
+#| output: false
+library(dplyr)
+
+pls_ranked <- arrange(prog_langs_known, desc(n_students))
+
+avg_n_students <- mean(prog_langs_known$n_students)
+avg_n_languages <- sum(prog_langs_known$n_students)/n
+```
+
+# Conclusions
+
+The most well-known programming language is `r pls_ranked$programming_language[1]` with `r pls_ranked$n_students[1]` students knowing the language — in percentage terms, this corresponds to `r 100*pls_ranked$n_students[1]/n`%.
+
+Moreover, students know on average `r avg_n_languages` of the `r dim(prog_langs_known)[1]` languages they were asked about.
+
+Follow-up questions:
+
+-   It would be good to write our code and report — including the numbers in the main body — such that if we update the data, the report automatically updates to reflect the updated data.
+-   It depends on our interest, but the initial survey could also have asked free-form which languages each student knows without providing an initial list; whether they can code in any of the languages, and if so, for how long they have been coding in it; and given the topic of the course, tilt the list towards programming languages, frameworks, and software used in data analysis.
