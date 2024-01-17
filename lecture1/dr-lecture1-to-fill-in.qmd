@@ -10,7 +10,7 @@ editor: visual
 Anything labeled a *Note* should not be in an actual data report, but serves only as commentary for pedagogical purposes. 
 
 *Note:* Change the name of the author to your own name.
-
+ 
 # Dataset
 
 **Source**: first class of *Introduction to Data Analysis in R* (2024). The instructor asked the students present to raise their hand for each of the programming languages that they had heard of.
