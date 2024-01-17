@@ -25,10 +25,10 @@ then you need to make sure to install them first via `install.package("<package-
 library(tidyverse)
 # install.packages("gapminder")
 library(gapminder)
-gapminder
 # View(gapminder)
 help(gapminder)
 library(ggplot2)
+gapminder
 ```
 
 As you can see, the `gapminder` object is a table, with each row containing the 
@@ -42,11 +42,7 @@ following information about a given country in a given year:
 Let us plot the life expectancy against the GDP per capita as a scatter plot:
 
 ```{r first-plot}
-p <- ggplot(
-  data = gapminder,
-  mapping = aes(x = gdpPercap, y = lifeExp)
-) 
-p + geom_point()
+
 ```
 
 The code specifies the connections between the variables in the data on one hand and the colors, points, and shapes displayed on the screen on the other. These logical connections are called *aesthetic mappings* or simply *aesthetics*.
@@ -68,13 +64,13 @@ instead of using a scatter plot (via `geom_point`) you should use a boxplot. Why
 would it be a bad idea to have country or GDP per capita on the x-axis with boxplot?
 
 ```{r geoms}
+#| eval: FALSE
 p1 <- ggplot(
   data = gapminder,
-  mapping = aes(x = continent, y = lifeExp)
+  mapping = aes(x = ..., y = ...)
 )
-p1 + geom_boxplot()
+p1 + geom_...
 ```
-
 
 **Class Exercise:** What other types of plots are there? Try to find several more `geom_` functions.
 
@@ -83,8 +79,6 @@ p1 + geom_boxplot()
 Consider again the code snippet from above:
 
 ```{r}
-#| eval: FALSE
-
 p <- ggplot(
   data = gapminder,
   mapping = aes(x = gdpPercap, y = lifeExp)
@@ -103,9 +97,6 @@ Here is how this call works in detail:
 Importantly, mappings don't say *what* color or shape some variable will have. Rather, it says that a given column/variable will be mapped *to* color or *to* shape: thus `color = gender` means that different genders will be displayed by different colors.
 
 ```{r}
-#| eval: FALSE
-str(p)
-str(p + geom_point())
 ```
 
 **Class Exercise:** Make sure that your knitted version doesn't include all the output from the `str(...)` commands, it's too tedious. (Hint: see how I did it in other chunks. How could you
@@ -115,15 +106,15 @@ Finally, we add a *layer*. This says how some data gets turned into concrete vis
 
 ```{r changing-geoms}
 # Scatter plot
-p + geom_point()
+
 # Smooth line
-p + geom_smooth()
+
 # We can combine multiple geoms on the same graph
-p + geom_point() + geom_smooth()
+
 # The order in which we add geoms matters
-p + geom_smooth() + geom_point() 
+
 # We can even make the plots pretty!
-p + geom_point() + geom_smooth(color = 'yellow')
+
 ```
 
 **Note:** Both geom's use the same mapping, where the x-axis represents ... and the y-axis ... based on the mappings you defined before. But the first one maps the data to individual points, the other one maps it to a smooth line with error ranges.
@@ -134,20 +125,14 @@ We get a message that tells us that `geom_smooth()` is using the method = 'gam',
 #| eval: FALSE
 ?geom_smooth
 p +
-  geom_point()  +
-  geom_smooth() +
-  geom_smooth(method = ...) +
-  geom_smooth(method = ...)
-p +
   geom_point() +
-  geom_smooth() +
-  geom_smooth(method = ...) +
-  geom_smooth(method = ..., color = "red")
+  ...
 ```
 
 You may start to see why ggplots way of breaking up tasks is quite powerful: the geometric objects (long for geoms) can all reuse the *same* mapping of data to aesthetics, yet the results are quite different. And if we want later geoms to use different mappings, then we can override them -- but it isn't necessary.
 
-One thing about the data is that most of it is bunched to the left. If we instead used a logarithmic scale, we should be able to spread the data out better.
+One thing about the data is that most of it is bunched to the left. If we instead used a logarithmic scale, we should be able to spread the data out better and can fit a
+linear line.
 
 ```{r, scale_coordinates}
 p + geom_point() + geom_smooth(method = "lm") + scale_x_log10()
@@ -159,6 +144,7 @@ Nice! The x-axis now has scientific notation, let's change that.
 
 ```{r, scales}
 library(scales)
+
 p + geom_point() + 
   geom_smooth(method = "lm") + 
   scale_x_log10(labels = scales::label_currency())
@@ -199,9 +185,7 @@ This is interesting (or annoying): the points are not yellow. How can we tell gg
 #| eval: FALSE
 p <- ggplot(data = gapminder,
             mapping = aes(x = gdpPercap, y = lifeExp, color = continent))
-p + geom_point() + scale_x_log10()
-p + geom_point(color = 'yellow') + scale_x_log10()
-p + geom_point(color = 'yellow') + scale_x_log10()
+p + ...
 ```
 
 So nice you gotta see it twice!!
@@ -218,15 +202,14 @@ Remember: `color = 'yellow'` and `aes(color = 'yellow')` are very different, and
 *Class Exercise:* Make a smooth **orange** line through the scatterplot and give it a size 8.
 
 ```{r, exercise_args_for_smooth}
+#| eval: FALSE
+
 p <- ggplot(data = gapminder,
             mapping = aes(x = gdpPercap, y = lifeExp))
 p +
   geom_point() +
   geom_smooth(
-    color = "orange",
-    se = FALSE,
-    size = 8,
-    method = "lm"
+    ...
   ) +
   scale_x_log10()
 ```
@@ -252,32 +235,28 @@ pf + geom_point()
 Let us make the points transparent and rescale:
 
 ```{r, transparent-rescaled-scatter}
+#| eval: FALSE
 pf + 
-  geom_point(alpha=0.3) + 
+  geom_point(...) + 
   scale_x_log10(labels = label_currency())
 ```
 
 Next, let us add colors by continent and change the transparency:
 
 ```{r color-by-continent}
+#| eval: FALSE
 pf + 
-  geom_point(mapping = aes(color = continent), alpha=0.5) + 
+  geom_point(..., alpha=0.5) + 
   scale_x_log10(labels = label_currency())
 ```
 And finally, let's label it properly:
 
 ```{r, gapminder_with_labels}
-
+#| eval: FALSE
 pf + 
   geom_point(mapping = aes(color = continent), alpha = 0.7) +
   scale_x_log10(labels = scales::label_currency()) +
-  labs(
-    x = "GDP Per Capita",
-    y = "Life Expectancy in Years",
-    title = "Economic Growth and Life Expectancy",
-    subtitle = "Data Points are country-years",
-    caption = "Source: Gapminder"
-  )
+  ...
 ```
 
 **Exercise:** Consider the following two plots.
