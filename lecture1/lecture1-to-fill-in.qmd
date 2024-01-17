@@ -62,7 +62,6 @@ c
 
 ```
 
-
 **Some Notes**:
 
 -   '\#' is the \_\_\_\_\_\_\_\_\_ (EXERCISE) sign. It tells R that everything that follows is a comment and R should ignore it. Comments are there to help explain parts of the code that need additional documentation. We will overuse them initially, but reduce this as the course proceeds.
@@ -182,13 +181,6 @@ For built-in functions, you can also ask for help or bring up the documentation 
 ```
 
 **Exercise:** What do 'class()' and 'str()' do? Use 'help' (or '?'). Don't spend too much time reading the docs. Which description do you find more helpful?
-
-### Make Your First Figure
-
-```{r, gapminder}
-```
-
-As you can see, some datasets are conveniently bundled for you as libraries.
 
 ## Exercises (optional)
 
