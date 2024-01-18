@@ -154,13 +154,15 @@ mean(TRUE)
 
 As you may start to realize, lots of functions already exist, such as $mean()$ and $sd()$ and $c()$. There are many more functions that were written by other people and bundled into packages so that you can use them. Many packages come bundled with R from the start (base R), while you can install others on your system via 'install.packages()' and use via 'library()'. We will soon use the 'ggplot()' function. Try using it now:
 
-```{r, eval=FALSE}
+```{r}
 ggplot
 ```
 
 You will get an error. We first need to import the library:
 
 ```{r}
+# install.packages("ggplot2")
+library(ggplot2)
 ```
 
 This tells R to go and get all the objects defined in the library called ggplot2, which includes *ggplot*. This gives us our first data (non-)visualization: a beautifully empty plot.
@@ -178,6 +180,17 @@ x <- c(1, 3.0, 2.9)
 For built-in functions, you can also ask for help or bring up the documentation with 'help()' or '?' or '??':
 
 ```{r, what_is_summary}
+x
+str(x)
+class(x)
+list("thing", 10, c(0, 1))
+
+help("+")
+?"=="
+help("==")
+?ggplot
+ggplot
+??modulo
 ```
 
 **Exercise:** What do 'class()' and 'str()' do? Use 'help' (or '?'). Don't spend too much time reading the docs. Which description do you find more helpful?
