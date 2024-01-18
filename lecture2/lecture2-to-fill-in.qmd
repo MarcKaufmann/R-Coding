@@ -5,6 +5,9 @@ date: "January 2024"
 output:
   pdf_document: default
   html_document: default
+editor: 
+  markdown: 
+    wrap: 72
 ---
 
 ```{r setup, include=FALSE}
@@ -13,10 +16,11 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## How ggplot Works
 
-We will now introduce the `ggplot` library for plotting graphs and illustrate this 
-data from the `gapminder` library. In order for this to work, we need to load both
-of these. If you get an error when loading them (by calling `library(<package-name>)`), 
-then you need to make sure to install them first via `install.package("<package-name>")`.
+We will now introduce the `ggplot` library for plotting graphs and
+illustrate this data from the `gapminder` library. In order for this to
+work, we need to load both of these. If you get an error when loading
+them (by calling `library(<package-name>)`), then you need to make sure
+to install them first via `install.package("<package-name>")`.
 
 ```{r load}
 #| warning: FALSE
@@ -31,48 +35,62 @@ library(ggplot2)
 gapminder
 ```
 
-As you can see, the `gapminder` object is a table, with each row containing the 
-following information about a given country in a given year:
+As you can see, the `gapminder` object is a table, with each row
+containing the following information about a given country in a given
+year:
 
-- continent
-- life expectancy 
-- population
-- per capita GDP
+-   continent
+-   life expectancy
+-   population
+-   per capita GDP
 
-Let us plot the life expectancy against the GDP per capita as a scatter plot:
+Let us plot the life expectancy against the GDP per capita as a scatter
+plot:
 
 ```{r first-plot}
-
+p <- ggplot(
+  data = gapminder,
+  mapping = aes(x = gdpPercap, y = lifeExp)
+)
+p + geom_point()
 ```
 
-The code specifies the connections between the variables in the data on one hand and the colors, points, and shapes displayed on the screen on the other. These logical connections are called *aesthetic mappings* or simply *aesthetics*.
+The code specifies the connections between the variables in the data on
+one hand and the colors, points, and shapes displayed on the screen on
+the other. These logical connections are called *aesthetic mappings* or
+simply *aesthetics*.
 
 How to use ggplot:
 
-- `data = gapminder`: Tell it what your data is
-- `mapping = aes(...)`: How to map the variables in the data to aesthetics
-  - axes, size of points, intensities of colors, which colors, shape of points, lines/points
-- Then say what type of plot you want:
-  - boxplot, scatterplot, histogram, ...
-  - these are called 'geoms' in ggplot's grammar, such as `geom_point()` giving scatter plots
-  
+-   `data = gapminder`: Tell it what your data is
+-   `mapping = aes(...)`: How to map the variables in the data to
+    aesthetics
+    -   axes, size of points, intensities of colors, which colors, shape
+        of points, lines/points
+-   Then say what type of plot you want:
+    -   boxplot, scatterplot, histogram, ...
+    -   these are called 'geoms' in ggplot's grammar, such as
+        `geom_point()` giving scatter plots
+
 You link these steps by *literally* adding them together with `+`.
 
-**Class Exercise:** Draw a boxplot of life expectancy for each continent. That is, on 
-the x-axis you want to have the continent, on the y-axis life expectancy, and 
-instead of using a scatter plot (via `geom_point`) you should use a boxplot. Why 
-would it be a bad idea to have country or GDP per capita on the x-axis with boxplot?
+**Class Exercise:** Draw a boxplot of life expectancy for each
+continent. That is, on the x-axis you want to have the continent, on the
+y-axis life expectancy, and instead of using a scatter plot (via
+`geom_point`) you should use a boxplot. Why would it be a bad idea to
+have country or GDP per capita on the x-axis with boxplot?
 
 ```{r geoms}
 #| eval: FALSE
 p1 <- ggplot(
   data = gapminder,
-  mapping = aes(x = ..., y = ...)
+  mapping = aes(x = continent, y = lifeExp) 
 )
-p1 + geom_...
+p1 + geom_boxplot()
 ```
 
-**Class Exercise:** What other types of plots are there? Try to find several more `geom_` functions.
+**Class Exercise:** What other types of plots are there? Try to find
+several more `geom_` functions.
 
 ## Mappings Link Data to Things You See
 
@@ -88,66 +106,93 @@ p + geom_point()
 
 Here is how this call works in detail:
 
-- `data = gapminder` tells ggplot to use gapminder dataset, so if variable names are mentioned, they should be looked up in gapminder
-- `mapping = aes(...)` shows that the mapping is a function call. Simply accept that this is how you write it
-  - Kieran Healy: "The `mapping = aes(...)` argument *links variables* to *things you will see* on the plot"
-- `aes(x = gdpPercap, y = lifeExp)` maps the GDP data onto `x`, which is a known aesthetic (the x-coordinate) and life expectancy data onto `x`
-  - `x` and `y` are  predefined names that are used by `ggplot` and friends
-  
-Importantly, mappings don't say *what* color or shape some variable will have. Rather, it says that a given column/variable will be mapped *to* color or *to* shape: thus `color = gender` means that different genders will be displayed by different colors.
+-   `data = gapminder` tells ggplot to use gapminder dataset, so if
+    variable names are mentioned, they should be looked up in gapminder
+-   `mapping = aes(...)` shows that the mapping is a function call.
+    Simply accept that this is how you write it
+    -   Kieran Healy: "The `mapping = aes(...)` argument *links
+        variables* to *things you will see* on the plot"
+-   `aes(x = gdpPercap, y = lifeExp)` maps the GDP data onto `x`, which
+    is a known aesthetic (the x-coordinate) and life expectancy data
+    onto `x`
+    -   `x` and `y` are predefined names that are used by `ggplot` and
+        friends
+
+Importantly, mappings don't say *what* color or shape some variable will
+have. Rather, it says that a given column/variable will be mapped *to*
+color or *to* shape: thus `color = gender` means that different genders
+will be displayed by different colors.
 
 ```{r}
+#| output: FALSE
+str(p)
 ```
 
-**Class Exercise:** Make sure that your knitted version doesn't include all the output from the `str(...)` commands, it's too tedious. (Hint: see how I did it in other chunks. How could you
-find out more about it?)
+**Class Exercise:** Make sure that your knitted version doesn't include
+all the output from the `str(...)` commands, it's too tedious. (Hint:
+see how I did it in other chunks. How could you find out more about it?)
 
-Finally, we add a *layer*. This says how some data gets turned into concrete visual aspects.
+Finally, we add a *layer*. This says how some data gets turned into
+concrete visual aspects.
 
 ```{r changing-geoms}
 # Scatter plot
-
+p + geom_point()
 # Smooth line
-
+p + geom_smooth()
 # We can combine multiple geoms on the same graph
-
+p + geom_point() + geom_smooth()
 # The order in which we add geoms matters
-
+p + geom_smooth() + geom_point()
 # We can even make the plots pretty!
-
+p + geom_point() + geom_smooth(color = "yellow")
 ```
 
-**Note:** Both geom's use the same mapping, where the x-axis represents ... and the y-axis ... based on the mappings you defined before. But the first one maps the data to individual points, the other one maps it to a smooth line with error ranges.
+**Note:** Both geom's use the same mapping, where the x-axis represents
+... and the y-axis ... based on the mappings you defined before. But the
+first one maps the data to individual points, the other one maps it to a
+smooth line with error ranges.
 
-We get a message that tells us that `geom_smooth()` is using the method = 'gam', so presumably we can use other methods. Let's see if we can figure out which other methods there are.
+We get a message that tells us that `geom_smooth()` is using the method
+= 'gam', so presumably we can use other methods. Let's see if we can
+figure out which other methods there are.
 
 ```{r smoothing-methods}
 #| eval: FALSE
 ?geom_smooth
 p +
-  geom_point() +
-  ...
+  geom_point() + 
+  geom_smooth() + 
+  geom_smooth(method = "loess", color = "green") +
+  geom_smooth(method = "lm", color = "red")
 ```
 
-You may start to see why ggplots way of breaking up tasks is quite powerful: the geometric objects (long for geoms) can all reuse the *same* mapping of data to aesthetics, yet the results are quite different. And if we want later geoms to use different mappings, then we can override them -- but it isn't necessary.
+You may start to see why ggplots way of breaking up tasks is quite
+powerful: the geometric objects (long for geoms) can all reuse the
+*same* mapping of data to aesthetics, yet the results are quite
+different. And if we want later geoms to use different mappings, then we
+can override them -- but it isn't necessary.
 
-One thing about the data is that most of it is bunched to the left. If we instead used a logarithmic scale, we should be able to spread the data out better and can fit a
-linear line.
+One thing about the data is that most of it is bunched to the left. If
+we instead used a logarithmic scale, we should be able to spread the
+data out better and can fit a linear line.
 
 ```{r, scale_coordinates}
 p + geom_point() + geom_smooth(method = "lm") + scale_x_log10()
 ```
 
-**Exercise:** Describe what the `scale_x_log10()` does. Why is it a more evenly distributed cloud of points now? (2-3 sentences.)
+**Exercise:** Describe what the `scale_x_log10()` does. Why is it a more
+evenly distributed cloud of points now? (2-3 sentences.)
 
 Nice! The x-axis now has scientific notation, let's change that.
 
 ```{r, scales}
+#| message: FALSE
 library(scales)
 
 p + geom_point() + 
   geom_smooth(method = "lm") + 
-  scale_x_log10(labels = scales::label_currency())
+  scale_x_log10(labels = label_currency())
 ```
 
 **Exercise:** What does the `label_currency()` call do?
@@ -156,16 +201,22 @@ p + geom_point() +
 ?label_currency()
 ```
 
-**Exercise:** How can you find other ways of relabeling the scales when using `scale_x_log10()`?
+**Exercise:** How can you find other ways of relabeling the scales when
+using `scale_x_log10()`?
 
 ### The ggplot Recipe
 
-1. Tell the `ggplot()` function what our data is.
-2. Tell `ggplot()` *what* variables we want to map to features of plots. For convenience we will put the results of the first two steps in an object called `p`.
-3. Tell `ggplot` *how* to display relationships in our data.
-4. Layer on geoms as needed, by adding them on the `p` object one at a time.
-5. Use some additional functions to adjust scales, labels, tickmarks, titles. 
-  - The `scale_`, `labs()`, and `guides()` functions
+1.  Tell the `ggplot()` function what our data is.
+2.  Tell `ggplot()` *what* variables we want to map to features of
+    plots. For convenience we will put the results of the first two
+    steps in an object called `p`.
+3.  Tell `ggplot` *how* to display relationships in our data.
+4.  Layer on geoms as needed, by adding them on the `p` object one at a
+    time.
+5.  Use some additional functions to adjust scales, labels, tickmarks,
+    titles.
+
+-   The `scale_`, `labs()`, and `guides()` functions
 
 ### Mapping Aesthetics vs Setting them
 
@@ -179,27 +230,40 @@ p <- ggplot(data = gapminder,
 p + geom_point() + scale_x_log10()
 ```
 
-This is interesting (or annoying): the points are not yellow. How can we tell ggplot to draw yellow points?
+This is interesting (or annoying): the points are not yellow. How can we
+tell ggplot to draw yellow points?
 
 ```{r, yellow_points}
 #| eval: FALSE
 p <- ggplot(data = gapminder,
             mapping = aes(x = gdpPercap, y = lifeExp, color = continent))
-p + ...
+p + geom_point(color = "yellow") + scale_x_log10()
+p + geom_point(color = "yellow") + scale_x_log10()
 ```
 
 So nice you gotta see it twice!!
 
-**Exercise:** Based on the discussion in Chapter 3 of *Data Visualization* (read it), describe in your words what is going on. 
-One way to avoid such mistakes is to read arguments inside `aes(<property> = <variable>)`as *the property `<property>` in the graph is determined by the data in `<variable>`*. 
+**Exercise:** Based on the discussion in Chapter 3 of *Data
+Visualization* (read it), describe in your words what is going on. One
+way to avoid such mistakes is to read arguments inside
+`aes(<property> = <variable>)`as *the property `<property>` in the graph
+is determined by the data in `<variable>`*.
 
-**Exercise:** Write the above sentence for the original call `aes(x = gdpPercap, y = lifeExp, color = 'yellow')`.
+**Exercise:** Write the above sentence for the original call
+`aes(x = gdpPercap, y = lifeExp, color = 'yellow')`.
 
-Aesthetics convey information about a variable in the dataset, whereas setting the color of all points to yellow conveys no information about the dataset - it changes the appearance of the plot in a way that is independent of the underlying data. 
+Aesthetics convey information about a variable in the dataset, whereas
+setting the color of all points to yellow conveys no information about
+the dataset - it changes the appearance of the plot in a way that is
+independent of the underlying data.
 
-Remember: `color = 'yellow'` and `aes(color = 'yellow')` are very different, and the second makes usually no sense, as `'yellow'` is treated as *data* that has the same value always -- namely the value `'yellow'`.
+Remember: `color = 'yellow'` and `aes(color = 'yellow')` are very
+different, and the second makes usually no sense, as `'yellow'` is
+treated as *data* that has the same value always -- namely the value
+`'yellow'`.
 
-*Class Exercise:* Make a smooth **orange** line through the scatterplot and give it a size 8.
+*Class Exercise:* Make a smooth **orange** line through the scatterplot
+and give it a size 8.
 
 ```{r, exercise_args_for_smooth}
 #| eval: FALSE
@@ -218,11 +282,14 @@ p +
 
 Let us now make a nice final graph by fixing the following issues:
 
-- There are so many points in the scatterplot that it is hard to see much. Let us 
-make the points transparent to make high-density areas more visible
-- We don't see which points belong to which countries. Let us color points of 
-different continents by different colors to provide some indication.
-- A good graph should be labeled properly and provide information on data etc.
+-   There are so many points in the scatterplot that it is hard to see
+    much. Let us make the points transparent to make high-density areas
+    more visible
+-   We don't see which points belong to which countries. Let us color
+    points of different continents by different colors to provide some
+    indication.
+-   A good graph should be labeled properly and provide information on
+    data etc.
 
 Let us start from scratch:
 
@@ -237,7 +304,7 @@ Let us make the points transparent and rescale:
 ```{r, transparent-rescaled-scatter}
 #| eval: FALSE
 pf + 
-  geom_point(...) + 
+  geom_point(alpha = 0.3) + 
   scale_x_log10(labels = label_currency())
 ```
 
@@ -246,9 +313,10 @@ Next, let us add colors by continent and change the transparency:
 ```{r color-by-continent}
 #| eval: FALSE
 pf + 
-  geom_point(..., alpha=0.5) + 
+  geom_point(mapping = aes(color = continent), alpha=0.5) + 
   scale_x_log10(labels = label_currency())
 ```
+
 And finally, let's label it properly:
 
 ```{r, gapminder_with_labels}
@@ -256,7 +324,13 @@ And finally, let's label it properly:
 pf + 
   geom_point(mapping = aes(color = continent), alpha = 0.7) +
   scale_x_log10(labels = scales::label_currency()) +
-  ...
+  labs(
+    x = "GDP Per Capita",
+    y = "Life Expectancy in Years",
+    title = "Economic Growth and Life Expectancy",
+    subtitle = "Data Points are counrty-years",
+    caption = "Source: Gapminder"
+  )
 ```
 
 **Exercise:** Consider the following two plots.
@@ -274,31 +348,54 @@ p2 + geom_point(mapping = aes(color = continent)) +
   geom_smooth(mapping = aes(color = continent), method = "gam")
 ```
 
-1. The first draws a single line, the second two. Why?
-2. What does the `fill = continent` pare do?
-3. In `p2` we repeat several times `color = continent`. Is there a way to avoid it?
+1.  The first draws a single line, the second two. Why?
+2.  What does the `fill = continent` pare do?
+3.  In `p2` we repeat several times `color = continent`. Is there a way
+    to avoid it?
 
-**Class Exercise:** Make sure that when you render, you do evaluate the right chunks
-in the report (which I switched off to avoid coding errors); to not show messages
-that are not helpful in a report; and to not show again and again all the graphs, 
-except those that are needed. Thus you may want to include the code, but not the output,
-or not even evaluate the code.
+**Class Exercise:** Make sure that when you render, you do evaluate the
+right chunks in the report (which I switched off to avoid coding
+errors); to not show messages that are not helpful in a report; and to
+not show again and again all the graphs, except those that are needed.
+Thus you may want to include the code, but not the output, or not even
+evaluate the code.
 
-## Exercises 
+## Exercises
 
-**Exercise:** Find ways to save the figures that you made so that you can use them elsewhere too. Create a new folder to save only images. Use the command for saving to save the picture for the last image in your new folder, after you have updated the axes, title, subtitle, and caption of the image. Post your solution on Slack and use it to include the final image above with a caption saying "Saved by <your-name>" inside your Slack message (see https://slack.com/help/articles/4403914924435-Add-descriptions-to-images). (Hint: `??save`)
+**Exercise:** Find ways to save the figures that you made so that you
+can use them elsewhere too. Create a new folder to save only images. Use
+the command for saving to save the picture for the last image in your
+new folder, after you have updated the axes, title, subtitle, and
+caption of the image. Post your solution on Slack and use it to include
+the final image above with a caption saying "Saved by <your-name>"
+inside your Slack message (see
+https://slack.com/help/articles/4403914924435-Add-descriptions-to-images).
+(Hint: `??save`)
 
-**Exercise:** Read section 3.8 "Where to go next" from DV. Based on those ideas, experiment and create two different graphs with the gapminder data. Describe each briefly in one sentence.
+**Exercise:** Read section 3.8 "Where to go next" from DV. Based on
+those ideas, experiment and create two different graphs with the
+gapminder data. Describe each briefly in one sentence.
 
-**Exercise:** Read section 1.6 of [R for Data Science](https://r4ds.had.co.nz/introduction.html) on *Getting help and learning more*. Report 3 errors you hit during this week and include a reproducible example of one of these errors as described in that section.
+**Exercise:** Read section 1.6 of [R for Data
+Science](https://r4ds.had.co.nz/introduction.html) on *Getting help and
+learning more*. Report 3 errors you hit during this week and include a
+reproducible example of one of these errors as described in that
+section.
 
-**Exercise:** Do exercise 3.2.4 from [R for Data Science](https://r4ds.had.co.nz/data-visualisation.html#first-steps). Include your code in chunks, describe the output and code (where necessary) in the surrounding text.
+**Exercise:** Do exercise 3.2.4 from [R for Data
+Science](https://r4ds.had.co.nz/data-visualisation.html#first-steps).
+Include your code in chunks, describe the output and code (where
+necessary) in the surrounding text.
 
-**Exercise:** Read the (very short) [Chapter 4 of R for Data Science](https://r4ds.had.co.nz/workflow-basics.html) and try exercise 1 in section 4.4.
+**Exercise:** Read the (very short) [Chapter 4 of R for Data
+Science](https://r4ds.had.co.nz/workflow-basics.html) and try exercise 1
+in section 4.4.
 
-**Challenge:** How can you plot to `geom`s for two different datasets on the same plot (assuming they share the same x- and y-axis)? For example, suppose that we have data on countries
-before 1970 in `gmPre70`, can we then plot a smooth line for the full dataset and
-a smooth line for the data prior to 1970 on the same graph?
+**Challenge:** How can you plot to `geom`s for two different datasets on
+the same plot (assuming they share the same x- and y-axis)? For example,
+suppose that we have data on countries before 1970 in `gmPre70`, can we
+then plot a smooth line for the full dataset and a smooth line for the
+data prior to 1970 on the same graph?
 
 ```{r, plotting_two_geoms}
 #| eval: FALSE
