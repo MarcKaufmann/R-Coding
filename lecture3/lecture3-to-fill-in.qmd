@@ -17,19 +17,14 @@ package - you can check if you have it by trying to load it via
 console).
 
 ```{r load-nycflights}
-library(tidyverse) 
-library(nycflights13)
+
 ```
 
 Now explore the data to get a sense:
 
 ```{r look-at-nycflights}
 #| eval: FALSE
-flights 
-?flights 
-View(flights) 
-view(flights)
-?view
+
 ```
 
 Today, we'll cover the first verbs of the `dplyr` (data pliers) package,
@@ -52,11 +47,7 @@ tidyverse. This enables a nice workflow as we will see later.
 ## Filtering (choosing) rows with filter()
 
 ```{r basic-filter}
-#| eval: false
-filter(flights, month = 1)       # Produces an error 
-filter(flights, month == 1) 
-filter(flights, month == 1, day == 1) 
-filter(flights, dep_time == 517) # What format is dep_time in?
+# What format is dep_time in?
 ```
 
 Note that `dplyr` functions don't change the data frame that you give
@@ -66,14 +57,11 @@ it. They return a new one.
 flights 
 
 # Save the filtered data 
-jan1 <- filter(flights, month == 1, day == 1) 
-jan1 
 
 # Assign and print, use (varname <- ...) 
-(feb1 <- filter(flights, month == 2, day == 1)) 
 
 # Check it really assigned 
-feb1
+
 ```
 
 ## Some notes on comparisons
@@ -89,7 +77,7 @@ sqrt(4)^2 == 4
 1/(7^9)*7^9 == 1 
 
 # For floating point comparisons, use near() to compare numbers 
-near(sqrt(2)^2, 2)
+
 ```
 
 The lesson is that you can't rely on "It works because it works for what
@@ -105,31 +93,24 @@ this. However, for 'and', we can simply specify multiple constraints by
 default:
 
 ```{r or-and-and}
+#| eval: FALSE
 # Month is january and day is 4
-(jan_4a <- filter(flights, month == 1 & day == 4))
-(jan_4b <- filter(flights, month == 1, day == 4))
+(jan_4a <- filter(flights, ...))
+(jan_4b <- filter(flights, ...))
 
 # Month is 1 or 2
-(jan_feb <- filter(flights, month == 1 | month == 2)) 
+(jan_feb <- filter(flights, ...)) 
 
 # Month is not january
-(not_jan <- filter(flights, !(month == 1)))
+(not_jan <- filter(flights, ...)))
 ```
 
 **Class exercise:** How do we know these actually worked? Should you
 believe me?
 
 ```{r check-filter-worked}
-filter(not_jan, month == 1) 
-#View(jan_feb) 
-unique(not_jan$month) # $ selects the column 
-jan <- filter(flights, month == 1) 
-nrow(flights) == nrow(jan) + nrow(not_jan)
 
-(jan_to_june <- filter(flights, month <= 6)) 
-jan_to_june_again <- filter(flights, month %in% c(1,2,3,4,5,6)) 
-# Check same number of observations 
-nrow(jan_to_june) == nrow(jan_to_june_again)
+
 ```
 
 # Class Exercise: What does this do?
@@ -139,8 +120,6 @@ mystery_filter <- filter(flights, !(arr_delay > 120 | dep_delay > 120))
 mystery_filter 
 ```
 
-# arr_delay \> 120 OR dep_delay \> 120
-
 Vote:
 
 1.  All flights that started and landed 120 minutes late
@@ -149,8 +128,7 @@ Vote:
     than 120 minutes late
 4.  All flights that started and landed less than 120 minutes late
 
--   Check what happens to the following 4 values, where the first value
-    is the starting and the second the landing time:
+To figure out, check what happens to the following 4 values, where the first number is the starting time and the second the landing time:
 
 -   (140, 140)
 
@@ -167,51 +145,41 @@ mystery_filter2 <- filter(flights, arr_delay <= 120, dep_delay <= 120)
 mystery_filter2
 ```
 
-How to convince ourselves that the two are the same? Use `all_equal`.
+How to convince ourselves that the two are the same?
 
 ```{r compare-mystery-filters}
-all_equal(mystery_filter, mystery_filter2)
+
 ```
+
 
 **Class Exercise:** Write the filter command for the third voting
 option: all flights that started less than 120 minutes late or landed
 less than 120 minutes late.
 
 ```{r start-and-land-lt-120}
-number3 <- filter(flights, arr_delay <= 120 | dep_delay <= 120)
-number3 <- filter(flights, arr_delay < 120 | dep_delay < 120)
+
 ```
 
 **Class Exercise:** get all flights that departed with less than 120
-minutes delay, but arrived with more than 120 minutes delay.
+minutes delay, but arrived with more than 120 minutes delay and plot a 
+histogram.
 
 ```{r start-early-land-late}
-dep_ok_arr_not <- filter(flights, dep_delay <= 120, arr_delay > 120)
-ggplot(data = dep_ok_arr_not, mapping = aes(x = dep_delay)) +
-geom_histogram()
+
 ```
 
 Let's visualize the departure times of all planes and those that depart
 early:
 
 ```{r }
-ggplot(data = flights, mapping = aes(x = dep_delay)) + geom_histogram()
 
-# Filter flights by those that had dep_delay <= 120, then plot histogram
-
-dep_ok <- filter(flights, dep_delay <= 120) 
-ggplot(
-  data = dep_ok,
-  mapping = aes(x = dep_delay)
-) + 
-  geom_histogram()
 ```
 
 ## NA: Not Available
 
 ```{r NA}
 NA > 5 
-10 == NA 
+10 == NA     # Watch for RStudio's helpful message
 NA == NA 
 FALSE & NA 
 TRUE & NA 
@@ -222,22 +190,22 @@ A nice example from R4DS. Let `x` be Mary's age. We don't know how old
 she is.
 
 ```{r marys-age}
-x <- NA
+
 ```
 
 Let `y` be John's age. We don't know how old he is.
 
 ```{r johns-age}
-y <- NA
+
 ```
 
 Then, are John and Mary the same age?
 
 ```{r john-and-mary}
-x == y
+
 ```
 
-We don't know!
+... (fill in)
 
 ```{r other-NA}
 NA^0 
@@ -246,10 +214,8 @@ NA^0
 is.na(x) 
 df <- tibble(x = c(1, NA, 3)) 
 df 
-
 # Filtering with NA's
-filter(df, x > 1) 
-filter(df, x > 1 | is.na(x))
+
 ```
 
 ## arrange()
@@ -257,14 +223,7 @@ filter(df, x > 1 | is.na(x))
 It usually helps to spot errors and search tables if we order them:
 
 ```{r arrange}
-arrange(flights, year, month, day) 
-arrange(flights, dep_delay)
-arrange(flights, desc(dep_delay))
 
-arrange(df, x) 
-arrange(df, desc(x)) 
-arrange(df, desc(is.na(x)), desc(x))
-arrange(df, x, desc(x))
 ```
 
 **Class exercise:** How can we get the missing values at the top? Use
@@ -273,8 +232,7 @@ arrange(df, x, desc(x))
 Let us use this to get the fastest flight:
 
 ```{r fastest-flight1}
-colnames(flights) 
-arrange(flights, air_time)[1, ]
+
 ```
 
 # select()
@@ -282,9 +240,7 @@ arrange(flights, air_time)[1, ]
 We use `select` to extract the columns we want:
 
 ```{r select}
-select(flights, year, month, day)
 
-select(arrange(flights, air_time), air_time, origin, dest)
 ```
 
 That's tedious to write *and* difficult to read. The pipe solves this
@@ -292,9 +248,7 @@ problem.
 
 ```{r ceci-est-une-pipe}
 #| eval: FALSE
-flights |> 
-  arrange(air_time) |> 
-  select(air_time, origin, destination) # Fix in class to `dest`
+
 ```
 
 Notice that the data doesn't have to be mentioned in the call, as it gets passed
@@ -306,21 +260,17 @@ certain columns:
 
 ```{r select-multiple-columns}
 # selecting all columns between two columns (bugs galore if columns reordered)
-select(flights, year:day) 
-colnames(flights)
 
 # dropping cols
-select(flights, -(year:day))
 
 # Some helper functions
-select(flights, starts_with("arr")) 
-select(flights, -starts_with("arr"))
-select(flights, ends_with("hour")) 
-select(flights, -contains("time")) 
 
 # Reordering columns by moving some columns to the start
-select(flights, origin, dest, everything())
+
 ```
+
+Apparently the way to reorder columns is now `relocate`, in particular 
+when you move blocks of columns at once. See `?relocate`.
 
 What does the following do? Is that as expected? 
 
@@ -328,13 +278,10 @@ What does the following do? Is that as expected?
 select(flights, -contains("time"), starts_with("arr")) 
 ```
 
-If you want columns that satisfy both conditions (not one or the other), then
-you need two calls or use the logical `&`:
+...
 
 ```{r select-matching-both-conditions}
-flights |> 
-  select(-contains("time")) |>
-  select(starts_with("arr"))
+
 ```
 
 See `?select` for other examples.
@@ -342,15 +289,13 @@ See `?select` for other examples.
 ## Renaming columns
 
 ```{r rename}
-rename(flights, destination = dest)
+
 ```
 
 To allow us to see that this worked, let's select fewer columns: 
 
 ```{r rename-visible}
-flights |> 
-  rename(destination = dest) |> 
-  select(year:day, destination)
+
 ```
 
 **Class Exercise:** What happens if you include a variable multiple times?
