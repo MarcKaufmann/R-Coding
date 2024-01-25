@@ -1,0 +1,323 @@
+---
+title: "Lecture 3"
+author: "Marc Kaufmann"
+date: "10/01/2024"
+output: html
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+This lecture follows the first edition of [Grolemund and Wickham,
+chapter 5](https://r4ds.had.co.nz/transform.html).
+
+In addition to the `tidyverse`, we will need the `nycflights13`
+package - you can check if you have it by trying to load it via
+`library(nycflights13)`. Otherwise install it (not in this file, in the
+console).
+
+```{r load-nycflights}
+#| warning: FALSE
+#| message: FALSE
+library(tidyverse)
+library(nycflights13)
+```
+
+Now explore the data to get a sense:
+
+```{r look-at-nycflights}
+#| eval: FALSE
+flights
+?flights
+View(flights)
+```
+
+Today, we'll cover the first verbs of the `dplyr` (data pliers) package,
+which is part of the `tidyverse`:
+
+-   filter(): selecting those rows that we are interested in
+-   arrange(): ordering the rows
+-   select(): selecting the columns that we are interested in
+
+After that, we'll cover the remaining ones:
+
+-   mutate(): changing the values across rows
+-   summarise(): creating summary tables
+-   group_by(): changing or summarising by groups
+
+All these commands take as first argument a data frame (or tibble) and
+return a data frame (or tibble). Together they form the verbs of the
+tidyverse. This enables a nice workflow as we will see later.
+
+## Filtering (choosing) rows with filter()
+
+```{r basic-filter}
+#| output: FALSE
+# What format is dep_time in?
+# filter(flights, month = 1) # -> Throws an error.
+filter(flights, month == 1)
+filter(flights, month == 1, day == 1)
+filter(flights, dep_time == 517)
+```
+
+Note that `dplyr` functions don't change the data frame that you give
+it. They return a new one.
+
+```{r not-changed}
+#| output: FALSE
+flights # Not yet overwritten
+
+# Save the filtered data 
+# Assign and print, use (varname <- ...) 
+(jan1 <- filter(flights, day == 1, month == 1))
+
+
+# Check it really assigned 
+jan1
+```
+
+## Some notes on comparisons
+
+Before moving on, we need to look at how comparisons behave in R, since
+it often affects which rows you get when filtering:
+
+```{r comparisons}
+sqrt(2)^2 == 2  # 1 vs 3
+sqrt(4)^2 == 4  # 12 vs 5
+(1/3)*3 == 1    # 11 vs 1
+1/49*49 == 1    # 4 vs 7
+1/(7^9)*7^9 == 1 
+
+# For floating point comparisons, use near() to compare numbers 
+near(sqrt(2)^2 + 0.0000000000001, 2)
+```
+
+The lesson is that you can't rely on "It works because it works for what
+I tried".
+
+**Exercise:** What counts as near? Find out. Can you change it?
+
+## Multiple constraints
+
+You will often want to `filter` on several constraints at the same time.
+We can use the `|` ('or'), `&` ('and'), and `!` ('not') operators for
+this. However, for 'and', we can simply specify multiple constraints by
+default:
+
+```{r or-and-and}
+#| eval: FALSE
+# Month is january and day is 4
+(jan_4a <- filter(flights, month == 1, day == 4)) 
+(jan_4b <- filter(flights, (month == 1) & (day == 4)))
+
+# Month is 1 or 2
+(jan_feb <- filter(flights, month == 1 | month == 2)) 
+
+# Month is not january
+(not_jan_a <- filter(flights, !(month == 1) ))
+(not_jan_b <- filter(flights, month != 1 ))
+```
+
+**Class exercise:** How do we know these actually worked? Should you
+believe me?
+
+```{r check-filter-worked}
+# Jan should not be in there
+filter(not_jan_a, month == 1)
+sort(unique(not_jan_a$month))
+# View(not_jan_a)
+```
+
+# Class Exercise: What does this do?
+
+```{r mystery-filter}
+#| eval: FALSE
+mystery_filter <- filter(flights, !(arr_delay > 120 | dep_delay > 120)) 
+mystery_filter 
+```
+
+Vote:
+
+1.  All flights that started and landed 120 minutes late
+2.  All flights that started 120 minutes late or landed 120 minutes late
+3.  All flights that started less than 120 minutes late or landed less
+    than 120 minutes late (14)
+4.  All flights that started and landed less than 120 minutes late (4)
+
+To figure out, check what happens to the following 4 values, where the first number is the starting time and the second the landing time:
+
+-   (140, 140)
+
+-   (140, 0)
+
+-   (0, 140)
+
+-   (0, 0)
+
+I claim it is the same as the following:
+
+```{r mystery-filter2}
+#| eval: FALSE
+mystery_filter2 <- filter(flights, arr_delay <= 120, dep_delay <= 120) 
+mystery_filter2
+```
+
+How to convince ourselves that the two are the same?
+
+```{r compare-mystery-filters}
+#| eval: FALSE
+all.equal(mystery_filter, mystery_filter2)
+?all.equal
+```
+
+
+**Class Exercise:** Write the filter command for the third voting
+option: all flights that started less than 120 minutes late or landed
+less than 120 minutes late.
+
+```{r start-and-land-lt-120}
+(option_3 <- filter(flights, arr_delay < 120 | dep_delay < 120))
+```
+
+**Class Exercise:** get all flights that departed with less than 120
+minutes delay, but arrived with more than 120 minutes delay and plot a 
+histogram.
+
+```{r start-early-land-late}
+
+```
+
+Let's visualize (density, histogram, barplot) the departure times of all planes and those that depart
+early:
+
+```{r }
+library(ggplot2)
+
+```
+
+## NA: Not Available
+
+```{r NA}
+NA > 5       # 
+10 == NA     # Watch for RStudio's helpful message
+NA == NA 
+FALSE & NA 
+TRUE & NA 
+NA & FALSE
+```
+
+A nice example from R4DS. Let `x` be Mary's age. We don't know how old
+she is.
+
+```{r marys-age}
+x <- NA
+```
+
+Let `y` be John's age. We don't know how old he is.
+
+```{r johns-age}
+y <- NA
+```
+
+Then, are John and Mary the same age?
+
+```{r john-and-mary}
+x == y
+```
+
+... (fill in)
+
+```{r other-NA}
+#| eval: FALSE
+NA^0 
+0 * NA
+
+is.na(x) 
+df <- tibble(x = c(1, NA, 3)) 
+df 
+# Filtering with NA's
+
+```
+
+## arrange()
+
+It usually helps to spot errors and search tables if we order them:
+
+```{r arrange}
+
+```
+
+**Class exercise:** How can we get the missing values at the top? Use
+`is.na()`
+
+Let us use this to get the fastest flight:
+
+```{r fastest-flight1}
+
+```
+
+# select()
+
+We use `select` to extract the columns we want:
+
+```{r select}
+
+```
+
+That's tedious to write *and* difficult to read. The pipe solves this
+problem.
+
+```{r ceci-est-une-pipe}
+#| eval: FALSE
+
+```
+
+Notice that the data doesn't have to be mentioned in the call, as it gets passed
+around as the first argument automatically. Therefore we no longer provide the 
+first argument.
+
+`select` understands a variety of patterns to select or drop (i.e. not select) 
+certain columns:
+
+```{r select-multiple-columns}
+# selecting all columns between two columns (bugs galore if columns reordered)
+
+# dropping cols
+
+# Some helper functions
+
+# Reordering columns by moving some columns to the start
+
+```
+
+Apparently the way to reorder columns is now `relocate`, in particular 
+when you move blocks of columns at once. See `?relocate`.
+
+What does the following do? Is that as expected? 
+
+```{r select-with-multiple-patterns}
+#| eval: FALSE
+select(flights, -contains("time"), starts_with("arr")) 
+```
+
+...
+
+```{r select-matching-both-conditions}
+
+```
+
+See `?select` for other examples.
+
+## Renaming columns
+
+```{r rename}
+
+```
+
+To allow us to see that this worked, let's select fewer columns: 
+
+```{r rename-visible}
+
+```
+
+**Class Exercise:** What happens if you include a variable multiple times?
