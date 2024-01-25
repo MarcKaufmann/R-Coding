@@ -16,9 +16,9 @@ We will cover the following steps:
 -   Creating all the sections:
     -   Dataset Description (15 points)
     -   Cleaning (20 points)
-    -   Exploration (40 points)
+    -   Exploration (30 points)
     -   Conclusion (15 points)
-    -   Code Explanation (10 points)
+    -   Code Exercise and Explanation (20 points)
 -   Describe contents of each section
 -   Conventions to follow
 
@@ -132,7 +132,7 @@ df
 
 The vectors have to be of the same length (or one has to be a multiple of the other - see documentation), since you give data.frame the name of each column, and each column has to have the same length.
 
-# Exploration
+## Exploration
 
 Now it is up to you to answer some interesting question, either one given by me or (if left open) of your own choosing. This section should be the most extensive, include at some summary statistic or table (or multiple) and at least one plot or visualization of some kind.
 
@@ -150,7 +150,9 @@ arrange(df, letter)
 
 Note that you choose the column by which you order or 'arrange' the rows, and this reorders whole rows, not just that column (each row is one observation, so that wouldn't make sense). You can choose the direction of ordering with `desc(...)` which orders in a descending fashion, by default it is ascending.
 
-# Conclusions
+Finally, find a plot with which to visualize the fraction of students that knows each language.
+
+## Conclusions
 
 What it says on the tin.
 
@@ -163,6 +165,14 @@ Moreover, students know on average ... of the ... languages they were asked abou
 Follow-up questions:
 
 ...".
+
+## Code Exercise and Explanation
+
+In each data report, there will be some coding section in which you provide the code to answer some exercise(s), and some explanation of code in your analysis.
+
+**Exercise 1:** From the `starwars` dataset (in `tidyverse`), keep all the rows with characters that are non-human and with eye color that is 'yellow', 'blue-gray', or contains either of those.
+
+**Code Explanation:** Explain your plot in the previous part (briefly), i.e. each major command does, and any important arguments that you change. You do not have to say that "`data = df` means that I am using `df` as the `data`", but you should mention what a given `geom_*` is doing and how to read or interpret it. Again, a histogram doesn't require much explanation, a violin plot does require a bit more.
 
 # Conventions to Follow
 
