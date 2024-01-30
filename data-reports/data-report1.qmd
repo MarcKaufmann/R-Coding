@@ -1,0 +1,25 @@
+---
+author: "<your-name>"
+title: "Data Report 1"
+output: html
+---
+
+# Instructions
+
+0. Read the instructions in full, ask questions on Slack if something isn't clear
+1. Install the package `palmerpenguins`
+2. Write your first data report using the `penguins` dataset in that package
+3. Focus on creating good summaries and graphs to highlight and visualize which factors affect the mass and sizes of the penguins; you can consider the dataset to be already cleaned, and thus don't need to store a cleaned version either
+4. The code exercise is below, keep it and answer it
+5. Final Report has to be less than 10 pages long (it can be shorter)
+6. Remove the instructions section from the final report
+  - Your final report has to render without errors. If you have some errors you cannot fix, then leave the code in, but make sure that the code in that block is not evaluated, so that it renders. Explain in the text that it doesn't work, what it was intended to do, and how you tried to fix it
+
+## Code Exercise and Explanation
+
+Use the `msleep` data (included with `ggplot2`) for both exercises.
+
+**Exercise:** Get all the animals who are heavier than the average bodyweight in the data; keep only the `name` and `bodywt` columns;
+and order the rows by `bodywt` in a descending order.
+
+**Exercise 5:** Start fresh (not with the data from exercise 4). Create a new column called `brainwt_ratio` showing the ratio of of brain mass to the total body weight. Round the ratio to 4 digits. Keep the `name` and `brainwt_ratio` colums and keep the 10 animals with the highest ratio.
