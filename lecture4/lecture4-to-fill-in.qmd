@@ -25,53 +25,48 @@ library(tidyverse)
 Let us create a new column that computes catch up and the speed in miles:
 
 ```{r catch-up-and-speed}
+#| eval: FALSE
 mutate(flights_small, 
-       catchup = dep_delay - arr_delay,
-       speed_miles = (distance/air_time) * 60)
+       catchup = ...,
+       speed_miles = ...)
 ```
 
 Since I don't know what speed in miles per hours is, let's convert that:
 
 ```{r convert-units}
-mutate(
-  flights_small,
-  speed_km = (distance * 1.61/air_time) * 60
-)
+
 ```
 
 Magic numbers in code are great. Every one loves them. Not. They are evil and 
 you should exorcise them:
 
 ```{r magic-numbers}
+#| eval: FALSE
 KM_PER_MILE <- 1.61
 
 mutate(
   flights_small,
-  speed_km = (distance * KM_PER_MILE/air_time) * 60
+  speed_km = ...
 )
 ```
   
 For complicated computations, it is clearer if you create intermediate results: 
 
 ```{r intermediate-results}
-mutate(
-  flights_small,
-  distance_km = distance * KM_PER_MILE,
-  air_time_hours = air_time / 60,
-  speed_km = distance_km / air_time_hours
-)
+#| eval: FALSE
+flights_small |>
+  mutate(
+    
+  )
 ```
 
 If you only want to keep the new variables, use `transmute`:
 
 ```{r transmute}
-transmute(
-  flights_small,
-  distance_km = distance * KM_PER_MILE,
-  air_time_hours = air_time / 60,
-  speed_km = distance_km / air_time_hours
-)
+#| eval: FALSE
+
 ```
+
 
 # Vectorized Operations
 
@@ -82,11 +77,12 @@ vectorized, as are functions such as `log()`, `log2()`, etc.
 Let us use that to extract the hours and minutes from `dep_time` (HHMM):
 
 ```{r hours-minutes}
+#| eval: FALSE
 transmute(
   flights,
   dep_time,
-  dep_hour = dep_time %/% 100,
-  dep_minutes = dep_time %% 100
+  dep_hour = ...,
+  dep_minutes = ...
 )
 ```
 
@@ -95,46 +91,33 @@ and aggregate functions, and the `n:m` notation is useful to create vectors of
 consecutive integers:
 
 ```{r lag-lead}
+#| eval: FALSE
 (x <- c(0,1,2,3,4,5,6,7,8,9))
-(y <- 0:9)
-(z <- seq(0,9))
+(y <- ...)
+(z <- ...)
 
-(lag(y))
-(lag(lag(y)))
-(lead(y))
 
-cumsum(x)
-cumprod(x)
-cumprod(lead(x))
-?cummin
-?cummax
-cummean(x)
 ```
 
 Logical operators also return vectors when comparing vectors: 
 
 ```{r logical-operators}
-x > 3
-x > y
-x == y
+
 ```
 
 But you may wonder: what do some of these even mean?
 
 ```{r logical-ops-meaning}
-x == c(2,4)
-x > c(2,4,6)
+
 ```
 
 Finally, you will often want to rank observations:
 
 ```{r ranking}
 y <- c(10, 5, 6, 3, 7)
-min_rank(y)
 
 # Can you figure out from playing around with min_rank() how it works exactly?
-min_rank(c(y, 7))
-rank(c(y, 7))
+
 ```
 
 ## What is not a vectorized operation?
@@ -150,8 +133,8 @@ mean(x)
 c(TRUE, FALSE) && c(TRUE, TRUE) # `&&` expects a single element
 
 # What happens when we try this on a dataframe
-transmute(flights, delay = mean(arr_delay, na.rm = TRUE))
-transmute(flights, arr_delay > 120 && dep_delay > 120)
+transmute(flights, delay = ...)
+transmute(flights, ...)
 ```
 
 Notice that the first does not throw an error, because you might have wanted to
@@ -185,7 +168,7 @@ How... useful. Might as well have done:
 mean(flights$dep_delay, na.rm = TRUE)
 ```
 
-Reminder: `<data-frame>$<column-name>` returns the column `<column-name>` from 
+*Reminder:* `<data-frame>$<column-name>` returns the column `<column-name>` from 
 `<data-frame>`, which is a quick way to select a column.
 
 Note that this is different from using `select` on a column:
@@ -196,9 +179,7 @@ mean(select(flights, dep_delay), na.rm = TRUE)
 Huh? What's going on here? 
 
 ```{r select-vs-dollar}
-#| output: FALSE
-flights$dep_delay
-select(flights, dep_delay)
+
 ```
 
 Aha, we should have guessed, since select returns a *data frame*,
@@ -209,24 +190,15 @@ So, what else can we use `summarise` for? To make it useful, we neeed its friend
 `group_by`:
 
 ```{r group-by}
-by_day <- group_by(flights, year, month, day)
-by_day
+
 ```
 
 Looks distinctly the same. But it really isn't!
 
 ```{r useful-command}
-summarise(
-  group_by(flights, year, month, day), 
-  delay = mean(dep_delay, na.rm = TRUE)
-)
 
 # Or, using the pipe
-flights |>
-  group_by(year, month, day) |>
-  summarise(
-    delay = mean(dep_delay, na.rm = TRUE)
-  )
+
 ```
 
 ## Chapter 5.6.1 of R4DS
@@ -234,36 +206,13 @@ flights |>
 Let's explore link between distance and average delay for every location. What that means is that we want to know the average delay for every destination. Then, once we have that, we want to see how the distance to this location is related to the delay to this location.
 
 ```{r dist-delay-by-location}
-by_destination <- group_by(flights, dest)
-flights_delay <- summarise(
-  by_destination,
-  avg_arr_delay = mean(arr_delay, na.rm = TRUE)
-)
-flights_delay
+
 ```
 
 OK, we need the distance too, or else there is not much to plot.
 
 ```{r dist-delay-by-location2}
-(flights_delay <- summarise(
-  by_destination,
-  avg_arr_delay = mean(arr_delay, na.rm = TRUE),
-  distance = mean(distance, na.rm = TRUE) # Somewhat of a hack
-))
 
-p <- ggplot(data = flights_delay,
-            mapping = aes(x = distance, y = avg_arr_delay))
-p + geom_point() + geom_smooth()
-
-(flights_delay <- summarise(by_destination,
-                    count = n(), 
-                    avg_arr_delay = mean(arr_delay, na.rm = TRUE),
-                    distance = mean(distance, na.rm = TRUE)))
-
-p <- ggplot(data = flights_delay,
-            mapping = aes(x = distance, y = avg_arr_delay))
-p + geom_point(mapping = aes(size = count), alpha = 0.2) +
-  geom_smooth()
 ```
 
 We used the function `n`, which is special and works only inside of `summarize`:
@@ -280,32 +229,21 @@ That is rarely what we want when smoothing globally. Read the following code, to
 Let's plot the original data, without first taking means by group
 
 ```{r opt-exercise}
-# Woah, that looks different! (And ugly.)
-p2 <- ggplot(data = flights,
-             mapping = aes(x = distance, y = arr_delay))
-p2 + geom_point(alpha = 0.2) + geom_smooth()
 
 # Now let's plot points by location as before, but run geom_smooth on whole dataset
-p2 + geom_point(data = flights_delay, aes(y = avg_arr_delay, size = count), alpha = 0.3) +
-  geom_smooth()
+
 # So, not too misleading, but still...
 ```
 
-Doing this with a pipe, and filtering out destinations with 
+Let us use a pipe and filter out destinations with 
 - less than 20 flights
 - to HNL (Honululu), since it's by far the furthest
 
-Note: I am not a big fan of dropping things that 'look too different'. You should do such robustness checks, but you shouldn't start there. 
+Note: I am not a big fan of dropping things that 'look too different'.
+You should do such robustness checks, but you shouldn't start there. 
 
 ```{r hnl}
-delays <- flights %>% 
-  group_by(dest) %>%
-  summarise(
-    avg_arr_delay = mean(arr_delay, na.rm = TRUE),
-    count = n(),
-    distance = mean(distance, na.rm = TRUE)
-    ) %>%
-  filter( count > 20, dest != "HNL")
+
 ```
 
 **Exercise:** Rewrite the above command without the pipe. Which one do you find easier to read?
@@ -313,8 +251,7 @@ delays <- flights %>%
 ## 5.6.2 Missing values
 
 ```{r missing-values}
-not_missing <- flights %>%
-  filter(!is.na(dep_delay), !is.na(arr_delay))
+
 ```
 
 **Exercise:** Does the above command also drop observations that miss only the arr_delay but have a dep_delay? Are there any observations in the dataset for which only dep_delay or arr_delay is missing, but not both?
@@ -325,54 +262,31 @@ Average delay by airplane (identified by tailnum), plot density.
 Start with freqpoly, then zoom in on that part of the graph that we are interested:
 
 ```{r counts}
-library(ggplot2)
-not_missing %>%
-  group_by(tailnum) %>%
-  summarise(avg_delay = mean(dep_delay)) %>%
-  ggplot(mapping = aes(x = avg_delay)) + 
-  geom_histogram(binwidth = 10)
+
 ```
 
 Plot the number of flights per airplane against delay:
 
 ```{r flights-against-delays}
-not_missing %>%
-  group_by(tailnum) %>%
-  summarise(
-    count = n(),
-    avg_delay = mean(arr_delay)
-    ) %>%
-  ggplot(mapping = aes(x = avg_delay, y = count)) + 
-  geom_point(alpha = 0.1)
+
 ```
          
 Since I am filtering the same thing all the time, let's store it in a variable and drop the rest:
 
 ```{r store-filtered}
-not_missing_planes <- not_missing |>
-  group_by(tailnum) |>
-  summarise(
-    count = n(),
-    avg_delay = mean(arr_delay),
-    delay_median = median(arr_delay)
-    )
+
 ```
 
 Get the median delay for each airplane:
 
 ```{r median-delay}
-ggplot(data = not_missing_planes) + 
-  geom_histogram(mapping = aes(x = delay_median)) + 
-  geom_histogram(mapping = aes(x = avg_delay), color = 'yellow', alpha = 0.3)
+
 ```
 
 Filter the airplanes that fly rarely and pipe them into ggplot which gets plussed into geoms. Try a few values for how many flights one should have done
 
 ```{r final}
-not_missing_planes %>%
-  filter(count > 5) %>%
-  ggplot(mapping = aes(x = avg_delay)) + 
-  geom_histogram()
+
 ```
 
 # Exercises (Optional)
