@@ -190,19 +190,19 @@ A nice example from R4DS. Let `x` be Mary's age. We don't know how old
 she is.
 
 ```{r marys-age}
-
+x <- NA
 ```
 
 Let `y` be John's age. We don't know how old he is.
 
 ```{r johns-age}
-
+y <- NA
 ```
 
 Then, are John and Mary the same age?
 
 ```{r john-and-mary}
-
+x == y
 ```
 
 ... (fill in)
@@ -211,10 +211,15 @@ Then, are John and Mary the same age?
 NA^0 
 0 * NA
 
+x <- NA
 is.na(x) 
 df <- tibble(x = c(1, NA, 3)) 
 df 
 # Filtering with NA's
+
+filter(df, x > 1)
+filter(df, x > 1 | is.na(x))
+
 
 ```
 
@@ -223,7 +228,25 @@ df
 It usually helps to spot errors and search tables if we order them:
 
 ```{r arrange}
+library(nycflights13)
+arrange(flights, year, month, day)
+arrange(flights, dep_delay)
+arrange(flights, desc(dep_delay))
 
+arrange(df, x)
+arrange(df, desc(x))
+arrange(df, desc(is.na(x)), desc(x))
+arrange(df, -x)
+
+arrange(
+  tibble(s = c("a", "b", "bb", "aa", "bababa")), 
+  s
+)
+x
+is.na(x)
+is.na(3)
+is.na(NA)
+is.na(NULL)
 ```
 
 **Class exercise:** How can we get the missing values at the top? Use
@@ -232,7 +255,9 @@ It usually helps to spot errors and search tables if we order them:
 Let us use this to get the fastest flight:
 
 ```{r fastest-flight1}
+colnames(flights)
 
+arrange(flights, air_time)
 ```
 
 # select()
@@ -240,7 +265,9 @@ Let us use this to get the fastest flight:
 We use `select` to extract the columns we want:
 
 ```{r select}
+select(flights, year, month, day)
 
+select(arrange(flights, air_time), air_time, origin, dest, tailnum)
 ```
 
 That's tedious to write *and* difficult to read. The pipe solves this
@@ -248,7 +275,9 @@ problem.
 
 ```{r ceci-est-une-pipe}
 #| eval: FALSE
-
+flights |> 
+  arrange(air_time) |>
+  select(air_time, origin, dest)
 ```
 
 Notice that the data doesn't have to be mentioned in the call, as it gets passed
@@ -260,13 +289,20 @@ certain columns:
 
 ```{r select-multiple-columns}
 # selecting all columns between two columns (bugs galore if columns reordered)
+select(flights, year:day)
 
 # dropping cols
+select(flights, -(year:day))
+select(flights, -c(year, month, day))
 
 # Some helper functions
+select(flights, starts_with("arr"))
+select(flights, -starts_with("arr"))
+select(flights, ends_with("hour"))
+select(flights, contains("time"))
 
 # Reordering columns by moving some columns to the start
-
+select(flights, origin, dest, everything())
 ```
 
 Apparently the way to reorder columns is now `relocate`, in particular 
@@ -281,7 +317,12 @@ select(flights, -contains("time"), starts_with("arr"))
 ...
 
 ```{r select-matching-both-conditions}
+flights |>
+  select(-contains("time")) |>
+  select(starts_with("arr"))
 
+flights |>
+  select(-contains("time") & starts_with("arr"))
 ```
 
 See `?select` for other examples.
@@ -289,7 +330,12 @@ See `?select` for other examples.
 ## Renaming columns
 
 ```{r rename}
+my_renamed_flights <- flights |>
+  rename(destination = dest) |>
+  select(destination, everything())
 
+flights
+my_renamed_flights
 ```
 
 To allow us to see that this worked, let's select fewer columns: 

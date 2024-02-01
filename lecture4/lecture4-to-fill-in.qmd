@@ -27,14 +27,16 @@ Let us create a new column that computes catch up and the speed in miles:
 ```{r catch-up-and-speed}
 #| eval: FALSE
 mutate(flights_small, 
-       catchup = ...,
-       speed_miles = ...)
+       catchup = dep_delay - arr_delay, 
+       speed_miles = (distance/air_time) * 60)
 ```
 
 Since I don't know what speed in miles per hours is, let's convert that:
 
 ```{r convert-units}
-
+mutate(flights_small, 
+       catchup = dep_delay - arr_delay, 
+       speed_km = (distance * 1.61 / air_time) * 60)
 ```
 
 Magic numbers in code are great. Every one loves them. Not. They are evil and 
@@ -46,7 +48,7 @@ KM_PER_MILE <- 1.61
 
 mutate(
   flights_small,
-  speed_km = ...
+  speed_km = (distance * KM_PER_MILE / air_time) * 60)
 )
 ```
   
@@ -56,7 +58,9 @@ For complicated computations, it is clearer if you create intermediate results:
 #| eval: FALSE
 flights_small |>
   mutate(
-    
+    distance_km = distance * KM_PER_MILE,
+    air_time_hours = air_time / 60,
+    speed_km = distance_km / air_time_hours
   )
 ```
 
@@ -64,7 +68,11 @@ If you only want to keep the new variables, use `transmute`:
 
 ```{r transmute}
 #| eval: FALSE
-
+transmute(
+  flights_small,
+  distance_km = distance * KM_PER_MILE,
+  air_time_hours = air_time / 60
+)
 ```
 
 
@@ -81,8 +89,8 @@ Let us use that to extract the hours and minutes from `dep_time` (HHMM):
 transmute(
   flights,
   dep_time,
-  dep_hour = ...,
-  dep_minutes = ...
+  dep_hour = dep_time %/% 100, 
+  dep_minutes = dep_time %% 100
 )
 ```
 
@@ -93,22 +101,31 @@ consecutive integers:
 ```{r lag-lead}
 #| eval: FALSE
 (x <- c(0,1,2,3,4,5,6,7,8,9))
-(y <- ...)
-(z <- ...)
+(y <- 0:9) 
+(z <- seq(0,9))
 
+(lag(y))
+(lag(lag(y)))
+(lead(y))
 
+cumsum(x)
+cumprod(x)
+cumprod(lead(x))
+cummean(x)
 ```
 
 Logical operators also return vectors when comparing vectors: 
 
 ```{r logical-operators}
-
+x > 3
+x > y
 ```
 
 But you may wonder: what do some of these even mean?
 
 ```{r logical-ops-meaning}
-
+x == c(2, 4)
+x == c(1, 3, 4)
 ```
 
 Finally, you will often want to rank observations:
@@ -116,7 +133,14 @@ Finally, you will often want to rank observations:
 ```{r ranking}
 y <- c(10, 5, 6, 3, 7)
 
+min_rank(y)
+rank(y)
+
 # Can you figure out from playing around with min_rank() how it works exactly?
+min_rank(c(y, 7))
+rank(c(y, 7))
+
+?min_rank
 
 ```
 
