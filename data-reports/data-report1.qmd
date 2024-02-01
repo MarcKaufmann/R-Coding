@@ -15,7 +15,7 @@ output: html
 6. Remove the instructions section from the final report
   - Your final report has to render without errors. If you have some errors you cannot fix, then leave the code in, but make sure that the code in that block is not evaluated, so that it renders. Explain in the text that it doesn't work, what it was intended to do, and how you tried to fix it
 
-## Code Exercise and Explanation
+## Code Exercises and Explanation
 
 Use the `msleep` data (included with `ggplot2`) for both exercises.
 
