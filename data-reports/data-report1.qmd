@@ -22,4 +22,4 @@ Use the `msleep` data (included with `ggplot2`) for both exercises.
 **Exercise:** Get all the animals who are heavier than the average bodyweight in the data; keep only the `name` and `bodywt` columns;
 and order the rows by `bodywt` in a descending order.
 
-**Exercise 5:** Start fresh (not with the data from exercise 4). Create a new column called `brainwt_ratio` showing the ratio of of brain mass to the total body weight. Round the ratio to 4 digits. Keep the `name` and `brainwt_ratio` colums and keep the 10 animals with the highest ratio.
+**Exercise:** Start fresh (not with the data from the previous exercise). Create a new column called `brainwt_ratio` showing the ratio of of brain mass to the total body weight. Round the ratio to 4 digits. Keep the `name` and `brainwt_ratio` colums and keep the 10 animals with the highest ratio.
