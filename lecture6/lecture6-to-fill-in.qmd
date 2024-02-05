@@ -16,17 +16,19 @@ library(nycflights13)
 
 We can use grouping to 
 
-```{r}
+```{r worst-arrivers}
+#| eval: false
+
 # Get the worst 10 arrivers for every day
 flights_small <- flights |>
   select(year:day, starts_with("arr"), starts_with("dep"))
 
 flights_small |>
-  group_by(year, month, day) |>
+  group_by(...) |>
   mutate(
-    delay_rank = rank(desc(arr_delay))
+    ...
   ) |>
-  filter(delay_rank < 10)
+  filter(...)
 ```
 
 **Question:** Why did we have to group anything? What would have happened without grouping? 
@@ -34,23 +36,25 @@ flights_small |>
 Let's focus on the worst 2 offenders per day to make it easier to see.
 
 ```{r}
+#| eval: false
+
 # Get the worst arriver for every day
 flights_small |>
   group_by(year, month, day) |>
   mutate(
-    delay_rank = rank(desc(arr_delay))
+    delay_rank = ...)
   ) |>
   filter(delay_rank <= 2)
 ```
 
 How many rows does this return? Why? How many rows were there before we filtered? Why is it not 2 per day?
 
-
 ```{r}
-# Find all destinations that have more than one flight arriving (from NY) every day
+#| eval: false
+# Find all destinations that have more than one flight arriving (from NY) every day on average.
 popular_destinations <- flights |>
-  group_by(dest) |>
-  filter(n() > 365)
+  group_by(...) |>
+  filter(...)
 ```
 
 **Question:** Again, why did we have to group anything? Which function cares about this and works differently because of it?
@@ -128,13 +132,12 @@ not_missing |>
 
 If you have a data frame that is not a tibble you can change it to one with `as_tibble()`:
 
-```{r}
+```{r is-tibble}
 ceci_nest_pas_a_tibble <- iris
 is_tibble(ceci_nest_pas_a_tibble)
+
 # Run in console, rstudio seems to do conversion automatically
-ceci_nest_pas_a_tibble 
-a_tibble <- as_tibble(ceci_nest_pas_a_tibble)
-a_tibble
+
 ```
 
 Sometimes we want to call a function at the end of a pipe that does not take a data frame, but a vector. For instance if we want to compute a t-test:
@@ -176,14 +179,10 @@ f1 <- "djflsjflkdsjfklsdjfkl
    1,2,3
    4,5,6"
 
-r1 <- read_csv(f1, skip = 1)
-s1 <- spec(r1)
-read_csv(f1, col_types = s1, skip = 1)
+
 
 f2 <-  "1,2,3
    4,.,6"
-r2 <- read_csv(f2, col_names = FALSE, na = ".")
-s2 <- spec(r2)
 
 ?read_delim
 ?read_tsv
@@ -206,13 +205,14 @@ To fix these, look up `read_csv`, `read_tsv`, `read_delim`, `read_csv2`.
 # 11.3 Parsing a vector
 
 ```{r parsing-vectors}
-str(parse_logical(c("TRUE", "FALSE", "NA")))
-str(parse_integer(c("1", "2", "3")))
-str(parse_date(c("2010-10-01", "1974-01-14")))
+#| eval: false
+
+c("TRUE", "FALSE", "NA")
+c("1", "2", "3")
+c("2010-10-01", "1974-01-14")
 
 x <- parse_integer(c("123", "234", "abc", "12.3"))
-x
-problems(x)
+...
 
 parse_double("11.23")
 parse_double("11,23")
@@ -233,10 +233,9 @@ Identify problems by reading in as characters and using `tail`
 ```{r identify-problems}
 #| eval: false
 
-challenge2 <- read_csv(readr_example("challenge.csv"), col_types = cols(
-  x = col_character(),
-  y = col_character()
-))
+challenge2 <- read_csv(readr_example("challenge.csv"), 
+                       ...
+)
 
 tail(challenge2)
 

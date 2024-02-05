@@ -24,7 +24,7 @@ flights_small <- flights |>
 flights_small |>
   group_by(year, month, day) |>
   mutate(
-    delay_rank = rank(desc(arr_delay))
+    delay_rank = min_rank(desc(arr_delay))
   ) |>
   filter(delay_rank < 10)
 ```
@@ -38,7 +38,7 @@ Let's focus on the worst 2 offenders per day to make it easier to see.
 flights_small |>
   group_by(year, month, day) |>
   mutate(
-    delay_rank = rank(desc(arr_delay))
+    delay_rank = min_rank(desc(arr_delay))
   ) |>
   filter(delay_rank <= 2)
 ```
