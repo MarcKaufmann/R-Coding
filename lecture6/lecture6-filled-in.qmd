@@ -1,0 +1,250 @@
+---
+title: "Lecture 6"
+author: "Marc Kaufmann"
+date: "02/05/2024"
+output: html
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(nycflights13)
+```
+
+## 5.7 Grouped Mutates (and filters)
+
+We can use grouping to 
+
+```{r}
+# Get the worst 10 arrivers for every day
+flights_small <- flights |>
+  select(year:day, starts_with("arr"), starts_with("dep"))
+
+flights_small |>
+  group_by(year, month, day) |>
+  mutate(
+    delay_rank = rank(desc(arr_delay))
+  ) |>
+  filter(delay_rank < 10)
+```
+
+**Question:** Why did we have to group anything? What would have happened without grouping? 
+
+Let's focus on the worst 2 offenders per day to make it easier to see.
+
+```{r}
+# Get the worst arriver for every day
+flights_small |>
+  group_by(year, month, day) |>
+  mutate(
+    delay_rank = rank(desc(arr_delay))
+  ) |>
+  filter(delay_rank <= 2)
+```
+
+How many rows does this return? Why? How many rows were there before we filtered? Why is it not 2 per day?
+
+
+```{r}
+# Find all destinations that have more than one flight arriving (from NY) every day
+popular_destinations <- flights |>
+  group_by(dest) |>
+  filter(n() > 365)
+```
+
+**Question:** Again, why did we have to group anything? Which function cares about this and works differently because of it?
+
+**Lesson:** When you want to add information to rows that depends on other rows, you `group_by` subgroup before computing the new value. The summary function will then compute the mean, the rank, or anything else with respect to this subgroup and add this value to every row of the dataframe. Unlike `summarise`, it will return every row of the original dataframe, not only one row for every subgroup.
+
+
+## Class Exercises
+
+The following chunks have most, but not all of the code necessary to achieve their goal. Fix as many of them as you can. 
+
+```{r}
+#| eval: false
+
+# Compute for every day how many minutes above the average delay a given flight is.
+
+# 1. Compute the average delay (per day) and put it in the rows
+# 2. Then use that with dep_delay to compute the minutes above average
+flights_small <- flights
+
+flights_small |>
+  group_by(...) |>
+  mutate(
+    difference_from_daily_mean_dep_delay = ...
+  ) |>
+  # to put the new data in the first column
+  select(difference_from_daily_mean_dep_delay, everything()) 
+```
+
+Now compute the daily standard deviation in departure delays. Explain in one sentence what it means for that to be higher or lower.
+
+```{r, eval = FALSE}
+# Compute for every day the standard many minutes above the average delay a given flight is. ## GREAT COMMENT!
+
+flights_small |>
+  group_by(year, month, day) |>
+  mutate(
+    daily_sd_dep_delay = ...
+  ) |>
+  select(daily_sd_dep_delay, everything())
+```
+
+Now combine the previous two commands with a third to compute how many standard deviations a given flight is from the mean. A value of $-1$ indicates that the flight had 1 sd less departure delay than the average flights that day, $1$ indicates that it had 1 sd more departure delay than the average flight that day.
+  
+```{r, eval = FALSE}
+
+flights_small |>
+  group_by(year, month, day) |>
+  mutate(
+    diff_mean_in_sd = ...)
+  ) |>
+  select(diff_mean_in_sd, dep_delay, everything())
+```
+    
+And finally (if time permits, which is unlikely):
+
+```{r, eval = FALSE}
+# What time of the day should you fly to avoid delays the most?
+
+not_missing |>
+  mutate(
+    hour = ...%/% 100
+  ) |>
+  group_by(hour) |>
+  summarise(
+    delay = ...
+  ) |>
+  mutate(
+    rank_delay = ...
+  ) |>
+  arrange(rank_delay)
+```
+
+## Ceci n'est pas a tibble
+
+If you have a data frame that is not a tibble you can change it to one with `as_tibble()`:
+
+```{r}
+ceci_nest_pas_a_tibble <- iris
+is_tibble(ceci_nest_pas_a_tibble)
+# Run in console, rstudio seems to do conversion automatically
+ceci_nest_pas_a_tibble 
+a_tibble <- as_tibble(ceci_nest_pas_a_tibble)
+a_tibble
+```
+
+Sometimes we want to call a function at the end of a pipe that does not take a data frame, but a vector. For instance if we want to compute a t-test:
+
+```{r}
+#| eval: false
+df <- tibble(
+  x = runif(100),
+  y = runif(100, min=-0.5, max=0.5),
+  z = rnorm(100)
+)
+
+df |> select(x) |> t.test() # ERROR!
+df |> _$x # OK
+df |> t.test(_$x) # ERROR?! WHAT? Somewhat baffled.
+df |> _$x |> t.test() # A bit tedious
+df |> select(x) |> deframe() |> t.test() # Just to show that we can be even more tedious
+
+# And if you can't figure it out... you don't have to pipe everything. 
+t.test(df$x)
+
+# For t.test(x,y)
+t.test(df$x, df$y)
+```
+
+As you can see, the pipe isn't suited to everything, so just refer to the columns directly.
+
+## Chapter 11: Data Import
+
+Now on to importing data.
+
+```{r eval=FALSE, include=FALSE}
+library(tidyverse)
+
+(test_data1 <- read_csv("test-data.csv"))
+
+f1 <- "djflsjflkdsjfklsdjfkl
+   a,b,c
+   1,2,3
+   4,5,6"
+
+r1 <- read_csv(f1, skip = 1)
+s1 <- spec(r1)
+read_csv(f1, col_types = s1, skip = 1)
+
+f2 <-  "1,2,3
+   4,.,6"
+r2 <- read_csv(f2, col_names = FALSE, na = ".")
+s2 <- spec(r2)
+
+?read_delim
+?read_tsv
+```
+
+# Class Exercise 5 in 11.2
+
+Identify what is wrong with each of the following:
+
+```{r fix-reads}
+read_csv("a,b\n1,2,3\n4,5,6")
+read_csv("a,b,c\n1,2\n1,2,3,4")
+read_csv("a,b\n\"1")
+read_csv("a,b\n1,2\na,b")
+read_csv("a;b\n1;3")
+```
+
+To fix these, look up `read_csv`, `read_tsv`, `read_delim`, `read_csv2`.
+
+# 11.3 Parsing a vector
+
+```{r parsing-vectors}
+str(parse_logical(c("TRUE", "FALSE", "NA")))
+str(parse_integer(c("1", "2", "3")))
+str(parse_date(c("2010-10-01", "1974-01-14")))
+
+x <- parse_integer(c("123", "234", "abc", "12.3"))
+x
+problems(x)
+
+parse_double("11.23")
+parse_double("11,23")
+
+parse_number("$100")
+```
+
+## 11.4
+
+
+```{r challenge}
+challenge <- read_csv(readr_example("challenge.csv"))
+challenge
+```
+
+Identify problems by reading in as characters and using `tail`
+
+```{r identify-problems}
+#| eval: false
+
+challenge2 <- read_csv(readr_example("challenge.csv"), col_types = cols(
+  x = col_character(),
+  y = col_character()
+))
+
+tail(challenge2)
+
+challenge <- read_csv(readr_example("challenge.csv"),
+                      col_types = cols(
+                        x = ...,
+                        y = ...))
+
+```
+
+
