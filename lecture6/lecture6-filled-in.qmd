@@ -65,7 +65,7 @@ The following chunks have most, but not all of the code necessary to achieve the
 ```{r}
 #| eval: false
 
-# Compute for every day how many minutes above the average delay a given flight is.
+# Compute how many minutes every flight is above the daily average delay
 
 # 1. Compute the average delay (per day) and put it in the rows
 # 2. Then use that with dep_delay to compute the minutes above average
@@ -80,13 +80,12 @@ flights_small |>
   select(difference_from_daily_mean_dep_delay, everything()) 
 ```
 
-Now compute the daily standard deviation in departure delays. Explain in one sentence what it means for that to be higher or lower.
+Now compute how many daily standard deviation each flight is above (positive) or below (negative) a given flight departed. 
 
-```{r, eval = FALSE}
-# Compute for every day the standard many minutes above the average delay a given flight is. ## GREAT COMMENT!
-
+```{r}
+#| eval: false
 flights_small |>
-  group_by(year, month, day) |>
+  group_by(...) |>
   mutate(
     daily_sd_dep_delay = ...
   ) |>
@@ -98,32 +97,13 @@ Now combine the previous two commands with a third to compute how many standard 
 ```{r, eval = FALSE}
 
 flights_small |>
-  group_by(year, month, day) |>
+  group_by(...) |>
   mutate(
     diff_mean_in_sd = ...)
   ) |>
   select(diff_mean_in_sd, dep_delay, everything())
 ```
     
-And finally (if time permits, which is unlikely):
-
-```{r, eval = FALSE}
-# What time of the day should you fly to avoid delays the most?
-
-not_missing |>
-  mutate(
-    hour = ...%/% 100
-  ) |>
-  group_by(hour) |>
-  summarise(
-    delay = ...
-  ) |>
-  mutate(
-    rank_delay = ...
-  ) |>
-  arrange(rank_delay)
-```
-
 ## Ceci n'est pas a tibble
 
 If you have a data frame that is not a tibble you can change it to one with `as_tibble()`:
@@ -242,9 +222,8 @@ tail(challenge2)
 
 challenge <- read_csv(readr_example("challenge.csv"),
                       col_types = cols(
-                        x = ...,
-                        y = ...))
-
+                        x = col_double(),
+                        y = col_date()))
 ```
 
 
