@@ -16,6 +16,7 @@ library(nycflights13)
 ```
 
 ```{r useless-summary}
+flights
 summarise(flights, delay = mean(dep_delay, na.rm = TRUE))
 ```
 
@@ -36,7 +37,9 @@ mean(select(flights, dep_delay), na.rm = TRUE)
 Huh? What's going on here? 
 
 ```{r select-vs-dollar}
-
+#| eval: false
+flights$dep_delay # -> vector
+select(flights, dep_delay) # -> data frame (tibble)
 ```
 
 Aha, we should have guessed, since select returns a *data frame*,
@@ -47,15 +50,24 @@ So, what else can we use `summarise` for? To make it useful, we neeed its friend
 `group_by`:
 
 ```{r group-by}
-
+(by_day <- group_by(flights, year, month, day))
 ```
 
 Looks distinctly the same. But it really isn't!
 
 ```{r useful-command}
 
-# Or, using the pipe
+summarise(
+  by_day,
+  delay = mean(dep_delay, na.rm = TRUE)
+)
 
+# Or, using the pipe
+flights |>
+  group_by(year, month, day) |>
+  summarise(
+    delay = mean(dep_delay, na.rm = TRUE)
+  )
 ```
 
 ## Chapter 5.6.1 of R4DS
@@ -63,13 +75,42 @@ Looks distinctly the same. But it really isn't!
 Let's explore link between distance and average delay for every location. What that means is that we want to know the average delay for every destination. Then, once we have that, we want to see how the distance to this location is related to the delay to this location.
 
 ```{r dist-delay-by-location}
+by_destination <- group_by(flights, dest)
 
+(flights_delay <- summarise(
+  by_destination,
+  avg_arr_delay = mean(arr_delay, na.rm = TRUE)
+))
 ```
 
 OK, we need the distance too, or else there is not much to plot.
 
 ```{r dist-delay-by-location2}
+(flights_delay <- summarise(
+  by_destination,
+  avg_arr_delay = mean(arr_delay, na.rm = TRUE),
+  distance = mean(distance, na.rm = TRUE)
+))
 
+p <- ggplot(
+  data = flights_delay,
+  mapping = aes(x = distance, y = avg_arr_delay))
+
+p + geom_point() + geom_smooth()
+
+(flights_delay <- summarise(
+  by_destination,
+  count = n(),
+  avg_arr_delay = mean(arr_delay, na.rm = TRUE),
+  distance = mean(distance, na.rm = TRUE)
+))
+
+p <- ggplot(
+  data = flights_delay,
+  mapping = aes(x = distance, y = avg_arr_delay))
+
+p + geom_point(mapping = aes(size = count), alpha = 0.3) + geom_smooth()
+  
 ```
 
 We used the function `n`, which is special and works only inside of `summarize`:
@@ -87,7 +128,17 @@ Let's plot the original data, without first taking means by group
 
 ```{r opt-exercise}
 
+p2 <- ggplot(data = flights,
+             mapping = aes(x = distance, y = arr_delay))
+
+p2 + geom_point(alpha = 0.2) + geom_smooth()
+
 # Now let's plot points by location as before, but run geom_smooth on whole dataset
+p2 + geom_point(
+  data = flights_delay, 
+  mapping = aes(y = avg_arr_delay, size = count),
+  alpha = 0.3) +
+  geom_smooth()
 
 # So, not too misleading, but still...
 ```
@@ -100,7 +151,14 @@ Note: I am not a big fan of dropping things that 'look too different'.
 You should do such robustness checks, but you shouldn't start there. 
 
 ```{r hnl}
-
+(delays <- flights |>
+  group_by(dest) |>
+  summarise(
+    avg_arr_delay = mean(arr_delay, na.rm = TRUE),
+    count = n(),
+    distance = mean(distance, na.rm = TRUE)
+  ) |>
+  filter( count > 20, dest != "HNL"))
 ```
 
 **Exercise:** Rewrite the above command without the pipe. Which one do you find easier to read?
@@ -108,7 +166,8 @@ You should do such robustness checks, but you shouldn't start there.
 ## 5.6.2 Missing values
 
 ```{r missing-values}
-
+not_missing <- flights |>
+  filter( !is.na(dep_delay), !is.na(arr_delay) )
 ```
 
 **Exercise:** Does the above command also drop observations that miss only the arr_delay but have a dep_delay? Are there any observations in the dataset for which only dep_delay or arr_delay is missing, but not both?
@@ -119,12 +178,24 @@ Average delay by airplane (identified by tailnum), plot density.
 Start with freqpoly, then zoom in on that part of the graph that we are interested:
 
 ```{r counts}
-
+not_missing |>
+  group_by(tailnum) |>
+  summarise(avg_delay = mean(dep_delay)) |>
+  ggplot(mapping = aes( x = avg_delay)) + 
+  geom_histogram()
 ```
 
 Plot the number of flights per airplane against delay:
 
 ```{r flights-against-delays}
+not_missing |>
+  group_by(tailnum) |>
+  summarise(
+    count = n(),
+    avg_delay = mean(dep_delay)
+    ) |>
+  ggplot(mapping = aes( x = avg_delay, y = count)) + 
+  geom_point(alpha = 0.1)
 
 ```
          
@@ -151,14 +222,25 @@ Filter the airplanes that fly rarely and pipe them into ggplot which gets plusse
 You should be aware of the following functions that you can use with `summarise()` should you need them:
 
 ```{r summary-functions}
-
+x <- 1:100
+median(x)
+sd(x)
+IQR(x)
+mad(x)
+?mad
+min(x)
+max(x)
 ```
 
 An important difference between the mean and the median is that the median is more robust to outliers. Often when people say 'the average person', they have in mind the 'median person', not the average person. 
 
 ```{r mean-vs-median}
 # Example
-
+mean(x)
+median(x)
+x_with_outlier <- c(x, 10000000000)
+mean(x_with_outlier)
+median(x_with_outlier)
 ```
 
 Sometimes you want the mean, not the median, but you have to be aware of what it tells you.
@@ -171,6 +253,9 @@ An important one is `quantile()`:
 # What does quantile do?
 
 # Not that helpful. Here's what I do when I am not sure
+x <- 1:100
+quantile(x, 0.25)
+quantile(x, 0.95)
 
 ```
 
@@ -218,7 +303,7 @@ This is good enough for simple counts, but you may want to weight the counting, 
 
 # Count how many airmiles a given airplane did from NYC and arrange:
 not_missing |>
-  count(...)
+  count(tailnum, wt = distance)
 
 
 ## Number of flights each day before 5am
