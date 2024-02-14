@@ -10,6 +10,10 @@ This file is a template for your second data report. Throughout there are **Note
 
 I already provide some code blocks that do things we have not yet seen in class, you can leave them as they are. The same goes for descriptions that are not **Notes** -- such as the description of the data.
 
+**Note:** This time, do not include the code in the rendered document -- that is to force you to write the explanations in the text.
+
+**Note:** Final page limit is 6 pages -- not 10 like last time. This is since you should no longer include the code.
+
 # Dataset
 
 ```{r load-libraries}
