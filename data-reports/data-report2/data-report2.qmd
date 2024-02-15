@@ -28,16 +28,18 @@ library(tidyverse)
 opinions <- read_csv("opinions.csv")
 ```
 
-**Note:** You should finish the data documentation, I only included the first variable. You have to explore the data and play with it to figure out how many different questions there are and what the columns mean based on my description above (which was purposefully verbal).
+**Note:** You should finish the data documentation, I only included the first variable. You have to explore the data and play with it to figure out how many different questions there are and what the columns mean based on my description above (which was purposefully verbal). You should include what the range of answers is in the description below, i.e. what value could be in this field?
 
 **Documentation:**
 
 -   **pid**: the unique participant ID
--   ...
+-   **tpc:** the topic about which the participant was asked
+-   **qn:** the question the person was asked. 'important' means they were asked how important they felt the topic was.
+-   **ans:** the answer given by the person, depending on the question.
 
 # Cleaning
 
-**Note:** The one thing you can do to clean the data to make analysis easier is to convert the strings "yes" and "no" to the integers `1` and `0` in the `answer` column and then convert all the other answers into numbers too. Otherwise this whole column is stored as strings, making it hard to compute means etc. Beyond that, there is not much cleaning. Since we use the the clean data repeatedly, we give it the short name `df`.
+**Note:** In addition to whatever cleaning you will do, you should also transform the data to make analysis easier: convert the strings "yes" and "no" to the integers `1` and `0` in the `answer` column and then convert all the other answers into numbers too. Otherwise this whole column is stored as strings, making it hard to compute means etc. Beyond that, there is not much cleaning. Since we use the the clean data repeatedly, we give it the short name `df`.
 
 ```{r cleaning}
 df <- opinions |>
