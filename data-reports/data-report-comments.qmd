@@ -1,0 +1,27 @@
+---
+author: "Marc Kaufmann"
+date: "02-16-2024"
+output: html
+---
+
+# Comments
+
+Based on the first report, here are some additional comments and instructions to
+follow for future data reports:
+
+1. Do not include the code snippets any more in the report:
+    - The length of the report is now 6 pages.
+2. Always describe the data:
+    - Describe the main type of data (or all if the dataset is small)
+    - Describe the source of your information
+    - Provide link or source to find further information
+3. Don't overexplain:
+    - If something reads like you add anything you can think of to avoid not having
+    the important bits, I will subtract points.
+4. Do not explain how R commands work that we have seen in class
+    - Do briefly explain why you load packages that we haven't seein in class
+5. How to describe explorations:
+    a) First say what you are trying to achieve (e.g., "How does weight affect height, controlling for age?").
+    b) Then do it in the code, with only short explanations (e.g., "Let us plot weight against height" vs " and "Next, let us break this down by three age groups:").
+    c) Then describe and interpret the results you find.
+6. For exercises, I am only interested in the code and answer, no need to analyse or describe the data.
