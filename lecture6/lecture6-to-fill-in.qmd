@@ -17,18 +17,17 @@ library(nycflights13)
 We can use grouping to 
 
 ```{r worst-arrivers}
-#| eval: false
 
 # Get the worst 10 arrivers for every day
 flights_small <- flights |>
   select(year:day, starts_with("arr"), starts_with("dep"))
 
 flights_small |>
-  group_by(...) |>
+  group_by(year, month, day) |>
   mutate(
-    ...
+    delay_rank = min_rank(desc(arr_delay))
   ) |>
-  filter(...)
+  filter( delay_rank <= 10 )
 ```
 
 **Question:** Why did we have to group anything? What would have happened without grouping? 
@@ -36,13 +35,11 @@ flights_small |>
 Let's focus on the worst 2 offenders per day to make it easier to see.
 
 ```{r}
-#| eval: false
-
-# Get the worst arriver for every day
+# Get the worst 2 arrivers for every day
 flights_small |>
   group_by(year, month, day) |>
   mutate(
-    delay_rank = ...)
+    delay_rank =min_rank(desc(arr_delay)) 
   ) |>
   filter(delay_rank <= 2)
 ```
@@ -53,8 +50,8 @@ How many rows does this return? Why? How many rows were there before we filtered
 #| eval: false
 # Find all destinations that have more than one flight arriving (from NY) every day on average.
 popular_destinations <- flights |>
-  group_by(...) |>
-  filter(...)
+  group_by(dest) |>
+  filter( n() > 365  )
 ```
 
 **Question:** Again, why did we have to group anything? Which function cares about this and works differently because of it?
@@ -71,14 +68,14 @@ The following chunks have most, but not all of the code necessary to achieve the
 
 # Compute for every day how many minutes above the average delay a given flight is.
 
-# 1. Compute the average delay (per day) and put it in the rows
+# 1. Compute the average dep_delay (per day) and put it in the rows
 # 2. Then use that with dep_delay to compute the minutes above average
 flights_small <- flights
 
 flights_small |>
-  group_by(...) |>
+  group_by(year, month, day) |>
   mutate(
-    difference_from_daily_mean_dep_delay = ...
+    difference_from_daily_mean_dep_delay = dep_delay - mean(dep_delay, na.rm = TRUE)
   ) |>
   # to put the new data in the first column
   select(difference_from_daily_mean_dep_delay, everything()) 
@@ -92,7 +89,7 @@ Now compute the daily standard deviation in departure delays. Explain in one sen
 flights_small |>
   group_by(year, month, day) |>
   mutate(
-    daily_sd_dep_delay = ...
+    daily_sd_dep_delay = sd(dep_delay, na.rm = TRUE)
   ) |>
   select(daily_sd_dep_delay, everything())
 ```
@@ -104,8 +101,9 @@ Now combine the previous two commands with a third to compute how many standard 
 flights_small |>
   group_by(year, month, day) |>
   mutate(
-    diff_mean_in_sd = ...)
-  ) |>
+    diff_mean_in_sd = 
+      (dep_delay - mean(dep_delay, na.rm = TRUE)) / sd(dep_delay, na.rm = TRUE) 
+    ) |>
   select(diff_mean_in_sd, dep_delay, everything())
 ```
     
@@ -137,7 +135,8 @@ ceci_nest_pas_a_tibble <- iris
 is_tibble(ceci_nest_pas_a_tibble)
 
 # Run in console, rstudio seems to do conversion automatically
-
+ceci_nest_pas_a_tibble
+new_iris <- as_tibble(ceci_nest_pas_a_tibble)
 ```
 
 Sometimes we want to call a function at the end of a pipe that does not take a data frame, but a vector. For instance if we want to compute a t-test:
@@ -150,11 +149,11 @@ df <- tibble(
   z = rnorm(100)
 )
 
-df |> select(x) |> t.test() # ERROR!
-df |> _$x # OK
-df |> t.test(_$x) # ERROR?! WHAT? Somewhat baffled.
-df |> _$x |> t.test() # A bit tedious
-df |> select(x) |> deframe() |> t.test() # Just to show that we can be even more tedious
+df |> select(x) |> t.test() # NO ERROR - despite me thinking so. Remove from notes.
+#df |> _$x # OK
+#df |> t.test(_$x) # ERROR?! WHAT? Somewhat baffled.
+#df |> _$x |> t.test() # A bit tedious
+#df |> select(x) |> deframe() |> t.test() # Just to show that we can be even more tedious
 
 # And if you can't figure it out... you don't have to pipe everything. 
 t.test(df$x)
@@ -179,10 +178,26 @@ f1 <- "djflsjflkdsjfklsdjfkl
    1,2,3
    4,5,6"
 
+f1
+
+r1 <- read_csv(f1, skip = 1)
+spec(r1)
+
+r1b <- read_csv(
+  f1, 
+  skip = 1, col_types = 
+    cols(
+      a = col_double(),
+      b = col_double(),
+      c = col_double()
+    )           
+)
 
 
 f2 <-  "1,2,3
    4,.,6"
+
+(r2 <- read_csv(f2, na = ".", col_names = c("a", "b", "c")))
 
 ?read_delim
 ?read_tsv
@@ -193,7 +208,7 @@ f2 <-  "1,2,3
 Identify what is wrong with each of the following:
 
 ```{r fix-reads}
-read_csv("a,b\n1,2,3\n4,5,6")
+read_csv("a,b\n1,2,3\n4,5,6", skip = 1, col_names = c("a", "b", "c"))
 read_csv("a,b,c\n1,2\n1,2,3,4")
 read_csv("a,b\n\"1")
 read_csv("a,b\n1,2\na,b")
