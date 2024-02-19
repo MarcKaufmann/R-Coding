@@ -48,10 +48,10 @@ opinions <- read_csv("opinions.csv")
 ```{r cleaning}
 df <- opinions |>
   mutate(
-    answer = if_else(
-      question == "heard-of-last-week", 
-      if_else(answer == "yes", as.integer(1), as.integer(0)),
-      as.integer(answer)
+    ans = if_else(
+      qn == "heard-of-last-week", 
+      if_else(ans == "yes", as.integer(1), as.integer(0)),
+      as.integer(ans)
       )
     )
 ```
@@ -64,13 +64,13 @@ df <- opinions |>
 
 # Exploration
 
-The goal of this data report is to come up with interesting facts about why people might want to read more about a given topic. For example:
+This data was collected in a pilot for a main study. In the main study, participants had read and categorize articles and they had to choose between two topics. For example, they chose whether to read and categorize articles from 'Politics' or from 'Neuroscience'. Moreover, some participants received a reason for or a reason against each topic, based on the data collected in this pilot. For example:
 
--   "The topic 'Politics' scored an average of 5.59 on the question how important it is."
--   "The topic 'Neuroscience' was the one that participants talked the least with colleagues."
--   "The topic 'Socioeconomic Inequality' was ranked in the bottom 25% in terms of familiarity."
+-   "The topic 'Politics' scored an average of 5.59 out of 7 on the question how important it is." (Reason for 'Politics'.)
+-   "The topic 'Neuroscience' was the one that participants talked the least with colleagues." (Reason against "Neuroscience".)
+-   "The topic 'Socioeconomic Inequality' was ranked in the bottom 25% in terms of familiarity." (Reason  - probably - against 'Socioeconomic Inequality'.)
 
-Your goal in this analysis is to find reasons for and against each topic.
+Your goal in this analysis is to come up with similar reasons: that is, provide a dataframe where one column contains the topic; another column contains whether the reason is 'for' or 'against'; the third column contains the actual reason as a string; and the fourth column contains your own subjective rating of how strong you find this type of reason.
 
 **Notes (remove entire list in final report - I know the instructions):** Specifically, the first few steps are all the same:
 
@@ -80,18 +80,21 @@ Your goal in this analysis is to find reasons for and against each topic.
     -   E.g. if 'Politics' had the best score on 'important' (it didn't) and 'Neuroscience' the worst (it didn't), then one row of this table would be `'important'`, `'Politics'`, and `'Neuroscience'`.
 3.  Now create a summary table that you include in your report. The first column contains the question (e.g. `'important'`), the next columns should include the mean score across all topics, the median score, and the standard deviation, in addition to at least two more quantiles.
 
-The final steps are more open-ended and you can/should use visualizations to illustrate or argue:
+The final steps are more open-ended and you can/should use visualizations to illustrate or argue.
 
-4.  Based on this exploration, think about other reasons than those I gave above (e.g. the mean is high or low; the task has the highest or lowest mean) for why people might want to read about a topic. For how many topics does this provide a reason for or against? (See also next question.) For example: some topics are never the highest or lowest ranked, while others are the highest or lowest on multiple questions.
-5.  Finally, create a dataframe that provides at least two reasons for and two reasons against each topic. Note that you have to argue why the reasons you provide are in favor or against reading more about the given topic. The more original the types of reasons, the better. You are allowed to use similar reasons to those I provide, but it won't lead to a full score.
+4.  Explore other reasons than those I gave above (e.g. the mean is high or low; the task has the highest or lowest mean) for why people in the main study should choose one topic rather than another. For how many topics does this provide a reason for or against? (See also next question.) For example: suppose you consider that ranking first on any of the questions ('interesting', 'learn_more', etc.) is a good reason for a topic. Then this provides a reason for those topics that rank first for any question, but some topics are never ranked first. For those topics, you need to find another reason. You should find at least one reason for, and one reason against, each topic, even if it means that you have to use 'weak' reasons. Based on your own subjective view, rate how strong a type of reason is on a scale from 1 ("very weak") to 5 ("very strong"). For example, ranking first on any question is clearly a stronger reason than ranking third.
+5.  Based on the previous steps, create a dataframe as described at the start with 4 columns: `topic`, `reason_direction`, `reason`, and `strength_of_reason`. You have to have at least one reason for and one against each topic, ideally two. Display (`count`) the number of reasons for and against each topic. The more original the types of reasons, the better. You are allowed to use similar reasons to those I provide, but it won't lead to a full score.
     -   Suggestion: create first a dataframe containing reasons for and another one containing reasons against. Then find out how you can combine them into a new, larger dataframe.
+    -   Suggestion: you can create each reason manually, but you can also - as I suggest above - try to find types of reasons that apply to many topics, such as ranking first on any one of the questions (how interesting it is, how much people want to learn about it, etc). I want you to solve this programmatically: how would you solve this problem if there were 100 or 1,000 topics? Clearly you couldn't do it manually.
     -   The reasons should be sentences like the ones above. See the code snippet below on how to create such sentences automatically with `paste0` (they don't have to be grammatically perfect, but understandable).
 
 ```{r create-reasons}
+#| eval: false
+# FIXME: You have to define `mean_scores`.
 create-reasons <- mean_scores |>
   mutate(
-    reason_text = paste0("The topic '", topic, "' scored an average of ",
-                              avg, " on the question how ", question, " it is.")
+    reason = paste0("The topic '", tpc, "' scored an average of ",
+                              avg, " on the question how ", qn, " it is.")
     )
 ```
 
@@ -101,7 +104,7 @@ This code pastes together the strings inside of it, creating a single sentence (
 
 # Conclusions
 
-**Note:** What have you learned about the topics, the opinions participants have about them, and reasons for or against the different topics?
+**Note:** What have you learned about the topics, the opinions participants have about them, and reasons for or against the different topics? How would your solution scale if there were 100 or 1,000 topics for which you need to generate reasons for or against? What if you could personalize the reasons - which type of data would you ask of participants?
 
 # Code Explanation
 
