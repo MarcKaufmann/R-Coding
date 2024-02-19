@@ -10,22 +10,6 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 ```
 
-## Class Exercise
-
-Load each of these data sets that are in the lecture6 and lecture7 folders:
-
-- test-data1.csv
-- test-data2.csv
-- test-data3.csv
-
-```{r}
-# Your final command should be of this kind:
-# df1 <- read_csv("test-data1.csv", col_types = cols(...))
-
-df1 <- read_csv("test-data1.csv") # You have to fix this
-
-```
-
 ### Chapter 12: Tidy Data (for next week)
 
 So far we always had the data in a form where we didn't have to change the structure of the table to analyse it. Often this isn't the case, in particular we may want to put it in a tidy shape, as this works better with our tools.
