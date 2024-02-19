@@ -66,9 +66,11 @@ df <- opinions |>
 
 This data was collected in a pilot for a main study. In the main study, participants had read and categorize articles and they had to choose between two topics. For example, they chose whether to read and categorize articles from 'Politics' or from 'Neuroscience'. Moreover, some participants received a reason for or a reason against each topic, based on the data collected in this pilot. For example:
 
--   "The topic 'Politics' scored an average of 5.59 out of 7 on the question how important it is." (Reason for 'Politics'.)
--   "The topic 'Neuroscience' was the one that participants talked the least with colleagues." (Reason against "Neuroscience".)
--   "The topic 'Socioeconomic Inequality' was ranked in the bottom 25% in terms of familiarity." (Reason  - probably - against 'Socioeconomic Inequality'.)
+-   "In a previous survey, the topic 'Politics' scored an average of 5.59 out of 7 on the question how important it is." (Reason for 'Politics'.)
+-   "In a previous survey, the topic 'Neuroscience' was the one that participants talked the least with colleagues." (Reason against "Neuroscience".)
+-   "In a previous survey, the topic 'Socioeconomic Inequality' was ranked in the bottom 25% in terms of familiarity." (Reason  - probably - against 'Socioeconomic Inequality'.)
+
+Note that all the reasons are aimed at future participants of another study and tell them about the previous survey results.
 
 Your goal in this analysis is to come up with similar reasons: that is, provide a dataframe where one column contains the topic; another column contains whether the reason is 'for' or 'against'; the third column contains the actual reason as a string; and the fourth column contains your own subjective rating of how strong you find this type of reason.
 
