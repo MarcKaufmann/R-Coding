@@ -80,7 +80,7 @@ Your goal in this analysis is to come up with similar reasons: that is, provide 
     -   E.g. the mean score for 'Politics' for the question on how 'important' it is is 5.59. You want to compute the mean score for all the other questions too, and for all the other topics.
 2.  Use this to compute the topic that have the best and the worst score for each question. Store this in `best_worst`, which has as first column the name of the question, as second column the topic that scored best, and as third column the topic that scored worst on this topic.
     -   E.g. if 'Politics' had the best score on 'important' (it didn't) and 'Neuroscience' the worst (it didn't), then one row of this table would be `'important'`, `'Politics'`, and `'Neuroscience'`.
-3.  Now create a summary table that you include in your report. The first column contains the question (e.g. `'important'`), the next columns should include the mean score across all topics, the median score, and the standard deviation, in addition to at least two more quantiles.
+3.  Now create a summary table that you include in your report. The first column contains the question (e.g. `'important'`), the next columns should include the mean score across all topics, the median score, and the standard deviation, in addition to at least two more quantiles. You can use this table later to determine the thresholds for ranking high. For example, a topic with a score of 4.5 ranks higher the average score on this question is 3.5 than if the average score is 5.0.
 
 The final steps are more open-ended and you can/should use visualizations to illustrate or argue.
 
