@@ -1,0 +1,58 @@
+---
+title: "Data Report 3"
+author: "<fill-in>"
+format: html
+---
+
+# Instructions (remove for final submission)
+
+This file is a template for your third data report. As for previous reports, delete the **Notes** for your final submission.
+
+**Note:** Do not include the code in the rendered document.
+
+**Note:** Final page limit is 6 pages -- not 10 like last time. This is since you should no longer include the code.
+
+# Dataset
+
+```{r load-libraries}
+#| output: false
+#| echo: false
+library(tidyverse)
+```
+
+**Source**: We use the dataset from a survey run by Kaufmann, Andre, and Kőszegi.
+
+**Note:** For background on the survey, read Section 6 of [the paper](https://trichotomy.xyz/publication/understanding-markets-with-srcs/understanding-markets-with-SRCs.pdf). You may want to skim the instructions of the survey in the Appendix to figure out what the questions were about. The codebook describes the fields.
+
+**Note:** To load the data, you have to install the package `haven` and use `read_sva`.
+
+**Note:** You do not want to document all fields, but describe those you need for your analysis later on and mention where to find more information. While you should try to figure out what the data is about (that's part of your job), realize that `vig` is the Scenario — such as meat consumption, flights, or electricity — that a person was asked about; `effect` is the main outcome for beliefs about dampening (read text to find out what that broadly means); and `wtp_1` and `wtp_2` are the willingness to pay in the effective or ineffective situations, providing a measure of social concerns.
+
+**Note:** In your own words, describe what the survey asks participants — that is, what are 'dampening' beliefs about, and what are the moral preferences about? This is to check that you understand what the data is about, so that you can do the exploration task.
+
+**Documentation:**
+
+# Cleaning
+
+**Note:** The data contains many items that are of type `<dbl+lbl>`. You should transform these into factors - any of `as.factor` or `factor` work. Make sure to test that it works and that you know how to filter on these values. See [the chapter on Factors](https://r4ds.hadley.nz/factors.html) to learn more.
+
+**Note:** Write your cleaned data to a new file, either in csv or rds format.
+
+# Exploration
+
+1.  Replicate the two figures `fig_beliefs.pdf` and `fig_conseq.pdf` in this folder:
+    -   You do not need to get the colors right or have all the labeling and theme the same. I do expect the same plot though — same bars, same numbers — and to have a legend that explains what is what, and to include the percentage numbers. So in short, the same figures, but less snazzy and polished is fine. (More points the snazzier though.)
+    -   Look at `geom_text` for placing the text based on data (e.g. based on height of bars).
+    -   Do not try to do everything in a single call: create new columns in the dataframe where you store quantities you need for plotting.
+    -   Do not include your code for the figures in the rendered report here - include the code for one of the figures at the end when you explain the code.
+2.  The dataset contains a variety of demographic information on the survey participants. Moreover, participants are only asked about one scenario for their dampening beliefs and one for their social concerns. In this part, explore how the scenario and the background of the survey participants affect their answers to **one of these two (not both)**:
+    -   Their dampening beliefs: that is, their answer to `effect`
+    -   Their social concerns: that is, their answers to `wtp_1` and `wtp_2`, including the difference between these two values.
+
+# Conclusions
+
+**Note:** What have you learned about the topics, the opinions participants have about them, and reasons for or against the different topics? How would your solution scale if there were 100 or 1,000 topics for which you need to generate reasons for or against? What if you could personalize the reasons - which type of data would you ask of participants?
+
+# Code Explanation
+
+Explain how your code for one of the figures works. Thus, include the code here, then describe what it does.
