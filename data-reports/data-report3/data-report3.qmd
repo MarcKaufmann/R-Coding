@@ -4,6 +4,28 @@ author: "<fill-in>"
 format: html
 ---
 
+# Help from others, ChatGPT, etc
+
+**Note:** Remove this note, but leave this section on 'Help from others, ChatGPT, etc' in the rendered report after filling it in.
+
+**Note:** Keep one of the following sentences in the report:
+
+1. "I discussed this report and worked with <fill-in-name-of-the-person-or-persons>. In particular for the following parts: <list-the-points-not-lines-you-needed-help>."
+2. "I did not discuss this report with anyone nor work with someone else. I worked on it alone."
+
+**Note:** Don't keep this note, but keep the next sentence.
+
+I labeled every part of the code that I got by copying (and potentially editing) answers from StackOverflow, ChatGPT (or similar AIs), or other websites providing code, including online forums (or the lecture notes, if you blindly copy-paste without understanding). For any piece of code longer than one line, I provide the source -- e.g., the link for StackOverflow or other online forums; the prompt/screenshot used for ChatGPT; similar for others. Moreover, whenever using external code, I made sure that I at least broadly understand how it works, and include that in the comment.
+
+I understand that I can use arbitrary code that I find online or by discussing with others, as long as I label it correctly (see above), and I understand or tested it well enough to be sure that the code does what I wanted. Using code from other sources can however lead to a lower score to incentivise not overusing it:
+
+1. my score may be reduced by up to 10% if I use large amounts of outside code; 
+2. my score may be reduced if I am not capable of broadly explaining in an office hour with the instructor how the code from other sources works
+    - by up to 10% if I already in my code documentation acknowledged that I do not fully understand the code;
+    - by up to 20% if I do not acknowledge in the documentation that I do not fully understand the code, yet I copied it anyway.
+
+Finally, for code that I claim as coming from me - all code not labeled as coming from outside sources - I am expected to be able to properly explain it in an office hour with the instructor. Failure to do so leads to a reduction of **at least 30%**, but possibly more - even if the code in question constitutes only a small part of the assignment counting for much less than 30%. 
+
 # Instructions (remove for final submission)
 
 This file is a template for your third data report. As for previous reports, delete the **Notes** for your final submission.
@@ -11,6 +33,21 @@ This file is a template for your third data report. As for previous reports, del
 **Note:** Do not include the code in the rendered document.
 
 **Note:** Final page limit is 6 pages -- not 10 like last time. This is since you should no longer include the code.
+
+**Note:** Here is a (non-exhaustive) list of points to keep in mind to avoid losing points: 
+
+- Round numbers sensibly: `1.23` not `1.234567`
+- Mention/explain/comment in the code what you are loading extra packages for.
+- You have to comment your code (ChatGPT can obviously do it)
+- The clean data and everything included in the rendered report should have sensible labels. Headers such as `qn` and `ans` are not good.
+- Clean formating:
+    - For tables, all the data for a row should be in a single row, i.e. the columns should fit next to each other on the page. If not, it's too wide.
+    - Check your markdown formatting: writing `#Header` will not lead to a header, but look like #Header.
+    - Including tibbles in the output (if columns labeled properly) is fine; including a number or vector as `[1] 0` looks garbage, don't do it.
+- Comment non-obvious code by at least one line of intent, either in the report (if it is about why you do it) or as a comment in the code (if it is about how the code achieves it).
+    - This applies especially to functions, longer pipes of summaries.
+    - You do not have to explain how standard plots (similar to those we did) work.
+    
 
 # Dataset
 
