@@ -4,9 +4,9 @@ author: "<fill-in>"
 format: html
 ---
 
-# Help from others, ChatGPT, etc
+# Disclaimer on use of outside sources
 
-**Note:** Remove this note, but leave this section on 'Help from others, ChatGPT, etc' in the rendered report after filling it in.
+**Note:** Remove this note, but include this Disclaimer section in the report.
 
 **Note:** Keep one of the following sentences in the report:
 
@@ -32,7 +32,7 @@ This file is a template for your third data report. As for previous reports, del
 
 **Note:** Do not include the code in the rendered document.
 
-**Note:** Final page limit is 6 pages -- not 10 like last time. This is since you should no longer include the code.
+**Note:** Final page limit (excluding 'Disclaimer') is 6 pages -- not 10 like last time. This is since you should no longer include the code.
 
 **Note:** Here is a (non-exhaustive) list of points to keep in mind to avoid losing points: 
 
@@ -92,4 +92,4 @@ library(tidyverse)
 
 # Code Explanation
 
-Explain how your code for one of the figures works. Thus, include the code here, then describe what it does.
+Explain how the code for one of the figures works (ignoring choice of fonts, colors that are not determined by the data, etc). Thus, include the code here, then describe what it does. 
