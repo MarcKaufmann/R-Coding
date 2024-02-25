@@ -15,12 +15,13 @@ format: html
 
 **Note:** Don't keep this note, but keep the next sentence.
 
-I labeled every part of the code that I got by copying (and potentially editing) answers from StackOverflow, ChatGPT (or similar AIs), or other websites providing code, including online forums (or the lecture notes, if you blindly copy-paste without understanding). For any piece of code longer than one line, I provide the source -- e.g., the link for StackOverflow or other online forums; the prompt/screenshot used for ChatGPT; similar for others. Moreover, whenever using external code, I made sure that I at least broadly understand how it works, and include that in the comment.
+I labeled every part of the text and the code that I got by copying (and potentially editing) answers from StackOverflow, ChatGPT (or similar AIs), or other websites providing code, including online forums (or the lecture notes, if you blindly copy-paste without understanding). For any piece of code longer than one line, I provide the source -- e.g., the link for StackOverflow or other online forums; the prompt/screenshot used for ChatGPT; similar for others. Moreover, whenever using external code, I made sure that I at least broadly understand how it works, and include that in the comment.
 
 I understand that I can use arbitrary code that I find online or by discussing with others, as long as I label it correctly (see above), and I understand or tested it well enough to be sure that the code does what I wanted. Using code from other sources can however lead to a lower score to incentivise not overusing it:
 
-1. my score may be reduced by up to 10% if I use large amounts of outside code; 
-2. my score may be reduced if I am not capable of broadly explaining in an office hour with the instructor how the code from other sources works
+1. my score may be reduced by up to 5% if I generate large amounts of text from outside sources;
+2. my score may be reduced by up to 10% if I use large amounts of outside code; 
+3. my score may be reduced if I am not capable of broadly explaining in an office hour with the instructor how the code from other sources works
     - by up to 10% if I already in my code documentation acknowledged that I do not fully understand the code;
     - by up to 20% if I do not acknowledge in the documentation that I do not fully understand the code, yet I copied it anyway.
 
