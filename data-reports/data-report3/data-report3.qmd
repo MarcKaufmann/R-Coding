@@ -4,28 +4,31 @@ author: "<fill-in>"
 format: html
 ---
 
-# Disclaimer on use of outside sources
+# Acknowledgement on use of outside sources
 
 **Note:** Remove this note, but include this Disclaimer section in the report.
 
-**Note:** Keep one of the following sentences in the report:
+**Note:** Keep one of the following sentences in the report (this is for help received from other students or people - ChatGPT, see below):
 
-1. "I discussed this report and worked with <fill-in-name-of-the-person-or-persons>. In particular for the following parts: <list-the-points-not-lines-you-needed-help>."
-2. "I did not discuss this report with anyone nor work with someone else. I worked on it alone."
+## List of Outside Sources Used for Assignment
 
-**Note:** Don't keep this note, but keep the next sentence.
+For this report I used the following outside sources (including discussions with other people, in which case please provide their name):
 
-I labeled every part of the text and the code that I got by copying (and potentially editing) answers from StackOverflow, ChatGPT (or similar AIs), or other websites providing code, including online forums (or the lecture notes, if you blindly copy-paste without understanding). For any piece of code longer than one line, I provide the source -- e.g., the link for StackOverflow or other online forums; the prompt/screenshot used for ChatGPT; similar for others. Moreover, whenever using external code, I made sure that I at least broadly understand how it works, and include that in the comment.
+I highlight in the code via comments which parts of the code benefitted from which source; and for text in the report, I highlight this via the use of footnotes.
+
+## Acknowledgement of the Rules of the Game
+
+I labeled every part of the text and the code that I got by copying (and potentially editing) answers from StackOverflow, ChatGPT (or similar AIs), other websites providing code, including online forums, or from other students. For any piece of code longer than one line, I provide the source -- e.g., the link for StackOverflow or other online forums; the prompt/screenshot used for ChatGPT; similar for others. Moreover, whenever using external code, I made sure that I at least broadly understand how it works, and include that in the comment.
 
 I understand that I can use arbitrary code that I find online or by discussing with others, as long as I label it correctly (see above), and I understand or tested it well enough to be sure that the code does what I wanted. Using code from other sources can however lead to a lower score to incentivise not overusing it:
 
-1. my score may be reduced by up to 5% if I generate large amounts of text from outside sources;
-2. my score may be reduced by up to 10% if I use large amounts of outside code; 
-3. my score may be reduced if I am not capable of broadly explaining in an office hour with the instructor how the code from other sources works
-    - by up to 10% if I already in my code documentation acknowledged that I do not fully understand the code;
-    - by up to 20% if I do not acknowledge in the documentation that I do not fully understand the code, yet I copied it anyway.
+1. my score may be reduced by up to 5% if large amounts of text are from outside sources;
+2. my score may be reduced by up to 10% if large amounts of code come from outside sources; 
+3. my score may be reduced further for code from outside sources, if I am not capable of broadly explaining the code in an office hour with the instructor:
+    - by up to 10% if I highlight in comments that I do not fully understand the code;
+    - by up to 20% if I fail to highlight in comments that I do not fully understand the code.
 
-Finally, for code that I claim as coming from me - all code not labeled as coming from outside sources - I am expected to be able to properly explain it in an office hour with the instructor. Failure to do so leads to a reduction of **at least 30%**, but possibly more - even if the code in question constitutes only a small part of the assignment counting for much less than 30%. 
+Finally, for code that I claim as coming from me - all code not labeled as coming from outside sources - I am expected to be able to *properly* explain it in an office hour with the instructor. Failure to do so leads to a reduction of **at least 30%**, but possibly more - even if the code in question constitutes only a small part of the assignment counting for much less than 30%. 
 
 # Instructions (remove for final submission)
 
