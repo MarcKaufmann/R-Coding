@@ -1,9 +1,9 @@
 ---
 title: "Data Report 3"
 author: "<fill-in>"
-format: html
 ---
 
+::: {layout-ncol=2}
 # Acknowledgement on use of outside sources
 
 **Note:** Remove this note, but include this Disclaimer section in the report.
@@ -109,8 +109,10 @@ library(tidyverse)
 
 # Conclusions
 
-**Note:** What have you learned about the topics, the opinions participants have about them, and reasons for or against the different topics? How would your solution scale if there were 100 or 1,000 topics for which you need to generate reasons for or against? What if you could personalize the reasons - which type of data would you ask of participants?
+**Note:** Briefly explain anything you learned from you exploration based on background information, that is part 2 of the main part.
 
 # Code Explanation
 
 Explain how the code for one of the figures works (ignoring choice of fonts, colors that are not determined by the data, etc). Thus, include the code here, then describe what it does.
+
+:::
