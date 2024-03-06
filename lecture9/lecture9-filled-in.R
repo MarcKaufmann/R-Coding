@@ -121,4 +121,104 @@ runif(10)
 set.seed(42)
 runif(10)
 
+# Iterations and reasons from Data Report 2
+
+
+mean_scores <- tribble(
+  ~tpc, ~overall_mean,
+  "AI", 4,
+  "Addiction", 5,
+  "Neuroscience", 3
+)
+
+add_overall_mean_reason <- function(overall_mean_scores) {
+  reasons <- data.frame(topic = character(), reason_direction = character(), reason = character(), strength_of_reason = numeric())
+  
+  for (i in 1:nrow(overall_mean_scores)) {
+    row <- overall_mean_scores[i, ]
+    topic <- row$tpc
+    overall_mean <- row$overall_mean
+
+    if (overall_mean >= mean(overall_mean_scores$overall_mean, na.rm = TRUE)) {
+      reasons <- rbind(reasons, data.frame(topic, reason_direction = "for", reason = paste0("The topic '", topic, "' has a high overall mean score of ", overall_mean, ", indicating positive reception."), strength_of_reason = 5))
+    } else {
+      reasons <- rbind(reasons, data.frame(topic, reason_direction = "against", reason = paste0("The topic '", topic, "' has a low overall mean score of ", overall_mean, ", indicating less positive reception."), strength_of_reason = 3))
+    }
+  }
+  
+  return(reasons)
+}
+
+overall_mean_reasons <- add_overall_mean_reason(mean_scores)
+
+reason_sentence <- function(t, m) {
+  paste0(
+      "The topic '", 
+      t , 
+      "' has a high overall mean score of ", 
+      m, 
+      ", indicating positive reception."
+    )
+}
+
+mean_reasons <- mean_scores |>
+  mutate(
+    reasons = reason_sentence(tpc, overall_mean),
+    reason_dir = if_else( overall_mean > mean(overall_mean, na.rm = T), "for", "against" )
+  )
+
 # Now on to Broom from Chapter 6.5 of DV by Healy
+library(broom)
+
+out <- lm(formula = lifeExp ~ gdpPercap + pop + continent, data = gapminder::gapminder)
+summary(out)
+
+out_comp <- tidy(out)
+
+# Book uses round_df, requires new package, decided to roll my own
+round_df <- function(df) {
+  df |>
+    mutate(
+      # Looked up ?across, found example
+      across(where(is.numeric), ~ round(.x, digits = 2))
+    )
+}
+
+out_comp |> 
+  round_df()
+
+p <- ggplot(out_comp, mapping = aes(x = term, y = estimate))
+
+p + geom_point() + coord_flip()
+
+out_conf <- tidy(out, conf.int = TRUE)
+out_conf |> round_df()
+
+p <- ggplot(
+  out_conf |> filter(term != "(Intercept)"),
+  mapping = aes(x = term, y = estimate, ymin = conf.low, ymax = conf.high)
+)
+
+p + geom_pointrange() + coord_flip() + labs(x = "", y = "OLS Estimate")
+
+# Rearrange by size of estimate
+p <- ggplot(
+  out_conf |> filter(term != "(Intercept)"),
+  mapping = aes(x = reorder(term, estimate), y = estimate, ymin = conf.low, ymax = conf.high)
+)
+
+p + geom_pointrange() + coord_flip() + labs(x = "", y = "OLS Estimate")
+
+# Plot predicted data
+out_aug <- augment(out)
+head(out_aug) |> round_df()
+
+out_aug <- augment(out, data = gapminder::gapminder)
+head(out_aug) |> round_df()
+
+# Is this a good model? Is any structure left in the residuals?
+p <- ggplot(data = out_aug, mapping = aes(x = .fitted, y = .resid))
+p + geom_point()
+
+# Final command of package broom: glance
+glance(out) |> round_df()
