@@ -1,0 +1,103 @@
+---
+title: "Data Report 4"
+author: "<fill-in>"
+date: "<fill-in>"
+---
+
+# Use of outside sources
+
+**Note:** Briefly list all the sources you used for help (not what for), e.g. ChatGPT, the name of a friend, etc. Do not include Slack or the links provided in this data report.
+
+I used the following outside sources for this:
+
+-   ChatGPT
+-   ...
+
+For every line of code that I copied from some outside source, I commented it appropriately in the code:
+
+-   For single lines of code, or code related to theming plots/tables, I simply added a comment stating the source.
+-   For larger chunks of code, I added one line, highlighting the start and end, with a brief statement whether I copy-pasted it directly or edited it further.
+    -   In addition, I provided a score for how well I (subjectively feel I) understand the code I used from 1 ("I do not understand it at all") to 5 ("I understand fully").
+
+The scoring and potential point reductions remain as in DR2 and DR3.
+
+# Alternative: Exploratory Analysis for Thesis Project
+
+If you have to write a thesis or capstone by summer and your thesis contains data analysis, then instead of doing the data report described in this file, you can submit a data report on your thesis, with the same structure as usual (documentation, dataset, cleaning, exploration, conclusion, some code explanation of your choice). The (roughly) 6-page limit still applies, the goal is not to do the full analysis for your thesis, but an exploratory report. **Note:** this is obviously only possible if you are permitted to share the data with me.
+
+# Instructions (remove for final submission)
+
+Otherwise, this data report will cover the analysis of an experiment by Fallucchi and Kaufmann on narrow bracketing. Specifically, the data and analysis for the project can be found at the following public GitHub repository:
+
+-   https://github.com/MarcKaufmann/narrow-bracketing-in-work-choices/tree/main
+
+For this data report, you should clone the entire repository or download the entire repository as a zip file and then extract on your local machine. Copy this data-report into the `data/` folder of that repository and work from there. I will run your data report in a folder that contains both csv files, but no code, so this file should contain all the code needed.[^1] Make sure that you can load the data files with a simple `read_csv("means_and_tests.R")` command, without having to set any parth variable. This should work out of the box if you open the `data.Rproj` file from RStudio as a project.
+
+[^1]: Be aware that this is a bad practice, it is better to have external scripts and only import/load the functionality that you need into your report. However, I don't want to change our workflow for the final assignment.
+
+**Note:** Do not include the code in the rendered document.
+
+**Note:** Final page limit (excluding 'Disclaimer') is 6 pages -- not 10 like last time. This is since you should no longer include the code.
+
+**Note:** Here is a (non-exhaustive) list of points to keep in mind to avoid losing points:
+
+# Dataset
+
+```{r load-libraries}
+#| output: false
+#| echo: false
+library(tidyverse)
+```
+
+**Source**: [Replication code](https://github.com/MarcKaufmann/narrow-bracketing-in-work-choices/tree/main) from an experiment by Fallucchi and Kaufmann for [their paper on Narrow Bracketing](https://trichotomy.xyz/publication/narrow-bracketing-in-work-choices/narrow-bracketing-in-work-choices.pdf).
+
+**Note:** Your task here is to make sure that you can run the code in RStudio based on the instructions on GitHub. After cloning/downloading the entire GitHub repository, navigate there, and open the project by using "Open Project" in RStudio and navigating to the `data/data.Rproj` file inside that repository. In your report, include that you can
+
+1.  open the two csv files `full_raw_data.csv` and `clean_data.csv`;
+2.  run all the scripts, either as described in the README file or by opening the script and running it directly from RStudio.
+
+**Note:** You will need to refer to the paper in order to match the output from the code with figures or tables in the paper. You (probably) do not need to understand much about what the tables mean or measure, although skimming section 3 is almost surely necessary so that you have some sense of what is in the data.
+
+**Note:** If at any point you struggle because you do not understand what the comments in the code mean, or because you think you need to understand what the experiment is actually about, ask for clarifications on Slack. While you wait for an answer, skim Section 3 if you haven't done so.
+
+**Documentation:**
+
+**Note:** Instead of documenting the file, figure out where the documentation for the data can be found in the repository. Provide a 2-3 sentence summary (or a list of up to 6 points) on the data in high-level terms, and anything that an analyst would like to know who did not read the README themselves. Do **not** provide a list of all the fields, at best say (roughly) the kind of data it contains; not 'gender', 'age', 'education', but 'demographics'. The goal is to have a summary for a reader to know what it broadly is, with the link to the detailed documentation inside the repository if they want to find out more.
+
+# Cleaning
+
+**Note:** You will not have to clean the data, the code is there. You should do the following:
+
+1.  Summarize how the data is cleaned, and comment on potential improvements:
+    -   in what else should be cleaned,
+    -   in how the code should be commented,
+    -   or which part of the code could be simplified.
+2.  There are multiple transformations of the data from `fulldf` over `df1` etc to the final `df8`. Explain in your words the code for 2 of the transformations listed below. Explaining in your words means the following: start with the initial dataframe, pick only 4 of its rows, and highlight what the goal is (usually stated in the comments). Then describe carefully the code and test on this 4-row dataset whether it achieves its goal. There are regular expressions in some of the code: you can use ChatGPT or any other resource to help you, but the important point is that you verify whether the code does what it says, by testing some of its properties, checking individual values or otherwise. Do this for 2 of the following transformations:
+    -   `df4` to `df5`: if you pick this one, can you suggest a way to improve the code? It is fairly repetitive. Which solution is easier to read? Which requires fewer lines of code?
+    -   `df5` to `df6a`, `df6a` to `df6b`, or `df5` to `df6`
+    -   `df7` to `df8`
+
+# Exploration
+
+**Note:** Do not try to understand all the code for this part. Learn to navigate the code to find the part that does what you are interested in, ignore the rest.
+
+1.  Replicate the summary statistics in Table 1, by copying the necessary code into this document. Start by copying the entire code from `summary_statistics.R` into a block inside this data report and then editing it for your purposes. **Do not (yet) remove unnecessary code - comment it out instead!** (See part 2.)
+    -   Note that in order to include it in the report, you have to switch the output in the `kbl` calls by changing the format they output. (Your job to find out how.)
+2.  Once you get the summary statistics Table included in the report, comment out all the code that is unnecessary. To comment out a single line, put a hash ('\#') at the start of the line; to comment out or uncomment multiple lines, select them all and hit `Ctrl + Shift + c` (Windows/Linux) or `Command + Shift + c` (Mac). You can work forwards or backwards for this:
+    -   Forwards: identify code that is clearly unnecessary, because it generates other plots or graphs.
+    -   Backwards: start with final call to `ggplot` that you need, identify the arguments and functions that need to be defined for this plot, and then the arguments and functions for all these objects to be defined. Make sure to keep these. **Important:** After you comment out some block of code, make sure that your report still renders the table, to make sure you didn't comment out necessary code!
+3.  Now create a similar summary statistics table for some subset of participants, e.g. only male or female participants, or only those who participated in the first 3 sessions. (The exact group is irrelevant.) Then create a summary statistics table for this subgroup.
+    -   Reuse as much of the pre-existing code as you can. Worst case, copy-paste the previous code and change names of datasets. But ideally you would define a new function that takes as an input the dataset to summarize and goes through all the steps automatically. The reason is that if you ever decided to change the plot for *both* groups, then you would have to change the code in two places, which is error-prone.
+4.  Replicate Figure 2 in the paper by copying the code from `means_and_tests.R` into a codeblock here and editing it so it outputs the plot. (Hint: just run the whole code and find the `.png` file that looks like the graph in the paper. Then search where it is generated in the code.)
+    -   Now check, by computing it directly from the data, that the p-values displayed in the graph are accurate: that is, the p-value comparing the first and the third column is actually the p-value corresponding to that test, etc. (It is quite common to mess this up, since these graphs require some manual coding whereby p-values or other labels get mixed up, so it's good to double check.)
+    -   The most important thing here is to highlight how you tested that the p-values are accurate. Just running the original code is not enough, since the original plotting code may use the wrong values.
+5.  Now comment out all the superfluous code. See step 2 above.
+6.  Once you are sure that everything is working, you can delete the commented out code instead of keeping it around.
+
+# Conclusions
+
+**Note:** Since this was a (partial) replication exercise, comment on the difficulties of replicating analyses, and anything you learned or didn't learn (but expected to learn) from this exercise.
+
+# Code Explanation
+
+Most of the code was written over 4 years ago, and there are many warnings generated by code using deprecated features. Can you highlight 2 warnings generated by running `means_and_tests.R` and how to fix them with modern R?
