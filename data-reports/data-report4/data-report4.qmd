@@ -81,18 +81,19 @@ library(tidyverse)
 
 **Note:** Do not try to understand all the code for this part. Learn to navigate the code to find the part that does what you are interested in, ignore the rest.
 
-1.  Replicate the summary statistics in Table 1, by copying the necessary code into this document. Start by copying the entire code from `summary_statistics.R` into a block inside this data report and then editing it for your purposes. **Do not (yet) remove unnecessary code - comment it out instead!** (See part 2.)
-    -   Note that in order to include it in the report, you have to switch the output in the `kbl` calls by changing the format they output. (Your job to find out how.)
-2.  Once you get the summary statistics Table included in the report, comment out all the code that is unnecessary. To comment out a single line, put a hash ('\#') at the start of the line; to comment out or uncomment multiple lines, select them all and hit `Ctrl + Shift + c` (Windows/Linux) or `Command + Shift + c` (Mac). You can work forwards or backwards for this:
-    -   Forwards: identify code that is clearly unnecessary, because it generates other plots or graphs.
-    -   Backwards: start with final call to `ggplot` that you need, identify the arguments and functions that need to be defined for this plot, and then the arguments and functions for all these objects to be defined. Make sure to keep these. **Important:** After you comment out some block of code, make sure that your report still renders the table, to make sure you didn't comment out necessary code!
-3.  Now create a similar summary statistics table for some subset of participants, e.g. only male or female participants, or only those who participated in the first 3 sessions. (The exact group is irrelevant.) Then create a summary statistics table for this subgroup.
+1.  Replicate the summary statistics in Table 1, by copying the necessary code into this document. See the part of Lecture 10 video on this on how to identify the parts of the code that you need.
+
+    -   Note that in order to include it in the report, you have to switch the output in the `kbl` calls by changing the format they output, by changing `format = "latex"` to some format that can be included in HTML.
+
+    To find the code for the table or plot, work backwards: start with the final call to `ggplot` (for a plot) or `kbl` (for tables) that you need, identify the arguments and functions that need to be defined for this plot, and then the arguments and functions for all these objects to be defined. See the video from Lecture 10 towards the end.
+
+2.  Now create a similar summary statistics table for some subset of participants, e.g. only male or female participants, or only those who participated in the first 3 sessions. (The exact group is irrelevant.) Then create a summary statistics table for this subgroup.
+
     -   Reuse as much of the pre-existing code as you can. Worst case, copy-paste the previous code and change names of datasets. But ideally you would define a new function that takes as an input the dataset to summarize and goes through all the steps automatically. The reason is that if you ever decided to change the plot for *both* groups, then you would have to change the code in two places, which is error-prone.
-4.  Replicate Figure 2 in the paper by copying the code from `means_and_tests.R` into a codeblock here and editing it so it outputs the plot. (Hint: just run the whole code and find the `.png` file that looks like the graph in the paper. Then search where it is generated in the code.)
-    -   Now check, by computing it directly from the data, that the p-values displayed in the graph are accurate: that is, the p-value comparing the first and the third column is actually the p-value corresponding to that test, etc. (It is quite common to mess this up, since these graphs require some manual coding whereby p-values or other labels get mixed up, so it's good to double check.)
-    -   The most important thing here is to highlight how you tested that the p-values are accurate. Just running the original code is not enough, since the original plotting code may use the wrong values.
-5.  Now comment out all the superfluous code. See step 2 above.
-6.  Once you are sure that everything is working, you can delete the commented out code instead of keeping it around.
+
+3.  Replicate Figure 2 in the paper by copying all the necessary code code from `means_and_tests.R` into a codeblock in this report and edit it so it outputs the plot. (Hint: just run the whole code and find the `.png` file that looks like the graph in the paper. Then search where it is generated in the code and identify other code chunks needed for this last call to work.)
+
+    -   How can you verify that the p-values in the plot are actually the ones that correspond to the data? That is, potentially I made a mistake when including them manually in the graph. You can either double-check them manually or programmatically, but compute some p-values again to see if the hard-coded values are accurate.
 
 # Conclusions
 
