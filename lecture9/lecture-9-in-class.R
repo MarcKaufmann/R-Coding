@@ -4,6 +4,8 @@ library(tidyverse)
 
 sim1
 sim1_mod <- lm(y ~ x, data = sim1)
+library(broom)
+tidy(sim1_mod)
 sim1_mod
 sim1_mod_no_intercept <- lm(y ~ x - 1, data = sim1)
 sim1_mod_no_intercept
@@ -108,3 +110,4 @@ set.seed(42)
 runif(10)
 set.seed(42)
 runif(10)
+
