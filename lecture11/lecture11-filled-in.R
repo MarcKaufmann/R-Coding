@@ -283,3 +283,6 @@ df2 |> filter(if_any(a:d, is.na))
 
 # same as df_miss |> filter(is.na(a) & is.na(b) & is.na(c) & is.na(d))
 df2 |> filter(if_all(a:d, is.na))
+
+# For more:
+vignette("colwise")
