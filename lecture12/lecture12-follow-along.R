@@ -142,23 +142,3 @@ p1
 p3 <- p2 + 
   facet_wrap(~ reorder(division_name, -adjusted, na.rm = TRUE))
 p3
-
-library(ggrepel)
-p4 <- p3 + 
-  geom_text_repel(data = filter(opiates, 
-                                year == max(year),
-                                abbr != "DC"),
-                  mapping = aes(x = year, y = adjusted, label = abbr))
-p4
-
-p5 <- p2 +
-  geom_text_repel(data = filter(opiates, 
-                                year == max(year),
-                                abbr != "DC"),
-                  mapping = aes(x = year, y = adjusted, label = abbr),
-                  size = 1.8, segment.color = NA, nudge_x = 30)
-p5
-
-p6 <- p5 + 
-  facet_wrap(~ reorder(division_name, -adjusted, na.rm = TRUE))
-p6
