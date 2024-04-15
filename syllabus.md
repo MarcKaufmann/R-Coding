@@ -30,7 +30,7 @@ Class materials are hosted on https://github.com/MarcKaufmann/R-Coding. Look the
 
 There will be no final exam. 
 
-Minimum passing grade is 51%. Every increase in 7% leads to a higher grade: 51 to 57 yields a C; 58 to 64 yields a C+; 65 to 71 yields a B-; 72 to 78 yields a B; 79 to 85 yields a B+, 86 to 92 yields an A-; 93 to 100 yields an A.
+The grading thresholds are those set by CEU (see https://documents.ceu.edu/documents/p-1105-2v2304, Annex 2).
 
 If you have a question regarding a particular assignment -- whether about the grade or otherwise -- make sure to email me.
 
